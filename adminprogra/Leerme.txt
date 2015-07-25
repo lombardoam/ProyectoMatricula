@@ -1,0 +1,11 @@
+﻿Los archivos HTML que hice son los que tienen nombre en español, a excepción del index.html que es el único con nombre en inglés que edité.
+
+Los otros HTML que están, con nombre en inglés son los originales que trae la plantilla, los dejé porque podrían servir de alguna referencia.
+
+Blank Page es la página por defecto en blanco de la plantilla, también la dejé porque podría servir para hacer más páginas.
+
+En
+ <!-- /.container-fluid -->
+  <!-- /.Colocar aquí el código y contenido que se desee poner en la página -->
+
+Como hago referencia en los HTML, es la ubicación en donde se puede ingresar el código que se desea que contenga la página.
