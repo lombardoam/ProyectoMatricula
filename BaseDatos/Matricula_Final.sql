@@ -699,6 +699,59 @@ LOCK TABLES `tipo_equivalencias` WRITE;
 /*!40000 ALTER TABLE `tipo_equivalencias` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tipo_equivalencias` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tipos_usuarios`
+--
+
+DROP TABLE IF EXISTS `tipos_usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tipos_usuarios` (
+  `tipo_usuario` int(11) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`tipo_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipos_usuarios`
+--
+
+LOCK TABLES `tipos_usuarios` WRITE;
+/*!40000 ALTER TABLE `tipos_usuarios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tipos_usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `apellido` varchar(45) NOT NULL,
+  `nombre_usuario` varchar(45) NOT NULL,
+  `contrasena` varchar(45) NOT NULL,
+  `tipo_usuario` int(11) NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  KEY `fk_usuarios_tipos_usuarios_idx` (`tipo_usuario`),
+  CONSTRAINT `fk_usuarios_tipos_usuarios` FOREIGN KEY (`tipo_usuario`) REFERENCES `tipos_usuarios` (`tipo_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -709,4 +762,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-29 23:06:02
+-- Dump completed on 2015-07-30 14:10:50
