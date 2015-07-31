@@ -31,7 +31,7 @@
 
 				fields:
 				 {
-					id_salon:
+					id_aula:
 					{
 						key: true,
 						create: false,
@@ -39,32 +39,47 @@
 						list: false
 					},
 
-
-					id_tipo_salon: {
-						title: 'Tipo salón',
+                     	codigo_aula: {
+						title: 'Código Aula',
 
                     },
 
-
-
-					id_edificio: {
+                     	id_edificio: {
 						title: 'Edificio',
 
-
-
 					},
-					numero_salon: {
-						title: 'Numero salón',
 
+                     	num_aula: {
+						title: 'Número',
 
-					},
-					capacidad: {
+                    },
+
+                     	capacidad: {
 						title: 'Capacidad',
 
 
                     },
-					recursos: {
-						title: 'Recursos	',
+
+                     	datashow: {
+						title: 'Datashow',
+
+                    },
+
+					pizarra_electronica: {
+						title: 'Pizarra electrónica',
+
+                    },
+
+
+
+					camara_video: {
+						title: 'Cámara',
+
+
+					},
+
+					audio: {
+						title: 'Audio',
 
 					},
 

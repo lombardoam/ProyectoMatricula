@@ -25,51 +25,56 @@
 				},
 
 				fields: {
-					id_docente: {
+					id_empleado: {
 						key: true,
 						create: false,
 						edit: false,
 						list: false
 					},
-					nombre: {
-						title: 'Nombre Docente',
-						width: '30%',
-					},
-					apellido: {
-						title: 'Apellido Docente',
-						width: '30%',
-					},
 
-						telefono: {
-						title: 'Teléfono',
+                    	codigo_empleado: {
+						title: 'Código',
 						width: '15%',
-
 					},
-					correo: {
-						title: 'Correo',
-						width: '30%',
 
+					nombres: {
+						title: 'Nombres',
+						width: '15%',
 					},
-					id_carrera: {
-						title: 'Carrera',
-						width: '30%'
-                    //options: { '122': 'Chef', '3321': 'Administrador Empresas', '553': 'Civil', '343': 'Arquitectura' },
+					apellidos: {
+						title: 'Apellidos',
+						width: '15%',
+					},
 
-						 },
-
-				 genero: {
+                   genero: {
                     title: 'Género',
-                    width: '13%',
+                    width: '10%',
                     options: { 'H': 'Hombre', 'M': 'Mujer' },
 
                 },
 
+					telefono: {
+						title: 'Teléfono',
+						width: '15%',
+
+					},
+					email: {
+						title: 'Correo',
+						width: '15%',
+
+					},
+					codigo_carrera: {
+						title: 'Carrera',
+						width: '15%'
+                    //options: { '122': 'Chef', '3321': 'Administrador Empresas', '553': 'Civil', '343': 'Arquitectura' },
+
+						 },
 
 
-					cordinador: {
-						title: 'Coordinador',
-						width: '30%',
-                    options: { '0': 'No', '1': 'Si' },
+					id_puesto: {
+						title: 'Puesto',
+						width: '15%',
+                    //options: { '0': 'No', '1': 'Si' },
 
 					},
 				}

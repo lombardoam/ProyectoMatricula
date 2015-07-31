@@ -1,6 +1,6 @@
 <?php
 $conexion = mysqli_connect('localhost','root','');
-mysql_select_db('matriculas');
+mysql_select_db('matricula');
 
 
 if (!$conexion) {
