@@ -39,13 +39,13 @@
 
 			        codigo_curso: {
 						title: 'Código',
-						width: '15%'
+						width: '15%',
 						 },
 
 
 					nombre_curso: {
 						title: 'Nombre Clase',
-						width: '15%'
+						width: '20%'
 						 },
 
                      uv: {
