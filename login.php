@@ -1,4 +1,4 @@
 <?php
-   $numero_cuenta = $_POST['nocuenta'];
+   $usuario = $_POST['usuario'];
    $contrasena = $_POST['contra'];
 ?>
