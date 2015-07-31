@@ -492,7 +492,7 @@ var globalOptions = {
   //prompt method,
   prompt: function(element, text, opts) {
     if($.type($.notify) === 'function') {
-      if(!opts) opts = {color: 'red'};
+      if(!opts) opts = { color: 'red', position: 'left' };
       $.notify(element, text, opts);
     }
   }
