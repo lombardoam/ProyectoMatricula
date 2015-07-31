@@ -17,6 +17,7 @@ Repositorio principal del Proyecto de Matricula de la clase de Ingeniería de So
    - Periodos 
    - Requisitos
 
+   El archivo se llama Datos.sql y lo pueden encontrar en la carpeta de BaseDatos de este repositorio, solo tienen que ejecutarlo en su gestor de bases de datos y se agregarán los campos.
    Agradecería que alguien más aporte otro sql con campos en las tablas que hacen falta. 
    Espero les sirva para poder avanzar un poco en sus trabajos, saludos!
 
