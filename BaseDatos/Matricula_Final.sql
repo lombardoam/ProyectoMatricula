@@ -66,7 +66,7 @@ CREATE TABLE `carreras` (
   KEY `fk_carreras_puestos_idx` (`id_puesto`),
   CONSTRAINT `fk_carreras_facultades` FOREIGN KEY (`id_facultad`) REFERENCES `facultades` (`id_facultad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_carreras_puestos` FOREIGN KEY (`id_puesto`) REFERENCES `puestos` (`id_puesto`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,6 +75,7 @@ CREATE TABLE `carreras` (
 
 LOCK TABLES `carreras` WRITE;
 /*!40000 ALTER TABLE `carreras` DISABLE KEYS */;
+INSERT INTO `carreras` VALUES (1,'ARQ','Arquitectura',1,'3',2),(2,'INGC','Ingeniería Civil',1,'4',2),(3,'IIT','Ingeniería en Infotecnología',1,'5',2);
 /*!40000 ALTER TABLE `carreras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,7 +216,7 @@ CREATE TABLE `cursos` (
   PRIMARY KEY (`id_curso`,`codigo_curso`),
   KEY `codigo_plan_idx` (`id_plan_estudio`),
   CONSTRAINT `fk_cursos_plan` FOREIGN KEY (`id_plan_estudio`) REFERENCES `planes_estudio` (`id_plan_estudio`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,6 +225,7 @@ CREATE TABLE `cursos` (
 
 LOCK TABLES `cursos` WRITE;
 /*!40000 ALTER TABLE `cursos` DISABLE KEYS */;
+INSERT INTO `cursos` VALUES (1,'IIT4011','Seguridad de la Información',4,0,4,0,1,10),(2,'IIT3032','Ingeniería de Software I',3,0,3,0,1,9),(3,'IIT4012','Ingeniería de Software II',3,0,3,0,1,10);
 /*!40000 ALTER TABLE `cursos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,7 +278,7 @@ CREATE TABLE `empleados` (
   KEY `codigo_puesto_idx` (`id_puesto`),
   KEY `codigo_carrera_idx` (`codigo_carrera`),
   CONSTRAINT `fk_empleados_puestos` FOREIGN KEY (`id_puesto`) REFERENCES `puestos` (`id_puesto`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -285,6 +287,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
+INSERT INTO `empleados` VALUES (1,'BM01','Belinda','Marder','F',33344334,'beli_mar@gmail.com','FFIA',3),(2,'LER01','Lidia Erminda','Rodriguez','F',98998998,'li_er@gmail.com','ALL',3),(3,'LER01','Arquitecto','Mejia','M',36363636,'arme@gmail.com','ARQ',2),(4,'IM01','Ingeniero','Martínez','M',34343434,'ingma@gmail.com','INGC',2),(5,'LER01','Marco Antonio','Díaz','M',93939393,'maan@gmail.com','IT',2);
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -407,7 +410,7 @@ CREATE TABLE `facultades` (
   KEY `codigo_empleado_idx` (`codigo_empleado`),
   KEY `fk_facultades_puestos_idx` (`id_puesto`),
   CONSTRAINT `fk_facultades_puestos` FOREIGN KEY (`id_puesto`) REFERENCES `puestos` (`id_puesto`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -416,6 +419,7 @@ CREATE TABLE `facultades` (
 
 LOCK TABLES `facultades` WRITE;
 /*!40000 ALTER TABLE `facultades` DISABLE KEYS */;
+INSERT INTO `facultades` VALUES (1,'FIA','Facultad de Ingenierías y Arquitectura','1',3),(2,'FCE','Facultad de Ciencias Económicas','2',3);
 /*!40000 ALTER TABLE `facultades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -545,7 +549,7 @@ CREATE TABLE `planes_estudio` (
   PRIMARY KEY (`id_plan_estudio`,`codigo_plan`),
   KEY `codigo_carrera_idx` (`id_carrera`),
   CONSTRAINT `fk_planes_carreras` FOREIGN KEY (`id_carrera`) REFERENCES `carreras` (`id_carrera`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -554,6 +558,7 @@ CREATE TABLE `planes_estudio` (
 
 LOCK TABLES `planes_estudio` WRITE;
 /*!40000 ALTER TABLE `planes_estudio` DISABLE KEYS */;
+INSERT INTO `planes_estudio` VALUES (1,'IIT2013','Ingeniería en Infotecnología','4 años',61,219,3),(2,'INGC2013','Ingeniería Civil','4 años',58,195,2),(3,'ARQ2013','Arquitectura','4 años',54,179,1);
 /*!40000 ALTER TABLE `planes_estudio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -637,7 +642,7 @@ CREATE TABLE `puestos` (
   `codigo_puesto` varchar(10) NOT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_puesto`,`codigo_puesto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -646,6 +651,7 @@ CREATE TABLE `puestos` (
 
 LOCK TABLES `puestos` WRITE;
 /*!40000 ALTER TABLE `puestos` DISABLE KEYS */;
+INSERT INTO `puestos` VALUES (1,'doc','docente'),(2,'coordc','Coordinador de carrera'),(3,'coordf','Coordinador de facultad'),(4,'admin','Administrador de Sistema'),(5,'enm','Encargado de Matrícula'),(6,'cont','Encargado de Contabilidad');
 /*!40000 ALTER TABLE `puestos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -708,11 +714,11 @@ DROP TABLE IF EXISTS `tipos_usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tipos_usuarios` (
-  `tipo_usuario` int(11) NOT NULL,
+  `tipo_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `descripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`tipo_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -721,6 +727,7 @@ CREATE TABLE `tipos_usuarios` (
 
 LOCK TABLES `tipos_usuarios` WRITE;
 /*!40000 ALTER TABLE `tipos_usuarios` DISABLE KEYS */;
+INSERT INTO `tipos_usuarios` VALUES (1,'Administrador','Gestiona las características del Sistema'),(2,'Docente','Accesa a la interfaz de docentes'),(3,'Alumno','Accesa a la interfaz de alumnos'),(4,'Encargado','Gestiona las caracteristicas de la matricula'),(5,'Contador','Gestiona la interfaz de contabilidad');
 /*!40000 ALTER TABLE `tipos_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -741,7 +748,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuarios_tipos_usuarios_idx` (`tipo_usuario`),
   CONSTRAINT `fk_usuarios_tipos_usuarios` FOREIGN KEY (`tipo_usuario`) REFERENCES `tipos_usuarios` (`tipo_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -750,6 +757,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'Marco','Diaz','marco.diaz','chilo123',1),(2,'Jeiky','Tovar','jeiky.tovar','chilo123',2),(3,'Ricardo','Valladares','ricardo.valladares','chilo123',3),(4,'Karen','Estrada','karen.estrada','chilo123',4),(5,'Juan','Reyes','juan.reyes','chilo123',5);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -762,4 +770,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-07-31 11:12:58
+-- Dump completed on 2015-07-31 15:20:19
