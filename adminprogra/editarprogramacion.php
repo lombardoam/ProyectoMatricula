@@ -1,6 +1,6 @@
 <?php
 header('Content-type: application/json');
-  require '../conexion.php';
+  require 'conexion.php';
 
 //Update record in database
 $result = mysqli_query($conexion, "UPDATE programacion_cursos SET codigo_prog_curso =
