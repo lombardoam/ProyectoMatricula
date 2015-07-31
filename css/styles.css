@@ -5,6 +5,7 @@
 .modal-footer {   border-top: 0px; }
 .background {
    background-image: url(../img/fondo.jpg);
+   background-size:cover;
 }
 .big-text{
    font-size: 60px;
