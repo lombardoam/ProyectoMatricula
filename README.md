@@ -9,6 +9,8 @@ Repositorio principal del Proyecto de Matricula de la clase de Ingeniería de So
    - Empleados
    - Planes de Estudio
    - Puestos
+   - Usuarios
+   - Tipos de usuarios
 
    Hacen falta las siguientes tablas:
    - Estudiantes
