@@ -29,7 +29,7 @@
 
 					fields:
 				 {
-					id_asignatura:
+					id_curso:
 					{
 						key: true,
 						create: false,
@@ -37,33 +37,25 @@
 						list: false
 					},
 
-
-					nombre_clase: {
-						title: 'Nombre Clase',
-						width: '15%'
-						 },
-
-
-
-					codigo_clase: {
+			        codigo_curso: {
 						title: 'Código',
 						width: '15%'
 						 },
 
-                     UV: {
+
+					nombre_curso: {
+						title: 'Nombre Clase',
+						width: '15%'
+						 },
+
+                     uv: {
 						title: 'UV',
-						width: '15%',
+						width: '10%',
                         options: { '1': '1', '2': '2', '3': '3', '4': '4', '5': '5'
                 },
 						 },
 
-
-                     periodo: {
-						title: 'Periodo-Año',
-						width: '15%'
-						 },
-
-                     horas_practicas: {
+                    horas_practicas: {
 						title: 'Horas Prácticas',
 						width: '15%'
 						 },
@@ -72,6 +64,22 @@
 						title: 'Horas Teóricas',
 						width: '15%'
 						 },
+
+                    laboratorio: {
+						title: 'Laboratorio',
+						width: '15%'
+						 },
+
+                    id_plan_estudio: {
+						title: 'Plan',
+						width: '15%'
+						 },
+
+                     periodo: {
+						title: 'Periodo',
+						width: '15%'
+						 },
+
 
 				}
 			});
