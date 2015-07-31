@@ -60,7 +60,7 @@
 
                     },
 
-                     	datashow: {
+                     	data_show: {
 						title: 'Datashow',
 
                     },
