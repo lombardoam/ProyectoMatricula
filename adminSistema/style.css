@@ -262,3 +262,8 @@ nav > ul > li > a:hover > span {
     margin-top: 25px;
     width: 80%;
 }
+
+.cerrar{
+    float: right;
+    margin-top: -60px;
+}
