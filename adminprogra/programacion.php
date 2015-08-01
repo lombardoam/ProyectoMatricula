@@ -48,19 +48,23 @@
                     },
 
                 id_periodo: {
-						title: 'Periodo'
+						title: 'Periodo',
+                        options: 'param/paramperiodo.php',
 
                     },
 
 
 					codigo_curso: {
-						title: 'Asignatura'
+						title: 'Asignatura',
+                        options: 'param/paramcursos.php',
 
                     },
 
 
                      seccion: {
-						title: 'Sección'
+						title: 'Sección',
+                        options: { 'A':'A', 'B':'B', 'C':'C', 'D':'D', 'E':'E', 'F':'F', 'G':'G'
+                     }
 
                     },
 
@@ -99,12 +103,14 @@
 					},
 
 					id_empleado: {
-						title: 'Docente'
+						title: 'Docente',
+                        options: 'param/paramdocentes.php',
 
 
 					},
 					id_aula: {
-						title: 'Salón'
+						title: 'Salón',
+                        options: 'param/paramsalones.php',
 
 
 					},
@@ -113,6 +119,7 @@
 					{
 						title: 'Estado',
 						//width: '20%',
+                        options: { 'Activo':'Activo','Cancelado':'Cancelado', 'Cerrado':'Cerrado' }
 
                     },
 
