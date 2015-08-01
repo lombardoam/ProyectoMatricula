@@ -3,7 +3,7 @@ Repositorio principal del Proyecto de Matricula de la clase de Ingeniería de So
 
 <<<Mensaje nuevo!>>>>
   
-   Compañeros, acabo de agregar un sql que permite agregar datos a la base de datos, este solo agrega campos en las siguientes tablas:
+   Compañeros, acabo de agregar el sql de la base de datos el cual contiene campos solo en las siguientes tablas:
    - Carreras
    - Clases
    - Empleados
@@ -19,7 +19,7 @@ Repositorio principal del Proyecto de Matricula de la clase de Ingeniería de So
    - Periodos 
    - Requisitos
 
-   El archivo se llama Datos.sql y lo pueden encontrar en la carpeta llamada BaseDatos de este repositorio, solo tienen que ejecutarlo en su gestor de bases de datos y se agregarán los campos.
+   El archivo se llama Matricula_Final.sql y lo pueden encontrar en la carpeta llamada BaseDatos de este repositorio, solo tienen que importarla en su gestor de bases de datos.
    Agradecería que alguien más aporte otro sql con campos en las tablas que hacen falta. 
    Espero les sirva para poder avanzar un poco en sus trabajos, saludos!
 
