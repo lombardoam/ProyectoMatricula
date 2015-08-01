@@ -28,54 +28,56 @@
 				},
 
 				fields: {
-					id_docente: {
+					id_empleado: {
 						key: true,
 						create: false,
 						edit: false,
-						list: false
-					},
-					nombre: {
-						title: 'Nombre Docente',
-						width: '30%',
-					},
-					apellido: {
-						title: 'Apellido Docente',
-						width: '30%',
+						list: false,
 					},
 
-						telefono: {
-						title: 'Teléfono',
-						width: '15%',
+                	codigo_empleado: {
+						title: 'Código',
 
 					},
-					correo: {
-						title: 'Correo',
-						width: '30%',
+
+					nombres: {
+						title: 'Nombres',
 
 					},
-					id_carrera: {
-						title: 'Carrera',
-						width: '30%',
 
-						 },
-
-				 genero: {
+                   genero: {
                     title: 'Género',
-                    width: '13%',
-                    options: { 'H': 'Hombre', 'M': 'Mujer' },
+
+                    options: { 'M': 'Hombre', 'F': 'Mujer' },
 
                 },
 
+					telefono: {
+						title: 'Teléfono',
 
-
-					cordinador: {
-						title: 'Coordinador',
-						width: '30%',
-                    options: { '0': 'No', '1': 'Si' },
 
 					},
+
+					email: {
+						title: 'Correo',
+
+
+					},
+					codigo_carrera: {
+						title: 'Carrera',
+						options: 'param/paramcarrera.php',
+						 },
+
+
+					id_puesto: {
+						title: 'Puesto',
+						options: 'param/parampuestos.php',
+					},
+
+
 				}
 			});
+
 
 			//Load person list from server
 			$('#PeopleTableContainer').jtable('load');
