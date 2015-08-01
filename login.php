@@ -44,7 +44,7 @@
          }else{
             header('Location:index.php?error');
          }
-      }
+      }catch(mysqli_sql_exception $e){ echo $e; }
    }else{
       header('Location:index.html');
    }
