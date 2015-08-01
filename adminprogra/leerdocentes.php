@@ -3,7 +3,7 @@
   require 'conexion.php';
 
 //Get record count
-		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM empleados");
+		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM matricula.empleados");
 		$row = mysqli_fetch_array($result);
 		$recordCount = $row['RecordCount'];
 

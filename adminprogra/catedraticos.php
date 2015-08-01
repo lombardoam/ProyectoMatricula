@@ -34,7 +34,7 @@
 						key: true,
 						create: false,
 						edit: false,
-						list: false
+						list: false,
 					},
 
                 	codigo_empleado: {
@@ -47,15 +47,10 @@
 
 					},
 
-					apellidos: {
-						title: 'Apellidos',
-
-					},
-
                    genero: {
                     title: 'Género',
 
-                    options: { 'H': 'Hombre', 'M': 'Mujer' },
+                    options: { 'M': 'Hombre', 'F': 'Mujer' },
 
                 },
 
