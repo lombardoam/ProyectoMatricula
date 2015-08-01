@@ -13,6 +13,7 @@
             $_SESSION['nombre'] = $result[1];
             $_SESSION['apellido'] = $result[2];
             $_SESSION['usuario'] = $result[3];
+            $_SESSION['tipo_usuario'] = $result[5];
 
             /* La variable $_SESSION['num_cuenta'] está relacionada con las tablas de empleados y estudiantes.
              * Es para poder acceder a toda la información del usuario que está actualmente logeado
