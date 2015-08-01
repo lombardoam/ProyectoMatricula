@@ -6,6 +6,7 @@
 		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM empleados");
 		$row = mysqli_fetch_array($result);
 		$recordCount = $row['RecordCount'];
+
   //Get records from database
   $result = mysqli_query($conexion, "SELECT * FROM empleados");
 

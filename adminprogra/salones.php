@@ -46,6 +46,7 @@
 
                      	id_edificio: {
 						title: 'Edificio',
+                        options: { '1': 'Administrativo', '2': 'Académico' },
 
 					},
 
@@ -62,11 +63,13 @@
 
                      	data_show: {
 						title: 'Datashow',
+                  	    options: { '0': 'No', '1': 'Sí' },
 
                     },
 
 					pizarra_electronica: {
 						title: 'Pizarra electrónica',
+                        options: { '0': 'No', '1': 'Sí' },
 
                     },
 
@@ -74,12 +77,14 @@
 
 					camara_video: {
 						title: 'Cámara',
+                        options: { '0': 'No', '1': 'Sí' },
 
 
 					},
 
 					audio: {
 						title: 'Audio',
+                        options: { '0': 'No', '1': 'Sí' },
 
 					},
 

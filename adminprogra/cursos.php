@@ -72,7 +72,8 @@
 
                     id_plan_estudio: {
 						title: 'Plan',
-						width: '15%'
+						width: '15%',
+                        options: 'param/paramplan.php',
 						 },
 
                      periodo: {

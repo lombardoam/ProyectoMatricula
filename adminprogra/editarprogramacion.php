@@ -4,13 +4,12 @@ header('Content-type: application/json');
 
 //Update record in database
 $result = mysqli_query($conexion, "UPDATE programacion_cursos SET codigo_prog_curso =
-" . $_POST["codigo_prog_curso"] . ",
+'" . $_POST["codigo_prog_curso"] . "',
 id_periodo = '" . $_POST["id_periodo"] . "',
-codigo_curso = '" . $_POST["hora_inicial"]  . "',
+codigo_curso = '" . $_POST["codigo_curso"]  . "',
 seccion = '" . $_POST["seccion"]  . "',
 hora_inicio = '" . $_POST["hora_inicio"]  . "',
 hora_termina = '" . $_POST["hora_termina"]  . "',
-id_salon ='" . $_POST["id_salon"] . "',
 dias ='" . $_POST["dias"] . "',
 id_empleado ='" . $_POST["id_empleado"] . "',
 id_aula ='" . $_POST["id_aula"] . "',
