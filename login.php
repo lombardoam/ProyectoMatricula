@@ -9,7 +9,6 @@
          $conexion = mysqli_connect('localhost','root','','matricula');
          $exec = mysqli_query($conexion, $query);
          if($result = mysqli_fetch_row($exec)){
-            echo "bien";
             session_start();
             $_SESSION['nombre'] = $result[1];
             $_SESSION['apellido'] = $result[2];
@@ -32,7 +31,7 @@
                   break;
             }
          }else{
-            echo "mal";
+            header('Location:index.html');
          }
       } catch(mysqli_exception $e){
          echo $e;
