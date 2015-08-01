@@ -563,7 +563,8 @@ $.notify.addStyle("bootstrap", {
       "white-space": "nowrap",
       "padding-left": "25px",
       "background-repeat": "no-repeat",
-      "background-position": "3px 7px"
+      "background-position": "3px 7px",
+      "z-index": "100"
     },
     error: {
       "color": "#B94A48",

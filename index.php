@@ -18,7 +18,7 @@
 <div id="loginModal" class="modal show background" tabindex="-1" role="dialog" aria-hidden="true"><br><br><br><br><br>
  <img src="img/logo-escudo-ujcv1.png" alt="" class="center-block img-medium">
   <h1 class="text-center big-text text-white lato-regular">Sistema de Matrícula</h1>
-  <div class="modal-dialog">
+  <div class="modal-dialog" id="form">
   <div class="modal-content">
       <div class="modal-header">
           <h2 class="text-center">Por favor inicie sesión:</h2>
@@ -32,13 +32,23 @@
               <input type="password" class="form-control input-lg" placeholder="Contraseña" name="contra" data-validate="required">
             </div>
             <div class="form-group">
-              <input class="btn btn-blue btn-lg btn-block" type="submit" value="Iniciar Sesión">
+              <input class="btn btn-blue btn-lg btn-block" type="submit" value="Iniciar Sesión" id="form">
             </div>
           </form>
       </div>
       <div class="modal-footer">
           <div class="col-md-12">
-
+          <?php
+            if(isset($_GET['error'])){
+               echo "<script>
+                  $.notify(
+                     \"Error en el nombre de usuario o contraseña\",
+                     { position:\"bottom-right\" }
+                  );
+                  </script>
+               ";
+            }
+          ?>
 		  </div>
       </div>
   </div>
