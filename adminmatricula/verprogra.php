@@ -22,20 +22,19 @@
 			$('#PeopleTableContainer').jtable(
 			{
 				title: 'Ver horarios',
-                paging:true,
+                paging:'true',
 				actions:
 				 {
-					listAction: 'listarprogra.php',
-                    createAction: 'crearprogramacion.php',
+					 listAction: 'consultaprogramacion.php',
+ 					 createAction: 'crearprogramacion.php',
 					updateAction: 'editarprogramacion.php',
 					deleteAction: 'borrarprogramacion.php'
-
 				},
 
 
-						fields:
+				fields:
 				 {
-					id_curso:
+					id_programacion:
 					{
 						key: true,
 						create: false,
@@ -43,20 +42,33 @@
 						list: false
 					},
 
+				codigo_prog_curso: {
+						title: 'Código'
 
-					id_asignatura: {
-						title: 'Asignatura'
+                    },
+
+                id_periodo: {
+						title: 'Periodo',
+                        options: 'param/paramperiodo.php',
 
                     },
 
 
+					codigo_curso: {
+						title: 'Asignatura',
+                        options: 'param/paramcursos.php',
 
-					periodo: {
-						title: 'Periodo'
+                    },
 
 
-					},
-					hora_inicial: {
+                     seccion: {
+						title: 'Sección',
+                        options: { 'A':'A', 'B':'B', 'C':'C', 'D':'D', 'E':'E', 'F':'F', 'G':'G'
+                     }
+
+                    },
+
+					hora_inicio: {
 						title: 'Hora Inicial',
 						//width: '15%',
 						options: { '6:50': '6:50', '7:50': '7:50', '8:50': '8:50', '9:50': '9:50', '10:50': '10:50', '11:50': '11:50', '12:50': '12:50',
@@ -66,7 +78,8 @@
 
 
 					},
-					hora_final: {
+
+					hora_termina: {
 						title: 'Hora Final',
 						//width: '15%',
 						options: { '7:40': '7:40', '8:40': '8:40', '9:40': '9:40', '10:40': '10:40', '11:40': '11:40', '12:40': '12:40',
@@ -76,6 +89,7 @@
 
 
 					},
+
 					dias: {
 						title: 'Días	',
 						//width: '20%',
@@ -88,42 +102,35 @@
 
 					},
 
-					id_docente: {
-						title: 'Docente'
+					id_empleado: {
+						title: 'Docente',
+                        options: 'param/paramdocentes.php',
 
 
 					},
-					id_salon: {
-						title: 'Salón'
+					id_aula: {
+						title: 'Salón',
+                        options: 'param/paramsalones.php',
 
 
 					},
 
-					edificio:
+					estatus_curso:
 					{
-						title: 'Edificio',
+						title: 'Estado',
 						//width: '20%',
-					   options: { '2': 'Académico', '1': 'Administrativo'
-                },
+                        options: { 'Activo':'Activo','Cancelado':'Cancelado', 'Cerrado':'Cerrado' }
 
+                    },
 
-					},
-					seccion	:
-					{
-						title: 'Sección	',
-						//width: '20%',
-					   options: { 'A': 'A', 'B': 'B', 'C': 'C', 'D': 'D', 'E': 'E'
-                }
-
-
-					},
-				},
+                 }
 			});
 
 			//Load person list from server
 			$('#PeopleTableContainer').jtable('load');
 
 		});
+
 
 	</script>
 

@@ -20,7 +20,7 @@
 		    //Prepare jTable
 			$('#PeopleTableContainer').jtable(
 			{
-				title: 'Ver salones y edificios',
+				title: 'Aulas y edificios',
                 paging:'true',
 				actions:
 				 {
@@ -31,7 +31,7 @@
 
 				fields:
 				 {
-					id_salon:
+					id_aula:
 					{
 						key: true,
 						create: false,
@@ -39,32 +39,52 @@
 						list: false
 					},
 
-
-					id_tipo_salon: {
-						title: 'Tipo salón',
+                     	codigo_aula: {
+						title: 'Código Aula',
 
                     },
 
-
-
-					id_edificio: {
+                     	id_edificio: {
 						title: 'Edificio',
-
-
-
-					},
-					numero_salon: {
-						title: 'Número salón',
-
+                        options: { '1': 'Administrativo', '2': 'Académico' },
 
 					},
-					capacidad: {
+
+                     	num_aula: {
+						title: 'Número',
+
+                    },
+
+                     	capacidad: {
 						title: 'Capacidad',
 
 
                     },
-					recursos: {
-						title: 'Recursos	',
+
+                     	data_show: {
+						title: 'Datashow',
+                  	    options: { '0': 'No', '1': 'Sí' },
+
+                    },
+
+					pizarra_electronica: {
+						title: 'Pizarra electrónica',
+                        options: { '0': 'No', '1': 'Sí' },
+
+                    },
+
+
+
+					camara_video: {
+						title: 'Cámara',
+                        options: { '0': 'No', '1': 'Sí' },
+
+
+					},
+
+					audio: {
+						title: 'Audio',
+                        options: { '0': 'No', '1': 'Sí' },
 
 					},
 

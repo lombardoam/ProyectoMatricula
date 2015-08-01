@@ -1,6 +1,6 @@
 <?php
   header('Content-type: application/json');
-  require '../conexion.php';
+  $conexion = mysqli_connect('localhost','root','','matricula');
 
 //Get record count
 		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM facultades");

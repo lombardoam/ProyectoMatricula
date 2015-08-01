@@ -1,14 +1,14 @@
 
 <?php
   header('Content-type: application/json');
-  $conexion = mysqli_connect('localhost','root','','matricula');
+  require 'conexion.php';
 
 //Get record count
-		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM carreras");
+		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM programacion_cursos");
 		$row = mysqli_fetch_array($result);
 		$recordCount = $row['RecordCount'];
   //Get records from database
-  $result = mysqli_query($conexion, "SELECT * FROM carreras");
+  $result = mysqli_query($conexion, "SELECT * FROM programacion_cursos");
 
   //Add all records to an array
   $rows = array();

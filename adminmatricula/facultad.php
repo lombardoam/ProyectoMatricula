@@ -37,17 +37,21 @@
 						list: false
 					},
 
+                    codigo_facultad: {
+						title: 'Código facultad',
+
+						 },
 
 					nombre_facultad: {
 						title: 'Nombre facultad',
-						width: '15%'
+
 						 },
 
 
 
-					nombre_decano: {
+					codigo_empleado: {
 						title: 'Nombre decano',
-						width: '15%'
+						options: 'param/paramdocentes.php',
 						 },
 
 

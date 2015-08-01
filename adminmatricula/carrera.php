@@ -35,20 +35,37 @@
 						key: true,
 						create: false,
 						edit: false,
-						list: false
+						list: false,
 					},
 
 
+                    codigo_carrera: {
+                        title: 'Código',
+
+						 },
+
 					nombre_carrera: {
 						title: 'Nombre carrera',
-						width: '15%'
+
 						 },
 
 
                      id_facultad: {
 						title: 'Facultad',
-						width: '15%'
+
+                        options: 'param/paramfacultades.php',
 						 },
+
+                      codigo_empleado: {
+						title: 'Director',
+
+                     },
+
+                      id_puesto: {
+						title: 'Puesto',
+
+						 },
+
 
 
 				}
