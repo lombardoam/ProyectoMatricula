@@ -111,6 +111,7 @@ nav > ul li a{
 nav > ul > li > ul > li a{
     /*5da*/
     background: #308d6a;
+    text-align: left;
 }
 
 nav > ul > li > ul{

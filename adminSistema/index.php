@@ -36,6 +36,7 @@
                     <ul>
                             <li><a href="opciones/edificios.php">PROGRAMACIÓN DE CURSOS</a></li>
                             <li><a href="opciones/salones.php">CONTENIDO DE CURSOS</a></li>
+                            <li><a href="opciones/salones.php">CONTROL DE CURSOS</a></li>
                         </ul>
                     </li>
                     <li><a href="opciones/planes_estudio.php"><span><i class="fa fa-file fa-2x"></i></span>PLANES DE ESTUDIO</a></li>
@@ -57,6 +58,7 @@
                     <ul>
                             <li><a href="opciones/estudiantes.php">USUARIOS</a></li>
                             <li><a href="opciones/tutores.php">TIPOS DE USUARIO</a></li>
+                            <li><a href="opciones/tutores.php">TIPOS DE EQUIVALENCIA</a></li>
                         </ul>
                     </li>
                     <!--<li><a href="#"><span><i class="fa fa-users fa-2x"></i></span>X</a>-->
