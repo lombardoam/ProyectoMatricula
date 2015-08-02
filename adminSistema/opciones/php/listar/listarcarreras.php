@@ -1,6 +1,7 @@
 <?php
 header('Content-type: application/json');
-  require '../require/conexion.php';
+require '../../require/conexion.php';
+
   //Get records from database
   $result = mysqli_query($conexion, "SELECT * FROM carreras");
 

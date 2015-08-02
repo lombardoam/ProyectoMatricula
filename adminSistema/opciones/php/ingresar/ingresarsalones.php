@@ -1,6 +1,6 @@
 <?php
 header('Content-type: application/json');
-  require '../require/conexion.php';
+require '../../require/conexion.php';
 
 //Insert record into database
 $result = mysqli_query($conexion, "INSERT INTO salones(id_tipo_salon, id_edificio, numero_salon, capacidad, recursos) VALUES(" . $_POST["id_tipo_salon"] . "," . $_POST["id_edificio"] . "," . $_POST["numero_salon"] . "," . $_POST["capacidad"] . ",'" . $_POST["recursos"] . "');");

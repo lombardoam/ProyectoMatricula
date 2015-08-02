@@ -1,6 +1,6 @@
 <?php
 header('Content-type: application/json');
-  require '../require/conexion.php';
+require '../../require/conexion.php';
 
 //Delete from database
 $result = mysqli_query($conexion, "DELETE FROM cursos WHERE id_curso = " . $_POST["id_curso"] . ";");

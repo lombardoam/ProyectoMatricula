@@ -1,6 +1,6 @@
 <?php
 header('Content-type: application/json');
-  require '../require/conexion.php';
+require '../../require/conexion.php';
 
 //Insert record into database
 $result = mysqli_query($conexion, "INSERT INTO asignaturas(nombre_asignatra, cod_asignatura, unidades_valorativas, horas_teoricas, horas_practicas, periodo) VALUES('" . $_POST["nombre_asignatra"] . "', '" . $_POST["cod_asignatura"] . "', " . $_POST["unidades_valorativas"] . "," . $_POST["horas_teoricas"] . ", " . $_POST["horas_practicas"] . ", '" . $_POST["periodo"] . "');");
