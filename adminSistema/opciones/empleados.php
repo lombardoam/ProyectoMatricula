@@ -66,11 +66,11 @@
             </nav>
 
        <div class="panel">
-          <center><a href="edificios.php">PANEL DE TUTORES</a></center>
+          <center><a href="edificios.php">PANEL DE EMPLEADOS</a></center>
        </div>
 
        <center><div class="tablas">
-        <div id="PersonTableContainer"></div><br><br>
+        <div id="PersonTableContainer10"></div><br><br>
        </div></center>
 
         <div class="footer">

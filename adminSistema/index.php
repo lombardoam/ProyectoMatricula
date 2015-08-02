@@ -23,7 +23,7 @@
                             <li><a href="opciones/facultades.php">FACULTADES</a></li>
                             <li><a href="opciones/carreras.php">CARRERAS</a></li>
                             <li><a href="opciones/asignaturas.php">ASIGNATURAS</a></li>
-                            <li><a href="opciones/asignaturas.php">PERÍODOS</a></li>
+                            <li><a href="opciones/periodos.php">PERÍODOS</a></li>
                         </ul>
                     </li>
                     <li><a href="opciones/aulas.php"><span><i class="fa fa-building fa-2x"></i></span>AULAS</a>
@@ -50,7 +50,7 @@
                     <li><a href="opciones/usuarios.php"><span><i class="fa fa-users fa-2x"></i></span>USUARIOS</a>
                         <ul>
                             <li><a href="opciones/estudiantes.php">ESTUDIANTES</a></li>
-                            <li><a href="opciones/tutores.php">EMPLEADOS</a></li>
+                            <li><a href="opciones/empleados.php">EMPLEADOS</a></li>
                             <li><a href="opciones/docentes.php">PUESTOS</a></li>
                         </ul>
                     </li>

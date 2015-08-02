@@ -40,14 +40,14 @@
                             <li><a href="asignaturas.php">ASIGNATURAS</a></li>
                         </ul>
                     </li>
-                    <li><a href="aulas.php"><span><i class="fa fa-building fa-2x"></i></span>AULAS</a>
+                    <li class="active"><a href="aulas.php"><span><i class="fa fa-building fa-2x"></i></span>AULAS</a>
                         <ul>
                             <li><a href="edificios.php">EDIFICIOS</a></li>
                             <li><a href="salones.php">SALONES</a></li>
                         </ul>
                     </li>
                     <li><a href="cursos.php"><span><i class="fa fa-calendar fa-2x"></i></span>CURSOS</a></li>
-                    <li class="active"><a href="planes_estudio.php"><span><i class="fa fa-file fa-2x"></i></span>PLANES DE ESTUDIO</a></li>
+                    <li><a href="planes_estudio.php"><span><i class="fa fa-file fa-2x"></i></span>PLANES DE ESTUDIO</a></li>
                     <li><a href="admisiones.php"><span><i class="fa fa-check-square-o fa-2x"></i></span>ADMISIONES</a>
                         <ul>
                             <li><a href="prematricula.php">PREMATRICULA</a></li>
@@ -66,11 +66,11 @@
             </nav>
 
        <div class="panel">
-          <center><a href="edificios.php">PANEL DE PLANES DEE ESTUDIO</a></center>
+          <center><a href="salones.php">PANEL DE SALONES</a></center>
        </div>
 
        <center><div class="tablas">
-        <div id="PersonTableContainer9"></div><br><br>
+        <div id="PersonTableContainer11"></div><br><br>
        </div></center>
 
         <div class="footer">
