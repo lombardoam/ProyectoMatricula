@@ -36,13 +36,16 @@
                   $res = mysqli_query($conexion, $sql);
                   $array = mysqli_fetch_assoc($res);
                   $_SESSION['id_carrera'] = $array['id_carrera'];
-                  header('Location:index.html?alumno');
+                  header('Location:index.php?alumno');
                   break;
                case 4; //Encargado
                   header('Location:adminmatricula/index.php');
                   break;
                case 5; //Contador
                   header('Location:index.html?contador');
+                  break;
+               case 6; //Programación de cursos
+                  header('Location:adminprogra/index.php');
                   break;
             }
 
