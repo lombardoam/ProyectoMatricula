@@ -35,7 +35,7 @@
 
 				fields:
 				 {
-					id_equivalencia:
+					id_interna:
 					{
 						key: true,
 						create: false,
@@ -44,7 +44,7 @@
 					},
 
 
-					id_tipo: {
+					codigo_eq: {
 						title: 'Tipo'
 
                     },
