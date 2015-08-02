@@ -6,5 +6,5 @@
    unset($_SESSION['tipo_usuario']);
    unset($_SESSION['num_cuenta']);
    session_destroy();
-   header('Location:../index.php?logout');
+   header('Location:index.php?logout');
 ?>
