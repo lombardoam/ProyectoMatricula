@@ -68,7 +68,8 @@
 
                     laboratorio: {
 						title: 'Laboratorio',
-						width: '15%'
+						width: '15%',
+                        options: {'1':'Sí','0':'No'},
 						 },
 
                     id_plan_estudio: {
