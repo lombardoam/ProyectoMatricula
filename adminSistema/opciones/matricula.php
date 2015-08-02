@@ -95,7 +95,7 @@
             </nav>
 
        <div class="panel">
-          <center><a href="edificios.php">PANEL DE CONTROL DE PRE MATRICULA</a></center>
+          <center><a href="edificios.php">PANEL DE CONTROL DE MATRICULA</a></center>
        </div>
 
        <center><div class="tablas">
