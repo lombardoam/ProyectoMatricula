@@ -4,11 +4,11 @@
   require 'conexion.php';
 
 //Get record count
-		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM tipos_equivalencia");
+		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM tipo_equivalencia");
 		$row = mysqli_fetch_array($result);
 		$recordCount = $row['RecordCount'];
   //Get records from database
-  $result = mysqli_query($conexion, "SELECT * FROM tipos_equivalencia");
+  $result = mysqli_query($conexion, "SELECT * FROM tipo_equivalencia");
 
   //Add all records to an array
   $rows = array();
