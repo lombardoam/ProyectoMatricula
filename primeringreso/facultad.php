@@ -6,7 +6,7 @@
 
 	<script src="scripts/jquery-1.6.4.min.js" type="text/javascript"></script>
     <script src="scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
-     <script src="scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
+   <script src="scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
     <script src="jtable/localization/jquery.jtable.es.js" type="text/javascript"></script>
 
   </head>
@@ -21,7 +21,7 @@
 			$('#PeopleTableContainer').jtable(
 			{
 				title: 'Lista de facultades',
-                paging:true,
+                paging:'true',
 					actions: {
 					 listAction: 'listarfacultades.php',
 				},
@@ -37,17 +37,21 @@
 						list: false
 					},
 
+                    codigo_facultad: {
+						title: 'Código facultad',
+
+						 },
 
 					nombre_facultad: {
 						title: 'Nombre facultad',
-						width: '15%'
+
 						 },
 
 
 
-					nombre_decano: {
+					codigo_empleado: {
 						title: 'Nombre decano',
-						width: '15%'
+						options: 'param/paramdocentes.php',
 						 },
 
 
