@@ -1,6 +1,6 @@
 <?php
 header('Content-type: application/json');
-   require '../conexion.php';
+   require 'conexion.php';
 
 //Insert record into database
 $result = mysqli_query($conexion, "INSERT INTO tipos_equivalencia(
