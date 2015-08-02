@@ -465,4 +465,145 @@ $(document).ready(function () {
 
     $('#PersonTableContainer8').jtable('load');
 
+    $('#PersonTableContainer9').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Planes de Estudio',
+            paging: true,
+            actions: {
+                listAction: 'php/listarplanes.php',
+            },
+            fields: {
+                id_plan_estudio: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_plan: {
+                    title: 'Código',
+                    width: '5%',
+                },
+
+                nombre_plan: {
+                    title: 'Nombre',
+                    width: '10%'
+                },
+
+                duracion: {
+                    title: 'Duración',
+                    width: '10%'
+                },
+
+                cantidad_cursos: {
+                    title: 'Cantidad de Cursos',
+                    width: '10%'
+                },
+
+                total_uv: {
+                    title: 'Total UV',
+                    width: '10%'
+                },
+
+                id_carrera: {
+                    title: 'Carrera',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer9').jtable('load');
+
+    $('#PersonTableContainer10').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Empleados',
+            paging: true,
+            actions: {
+                listAction: 'php/listarempleados.php',
+            },
+            fields: {
+                id_empleado: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_empleado: {
+                    title: 'Código',
+                    width: '5%',
+                },
+
+                nombres: {
+                    title: 'Nombres',
+                    width: '10%'
+                },
+
+                apellidos: {
+                    title: 'Apellidos',
+                    width: '10%'
+                },
+
+                genero: {
+                    title: 'Género',
+                    width: '10%'
+                },
+
+                telefono: {
+                    title: 'Teléfono',
+                    width: '10%'
+                },
+
+                email: {
+                    title: 'Email',
+                    width: '10%'
+                },
+
+                codigo_carrera: {
+                    title: 'Codigo Carrera',
+                    width: '10%'
+                },
+
+                id_puesto: {
+                    title: 'Puesto',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer10').jtable('load');
+
+    $('#PersonTableContainer11').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Períodos Académicos',
+            paging: true,
+            actions: {
+                listAction: 'php/listarperiodos.php',
+            },
+            fields: {
+                id_periodo: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_periodo: {
+                    title: 'Código',
+                    width: '10%',
+                },
+
+                fecha_inicio: {
+                    title: 'Fecha de Inicio',
+                    type: 'date',
+                    width: '10%'
+                },
+
+                fecha_terminacion: {
+                    title: 'Fecha de Terminación',
+                    type: 'date',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer11').jtable('load');
+
     });
