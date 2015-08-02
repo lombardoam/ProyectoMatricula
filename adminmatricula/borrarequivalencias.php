@@ -1,9 +1,9 @@
 <?php
 header('Content-type: application/json');
-   require '../conexion.php';
+   require 'conexion.php';
 
 //Delete from database
-		$result = mysqli_query($conexion,"DELETE FROM equivalencias WHERE id_equivalencia = " . $_POST["id_equivalencia"] . ";");
+		$result = mysqli_query($conexion,"DELETE FROM equivalencias WHERE id_interna = " . $_POST["id_interna"] . ";");
 
 		//Return result to jTable
 		$jTableResult = array();

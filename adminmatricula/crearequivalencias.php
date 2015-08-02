@@ -1,25 +1,29 @@
 <?php
 header('Content-type: application/json');
-   require '../conexion.php';
+   require 'conexion.php';
 
 //Insert record into database
 $result = mysqli_query($conexion, "INSERT INTO equivalencias(
+codigo_eq,
+nombre_universidad,
+id_curso,
+codigo_clase_equivalencia,
+num_cuenta,
 id_tipo,
-id_asignatura,
-equivalencia1,
-equivalencia2,
-equivalencia3
+comentarios
 ) VALUES(
-" .  $_POST["id_tipo"] . ",
-'" . $_POST["id_asignatura"] . "',
-'" . $_POST["equivalencia1"] . "',
-'" .  $_POST["equivalencia2"] . "',
-'" .  $_POST["equivalencia3"]   . "'
+'" . $_POST["codigo_eq"] . "',
+'" . $_POST["nombre_universidad"] . "',
+'" .  $_POST["id_curso"] . "',
+'" .  $_POST["codigo_clase_equivalencia"] . "',
+'" .  $_POST["num_cuenta"] . "',
+'" .  $_POST["id_tipo"] . "',
+'" .  $_POST["comentarios"]   . "'
 )");
 
 
 //Get last inserted record (to return to jTable)
-$result = mysqli_query($conexion, "SELECT * FROM equivalencias WHERE id_equivalencia = LAST_INSERT_ID();");
+$result = mysqli_query($conexion, "SELECT * FROM equivalencias WHERE id_interna = LAST_INSERT_ID();");
 $row = mysqli_fetch_array($result);
 
 //Return result to jTable
