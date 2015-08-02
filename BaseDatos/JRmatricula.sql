@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-08-2015 a las 11:41:20
+-- Tiempo de generación: 02-08-2015 a las 12:22:22
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -297,7 +297,7 @@ CREATE TABLE IF NOT EXISTS `estudiantes` (
   `saldo` double DEFAULT NULL,
   PRIMARY KEY (`id_estudiante`,`num_cuenta`),
   KEY `codigo_carrera_idx` (`id_carrera`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `estudiantes`
@@ -306,7 +306,9 @@ CREATE TABLE IF NOT EXISTS `estudiantes` (
 INSERT INTO `estudiantes` (`id_estudiante`, `num_cuenta`, `nombres`, `apellidos`, `tipo_estudiante`, `lugar_nacimiento`, `fecha_nacimiento`, `estado_civil`, `direccion_vivienda`, `telefono`, `direccion_trabajo`, `telefono_trabajo`, `fecha_ingreso`, `id_carrera`, `saldo`) VALUES
 (1, 201500001, 'Ricardo', 'Valladares', 'Reingreso', 'Tegucigalpa', '1994-08-18', 'Soltero', 'Col. La Joya', 23232323, 'No', 0, '0000-00-00 00:00:00', 3, 4000),
 (2, 2015302145, 'MarÃ­a', 'Celeste', 'Primer ingreso', 'San Pedro Sula', '1991-09-25', 'Casada', 'Col. CalpÃºles', 545451515, 'Mall Multiplaza', 5151515, '2015-08-02 06:00:00', 1, 3000),
-(3, 20011025, 'Juan Ãngel', 'Reyes', 'Reingreso', 'Tegucigalpa', '1982-11-18', 'Soltero', 'Col. Miramontes', 7513648, '', 0, '2013-01-05 06:00:00', 3, 0);
+(3, 20011025, 'Juan Ãngel', 'Reyes', 'Reingreso', 'Tegucigalpa', '1982-11-18', 'Soltero', 'Col. Miramontes', 7513648, '', 0, '2013-01-05 06:00:00', 3, 0),
+(4, 20153001, 'Laura', 'Calcagnini', 'Primer ingreso', 'La Ceiba', '1997-03-17', 'Soltera', 'Miraflores', 855151, '', 0, '2015-08-03 06:00:00', 2, 4000),
+(5, 20153002, 'Katherine', 'MÃ¡rquez', 'Primer ingreso', 'Tegucigalpa', '1991-09-23', 'Soltera', 'El Hatillo', 22336655, '', 0, '2013-01-15 06:00:00', 3, 1000);
 
 -- --------------------------------------------------------
 
