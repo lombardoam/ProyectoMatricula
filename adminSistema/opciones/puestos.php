@@ -95,7 +95,7 @@
             </nav>
 
        <div class="panel">
-          <center><a href="edificios.php">PANEL DE USUARIOS</a></center>
+          <center><a href="edificios.php">PANEL DE PUESTOS</a></center>
        </div>
 
        <center><div class="tablas">
