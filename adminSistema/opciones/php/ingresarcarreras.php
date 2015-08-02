@@ -1,17 +1,5 @@
 <?php
-   session_start();
-   if(!(
-      isset($_SESSION['nombre']) &&
-      isset($_SESSION['apellido']) &&
-      isset($_SESSION['usuario']) &&
-      isset($_SESSION['tipo_usuario']) &&
-      isset($_SESSION['num_cuenta'])
-      )
-   ){
-      header('Location:../index.php?no_aut');
-   }
-header('Content-type: application/json');
-  require '../require/conexion.php';
+
 
 //Insert record into database
 $result = mysqli_query($conexion, "INSERT INTO carreras(id_facultad, nombre_carrera, nombre_coordinador) VALUES(" . $_POST["id_facultad"] . ", '" . $_POST["nombre_carrera"] . "', '" . $_POST["nombre_coordinador"] . "');");

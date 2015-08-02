@@ -1,17 +1,5 @@
 <?php
-   session_start();
-   if(!(
-      isset($_SESSION['nombre']) &&
-      isset($_SESSION['apellido']) &&
-      isset($_SESSION['usuario']) &&
-      isset($_SESSION['tipo_usuario']) &&
-      isset($_SESSION['num_cuenta'])
-      )
-   ){
-      header('Location:../index.php?no_aut');
-   }
-header('Content-type: application/json');
-  require '../require/conexion.php';
+
 
 //Insert record into database
 $result = mysqli_query($conexion, "INSERT INTO cursos(id_asignatura, periodo, hora_inicial, hora_final, dias, id_docente, id_salon, id_edificio, seccion) VALUES(" . $_POST["id_asignatura"] . ", '" . $_POST["periodo"] . "', '" . $_POST["hora_inicial"] . "', '" . $_POST["hora_final"] . "', '" . $_POST["dias"] . "', " . $_POST["id_docente"] . "," . $_POST["id_salon"] . "," . $_POST["id_edificio"] . ",'" . $_POST["seccion"] . "');");
