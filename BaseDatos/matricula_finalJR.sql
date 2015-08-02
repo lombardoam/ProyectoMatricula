@@ -1,32 +1,28 @@
--- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 02-08-2015 a las 06:51:59
--- Versión del servidor: 5.6.17
--- Versión de PHP: 5.5.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: matricula
+-- ------------------------------------------------------
+-- Server version	5.6.17
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Base de datos: `matricula`
+-- Table structure for table `aulas`
 --
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `aulas`
---
-
-CREATE TABLE IF NOT EXISTS `aulas` (
+DROP TABLE IF EXISTS `aulas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `aulas` (
   `id_aula` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_aula` varchar(10) NOT NULL,
   `id_edificio` int(11) DEFAULT NULL,
@@ -37,31 +33,29 @@ CREATE TABLE IF NOT EXISTS `aulas` (
   `camara_video` tinyint(1) DEFAULT NULL,
   `audio` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id_aula`,`codigo_aula`),
-  KEY `codigo_edificio_idx` (`id_edificio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+  KEY `codigo_edificio_idx` (`id_edificio`),
+  CONSTRAINT `fk_aulas_edificios` FOREIGN KEY (`id_edificio`) REFERENCES `edificios` (`id_edificio`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `aulas`
+-- Dumping data for table `aulas`
 --
 
-INSERT INTO `aulas` (`id_aula`, `codigo_aula`, `id_edificio`, `num_aula`, `capacidad`, `data_show`, `pizarra_electronica`, `camara_video`, `audio`) VALUES
-(1, '101', 2, '101', 30, 1, 1, 1, 1),
-(2, '102', 2, '102', 30, 1, 1, 1, 1),
-(3, '103', 2, '103', 30, 1, 1, 1, 1),
-(4, '200', 2, '200', 40, 1, 1, 1, 1),
-(5, '201', 2, '201', 30, 1, 1, 1, 1),
-(6, '203', 2, '203', 30, 1, 1, 1, 1),
-(7, '201A', 1, '201', 10, 0, 0, 0, 0),
-(8, '202A', 1, '202', 10, 0, 0, 0, 0),
-(9, '203A', 1, '203', 10, 0, 0, 0, 0);
-
--- --------------------------------------------------------
+LOCK TABLES `aulas` WRITE;
+/*!40000 ALTER TABLE `aulas` DISABLE KEYS */;
+INSERT INTO `aulas` VALUES (1,'101',2,'101',30,1,1,1,1),(2,'102',2,'102',30,1,1,1,1),(3,'103',2,'103',30,1,1,1,1),(4,'200',2,'200',40,1,1,1,1),(5,'201',2,'201',30,1,1,1,1),(6,'203',2,'203',30,1,1,1,1),(7,'201A',1,'201',10,0,0,0,0),(8,'202A',1,'202',10,0,0,0,0),(9,'203A',1,'203',10,0,0,0,0);
+/*!40000 ALTER TABLE `aulas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `carreras`
+-- Table structure for table `carreras`
 --
 
-CREATE TABLE IF NOT EXISTS `carreras` (
+DROP TABLE IF EXISTS `carreras`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `carreras` (
   `id_carrera` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_carrera` varchar(10) NOT NULL,
   `nombre_carrera` varchar(45) DEFAULT NULL,
@@ -70,55 +64,84 @@ CREATE TABLE IF NOT EXISTS `carreras` (
   `id_puesto` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_carrera`,`codigo_carrera`),
   KEY `codigo_facultad_idx` (`id_facultad`),
-  KEY `fk_carreras_puestos_idx` (`id_puesto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  KEY `fk_carreras_puestos_idx` (`id_puesto`),
+  CONSTRAINT `fk_carreras_facultades` FOREIGN KEY (`id_facultad`) REFERENCES `facultades` (`id_facultad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_carreras_puestos` FOREIGN KEY (`id_puesto`) REFERENCES `puestos` (`id_puesto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `carreras`
+-- Dumping data for table `carreras`
 --
 
-INSERT INTO `carreras` (`id_carrera`, `codigo_carrera`, `nombre_carrera`, `id_facultad`, `codigo_empleado`, `id_puesto`) VALUES
-(1, 'ARQ', 'Arquitectura', 1, 'LER01', 2),
-(2, 'INGC', 'Ingenieria Civil', 1, 'IM01', 2),
-(3, 'IIT', 'Ingenieria en Infotecnologia', 1, 'LER03', 2);
-
--- --------------------------------------------------------
+LOCK TABLES `carreras` WRITE;
+/*!40000 ALTER TABLE `carreras` DISABLE KEYS */;
+INSERT INTO `carreras` VALUES (1,'ARQ','Arquitectura',1,'3',2),(2,'INGC','Ingeniería Civil',1,'4',2),(3,'IIT','Ingeniería en Infotecnología',1,'5',2);
+/*!40000 ALTER TABLE `carreras` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `configuraciones`
+-- Table structure for table `configuraciones`
 --
 
-CREATE TABLE IF NOT EXISTS `configuraciones` (
+DROP TABLE IF EXISTS `configuraciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `configuraciones` (
   `id_configuracion` int(11) NOT NULL AUTO_INCREMENT,
   `tipo_evaluacion` int(11) DEFAULT NULL,
   `id_programacion` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_configuracion`),
-  KEY `codigo_prog_curso_idx` (`id_programacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `codigo_prog_curso_idx` (`id_programacion`),
+  CONSTRAINT `fk_configuraciones_programacion_cursos` FOREIGN KEY (`id_programacion`) REFERENCES `programacion_cursos` (`id_programacion`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `contenido_cursos`
+-- Dumping data for table `configuraciones`
 --
 
-CREATE TABLE IF NOT EXISTS `contenido_cursos` (
+LOCK TABLES `configuraciones` WRITE;
+/*!40000 ALTER TABLE `configuraciones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `configuraciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contenido_cursos`
+--
+
+DROP TABLE IF EXISTS `contenido_cursos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contenido_cursos` (
   `id_contenido` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_contenido` varchar(10) NOT NULL,
   `id_curso` int(11) DEFAULT NULL,
   `tema` varchar(60) DEFAULT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_contenido`,`codigo_contenido`),
-  KEY `codigo_curso_idx` (`id_curso`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `codigo_curso_idx` (`id_curso`),
+  CONSTRAINT `fk_contenido_cursos` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `control_cursos`
+-- Dumping data for table `contenido_cursos`
 --
 
-CREATE TABLE IF NOT EXISTS `control_cursos` (
+LOCK TABLES `contenido_cursos` WRITE;
+/*!40000 ALTER TABLE `contenido_cursos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contenido_cursos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `control_cursos`
+--
+
+DROP TABLE IF EXISTS `control_cursos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `control_cursos` (
   `id_control` int(11) NOT NULL AUTO_INCREMENT,
   `id_programacion` int(11) DEFAULT NULL,
   `prematriculados` int(11) DEFAULT NULL,
@@ -127,16 +150,28 @@ CREATE TABLE IF NOT EXISTS `control_cursos` (
   `reprobados` int(11) DEFAULT NULL,
   `retirados` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_control`),
-  KEY `codigo_prog_curso_idx` (`id_programacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `codigo_prog_curso_idx` (`id_programacion`),
+  CONSTRAINT `fk_control_cursos_programacion` FOREIGN KEY (`id_programacion`) REFERENCES `programacion_cursos` (`id_programacion`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `cuotas_estudiante`
+-- Dumping data for table `control_cursos`
 --
 
-CREATE TABLE IF NOT EXISTS `cuotas_estudiante` (
+LOCK TABLES `control_cursos` WRITE;
+/*!40000 ALTER TABLE `control_cursos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `control_cursos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cuotas_estudiante`
+--
+
+DROP TABLE IF EXISTS `cuotas_estudiante`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cuotas_estudiante` (
   `id_cuotas` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_cuenta` varchar(45) NOT NULL,
   `id_estudiante` int(11) DEFAULT NULL,
@@ -147,16 +182,29 @@ CREATE TABLE IF NOT EXISTS `cuotas_estudiante` (
   `monto_pago` double DEFAULT NULL,
   PRIMARY KEY (`id_cuotas`,`codigo_cuenta`),
   KEY `num_cuenta_idx` (`id_estudiante`),
-  KEY `codigo_periodo_idx` (`id_periodo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `codigo_periodo_idx` (`id_periodo`),
+  CONSTRAINT `fk_cuotas_estudiantes` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiantes` (`id_estudiante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cuotas_periodos` FOREIGN KEY (`id_periodo`) REFERENCES `periodos_academicos` (`id_periodo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `cursos`
+-- Dumping data for table `cuotas_estudiante`
 --
 
-CREATE TABLE IF NOT EXISTS `cursos` (
+LOCK TABLES `cuotas_estudiante` WRITE;
+/*!40000 ALTER TABLE `cuotas_estudiante` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cuotas_estudiante` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cursos`
+--
+
+DROP TABLE IF EXISTS `cursos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cursos` (
   `id_curso` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_curso` varchar(10) NOT NULL,
   `nombre_curso` varchar(45) DEFAULT NULL,
@@ -167,25 +215,29 @@ CREATE TABLE IF NOT EXISTS `cursos` (
   `id_plan_estudio` int(11) NOT NULL,
   `periodo` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_curso`,`codigo_curso`),
-  KEY `codigo_plan_idx` (`id_plan_estudio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  KEY `codigo_plan_idx` (`id_plan_estudio`),
+  CONSTRAINT `fk_cursos_plan` FOREIGN KEY (`id_plan_estudio`) REFERENCES `planes_estudio` (`id_plan_estudio`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `cursos`
+-- Dumping data for table `cursos`
 --
 
-INSERT INTO `cursos` (`id_curso`, `codigo_curso`, `nombre_curso`, `uv`, `horas_practicas`, `horas_teoricas`, `laboratorio`, `id_plan_estudio`, `periodo`) VALUES
-(1, 'IIT4011', 'Seguridad de la Informacion', 4, 0, 4, 0, 1, 10),
-(2, 'IIT3032', 'Ingenieria de Software I', 3, 0, 3, 0, 1, 9),
-(3, 'IIT4012', 'Ingenieria de Software II', 3, 0, 3, 0, 1, 10);
-
--- --------------------------------------------------------
+LOCK TABLES `cursos` WRITE;
+/*!40000 ALTER TABLE `cursos` DISABLE KEYS */;
+INSERT INTO `cursos` VALUES (1,'IIT4011','Seguridad de la Información',4,0,4,0,1,10),(2,'IIT3032','Ingeniería de Software I',3,0,3,0,1,9),(3,'IIT4012','Ingeniería de Software II',3,0,3,0,1,10);
+/*!40000 ALTER TABLE `cursos` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `edificios`
+-- Table structure for table `edificios`
 --
 
-CREATE TABLE IF NOT EXISTS `edificios` (
+DROP TABLE IF EXISTS `edificios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `edificios` (
   `id_edificio` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_edificio` varchar(10) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
@@ -194,23 +246,27 @@ CREATE TABLE IF NOT EXISTS `edificios` (
   `cantidad_laboratorios` int(11) DEFAULT NULL,
   `cantidad_auditorios` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_edificio`,`codigo_edificio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `edificios`
+-- Dumping data for table `edificios`
 --
 
-INSERT INTO `edificios` (`id_edificio`, `codigo_edificio`, `nombre`, `pisos`, `cantidad_aulas`, `cantidad_laboratorios`, `cantidad_auditorios`) VALUES
-(1, 'EDF1', 'Administrativo', 3, 9, 4, 0),
-(2, 'EDF2', 'Academico', 7, 17, 0, 6);
-
--- --------------------------------------------------------
+LOCK TABLES `edificios` WRITE;
+/*!40000 ALTER TABLE `edificios` DISABLE KEYS */;
+INSERT INTO `edificios` VALUES (1,'EDF1','Administrativo',3,9,4,0),(2,'EDF2','Academico',7,17,0,6);
+/*!40000 ALTER TABLE `edificios` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `empleados`
+-- Table structure for table `empleados`
 --
 
-CREATE TABLE IF NOT EXISTS `empleados` (
+DROP TABLE IF EXISTS `empleados`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `empleados` (
   `id_empleado` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_empleado` varchar(10) NOT NULL,
   `nombres` varchar(45) DEFAULT NULL,
@@ -223,33 +279,29 @@ CREATE TABLE IF NOT EXISTS `empleados` (
   `num_cuenta` int(11) NOT NULL,
   PRIMARY KEY (`id_empleado`,`codigo_empleado`,`num_cuenta`),
   KEY `codigo_puesto_idx` (`id_puesto`),
-  KEY `codigo_carrera_idx` (`codigo_carrera`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+  KEY `codigo_carrera_idx` (`codigo_carrera`),
+  CONSTRAINT `fk_empleados_puestos` FOREIGN KEY (`id_puesto`) REFERENCES `puestos` (`id_puesto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `empleados`
+-- Dumping data for table `empleados`
 --
 
-INSERT INTO `empleados` (`id_empleado`, `codigo_empleado`, `nombres`, `apellidos`, `genero`, `telefono`, `email`, `codigo_carrera`, `id_puesto`, `num_cuenta`) VALUES
-(1, 'BM01', 'Belinda', 'Marder', 'F', 33344334, 'beli_mar@gmail.com', 'ARQ', 3, 20150001),
-(2, 'LER01', 'Lidia Erminda', 'Rodriguez', 'F', 98998998, 'li_er@gmail.com', 'ARQ', 3, 20150002),
-(3, 'LER02', 'Arquitecto', 'Mejia', 'M', 36363636, 'arme@gmail.com', 'ARQ', 2, 20150003),
-(4, 'IM01', 'Ingeniero', 'Martinez', 'M', 34343434, 'ingma@gmail.com', 'INGC', 2, 20150004),
-(5, 'LER03', 'Marco Antonio', 'Diaz', 'M', 93939393, 'maan@gmail.com', 'IIT', 2, 20150005),
-(6, 'JT', 'Jeiky', 'Tovar', 'M', 92932939, 'jt@gmail.com', 'IIT', 1, 20150006),
-(7, 'JK', 'Jeiky', 'Tobar', 'M', 92292929, 'jk@gmail.com', 'IIT', 1, 20150006),
-(8, 'KE', 'Karen', 'Estrada', 'F', 12312312, 'kestrada@gmail.com', 'INGC', 5, 20150007),
-(9, 'JR', 'Juan', 'Reyes', 'M', 23232312, 'jreyes@gmail.com', 'IIT', 6, 20150008),
-(10, 'KE2', 'Karen', 'Estrada', 'F', 21312312, 'kestrada@gmail.com', 'INGC', 5, 20150007),
-(12, 'PG1', 'Pedro', 'Gallardo', 'M', 23654789, 'pg@gmail.com', 'INGC', 1, 0);
-
--- --------------------------------------------------------
+LOCK TABLES `empleados` WRITE;
+/*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
+INSERT INTO `empleados` VALUES (1,'BM01','Belinda','Marder','F',33344334,'beli_mar@gmail.com','FFIA',3,20150001),(2,'LER01','Lidia Erminda','Rodriguez','F',98998998,'li_er@gmail.com','ALL',3,20150002),(3,'LER01','Arquitecto','Mejia','M',36363636,'arme@gmail.com','ARQ',2,20150003),(4,'IM01','Ingeniero','Martínez','M',34343434,'ingma@gmail.com','INGC',2,20150004),(5,'LER01','Marco Antonio','Díaz','M',93939393,'maan@gmail.com','IIT',2,20150005),(6,'JT','Jeiky','Tovar','M',92932939,'jt@gmail.com','IIT',1,20150006),(7,'JK','Jeiky','Tobar','M',92292929,'jk@gmail.com','IIT',1,20150006),(8,'KE','Karen','Estrada','F',12312312,'kestrada@gmail.com','ENM',5,20150007),(9,'JR','Juan','Reyes','M',23232312,'jreyes@gmail.com','CONT',6,20150008),(10,'KE','Karen','Estrada','F',21312312,'kestrada@gmail.com','ENM',5,20150007),(11,'TS','Taylor','Swift','F',39879212,'taylor.swift@gmail.com','PRO',7,20150009);
+/*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `equivalencias`
+-- Table structure for table `equivalencias`
 --
 
-CREATE TABLE IF NOT EXISTS `equivalencias` (
+DROP TABLE IF EXISTS `equivalencias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `equivalencias` (
   `id_interna` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_eq` varchar(10) NOT NULL,
   `nombre_universidad` varchar(45) DEFAULT NULL,
@@ -260,16 +312,29 @@ CREATE TABLE IF NOT EXISTS `equivalencias` (
   `comentarios` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_interna`,`codigo_eq`),
   KEY `codigo_curso_idx` (`id_curso`),
-  KEY `codigo_tipo_eq_idx` (`id_tipo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `codigo_tipo_eq_idx` (`id_tipo`),
+  CONSTRAINT `fk_equivalencias_cursos` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_equivalencias_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_equivalencias` (`id_tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `estudiantes`
+-- Dumping data for table `equivalencias`
 --
 
-CREATE TABLE IF NOT EXISTS `estudiantes` (
+LOCK TABLES `equivalencias` WRITE;
+/*!40000 ALTER TABLE `equivalencias` DISABLE KEYS */;
+/*!40000 ALTER TABLE `equivalencias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `estudiantes`
+--
+
+DROP TABLE IF EXISTS `estudiantes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `estudiantes` (
   `id_estudiante` int(11) NOT NULL AUTO_INCREMENT,
   `num_cuenta` int(11) NOT NULL,
   `nombres` varchar(45) DEFAULT NULL,
@@ -286,23 +351,29 @@ CREATE TABLE IF NOT EXISTS `estudiantes` (
   `id_carrera` int(11) NOT NULL,
   `saldo` double DEFAULT NULL,
   PRIMARY KEY (`id_estudiante`,`num_cuenta`),
-  KEY `codigo_carrera_idx` (`id_carrera`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  KEY `codigo_carrera_idx` (`id_carrera`),
+  CONSTRAINT `fk_estudiantes_carreras` FOREIGN KEY (`id_carrera`) REFERENCES `carreras` (`id_carrera`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `estudiantes`
+-- Dumping data for table `estudiantes`
 --
 
-INSERT INTO `estudiantes` (`id_estudiante`, `num_cuenta`, `nombres`, `apellidos`, `tipo_estudiante`, `lugar_nacimiento`, `fecha_nacimiento`, `estado_civil`, `direccion_vivienda`, `telefono`, `direccion_trabajo`, `telefono_trabajo`, `fecha_ingreso`, `id_carrera`, `saldo`) VALUES
-(1, 201500001, 'Ricardo', 'Valladares', 'reingreso', 'Tegucigalpa', '1994-08-18', 'Soltero', 'Col. La Joya', 23232323, 'No', 0, NULL, 3, 4000);
-
--- --------------------------------------------------------
+LOCK TABLES `estudiantes` WRITE;
+/*!40000 ALTER TABLE `estudiantes` DISABLE KEYS */;
+INSERT INTO `estudiantes` VALUES (1,201500001,'Ricardo','Valladares','reingreso','Tegucigalpa','1994-08-18','Soltero','Col. La Joya',23232323,'No',0,NULL,3,4000);
+/*!40000 ALTER TABLE `estudiantes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `evaluaciones`
+-- Table structure for table `evaluaciones`
 --
 
-CREATE TABLE IF NOT EXISTS `evaluaciones` (
+DROP TABLE IF EXISTS `evaluaciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `evaluaciones` (
   `id_evaluacion` int(11) NOT NULL AUTO_INCREMENT,
   `id_configuracion` int(11) DEFAULT NULL,
   `nombre` varchar(45) DEFAULT NULL,
@@ -311,16 +382,29 @@ CREATE TABLE IF NOT EXISTS `evaluaciones` (
   `id_parcial` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_evaluacion`),
   KEY `id_configuracion_idx` (`id_configuracion`),
-  KEY `id_parcial_idx` (`id_parcial`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `id_parcial_idx` (`id_parcial`),
+  CONSTRAINT `fk_evaluaciones_configuraciones` FOREIGN KEY (`id_configuracion`) REFERENCES `configuraciones` (`id_configuracion`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_evaluaciones_parciales` FOREIGN KEY (`id_parcial`) REFERENCES `parciales` (`id_parcial`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `facultades`
+-- Dumping data for table `evaluaciones`
 --
 
-CREATE TABLE IF NOT EXISTS `facultades` (
+LOCK TABLES `evaluaciones` WRITE;
+/*!40000 ALTER TABLE `evaluaciones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `evaluaciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `facultades`
+--
+
+DROP TABLE IF EXISTS `facultades`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `facultades` (
   `id_facultad` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_facultad` varchar(10) NOT NULL,
   `nombre_facultad` varchar(45) DEFAULT NULL,
@@ -328,24 +412,29 @@ CREATE TABLE IF NOT EXISTS `facultades` (
   `id_puesto` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_facultad`,`codigo_facultad`),
   KEY `codigo_empleado_idx` (`codigo_empleado`),
-  KEY `fk_facultades_puestos_idx` (`id_puesto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  KEY `fk_facultades_puestos_idx` (`id_puesto`),
+  CONSTRAINT `fk_facultades_puestos` FOREIGN KEY (`id_puesto`) REFERENCES `puestos` (`id_puesto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `facultades`
+-- Dumping data for table `facultades`
 --
 
-INSERT INTO `facultades` (`id_facultad`, `codigo_facultad`, `nombre_facultad`, `codigo_empleado`, `id_puesto`) VALUES
-(1, 'FIA', 'Facultad de Ingenierias y Arquitectura', '1', 3),
-(2, 'FCE', 'Facultad de Ciencias Economicas', '2', 3);
-
--- --------------------------------------------------------
+LOCK TABLES `facultades` WRITE;
+/*!40000 ALTER TABLE `facultades` DISABLE KEYS */;
+INSERT INTO `facultades` VALUES (1,'FIA','Facultad de Ingenierías y Arquitectura','1',3),(2,'FCE','Facultad de Ciencias Económicas','2',3),(3,'','','',NULL);
+/*!40000 ALTER TABLE `facultades` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `historiales_academicos`
+-- Table structure for table `historiales_academicos`
 --
 
-CREATE TABLE IF NOT EXISTS `historiales_academicos` (
+DROP TABLE IF EXISTS `historiales_academicos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `historiales_academicos` (
   `id_historial` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_historial` varchar(10) NOT NULL,
   `id_estudiante` int(11) DEFAULT NULL,
@@ -353,16 +442,29 @@ CREATE TABLE IF NOT EXISTS `historiales_academicos` (
   `estado` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id_historial`,`codigo_historial`),
   KEY `num_cuenta_idx` (`id_estudiante`),
-  KEY `id_evaluacion_idx` (`id_evaluacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `id_evaluacion_idx` (`id_evaluacion`),
+  CONSTRAINT `fk_historiales_academicos_estudiantes` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiantes` (`id_estudiante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_historiales_academicos_evaluaciones` FOREIGN KEY (`id_evaluacion`) REFERENCES `evaluaciones` (`id_evaluacion`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `matriculas`
+-- Dumping data for table `historiales_academicos`
 --
 
-CREATE TABLE IF NOT EXISTS `matriculas` (
+LOCK TABLES `historiales_academicos` WRITE;
+/*!40000 ALTER TABLE `historiales_academicos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `historiales_academicos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `matriculas`
+--
+
+DROP TABLE IF EXISTS `matriculas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `matriculas` (
   `id_matricula` int(11) NOT NULL AUTO_INCREMENT,
   `id_estudiante` int(11) DEFAULT NULL,
   `id_programacion` int(11) DEFAULT NULL,
@@ -370,49 +472,78 @@ CREATE TABLE IF NOT EXISTS `matriculas` (
   `estatus_curso` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id_matricula`),
   KEY `num_cuenta_idx` (`id_estudiante`),
-  KEY `codigo_curso_idx` (`id_programacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `codigo_curso_idx` (`id_programacion`),
+  CONSTRAINT `fk_matriculas_estudiantes` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiantes` (`id_estudiante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_matriculas_programacion` FOREIGN KEY (`id_programacion`) REFERENCES `programacion_cursos` (`id_programacion`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `parciales`
+-- Dumping data for table `matriculas`
 --
 
-CREATE TABLE IF NOT EXISTS `parciales` (
+LOCK TABLES `matriculas` WRITE;
+/*!40000 ALTER TABLE `matriculas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `matriculas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `parciales`
+--
+
+DROP TABLE IF EXISTS `parciales`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `parciales` (
   `id_parcial` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_parcial`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `periodos_academicos`
+-- Dumping data for table `parciales`
 --
 
-CREATE TABLE IF NOT EXISTS `periodos_academicos` (
+LOCK TABLES `parciales` WRITE;
+/*!40000 ALTER TABLE `parciales` DISABLE KEYS */;
+/*!40000 ALTER TABLE `parciales` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `periodos_academicos`
+--
+
+DROP TABLE IF EXISTS `periodos_academicos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `periodos_academicos` (
   `id_periodo` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_periodo` varchar(10) NOT NULL,
   `fecha_inicio` date DEFAULT NULL,
   `fecha_terminacion` date DEFAULT NULL,
   PRIMARY KEY (`id_periodo`,`codigo_periodo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `periodos_academicos`
+-- Dumping data for table `periodos_academicos`
 --
 
-INSERT INTO `periodos_academicos` (`id_periodo`, `codigo_periodo`, `fecha_inicio`, `fecha_terminacion`) VALUES
-(1, 'III-2015', '2015-09-08', '2015-12-14');
-
--- --------------------------------------------------------
+LOCK TABLES `periodos_academicos` WRITE;
+/*!40000 ALTER TABLE `periodos_academicos` DISABLE KEYS */;
+INSERT INTO `periodos_academicos` VALUES (1,'III-2015','2015-09-08','2015-12-14');
+/*!40000 ALTER TABLE `periodos_academicos` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `planes_estudio`
+-- Table structure for table `planes_estudio`
 --
 
-CREATE TABLE IF NOT EXISTS `planes_estudio` (
+DROP TABLE IF EXISTS `planes_estudio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `planes_estudio` (
   `id_plan_estudio` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_plan` varchar(10) NOT NULL,
   `nombre_plan` varchar(45) DEFAULT NULL,
@@ -421,48 +552,65 @@ CREATE TABLE IF NOT EXISTS `planes_estudio` (
   `total_uv` int(11) DEFAULT NULL,
   `id_carrera` int(11) NOT NULL,
   PRIMARY KEY (`id_plan_estudio`,`codigo_plan`),
-  KEY `codigo_carrera_idx` (`id_carrera`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  KEY `codigo_carrera_idx` (`id_carrera`),
+  CONSTRAINT `fk_planes_carreras` FOREIGN KEY (`id_carrera`) REFERENCES `carreras` (`id_carrera`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `planes_estudio`
+-- Dumping data for table `planes_estudio`
 --
 
-INSERT INTO `planes_estudio` (`id_plan_estudio`, `codigo_plan`, `nombre_plan`, `duracion`, `cantidad_cursos`, `total_uv`, `id_carrera`) VALUES
-(1, 'IIT2013', 'Ingenieria en Infotecnologia', '4 anos', 61, 219, 3),
-(2, 'INGC2013', 'Ingenieria Civil', '4 anos', 58, 195, 2),
-(3, 'ARQ2013', 'Arquitectura', '4 anos', 54, 179, 1);
-
--- --------------------------------------------------------
+LOCK TABLES `planes_estudio` WRITE;
+/*!40000 ALTER TABLE `planes_estudio` DISABLE KEYS */;
+INSERT INTO `planes_estudio` VALUES (1,'IIT2013','Ingeniería en Infotecnología','4 años',61,219,3),(2,'INGC2013','Ingeniería Civil','4 años',58,195,2),(3,'ARQ2013','Arquitectura','4 años',54,179,1);
+/*!40000 ALTER TABLE `planes_estudio` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `prematriculas`
+-- Table structure for table `prematriculas`
 --
 
-CREATE TABLE IF NOT EXISTS `prematriculas` (
+DROP TABLE IF EXISTS `prematriculas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `prematriculas` (
   `id_prematricula` int(11) NOT NULL AUTO_INCREMENT,
   `id_estudiante` int(11) DEFAULT NULL,
   `id_programacion` int(11) DEFAULT NULL,
   `estatus_curso` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id_prematricula`),
   KEY `num_cuenta_idx` (`id_estudiante`),
-  KEY `codigo_curso_idx` (`id_programacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `codigo_curso_idx` (`id_programacion`),
+  CONSTRAINT `fk_prematriculas_programacion` FOREIGN KEY (`id_programacion`) REFERENCES `programacion_cursos` (`id_programacion`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_prematricula_estudiantes` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiantes` (`id_estudiante`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `programacion_cursos`
+-- Dumping data for table `prematriculas`
 --
 
-CREATE TABLE IF NOT EXISTS `programacion_cursos` (
+LOCK TABLES `prematriculas` WRITE;
+/*!40000 ALTER TABLE `prematriculas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `prematriculas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `programacion_cursos`
+--
+
+DROP TABLE IF EXISTS `programacion_cursos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `programacion_cursos` (
   `id_programacion` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_prog_curso` varchar(10) NOT NULL,
   `id_periodo` int(11) DEFAULT NULL,
   `codigo_curso` varchar(10) DEFAULT NULL,
   `seccion` char(1) DEFAULT NULL,
-  `hora_inicio` varchar(5) DEFAULT NULL,
-  `hora_termina` varchar(5) DEFAULT NULL,
+  `hora_inicio` time DEFAULT NULL,
+  `hora_termina` time DEFAULT NULL,
   `dias` varchar(45) DEFAULT NULL,
   `id_empleado` int(11) DEFAULT NULL,
   `id_aula` int(11) DEFAULT NULL,
@@ -471,101 +619,132 @@ CREATE TABLE IF NOT EXISTS `programacion_cursos` (
   KEY `codigo_aula_idx` (`id_aula`),
   KEY `codigo_curso_idx` (`codigo_curso`),
   KEY `codigo_periodo_idx` (`id_periodo`),
-  KEY `codigo_empleado_idx` (`id_empleado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  KEY `codigo_empleado_idx` (`id_empleado`),
+  CONSTRAINT `fk_programacion_aulas` FOREIGN KEY (`id_aula`) REFERENCES `aulas` (`id_aula`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_programacion_empleados` FOREIGN KEY (`id_empleado`) REFERENCES `empleados` (`id_empleado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_programacion_periodos` FOREIGN KEY (`id_periodo`) REFERENCES `periodos_academicos` (`id_periodo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `programacion_cursos`
+-- Dumping data for table `programacion_cursos`
 --
 
-INSERT INTO `programacion_cursos` (`id_programacion`, `codigo_prog_curso`, `id_periodo`, `codigo_curso`, `seccion`, `hora_inicio`, `hora_termina`, `dias`, `id_empleado`, `id_aula`, `estatus_curso`) VALUES
-(1, 'PROG1', 1, '1', 'A', '15:50', '17:40', 'L-Mi-V', 6, 1, 'Activo'),
-(2, 'PROG2', 1, '2', 'A', '12:50', '14:40', 'Ma-J', 5, 4, 'Activo');
-
--- --------------------------------------------------------
+LOCK TABLES `programacion_cursos` WRITE;
+/*!40000 ALTER TABLE `programacion_cursos` DISABLE KEYS */;
+INSERT INTO `programacion_cursos` VALUES (1,'PROG1',1,'1','A','06:50:00','07:40:00','L-Mi-V',1,1,'Activo'),(2,'PROG2',1,'2','A','15:50:00','07:40:00','Ma-J',2,4,'Activo');
+/*!40000 ALTER TABLE `programacion_cursos` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `puestos`
+-- Table structure for table `puestos`
 --
 
-CREATE TABLE IF NOT EXISTS `puestos` (
+DROP TABLE IF EXISTS `puestos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `puestos` (
   `id_puesto` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_puesto` varchar(10) NOT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_puesto`,`codigo_puesto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `puestos`
+-- Dumping data for table `puestos`
 --
 
-INSERT INTO `puestos` (`id_puesto`, `codigo_puesto`, `descripcion`) VALUES
-(1, 'doc', 'docente'),
-(2, 'coordc', 'Coordinador de carrera'),
-(3, 'coordf', 'Coordinador de facultad'),
-(4, 'admin', 'Administrador de Sistema'),
-(5, 'enm', 'Encargado de Matrícula'),
-(6, 'cont', 'Encargado de Contabilidad');
-
--- --------------------------------------------------------
+LOCK TABLES `puestos` WRITE;
+/*!40000 ALTER TABLE `puestos` DISABLE KEYS */;
+INSERT INTO `puestos` VALUES (1,'doc','docente'),(2,'coordc','Coordinador de carrera'),(3,'coordf','Coordinador de facultad'),(4,'admin','Administrador de Sistema'),(5,'enm','Encargado de Matrícula'),(6,'cont','Encargado de Contabilidad'),(7,'progm','Encargado de Programación de cursos');
+/*!40000 ALTER TABLE `puestos` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `requisitos_curso`
+-- Table structure for table `requisitos_curso`
 --
 
-CREATE TABLE IF NOT EXISTS `requisitos_curso` (
+DROP TABLE IF EXISTS `requisitos_curso`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `requisitos_curso` (
   `id_requisito` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_requisito` varchar(10) NOT NULL,
   `id_curso` int(11) DEFAULT NULL,
   `codigo_curso_requisito` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id_requisito`,`codigo_requisito`),
-  KEY `codigo_curso_idx` (`id_curso`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tipos_usuarios`
---
-
-CREATE TABLE IF NOT EXISTS `tipos_usuarios` (
-  `tipo_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) NOT NULL,
-  `descripcion` varchar(45) NOT NULL,
-  PRIMARY KEY (`tipo_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  KEY `codigo_curso_idx` (`id_curso`),
+  CONSTRAINT `fk_cursos_requisitos` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `tipos_usuarios`
+-- Dumping data for table `requisitos_curso`
 --
 
-INSERT INTO `tipos_usuarios` (`tipo_usuario`, `nombre`, `descripcion`) VALUES
-(1, 'Administrador', 'Gestiona las características del Sistema'),
-(2, 'Docente', 'Accesa a la interfaz de docentes'),
-(3, 'Alumno', 'Accesa a la interfaz de alumnos'),
-(4, 'Encargado', 'Gestiona las caracteristicas de la matricula'),
-(5, 'Contador', 'Gestiona la interfaz de contabilidad');
-
--- --------------------------------------------------------
+LOCK TABLES `requisitos_curso` WRITE;
+/*!40000 ALTER TABLE `requisitos_curso` DISABLE KEYS */;
+/*!40000 ALTER TABLE `requisitos_curso` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `tipo_equivalencias`
+-- Table structure for table `tipo_equivalencias`
 --
 
-CREATE TABLE IF NOT EXISTS `tipo_equivalencias` (
+DROP TABLE IF EXISTS `tipo_equivalencias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tipo_equivalencias` (
   `id_tipo` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_tipo_eq` varchar(10) NOT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_tipo`,`codigo_tipo_eq`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Dumping data for table `tipo_equivalencias`
 --
 
-CREATE TABLE IF NOT EXISTS `usuarios` (
+LOCK TABLES `tipo_equivalencias` WRITE;
+/*!40000 ALTER TABLE `tipo_equivalencias` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tipo_equivalencias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tipos_usuarios`
+--
+
+DROP TABLE IF EXISTS `tipos_usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tipos_usuarios` (
+  `tipo_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`tipo_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipos_usuarios`
+--
+
+LOCK TABLES `tipos_usuarios` WRITE;
+/*!40000 ALTER TABLE `tipos_usuarios` DISABLE KEYS */;
+INSERT INTO `tipos_usuarios` VALUES (1,'Administrador','Gestiona las características del Sistema'),(2,'Docente','Accesa a la interfaz de docentes'),(3,'Alumno','Accesa a la interfaz de alumnos'),(4,'Encargado','Gestiona las caracteristicas de la matricula'),(5,'Contador','Gestiona la interfaz de contabilidad'),(6,'Programacion','Gestiona la programacion de cursos');
+/*!40000 ALTER TABLE `tipos_usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
@@ -575,147 +754,28 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `num_cuenta` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuarios_tipos_usuarios_idx` (`tipo_usuario`),
-  KEY `fk_usuarios_empleados_idx` (`num_cuenta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  KEY `fk_usuarios_empleados_idx` (`num_cuenta`),
+  CONSTRAINT `fk_usuarios_tipos_usuarios` FOREIGN KEY (`tipo_usuario`) REFERENCES `tipos_usuarios` (`tipo_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `nombre_usuario`, `contrasena`, `tipo_usuario`, `num_cuenta`) VALUES
-(1, 'Marco', 'Diaz', 'marco.diaz', 'chilo123', 1, 20150005),
-(2, 'Jeiky', 'Tovar', 'jeiky.tovar', 'chilo123', 2, 20150006),
-(3, 'Ricardo', 'Valladares', 'ricardo.valladares', 'chilo123', 3, 201500001),
-(4, 'Karen', 'Estrada', 'karen.estrada', 'chilo123', 4, 20150007),
-(5, 'Juan', 'Reyes', 'juan.reyes', 'chilo123', 5, 20150008);
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'Marco','Diaz','marco.diaz','chilo123',1,20150005),(2,'Jeiky','Tovar','jeiky.tovar','chilo123',2,20150006),(3,'Ricardo','Valladares','ricardo.valladares','chilo123',3,201500001),(4,'Karen','Estrada','karen.estrada','chilo123',4,20150007),(5,'Juan','Reyes','juan.reyes','chilo123',5,20150008),(6,'Taylor','Swift','taylor.swift','chilo123',6,20150009);
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `aulas`
---
-ALTER TABLE `aulas`
-  ADD CONSTRAINT `fk_aulas_edificios` FOREIGN KEY (`id_edificio`) REFERENCES `edificios` (`id_edificio`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `carreras`
---
-ALTER TABLE `carreras`
-  ADD CONSTRAINT `fk_carreras_facultades` FOREIGN KEY (`id_facultad`) REFERENCES `facultades` (`id_facultad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_carreras_puestos` FOREIGN KEY (`id_puesto`) REFERENCES `puestos` (`id_puesto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `configuraciones`
---
-ALTER TABLE `configuraciones`
-  ADD CONSTRAINT `fk_configuraciones_programacion_cursos` FOREIGN KEY (`id_programacion`) REFERENCES `programacion_cursos` (`id_programacion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `contenido_cursos`
---
-ALTER TABLE `contenido_cursos`
-  ADD CONSTRAINT `fk_contenido_cursos` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `control_cursos`
---
-ALTER TABLE `control_cursos`
-  ADD CONSTRAINT `fk_control_cursos_programacion` FOREIGN KEY (`id_programacion`) REFERENCES `programacion_cursos` (`id_programacion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `cuotas_estudiante`
---
-ALTER TABLE `cuotas_estudiante`
-  ADD CONSTRAINT `fk_cuotas_estudiantes` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiantes` (`id_estudiante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_cuotas_periodos` FOREIGN KEY (`id_periodo`) REFERENCES `periodos_academicos` (`id_periodo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `cursos`
---
-ALTER TABLE `cursos`
-  ADD CONSTRAINT `fk_cursos_plan` FOREIGN KEY (`id_plan_estudio`) REFERENCES `planes_estudio` (`id_plan_estudio`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `empleados`
---
-ALTER TABLE `empleados`
-  ADD CONSTRAINT `fk_empleados_puestos` FOREIGN KEY (`id_puesto`) REFERENCES `puestos` (`id_puesto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `equivalencias`
---
-ALTER TABLE `equivalencias`
-  ADD CONSTRAINT `fk_equivalencias_cursos` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_equivalencias_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_equivalencias` (`id_tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `estudiantes`
---
-ALTER TABLE `estudiantes`
-  ADD CONSTRAINT `fk_estudiantes_carreras` FOREIGN KEY (`id_carrera`) REFERENCES `carreras` (`id_carrera`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `evaluaciones`
---
-ALTER TABLE `evaluaciones`
-  ADD CONSTRAINT `fk_evaluaciones_configuraciones` FOREIGN KEY (`id_configuracion`) REFERENCES `configuraciones` (`id_configuracion`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_evaluaciones_parciales` FOREIGN KEY (`id_parcial`) REFERENCES `parciales` (`id_parcial`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `facultades`
---
-ALTER TABLE `facultades`
-  ADD CONSTRAINT `fk_facultades_puestos` FOREIGN KEY (`id_puesto`) REFERENCES `puestos` (`id_puesto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `historiales_academicos`
---
-ALTER TABLE `historiales_academicos`
-  ADD CONSTRAINT `fk_historiales_academicos_estudiantes` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiantes` (`id_estudiante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_historiales_academicos_evaluaciones` FOREIGN KEY (`id_evaluacion`) REFERENCES `evaluaciones` (`id_evaluacion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `matriculas`
---
-ALTER TABLE `matriculas`
-  ADD CONSTRAINT `fk_matriculas_estudiantes` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiantes` (`id_estudiante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_matriculas_programacion` FOREIGN KEY (`id_programacion`) REFERENCES `programacion_cursos` (`id_programacion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `planes_estudio`
---
-ALTER TABLE `planes_estudio`
-  ADD CONSTRAINT `fk_planes_carreras` FOREIGN KEY (`id_carrera`) REFERENCES `carreras` (`id_carrera`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `prematriculas`
---
-ALTER TABLE `prematriculas`
-  ADD CONSTRAINT `fk_prematricula_estudiantes` FOREIGN KEY (`id_estudiante`) REFERENCES `estudiantes` (`id_estudiante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_prematriculas_programacion` FOREIGN KEY (`id_programacion`) REFERENCES `programacion_cursos` (`id_programacion`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `programacion_cursos`
---
-ALTER TABLE `programacion_cursos`
-  ADD CONSTRAINT `fk_programacion_aulas` FOREIGN KEY (`id_aula`) REFERENCES `aulas` (`id_aula`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_programacion_empleados` FOREIGN KEY (`id_empleado`) REFERENCES `empleados` (`id_empleado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_programacion_periodos` FOREIGN KEY (`id_periodo`) REFERENCES `periodos_academicos` (`id_periodo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `requisitos_curso`
---
-ALTER TABLE `requisitos_curso`
-  ADD CONSTRAINT `fk_cursos_requisitos` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `fk_usuarios_tipos_usuarios` FOREIGN KEY (`tipo_usuario`) REFERENCES `tipos_usuarios` (`tipo_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-08-01 23:03:06
