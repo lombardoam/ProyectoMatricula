@@ -65,7 +65,7 @@
 
 					tipo_estudiante: {
 						title: 'Tipo',
-                        options: {'Reingreso':'Reingreso','Primer ingreso':'Primer ingreso','Egresado':'Egresado','Egresada':'Egresada' },
+                        options: {'Reingreso':'Reingreso','Primer ingreso':'Primer ingreso', 'Élite':'Élite','Egresado':'Egresado','Egresada':'Egresada' },
 
 
 					},
