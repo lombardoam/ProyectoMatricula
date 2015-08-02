@@ -29,7 +29,7 @@
                   header('Location:adminSistema/index.php');
                   break;
                case 2; //Docente
-                  header('Location:maestros/index.html');
+                  header('Location:maestros/index.php');
                   break;
                case 3; //Alumno
                   header('Location:index.html?alumno');
