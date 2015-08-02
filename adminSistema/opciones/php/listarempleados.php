@@ -1,14 +1,8 @@
-
 <?php
   header('Content-type: application/json');
-  $conexion = mysqli_connect('localhost','root','','matricula');
-
-//Get record count
-		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM carreras");
-		$row = mysqli_fetch_array($result);
-		$recordCount = $row['RecordCount'];
+  require '../require/conexion.php';
   //Get records from database
-  $result = mysqli_query($conexion, "SELECT * FROM carreras");
+  $result = mysqli_query($conexion, "SELECT * FROM empleados");
 
   //Add all records to an array
   $rows = array();
@@ -20,7 +14,6 @@
   //Return result to jTable
   $jTableResult = array();
   $jTableResult['Result'] = "OK";
-  $jTableResult['TotalRecordCount'] = $recordCount;
   $jTableResult['Records'] = $rows;
   print json_encode($jTableResult);
 ?>

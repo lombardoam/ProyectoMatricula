@@ -1,21 +1,21 @@
 <?php
 header('Content-type: application/json');
-   require '../conexion.php';
+   require 'conexion.php';
 
 //Insert record into database
-		$result = mysqli_query($conexion,"INSERT INTO docente ( nombre, apellido, genero, telefono, correo, id_carrera, cordinador) VALUES(
-        '" . $_POST["nombre"] . "',
-        '" . $_POST["apellido"] . "',
+		$result = mysqli_query($conexion,"INSERT INTO empleados ( codigo_empleado, nombres, genero, telefono, email, codigo_carrera, id_puesto) VALUES(
+        '" . $_POST["codigo_empleado"] . "',
+        '" . $_POST["nombres"] . "',
         '" . $_POST["genero"] . "',
         '" . $_POST["telefono"] . "',
-        '" . $_POST["correo"] . "',
-        '" . $_POST["id_carrera"] . "',
-        '" . $_POST["cordinador"] . "')");
+        '" . $_POST["email"] . "',
+        '" . $_POST["cod_carrera"] . "',
+        '" . $_POST["id_puesto"] . "')");
 
 
 
 		//Get last inserted record (to return to jTable)
-		$result = mysqli_query($conexion,"SELECT * FROM docente WHERE id_docente = LAST_INSERT_ID();");
+		$result = mysqli_query($conexion,"SELECT * FROM docente WHERE id_empleado = LAST_INSERT_ID();");
 		$row = mysqli_fetch_array($result);
 
 		//Return result to jTable

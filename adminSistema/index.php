@@ -23,6 +23,7 @@
                             <li><a href="opciones/facultades.php">FACULTADES</a></li>
                             <li><a href="opciones/carreras.php">CARRERAS</a></li>
                             <li><a href="opciones/asignaturas.php">ASIGNATURAS</a></li>
+                            <li><a href="opciones/periodos.php">PERÍODOS</a></li>
                         </ul>
                     </li>
                     <li><a href="opciones/aulas.php"><span><i class="fa fa-building fa-2x"></i></span>AULAS</a>
@@ -31,10 +32,17 @@
                             <li><a href="opciones/salones.php">SALONES</a></li>
                         </ul>
                     </li>
-                    <li><a href="opciones/cursos.php"><span><i class="fa fa-calendar fa-2x"></i></span>CURSOS</a></li>
+                    <li><a href="opciones/cursos.php"><span><i class="fa fa-calendar fa-2x"></i></span>CURSOS</a>
+                    <ul>
+                            <li><a href="opciones/edificios.php">PROGRAMACIÓN DE CURSOS</a></li>
+                            <li><a href="opciones/salones.php">CONTENIDO DE CURSOS</a></li>
+                            <li><a href="opciones/salones.php">CONTROL DE CURSOS</a></li>
+                        </ul>
+                    </li>
                     <li><a href="opciones/planes_estudio.php"><span><i class="fa fa-file fa-2x"></i></span>PLANES DE ESTUDIO</a></li>
                     <li><a href="opciones/admisiones.php"><span><i class="fa fa-check-square-o fa-2x"></i></span>ADMISIONES</a>
                         <ul>
+                            <li><a href="opciones/prematricula.php">MATRICULA</a></li>
                             <li><a href="opciones/prematricula.php">PREMATRICULA</a></li>
                             <li><a href="opciones/requisitos.php">REQUISITOS</a></li>
                         </ul>
@@ -42,11 +50,19 @@
                     <li><a href="opciones/usuarios.php"><span><i class="fa fa-users fa-2x"></i></span>USUARIOS</a>
                         <ul>
                             <li><a href="opciones/estudiantes.php">ESTUDIANTES</a></li>
-                            <li><a href="opciones/tutores.php">TUTORES</a></li>
-                            <li><a href="opciones/docentes.php">DOCENTES</a></li>
+                            <li><a href="opciones/empleados.php">EMPLEADOS</a></li>
+                            <li><a href="opciones/docentes.php">PUESTOS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="opciones/usuarios.php"><span><i class="fa fa-cog fa-2x"></i></span>AVANZADO</a>
+                    <ul>
+                            <li><a href="opciones/estudiantes.php">USUARIOS</a></li>
+                            <li><a href="opciones/tutores.php">TIPOS DE USUARIO</a></li>
+                            <li><a href="opciones/tutores.php">TIPOS DE EQUIVALENCIA</a></li>
                         </ul>
                     </li>
                     <!--<li><a href="#"><span><i class="fa fa-users fa-2x"></i></span>X</a>-->
+                    <li class="cerrar"><a href=""><span><i class="fa fa-times fa-2x"></i></span>CERRAR SESIÓN</a></li>
                 </ul>
             </nav>
 

@@ -50,7 +50,12 @@
 
                     },
 
+		            nombres: {
+						title: 'Nombres'
 
+
+
+					},
 
 					apellidos: {
 						title: 'Apellidos'
@@ -58,14 +63,8 @@
 					},
 
 
-					nombres: {
-						title: 'Nombres'
-
-
-
-					},
-					correo: {
-						title: 'Correo'
+					tipo_estudiante: {
+						title: 'Tipo'
 
 
 					},
@@ -81,19 +80,6 @@
 
 					},
 
-					telefono: {
-						title: 'Teléfono'
-
-
-					},
-
-                    nacionalidad: {
-						title: 'Nacionalidad',
-                        list: false
-
-
-					},
-
                      	estado_civil: {
 						title: 'Estado civil',
                         options: { 'Soltero': 'Soltero', 'Casado': 'Casado', 'Divorciado': 'Divorciado', 'Soltera':'Soltera','Casada':'Casada','Divorciada':'Divorciada'
@@ -103,11 +89,31 @@
 
 					},
 
-					direccion:
+                     direccion_vivienda:
 					{
 						title: 'Dirección'
 
 					},
+
+                     telefono: {
+						title: 'Teléfono'
+
+
+					},
+
+                    direccion_trabajo: {
+						title: 'dir. trabajo',
+                        list: false
+
+
+					},
+
+                     telefono_trabajo:
+					{
+						title: 'tel. trabajo'
+
+					},
+
 
                     trabaja: {
 						title: 'Trabaja',
@@ -118,15 +124,36 @@
 
 					},
 
-                     tel_trabajo: {
-						title: 'Tel. trabajo',
-                        list: false
+                     fecha_ingreso: {
+						title: 'Ingreso',
+                        list: false,
+                        type: 'date',
+                        displayFormat: 'dd-mm-yy'
 
 
 					},
                      dir_trabajo: {
 						title: 'Dir. trabajo',
                         list:false
+
+
+					},
+
+                    fecha_nacimiento: {
+						title: 'Nacimiento',
+                        type: 'date',
+                        displayFormat: 'dd-mm-yy'
+
+					},
+
+                     id_carrera: {
+						title: 'Carrera',
+
+
+					},
+
+                     saldo: {
+						title: 'Saldo',
 
 
 					},
