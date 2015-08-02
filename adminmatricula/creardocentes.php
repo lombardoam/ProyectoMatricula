@@ -3,19 +3,20 @@ header('Content-type: application/json');
    require 'conexion.php';
 
 //Insert record into database
-		$result = mysqli_query($conexion,"INSERT INTO empleados ( codigo_empleado, nombres, genero, telefono, email, codigo_carrera, id_puesto) VALUES(
+		$result = mysqli_query($conexion,"INSERT INTO empleados ( codigo_empleado, nombres, apellidos, genero, telefono, email, codigo_carrera, id_puesto) VALUES(
         '" . $_POST["codigo_empleado"] . "',
         '" . $_POST["nombres"] . "',
+        '" . $_POST["apellidos"] . "',
         '" . $_POST["genero"] . "',
         '" . $_POST["telefono"] . "',
         '" . $_POST["email"] . "',
-        '" . $_POST["cod_carrera"] . "',
+        '" . $_POST["codigo_carrera"] . "',
         '" . $_POST["id_puesto"] . "')");
 
 
 
 		//Get last inserted record (to return to jTable)
-		$result = mysqli_query($conexion,"SELECT * FROM docente WHERE id_empleado = LAST_INSERT_ID();");
+		$result = mysqli_query($conexion,"SELECT * FROM empleados WHERE id_empleado = LAST_INSERT_ID();");
 		$row = mysqli_fetch_array($result);
 
 		//Return result to jTable
