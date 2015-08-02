@@ -1,6 +1,6 @@
 <?php
 header('Content-type: application/json');
-   require '../conexion.php';
+   require 'conexion.php';
 
 //Updating a record (updateAction)
 
