@@ -48,6 +48,25 @@
                   </script>
                ";
             }
+            if(isset($_GET['no_aut'])){
+               echo "<script>
+                  $.notify(
+                     \"Por favor inicie sesión para continuar\",
+                     { position:\"bottom-right\" }
+                  );
+                  </script>
+               ";
+            }
+            if(isset($_GET['logout'])){
+               echo "<script>
+                  $.notify(
+                     \"Sesión cerrada correctamente\", \"success\",
+                     { position:\"bottom-right\" }
+                  );
+                  </script>
+               ";
+            }
+
           ?>
 		  </div>
       </div>
