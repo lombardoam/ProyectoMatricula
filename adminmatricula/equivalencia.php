@@ -45,31 +45,42 @@
 
 
 					codigo_eq: {
-						title: 'Tipo'
+						title: 'Código'
 
                     },
 
 
+                     nombre_universidad: {
+						title: 'Universidad'
 
-					id_asignatura: {
-						title: 'Asignatura'
+					},
+
+					id_curso: {
+						title: 'Asignatura',
+                        options: 'param/paramcursos.php'
 
 					},
 
 
-					equivalencia1: {
-						title: 'Equivalencia 1'
+					codigo_clase_equivalencia: {
+						title: 'Equivalencia'
 
 
 
 					},
-					equivalencia2: {
-						title: 'Equivalencia 2'
+					num_cuenta: {
+						title: 'Cuenta'
 
 
 					},
-					equivalencia3: {
-						title: 'Equivalencia 3'
+					id_tipo: {
+						title: 'Tipo',
+                        options: 'param/paramtipoeq.php'
+
+					},
+
+                    comentarios: {
+						title: 'Comentarios'
 
 					},
 
