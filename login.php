@@ -32,6 +32,10 @@
                   header('Location:maestros/index.php');
                   break;
                case 3; //Alumno
+                  $sql = "SELECT id_carrera FROM usuarios INNER JOIN estudiantes WHERE usuarios.num_cuenta = " . $_SESSION['num_cuenta'] . " AND estudiantes.num_cuenta = " . $_SESSION['num_cuenta'];
+                  $res = mysqli_query($conexion, $sql);
+                  $array = mysqli_fetch_assoc($res);
+                  $_SESSION['id_carrera'] = $array['id_carrera'];
                   header('Location:index.html?alumno');
                   break;
                case 4; //Encargado
