@@ -4,7 +4,7 @@ $(document).ready(function () {
     var Spanishmessages = {
     serverCommunicationError: 'Ha ocurrido un error mientras se trataba de comunicar con el servidor.',
     loadingMessage: 'Cargando Registros...',
-    noDataAvailable: 'Ninguna dato disponible!',
+    noDataAvailable: 'Ningun dato disponible!',
     addNewRecord: 'Insertar nuevo registro',
     editRecord: 'Editar Registro',
     areYouSure: '¿Estas seguro?',
@@ -39,12 +39,17 @@ $(document).ready(function () {
                     list: false
                 },
 
-                nombreedificio: {
+                codigo_edificio: {
+                    title: 'Codigo',
+                    width: '5%'
+                },
+
+                nombre: {
                     title: 'Nombre',
                     width: '10%'
                 },
 
-                numero_pisos: {
+                pisos: {
                     title: 'Cantidad de Pisos',
                     width: '10%'
                 },
@@ -54,13 +59,13 @@ $(document).ready(function () {
                     width: '10%'
                 },
 
-                cantidad_auditorios: {
-                    title: 'Numero de Auditorios',
+                cantidad_laboratorios: {
+                    title: 'Numero de Laboratorios',
                     width: '10%'
                 },
 
-                cantidad_laboratorios: {
-                    title: 'Numero de Laboratorios',
+                cantidad_auditorios: {
+                    title: 'Numero de Auditorios',
                     width: '10%'
                 },
 
@@ -81,15 +86,15 @@ $(document).ready(function () {
                 deleteAction: 'php/eliminarsalones.php',
             },
             fields: {
-                id_salon: {
+                id_aula: {
                     key: true,
                     list: false
                 },
 
-                id_tipo_salon: {
-                    title: 'Tipo de Salon',
+                codigo_aula: {
+                    title: 'Codigo',
                     width: '10%',
-                    list: false
+                    /*list: false*/
                 },
 
                 id_edificio: {
@@ -98,18 +103,33 @@ $(document).ready(function () {
                     list: false
                 },
 
-                numero_salon: {
-                    title: 'Numero de Salon',
+                num_aula: {
+                    title: 'Numero de Aula',
                     width: '10%'
                 },
 
                 capacidad: {
-                    title: 'Capacidad de Alumnos',
+                    title: 'Capacidad',
                     width: '10%'
                 },
 
-                recursos: {
-                    title: 'Recursos',
+                data_show: {
+                    title: 'Data Show',
+                    width: '10%'
+                },
+
+                pizarra_electronica: {
+                    title: 'Pizarra Electronica',
+                    width: '10%'
+                },
+
+                camara_video: {
+                    title: 'Camara de Video',
+                    width: '10%'
+                },
+
+                audio: {
+                    title: 'Audio',
                     width: '10%'
                 },
 
@@ -134,14 +154,18 @@ $(document).ready(function () {
                     list: false
                 },
 
+                codigo_facultad: {
+                    title: 'Código',
+                    width: '5%'
+                },
+
                 nombre_facultad: {
-                    title: 'Nombre',
+                    title: 'Nombre de la Facultad',
                     width: '10%'
                 },
 
-
-                nombre_decano: {
-                    title: 'Decano de la Facultad',
+                codigo_empleado: {
+                    title: 'Decano',
                     width: '10%'
                 },
 
@@ -167,25 +191,24 @@ $(document).ready(function () {
                     list: false
                 },
 
-                id_facultad: {
-                    title: 'Facultad',
-                    width: '10%',
-                    options: {
-                        '1': 'Ingenierias y Arquitectura', '2': 'Ciencias Economicas y Sociales'
-                    }
+                codigo_carrera: {
+                    title: 'Código',
+                    width: '5%'
+
                 },
 
                 nombre_carrera: {
-                    title: 'Nombre de la Carrera',
-                    width: '10%'
+                    title: 'Nombre',
+                    width: '12%'
+
                 },
 
-                codigo_carrera: {
-                    title: 'Codigo',
-                    width: '10%'
+                id_facultad: {
+                    title: 'Facultad',
+                    width: '12%'
                 },
 
-                nombre_coordinador: {
+               codigo_empleado: {
                     title: 'Coordinador',
                     width: '10%'
                 },
@@ -211,7 +234,7 @@ $(document).ready(function () {
 
     $('#PersonTableContainer5').jtable({
             messages: Spanishmessages, //Localizacion
-            title: 'Asignaturas',
+            title: 'Cursos',
             paging: true,
             actions: {
                 listAction: 'php/listarasignaturas.php',
@@ -220,37 +243,33 @@ $(document).ready(function () {
                 deleteAction: 'php/eliminarasignaturas.php',
             },
             fields: {
-                id_asignatura: {
+                id_curso: {
                     key: true,
                     list: false
                 },
 
-                    /*options: {
-                        '1': 'Arquitectura', '2': 'Ingenieria en Infotecnologia', '3': 'Administracion de Empresas', '4': 'Ingenieria Civil', '5': 'Diseno de Interiores', '6': 'Administracion de Empresas Turisticas'
-                    }*/
+                codigo_curso: {
+                    title: 'Código',
+                    width: '5%'
+                },
 
-                nombre_asignatra: {
+                nombre_curso: {
                     title: 'Nombre',
                     width: '10%'
                 },
 
-                cod_asignatura: {
-                    title: 'Codigo',
-                    width: '10%'
-                },
-
-                 unidades_valorativas: {
+                uv: {
                     title: 'UV',
                     width: '10%'
                 },
 
-                 horas_teoricas: {
-                    title: 'Horas Teoricas',
+                 horas_practicas: {
+                    title: 'Horas Prácticas',
                     width: '10%'
                 },
 
-                 horas_practicas: {
-                    title: 'Horas Practicas',
+                 horas_teoricas: {
+                    title: 'Horas Teóricas',
                     width: '10%'
                 },
 
