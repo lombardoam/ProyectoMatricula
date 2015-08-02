@@ -51,6 +51,7 @@
                             <li><a href="facultades.php">FACULTADES</a></li>
                             <li><a href="carreras.php">CARRERAS</a></li>
                             <li><a href="asignaturas.php">ASIGNATURAS</a></li>
+                            <li><a href="periodos.php">PERÍODOS</a></li>
                         </ul>
                     </li>
                     <li class="active"><a href="aulas.php"><span><i class="fa fa-building fa-2x"></i></span>AULAS</a>
@@ -59,10 +60,17 @@
                             <li><a href="salones.php">SALONES</a></li>
                         </ul>
                     </li>
-                    <li><a href="cursos.php"><span><i class="fa fa-calendar fa-2x"></i></span>CURSOS</a></li>
+                    <li><a href="cursos.php"><span><i class="fa fa-calendar fa-2x"></i></span>CURSOS</a>
+                    <ul>
+                            <li><a href="programacion.php">PROGRAMACIÓN DE CURSOS</a></li>
+                            <li><a href="contenido.php">CONTENIDO DE CURSOS</a></li>
+                            <li><a href="control.php">CONTROL DE CURSOS</a></li>
+                        </ul>
+                    </li>
                     <li><a href="planes_estudio.php"><span><i class="fa fa-file fa-2x"></i></span>PLANES DE ESTUDIO</a></li>
                     <li><a href="admisiones.php"><span><i class="fa fa-check-square-o fa-2x"></i></span>ADMISIONES</a>
                         <ul>
+                            <li><a href="matricula.php">MATRICULA</a></li>
                             <li><a href="prematricula.php">PREMATRICULA</a></li>
                             <li><a href="requisitos.php">REQUISITOS</a></li>
                         </ul>
@@ -70,11 +78,19 @@
                     <li><a href="usuarios.php"><span><i class="fa fa-users fa-2x"></i></span>USUARIOS</a>
                         <ul>
                             <li><a href="estudiantes.php">ESTUDIANTES</a></li>
-                            <li><a href="tutores.php">TUTORES</a></li>
-                            <li><a href="docentes.php">DOCENTES</a></li>
+                            <li><a href="empleados.php">EMPLEADOS</a></li>
+                            <li><a href="puestos.php">PUESTOS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="avanzado.php"><span><i class="fa fa-cog fa-2x"></i></span>AVANZADO</a>
+                    <ul>
+                            <li><a href="total_usuarios.php">USUARIOS</a></li>
+                            <li><a href="tipos_usuario.php">TIPOS DE USUARIO</a></li>
+                            <li><a href="tipos_equivalencia.php">TIPOS DE EQUIVALENCIA</a></li>
                         </ul>
                     </li>
                     <!--<li><a href="#"><span><i class="fa fa-users fa-2x"></i></span>X</a>-->
+                    <li class="cerrar"><a href="logout.php"><span><i class="fa fa-times fa-2x"></i></span>CERRAR SESIÓN</a></li>
                 </ul>
             </nav>
 

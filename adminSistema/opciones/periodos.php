@@ -95,7 +95,7 @@
             </nav>
 
        <div class="panel">
-          <center><a href="salones.php">PANEL DE SALONES</a></center>
+          <center><a href="salones.php">PANEL DE PERÍODOS</a></center>
        </div>
 
        <center><div class="tablas">
