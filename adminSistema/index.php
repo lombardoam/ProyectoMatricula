@@ -75,7 +75,7 @@
                         </ul>
                     </li>
                     <!--<li><a href="#"><span><i class="fa fa-users fa-2x"></i></span>X</a>-->
-                    <li class="cerrar"><a href=""><span><i class="fa fa-times fa-2x"></i></span>CERRAR SESIÓN</a></li>
+                    <li class="cerrar"><a href="logout.php"><span><i class="fa fa-times fa-2x"></i></span>CERRAR SESIÓN</a></li>
                 </ul>
             </nav>
 
