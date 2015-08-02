@@ -43,8 +43,12 @@
 						list: false
 					},
 
+                     codigo_tipo_eq: {
+						title: 'Código'
 
-					descripcion: {
+                    },
+
+                     descripcion: {
 						title: 'Descripción'
 
                     },
