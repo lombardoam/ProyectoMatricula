@@ -99,6 +99,13 @@
        </div>
 
        <center><div class="tablas">
+       <div class="filtering">
+    <form>
+        Codigo Programación: <input type="text" name="codigo_prog_curso" id="codigo_prog_curso" />
+
+        <button type="submit" id="LoadRecordsButton">Buscar</button>
+    </form>
+</div>
         <div id="PersonTableContainer11"></div><br><br>
        </div></center>
 

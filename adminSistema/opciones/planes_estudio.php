@@ -95,7 +95,7 @@
             </nav>
 
        <div class="panel">
-          <center><a href="edificios.php">PANEL DE PLANES DEE ESTUDIO</a></center>
+          <center><a href="edificios.php">PANEL DE PLANES DE ESTUDIO</a></center>
        </div>
 
        <center><div class="tablas">
