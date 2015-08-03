@@ -231,8 +231,8 @@
                   </div>
                  <button type="submit" class="btn btn-default">Seleccionar</button>
                </form>
-
                <br>
+
 
                <h3>Primer parcial <button type="submit" class="btn btn-info">Agregar</button></h3>
                <table class="table table-hover">
@@ -249,98 +249,10 @@
                         <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
                         <td><a href="#" type="button" class="btn btn-danger" placeholder="Eliminar">X</a></td>
                      </tr>
-                     <tr>
-                        <td>Trabajo en clase</td>
-                        <td>Ejercicios de x cosa que los alumnos realizarán durante la clase</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><a href="#" type="button" class="btn btn-danger" placeholder="Eliminar">X</a></td>
-                     </tr>
-                     <tr>
-                        <td>Asistencia</td>
-                        <td>Asistencia de los alumnos a la clase</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><a href="#" type="button" class="btn btn-danger" placeholder="Eliminar">X</a></td>
-                     </tr>
-                     <tr>
-                        <td>Proyecto</td>
-                        <td>Proyecto de la clase</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><a href="#" type="button" class="btn btn-danger" placeholder="Eliminar">X</a></td>
-                     </tr>
                   </tbody>
                </table>
 
-               <h3>Segundo parcial <button type="submit" class="btn btn-info">Agregar</button></h3>
-               <table class="table table-hover">
-                  <thead>
-                     <th>Nombre</th>
-                     <th>Descripción</th>
-                     <th>Puntos</th>
-                     <th>Acciones</th>
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <td>Examen</td>
-                        <td>Examen teórico</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><a href="#" type="button" class="btn btn-danger" placeholder="Eliminar">X</a></td>
-                     </tr>
-                     <tr>
-                        <td>Trabajo en clase</td>
-                        <td>Ejercicios de x cosa que los alumnos realizarán durante la clase</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><a href="#" type="button" class="btn btn-danger" placeholder="Eliminar">X</a></td>
-                     </tr>
-                     <tr>
-                        <td>Asistencia</td>
-                        <td>Asistencia de los alumnos a la clase</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><a href="#" type="button" class="btn btn-danger" placeholder="Eliminar">X</a></td>
-                     </tr>
-                     <tr>
-                        <td>Proyecto</td>
-                        <td>Proyecto de la clase</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><a href="#" type="button" class="btn btn-danger" placeholder="Eliminar">X</a></td>
-                     </tr>
-                  </tbody>
-               </table>
 
-               <h3>Tercer parcial <button type="submit" class="btn btn-info">Agregar</button></h3>
-               <table class="table table-hover">
-                  <thead>
-                     <th>Nombre</th>
-                     <th>Descripción</th>
-                     <th>Puntos</th>
-                     <th>Acciones</th>
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <td>Examen</td>
-                        <td>Examen teórico</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><a href="#" type="button" class="btn btn-danger" placeholder="Eliminar">X</a></td>
-                     </tr>
-                     <tr>
-                        <td>Trabajo en clase</td>
-                        <td>Ejercicios de x cosa que los alumnos realizarán durante la clase</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><a href="#" type="button" class="btn btn-danger" placeholder="Eliminar">X</a></td>
-                     </tr>
-                     <tr>
-                        <td>Asistencia</td>
-                        <td>Asistencia de los alumnos a la clase</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><a href="#" type="button" class="btn btn-danger" placeholder="Eliminar">X</a></td>
-                     </tr>
-                     <tr>
-                        <td>Proyecto</td>
-                        <td>Proyecto de la clase</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><a href="#" type="button" class="btn btn-danger" placeholder="Eliminar">X</a></td>
-                     </tr>
-                  </tbody>
-               </table>
                   <a href="#" type="button" class="btn btn-success">Guardar Cambios</a>
             </div><br>
 
