@@ -539,75 +539,44 @@ $(document).ready(function () {
 
     $('#PersonTableContainer9').jtable('load');
 
-    $('#PersonTableContainer80').jtable({
+    $('#PersonTableContainer10').jtable({
             messages: Spanishmessages, //Localizacion
-            title: 'Planes de Estudio',
+            title: 'Registros de Matricula',
             paging: true,
             actions: {
-                listAction: 'php/listar/listarcursos.php',
-                createAction: 'php/ingresar/ingresarcursos.php',
-                updateAction: 'php/editar/editarcursos.php',
-                deleteAction: 'php/eliminar/eliminarcursos.php',
+                listAction: 'php/listar/listarmatricula.php',
             },
             fields: {
-                id_curso: {
+                id_matricula: {
+                    title: 'Contador',
+                    width: '5%',
                     key: true,
-                    list: false
                 },
 
-                id_asignatura: {
-                    title: 'Asignatura',
+                id_estudiante: {
+                    title: 'Estudiante',
                     width: '10%',
-                    /*options: {
-                        '1': 'Arquitectura', '2': 'Ingenieria en Infotecnologia', '3': 'Administracion de Empresas', '4': 'Ingenieria Civil', '5': 'Diseno de Interiores', '6': 'Administracion de Empresas Turisticas'
-                    }*/
                 },
 
-                periodo: {
-                    title: 'Periodo',
-                    width: '10%'
+                id_programacion: {
+                    title: 'Codigo Programación',
+                    width: '5%'
                 },
 
-                hora_inicial: {
-                    title: 'Inicio',
-                    width: '10%'
+                tipo_matricula: {
+                    title: 'Tipo Matrícula',
+                    width: '8%'
                 },
 
-                hora_final: {
-                    title: 'Final',
-                    width: '10%'
-                },
-
-                 dias: {
-                    title: 'Dias',
-                    width: '10%'
-                },
-
-                 id_docente: {
-                    title: 'Docente',
-                    width: '10%'
-                },
-
-                id_salon: {
-                    title: 'Salon',
-                    width: '10%'
-                },
-
-                id_edificio: {
-                    title: 'Edificio',
-                    width: '10%'
-                },
-
-                seccion: {
-                    title: 'Seccion',
-                    width: '10%'
+                estatus_curso: {
+                    title: 'Estatus',
+                    width: '8%'
                 },
 
             }
         });
 
-    $('#PersonTableContainer80').jtable('load');
-
+    $('#PersonTableContainer10').jtable('load');
 
     $('#PersonTableContainer81').jtable({
             messages: Spanishmessages, //Localizacion
@@ -654,7 +623,7 @@ $(document).ready(function () {
 
 
 
-    $('#PersonTableContainer10').jtable({
+    $('#PersonTableContainer100').jtable({
             messages: Spanishmessages, //Localizacion
             title: 'Empleados',
             paging: true,
@@ -710,7 +679,7 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer10').jtable('load');
+    $('#PersonTableContainer100').jtable('load');
 
 
 
