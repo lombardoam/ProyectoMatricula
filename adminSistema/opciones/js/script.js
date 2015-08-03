@@ -57,6 +57,7 @@ $(document).ready(function () {
 
                 id_puesto: {
                     title: 'Puesto',
+                    options: '../opciones/php/options/option2.php',
                     width: '5%'
                 },
 
