@@ -749,12 +749,15 @@ $(document).ready(function () {
 
     $('#PersonTableContainer13').jtable('load');
 
-    $('#PersonTableContainer100').jtable({
+    $('#PersonTableContainer14').jtable({
             messages: Spanishmessages, //Localizacion
             title: 'Empleados',
             paging: true,
             actions: {
                 listAction: 'php/listar/listarempleados.php',
+                createAction: 'php/ingresar/ingresarempleados.php',
+                updateAction: 'php/editar/editarempleados.php',
+                deleteAction: 'php/eliminar/eliminarempleados.php',
             },
             fields: {
                 id_empleado: {
@@ -779,12 +782,12 @@ $(document).ready(function () {
 
                 genero: {
                     title: 'Género',
-                    width: '10%'
+                    width: '5%'
                 },
 
                 telefono: {
                     title: 'Teléfono',
-                    width: '10%'
+                    width: '7%'
                 },
 
                 email: {
@@ -794,18 +797,25 @@ $(document).ready(function () {
 
                 codigo_carrera: {
                     title: 'Codigo Carrera',
-                    width: '10%'
+                    /*Ver si poner mejor el nombre de la carrera*/
+                    width: '8%'
                 },
 
                 id_puesto: {
                     title: 'Puesto',
+                    options: '../opciones/php/options/option16.php',
                     width: '10%'
                 },
+
+                num_cuenta: {
+                    title: 'Cuenta',
+                    width: '10%'
+                }
 
             }
         });
 
-    $('#PersonTableContainer100').jtable('load');
+    $('#PersonTableContainer14').jtable('load');
 
 
 
