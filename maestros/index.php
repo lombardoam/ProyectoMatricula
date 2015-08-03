@@ -5,7 +5,7 @@
       isset($_SESSION['apellido']) &&
       isset($_SESSION['usuario']) &&
       isset($_SESSION['tipo_usuario']) &&
-      isset($_SESSION['num_cuenta'])
+      isset($_SESSION['num_cuenta']) //hola
       )
    ){
       header('Location:../index.php?no_aut');
