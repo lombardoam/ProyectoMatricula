@@ -5,7 +5,7 @@
       isset($_SESSION['apellido']) &&
       isset($_SESSION['usuario']) &&
       isset($_SESSION['tipo_usuario']) &&
-      isset($_SESSION['num_cuenta'])
+      isset($_SESSION['num_cuenta']) //hola
       )
    ){
       header('Location:../index.php?no_aut');
@@ -178,6 +178,10 @@
                     <li>
                         <a href="asistencias.php"><i class="glyphicon glyphicon-tasks"></i> Control de Asistencias</a>
                     </li>
+                    <li>
+                        <a href="reporte.php"><i class="glyphicon glyphicon-tasks"></i> Reporte de Asistencia</a>
+                    </li>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

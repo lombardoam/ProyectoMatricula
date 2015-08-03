@@ -18,7 +18,7 @@
 
 		    //Prepare jTable
 			$('#PeopleTableContainer').jtable({
-				title: 'Ingreso Docentes',
+				title: 'Docentes',
                 paging:'true',
 				actions: {
 					 listAction: 'leerdocentes.php',

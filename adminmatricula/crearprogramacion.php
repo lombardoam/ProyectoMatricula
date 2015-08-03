@@ -6,7 +6,7 @@ header('Content-type: application/json');
 $result = mysqli_query($conexion, "INSERT INTO programacion_cursos(
 codigo_prog_curso,
 id_periodo,
-codigo_curso,
+id_curso,
 seccion,
 hora_inicio,
 hora_termina,
@@ -16,7 +16,7 @@ id_aula,
 estatus_curso) VALUES(
 '" .  $_POST["codigo_prog_curso"] . "',
 '" . $_POST["id_periodo"] . "',
-'" . $_POST["codigo_curso"] . "',
+'" . $_POST["id_curso"] . "',
 '" .  $_POST["seccion"] . "',
 '" .  $_POST["hora_inicio"]   . "',
 '" .   $_POST["hora_termina"]   . "',
