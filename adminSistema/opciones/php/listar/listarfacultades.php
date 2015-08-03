@@ -3,7 +3,11 @@
   header('Content-type: application/json');
  require '../../require/conexion.php';
 
-  //Get records from database
+  /*//Get records from database
+  $result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount  FROM facultades");
+  $row = mysqli_fetch_array($result);
+  $recordCount = $row['RecordCount'];*/
+
   $result = mysqli_query($conexion, "SELECT * FROM facultades");
 
   //Add all records to an array
@@ -16,6 +20,7 @@
   //Return result to jTable
   $jTableResult = array();
   $jTableResult['Result'] = "OK";
+  /*$jTableResult['TotalRecordCount'] = $recordCount;*/
   $jTableResult['Records'] = $rows;
   print json_encode($jTableResult);
 ?>

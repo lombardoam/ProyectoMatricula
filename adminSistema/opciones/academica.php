@@ -99,7 +99,7 @@
        </div>
 
        <center><div class="tablas">
-        <div id="PersonTableContainer"></div><br><br>
+        <div></div><br><br>
        </div></center>
 
         <div class="footer">

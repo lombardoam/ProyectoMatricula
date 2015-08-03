@@ -24,49 +24,40 @@ $(document).ready(function () {
     deleteProggress: 'Borrado {0} de {1} registros, procesando...'
 }
 
-        $('#PersonTableContainer').jtable({
+    $('#PersonTableContainer').jtable({
             messages: Spanishmessages, //Localizacion
-            title: 'Edificios',
+            title: 'Facultades',
             actions: {
-                listAction: 'php/listar/listaredificio.php',
-                createAction: 'php/ingresar/ingresaredificio.php',
-                updateAction: 'php/editar/editaredificio.php',
-                deleteAction: 'php/eliminar/eliminaredificio.php',
+                listAction: 'php/listar/listarfacultades.php',
+                createAction: 'php/ingresar/ingresarfacultades.php',
+                updateAction: 'php/editar/editarfacultades.php',
+                deleteAction: 'php/eliminar/eliminarfacultades.php',
             },
             fields: {
-                id_edificio: {
+                id_facultad: {
                     key: true,
                     list: false
                 },
 
-                codigo_edificio: {
-                    title: 'Codigo',
+                codigo_facultad: {
+                    title: 'Código',
                     width: '5%'
                 },
 
-                nombre: {
-                    title: 'Nombre',
+                nombre_facultad: {
+                    title: 'Nombre de la Facultad',
                     width: '10%'
                 },
 
-                pisos: {
-                    title: 'Cantidad de Pisos',
-                    width: '10%'
+                codigo_empleado: {
+                    title: 'Decano',
+                    options: '../opciones/php/options/option1.php',
+                    width: '8%'
                 },
 
-                cantidad_aulas: {
-                    title: 'Numero de Aulas',
-                    width: '10%'
-                },
-
-                cantidad_laboratorios: {
-                    title: 'Numero de Laboratorios',
-                    width: '10%'
-                },
-
-                cantidad_auditorios: {
-                    title: 'Numero de Auditorios',
-                    width: '10%'
+                id_puesto: {
+                    title: 'Puesto',
+                    width: '5%'
                 },
 
 
@@ -138,42 +129,6 @@ $(document).ready(function () {
         });
 
     $('#PersonTableContainer2').jtable('load');
-
-    $('#PersonTableContainer3').jtable({
-            messages: Spanishmessages, //Localizacion
-            title: 'Facultades',
-            actions: {
-                listAction: 'php/listar/listarfacultades.php',
-                createAction: 'php/ingresar/ingresarfacultades.php',
-                updateAction: 'php/editar/editarfacultades.php',
-                deleteAction: 'php/eliminar/eliminarfacultades.php',
-            },
-            fields: {
-                id_facultad: {
-                    key: true,
-                    list: false
-                },
-
-                codigo_facultad: {
-                    title: 'Código',
-                    width: '5%'
-                },
-
-                nombre_facultad: {
-                    title: 'Nombre de la Facultad',
-                    width: '10%'
-                },
-
-                codigo_empleado: {
-                    title: 'Decano',
-                    width: '10%'
-                },
-
-
-            }
-        });
-
-    $('#PersonTableContainer3').jtable('load');
 
     $('#PersonTableContainer4').jtable({
             messages: Spanishmessages, //Localizacion
