@@ -55,17 +55,57 @@ $(document).ready(function () {
                     width: '8%'
                 },
 
-                id_puesto: {
-                    title: 'Puesto',
-                    options: '../opciones/php/options/option2.php',
-                    width: '5%'
+            }
+        });
+
+    $('#PersonTableContainer').jtable('load');
+
+    $('#PersonTableContainer1').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Carreras',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarcarreras.php',
+                createAction: 'php/ingresar/ingresarcarreras.php',
+                updateAction: 'php/editar/editarcarreras.php',
+                deleteAction: 'php/eliminar/eliminarcarreras.php',
+            },
+            fields: {
+                id_carrera: {
+                    key: true,
+                    list: false
                 },
+
+                codigo_carrera: {
+                    title: 'Código',
+                    width: '5%'
+
+                },
+
+                nombre_carrera: {
+                    title: 'Nombre',
+                    width: '12%'
+
+                },
+
+                id_facultad: {
+                    title: 'Facultad',
+                    options: '../opciones/php/options/option2.php',
+                    width: '12%'
+                },
+
+               codigo_empleado: {
+                    title: 'Coordinador',
+                   options: '../opciones/php/options/option3.php',
+                    width: '10%'
+                },
+
 
 
             }
         });
 
-    $('#PersonTableContainer').jtable('load');
+    $('#PersonTableContainer1').jtable('load');
 
 
     $('#PersonTableContainer2').jtable({
@@ -131,62 +171,7 @@ $(document).ready(function () {
 
     $('#PersonTableContainer2').jtable('load');
 
-    $('#PersonTableContainer4').jtable({
-            messages: Spanishmessages, //Localizacion
-            title: 'Carreras',
-            paging: true,
-            actions: {
-                listAction: 'php/listar/listarcarreras.php',
-                createAction: 'php/ingresar/ingresarcarreras.php',
-                updateAction: 'php/editar/editarcarreras.php',
-                deleteAction: 'php/eliminar/eliminarcarreras.php',
-            },
-            fields: {
-                id_carrera: {
-                    key: true,
-                    list: false
-                },
 
-                codigo_carrera: {
-                    title: 'Código',
-                    width: '5%'
-
-                },
-
-                nombre_carrera: {
-                    title: 'Nombre',
-                    width: '12%'
-
-                },
-
-                id_facultad: {
-                    title: 'Facultad',
-                    width: '12%'
-                },
-
-               codigo_empleado: {
-                    title: 'Coordinador',
-                    width: '10%'
-                },
-
-
-
-            }
-        });
-
-    //Re-load records when user click 'load records' button.
-        /*$('#LoadRecordsButton').click(function (e) {
-            e.preventDefault();
-            $('#PersonTableContainer4').jtable('load', {
-                nombre_carrera: $('#nombre_carrera').val(),
-                id_facultad: $('#id_facultad').val()
-            });
-        });
-
-        //Load all records when page is first shown
-        $('#LoadRecordsButton').click();*/
-
-    $('#PersonTableContainer4').jtable('load');
 
     $('#PersonTableContainer5').jtable({
             messages: Spanishmessages, //Localizacion
