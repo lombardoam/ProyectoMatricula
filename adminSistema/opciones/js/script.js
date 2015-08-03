@@ -258,9 +258,9 @@ $(document).ready(function () {
 
     $('#PersonTableContainer4').jtable('load');
 
-    $('#PersonTableContainer40').jtable({
+    $('#PersonTableContainer5').jtable({
             messages: Spanishmessages, //Localizacion
-            title: 'Salones',
+            title: 'Aulas',
             actions: {
                 listAction: 'php/listar/listarsalones.php',
                 createAction: 'php/ingresar/ingresarsalones.php',
@@ -276,13 +276,12 @@ $(document).ready(function () {
                 codigo_aula: {
                     title: 'Codigo',
                     width: '10%',
-                    /*list: false*/
                 },
 
                 id_edificio: {
                     title: 'Edificio',
+                    options: '../opciones/php/options/option5.php',
                     width: '10%',
-                    list: false
                 },
 
                 num_aula: {
@@ -319,11 +318,7 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer40').jtable('load');
-
-
-
-
+    $('#PersonTableContainer5').jtable('load');
 
     $('#PersonTableContainer6').jtable({
             messages: Spanishmessages, //Localizacion
