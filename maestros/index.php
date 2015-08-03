@@ -201,7 +201,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.php">Inicio</a>
+                                <i class="fa fa-dashboard"></i>  <a href="asistencias.php">Inicio</a>
                             </li>
                         </ol>
                     </div>

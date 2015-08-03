@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1>Clases Reporte</h1>
+	<h1>Reporte</h1>
 
 	<div id="body">
         <h4>Catedratico Pedro Gonzales</h4>
@@ -109,18 +109,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
      echo form_open('reporteIndexControlador/cargaReporte');
 
- echo"<p><button type='submit' class='btn btn-default' name='seleccionado' value = $valor->id_horario >$valor->clase # $valor->hora # $valor->dia # $valor->seccion$valor->edificio</button></p>";
+ echo"<p><button type='submit' class='btn btn-default' name='seleccionado' value = $valor->id_programacion >$valor->nombre_curso # $valor->hora_inicio -  $valor->hora_termina # $valor->dias # $valor->seccion$valor->num_aula # $valor->nombre</button></p>";
+
 
 
  echo form_close();
 
 
          }
-
-
-
-     ?>
-
+?>
 
     </div>
              </div>
