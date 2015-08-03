@@ -9,18 +9,19 @@
       )
    ){
       header('Location:../index.php?no_aut');
+   } else if($_SESSION['tipo_usuario'] != 2){
+      header('Location:../index.php?no_aut');
    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Ricardo José Valladares Trimininio">
 
     <title>Docentes | Portal</title>
 
@@ -88,7 +89,7 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading"><strong>Catedrático</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -103,7 +104,7 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>Catedrático</strong>
+                                        <h5 class="media-heading"><strong>John Smith</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -168,19 +169,21 @@
                     <li>
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="notas.php"><i class="glyphicon glyphicon-th-list"></i> Notas</a>
                     </li>
                     <li>
                         <a href="config.php"><i class="glyphicon glyphicon-cog"></i> Gestionar Evaluación</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="asistencias.php"><i class="glyphicon glyphicon-tasks"></i> Control de Asistencias</a>
                     </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </nav>
+
+
 
         <div id="page-wrapper">
 
@@ -190,14 +193,11 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Docentes <small>Gestión de notas</small>
+                            Asistencias <small>Ventana de gestión</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.php">Inicio</a>
-                            </li>
-                            <li class="active">
-                                <i class="glyphicon glyphicon-th-list"></i> Notas
                             </li>
                         </ol>
                     </div>
@@ -205,115 +205,41 @@
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  <strong>Para empezar a utilizar la gestión de notas, debe configurar su evaluación.</strong> <a href="config.php" class="alert-link">Gestionar Evaluación</a>
+                   <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="glyphicon glyphicon-cog"></i> Clases sin configuración</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    <a href="config.php" class="list-group-item">
+                                        <span class="badge">Justo ahora</span>
+                                        Ingeniería de Software
+                                    </a>
+                                    <a href="config.php" class="list-group-item">
+                                        <span class="badge">Justo ahora</span>
+                                        Planeación Estratégica
+                                    </a>
+                                    <a href="config.php" class="list-group-item">
+                                        <span class="badge">Justo ahora</span>
+                                        Diseño Web y Admon. de Contenido
+                                    </a>
+                                </div>
+                                 <div class="alert alert-info alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    <i class="fa fa-info-circle"></i>  <strong>Es importante que gestione sus evaluaciones para poner ingresar las notas.</strong>
+                                 </div>
+                                <div class="text-right">
+                                    <a href="config.php">Gestionar Evaluaciones <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- /.row -->
 
             </div>
-
-            <div class="container-fluid">
-
-              <form class="form-inline">
-                 <div class="form-group">
-                   <label for="select-clase">Clase: </label>
-                     <select class="form-control" id="select-clase">
-                       <option>Ingeniera de Software</option> placeholder="0" class="form-control"
-                       <option>Planeación Estratégica</option>
-                       <option>Diseño Web y admon. de contenido</option>
-                     </select>
-                  </div>
-                 <div class="form-group">
-                   <label for="select-seccion">Sección: </label>
-                     <select class="form-control" id="select-seccion">
-                       <option>A</option>
-                       <option>B</option>
-                       <option>C</option>
-                     </select>
-                  </div>
-                 <div class="form-group">
-                   <label for="select-seccion">Parcial: </label>
-                     <select class="form-control" id="select-seccion">
-                       <option>Primer Parcial</option>
-                       <option>Segundo Parcial</option>
-                       <option>Tercer Parcial</option>
-                     </select>
-                  </div>
-                 <button type="submit" class="btn btn-default">Seleccionar</button>
-               </form>
-               <br>
-               <table class="table table-hover">
-                  <thead>
-                     <th>#</th>
-                     <th>Cuenta</th>
-                     <th>Nombre</th>
-                     <th>Apellido</th>
-                     <th>Examen</th>
-                     <th>Trabajo en clase</th>
-                     <th>Asistencia</th>
-                     <th>Proyecto</th>
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <td>1</td>
-                        <td>20121019</td>
-                        <td>Ricardo</td>
-                        <td>Valladares</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                     </tr>
-                     <tr>
-                        <td>2</td>
-                        <td>20121019</td>
-                        <td>Ricardo</td>
-                        <td>Valladares</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                     </tr>
-                     <tr>
-                        <td>3</td>
-                        <td>20121019</td>
-                        <td>Ricardo</td>
-                        <td>Valladares</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                     </tr>
-                     <tr>
-                        <td>4</td>
-                        <td>20121019</td>
-                        <td>Ricardo</td>
-                        <td>Valladares</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                     </tr>
-                     <tr>
-                        <td>5</td>
-                        <td>20121019</td>
-                        <td>Ricardo</td>
-                        <td>Valladares</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                     </tr>
-
-                  </tbody>
-               </table>
-                  <a href="config.php" type="button" class="btn-lg btn-primary">Guardar notas</a>
-                  <a href="config.php" type="button" class="btn btn-default">Gestionar Evaluación</a>
-            </div><br>
+            <!-- /.container-fluid -->
 
         </div>
         <!-- /#page-wrapper -->
@@ -331,14 +257,6 @@
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>
-
-    <!-- Flot Charts JavaScript -->
-    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-    <script src="js/plugins/flot/jquery.flot.js"></script>
-    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
-    <script src="js/plugins/flot/flot-data.js"></script>
 
 </body>
 

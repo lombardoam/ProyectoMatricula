@@ -9,6 +9,8 @@
       )
    ){
       header('Location:../index.php?no_aut');
+   } else if($_SESSION['tipo_usuario'] != 2){
+      header('Location:../index.php?no_aut');
    }
 ?>
 <!DOCTYPE html>
@@ -172,6 +174,9 @@
                     </li>
                     <li>
                         <a href="config.php"><i class="glyphicon glyphicon-cog"></i> Gestionar Evaluación</a>
+                    </li>
+                    <li>
+                        <a href="asistencias.php"><i class="glyphicon glyphicon-tasks"></i> Control de Asistencias</a>
                     </li>
                 </ul>
             </div>
