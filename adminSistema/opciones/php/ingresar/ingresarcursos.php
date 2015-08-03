@@ -3,10 +3,10 @@ header('Content-type: application/json');
 require '../../require/conexion.php';
 
 //Insert record into database
-$result = mysqli_query($conexion, "INSERT INTO cursos(id_asignatura, periodo, hora_inicial, hora_final, dias, id_docente, id_salon, id_edificio, seccion) VALUES(" . $_POST["id_asignatura"] . ", '" . $_POST["periodo"] . "', '" . $_POST["hora_inicial"] . "', '" . $_POST["hora_final"] . "', '" . $_POST["dias"] . "', " . $_POST["id_docente"] . "," . $_POST["id_salon"] . "," . $_POST["id_edificio"] . ",'" . $_POST["seccion"] . "');");
+$result = mysqli_query($conexion, "INSERT INTO programacion_cursos(codigo_prog_curso, id_periodo, id_curso, seccion, hora_inicio, hora_termina, dias, id_empleado, id_aula, estatus_curso) VALUES('" . $_POST["codigo_prog_curso"] . "', " . $_POST["id_periodo"] . ", " . $_POST["id_curso"] . ", '" . $_POST["seccion"] . "', '" . $_POST["hora_inicio"] . "', '" . $_POST["hora_termina"] . "', '" . $_POST["dias"] . "', " . $_POST["id_empleado"] . "," . $_POST["id_aula"] . ", '" . $_POST["estatus_curso"] . "');");
 
 //Get last inserted record (to return to jTable)
-$result = mysqli_query($conexion, "SELECT * FROM cursos WHERE id_curso = LAST_INSERT_ID();");
+$result = mysqli_query($conexion, "SELECT * FROM programacion_cursos WHERE id_programacion = LAST_INSERT_ID();");
 $row = mysqli_fetch_array($result);
 
 //Return result to jTable

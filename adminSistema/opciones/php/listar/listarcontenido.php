@@ -3,7 +3,7 @@ header('Content-type: application/json');
 require '../../require/conexion.php';
 
   //Get records from database
-  $result = mysqli_query($conexion, "SELECT * FROM programacion_cursos");
+  $result = mysqli_query($conexion, "SELECT * FROM contenido_cursos");
 
   //Add all records to an array
   $rows = array();
