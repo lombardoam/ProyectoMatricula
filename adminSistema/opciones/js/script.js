@@ -169,8 +169,46 @@ $(document).ready(function () {
 
     $('#PersonTableContainer2').jtable('load');
 
-
     $('#PersonTableContainer3').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Períodos Académicos',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarperiodos.php',
+                createAction: 'php/ingresar/ingresarperiodos.php',
+                updateAction: 'php/editar/editarperiodos.php',
+                deleteAction: 'php/eliminar/eliminarperiodos.php',
+            },
+            fields: {
+                id_periodo: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_periodo: {
+                    title: 'Código',
+                    width: '10%',
+                },
+
+                fecha_inicio: {
+                    title: 'Fecha de Inicio',
+                    type: 'date',
+                    width: '10%'
+                },
+
+                fecha_terminacion: {
+                    title: 'Fecha de Terminación',
+                    type: 'date',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer3').jtable('load');
+
+
+    $('#PersonTableContainer40').jtable({
             messages: Spanishmessages, //Localizacion
             title: 'Salones',
             actions: {
@@ -231,7 +269,7 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer3').jtable('load');
+    $('#PersonTableContainer40').jtable('load');
 
 
 
@@ -525,39 +563,6 @@ $(document).ready(function () {
 
     $('#PersonTableContainer10').jtable('load');
 
-    $('#PersonTableContainer11').jtable({
-            messages: Spanishmessages, //Localizacion
-            title: 'Períodos Académicos',
-            paging: true,
-            actions: {
-                listAction: 'php/listar/listarperiodos.php',
-            },
-            fields: {
-                id_periodo: {
-                    key: true,
-                    list: false
-                },
 
-                codigo_periodo: {
-                    title: 'Código',
-                    width: '10%',
-                },
-
-                fecha_inicio: {
-                    title: 'Fecha de Inicio',
-                    type: 'date',
-                    width: '10%'
-                },
-
-                fecha_terminacion: {
-                    title: 'Fecha de Terminación',
-                    type: 'date',
-                    width: '10%'
-                },
-
-            }
-        });
-
-    $('#PersonTableContainer11').jtable('load');
 
     });
