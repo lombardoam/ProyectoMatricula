@@ -548,7 +548,7 @@ $(document).ready(function () {
             },
             fields: {
                 id_matricula: {
-                    title: 'Contador',
+                    title: 'Nº',
                     width: '5%',
                     key: true,
                 },
@@ -580,7 +580,7 @@ $(document).ready(function () {
 
     $('#PersonTableContainer10').jtable('load');
 
-    $('#PersonTableContainer81').jtable({
+    $('#PersonTableContainer11').jtable({
             messages: Spanishmessages, //Localizacion
             title: 'Registros de Prematricula',
             paging: true,
@@ -588,40 +588,33 @@ $(document).ready(function () {
                 listAction: 'php/listar/listarprematricula.php',
             },
             fields: {
-                id_curso: {
+                id_prematricula: {
+                    title: 'Nº',
                     key: true,
-                    list: false
+                    width: '5%'
                 },
 
-                asignatura: {
-                    title: 'Asignatura',
+                id_estudiante: {
+                    title: 'Estudiante',
+                    options: '../opciones/php/options/option13.php',
                     width: '10%',
                 },
 
-                hora_inicial: {
-                    title: 'Hora Inicial',
-                    width: '10%'
+                id_programacion: {
+                    title: 'Codigo Programación',
+                    options: '../opciones/php/options/option14.php',
+                    width: '5%'
                 },
 
-                hora_final: {
-                    title: 'Hora Final',
-                    width: '10%'
-                },
-
-                dias: {
-                    title: 'Dias',
-                    width: '10%'
-                },
-
-                seccion: {
-                    title: 'Seccion',
+                estatus_curso: {
+                    title: 'Estatus',
                     width: '10%'
                 },
 
             }
         });
 
-    $('#PersonTableContainer81').jtable('load');
+    $('#PersonTableContainer11').jtable('load');
 
 
 
