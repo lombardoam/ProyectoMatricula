@@ -3,10 +3,10 @@ header('Content-type: application/json');
 require '../../require/conexion.php';
 
 //Insert record into database
-$result = mysqli_query($conexion, "INSERT INTO asignaturas(nombre_asignatra, cod_asignatura, unidades_valorativas, horas_teoricas, horas_practicas, periodo) VALUES('" . $_POST["nombre_asignatra"] . "', '" . $_POST["cod_asignatura"] . "', " . $_POST["unidades_valorativas"] . "," . $_POST["horas_teoricas"] . ", " . $_POST["horas_practicas"] . ", '" . $_POST["periodo"] . "');");
+$result = mysqli_query($conexion, "INSERT INTO cursos(codigo_curso, nombre_curso, uv, horas_practicas, horas_teoricas, laboratorio, id_plan_estudio, periodo) VALUES('" . $_POST["codigo_curso"] . "', '" . $_POST["nombre_curso"] . "', " . $_POST["uv"] . "," . $_POST["horas_practicas"] . ", " . $_POST["horas_teoricas"] . ", " . $_POST["laboratorio"] . ", " . $_POST["id_plan_estudio"] . ", " . $_POST["periodo"] . ");");
 
 //Get last inserted record (to return to jTable)
-$result = mysqli_query($conexion, "SELECT * FROM asignaturas WHERE id_asignatura = LAST_INSERT_ID();");
+$result = mysqli_query($conexion, "SELECT * FROM cursos WHERE id_curso = LAST_INSERT_ID();");
 $row = mysqli_fetch_array($result);
 
 //Return result to jTable

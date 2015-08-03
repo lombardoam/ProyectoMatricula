@@ -3,7 +3,7 @@ header('Content-type: application/json');
 require '../../require/conexion.php';
 
 //Update record in database
-$result = mysqli_query($conexion, "UPDATE salones SET id_tipo_salon = " . $_POST["id_tipo_salon"] . ", id_edificio = " . $_POST["id_edificio"] . ",  numero_salon = " . $_POST["numero_salon"] . ",  capacidad = '" . $_POST["capacidad"] . "', recursos = '" . $_POST["recursos"] . "' WHERE id_salon = " . $_POST["id_salon"] . ";");
+$result = mysqli_query($conexion, "UPDATE aulas SET codigo_aula = '" . $_POST["codigo_aula"] . "', id_edificio = " . $_POST["id_edificio"] . ",  num_aula = '" . $_POST["num_aula"] . "',  capacidad = " . $_POST["capacidad"] . ", data_show = " . $_POST["data_show"] . ", pizarra_electronica = " . $_POST["pizarra_electronica"] . ", camara_video = " . $_POST["camara_video"] . ", audio = " . $_POST["audio"] . " WHERE id_aula = " . $_POST["id_aula"] . ";");
 
 //Return result to jTable
 $jTableResult = array();

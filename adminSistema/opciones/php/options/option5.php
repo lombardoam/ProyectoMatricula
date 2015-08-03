@@ -2,7 +2,7 @@
     header('Content-type: application/json');
     require '../../require/conexion.php';
     //Get records from database
-    $result = mysqli_query($conexion, "SELECT nombre_facultad AS DisplayText, id_facultad AS Value FROM facultades");
+    $result = mysqli_query($conexion, "SELECT nombre AS DisplayText, id_edificio AS Value FROM edificios");
 
     //Add all records to an array
     $rows = array();

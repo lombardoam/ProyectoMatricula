@@ -55,22 +55,212 @@ $(document).ready(function () {
                     width: '8%'
                 },
 
-                id_puesto: {
-                    title: 'Puesto',
-                    options: '../opciones/php/options/option2.php',
-                    width: '5%'
-                },
-
-
             }
         });
 
     $('#PersonTableContainer').jtable('load');
 
+    $('#PersonTableContainer1').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Carreras',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarcarreras.php',
+                createAction: 'php/ingresar/ingresarcarreras.php',
+                updateAction: 'php/editar/editarcarreras.php',
+                deleteAction: 'php/eliminar/eliminarcarreras.php',
+            },
+            fields: {
+                id_carrera: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_carrera: {
+                    title: 'Código',
+                    width: '5%'
+
+                },
+
+                nombre_carrera: {
+                    title: 'Nombre',
+                    width: '12%'
+
+                },
+
+                id_facultad: {
+                    title: 'Facultad',
+                    options: '../opciones/php/options/option2.php',
+                    width: '12%'
+                },
+
+               codigo_empleado: {
+                    title: 'Coordinador',
+                   options: '../opciones/php/options/option3.php',
+                    width: '10%'
+                },
+
+
+
+            }
+        });
+
+    $('#PersonTableContainer1').jtable('load');
 
     $('#PersonTableContainer2').jtable({
             messages: Spanishmessages, //Localizacion
-            title: 'Salones',
+            title: 'Cursos',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarasignaturas.php',
+                createAction: 'php/ingresar/ingresarasignaturas.php',
+                updateAction: 'php/editar/editarasignaturas.php',
+                deleteAction: 'php/eliminar/eliminarasignaturas.php',
+            },
+            fields: {
+                id_curso: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_curso: {
+                    title: 'Código',
+                    width: '5%'
+                },
+
+                nombre_curso: {
+                    title: 'Nombre',
+                    width: '10%'
+                },
+
+                uv: {
+                    title: 'UV',
+                    width: '5%'
+                },
+
+                 horas_practicas: {
+                    title: 'Horas Prácticas',
+                    width: '5%'
+                },
+
+                 horas_teoricas: {
+                    title: 'Horas Teóricas',
+                    width: '5%'
+                },
+
+                laboratorio: {
+                    title: 'Laboratorio',
+                    width: '5%'
+                },
+
+                id_plan_estudio: {
+                    title: 'Plan de Estudio',
+                    options: '../opciones/php/options/option4.php',
+                    width: '18%'
+                },
+
+                 periodo: {
+                    title: 'Periodo',
+                    width: '5%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer2').jtable('load');
+
+    $('#PersonTableContainer3').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Períodos Académicos',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarperiodos.php',
+                createAction: 'php/ingresar/ingresarperiodos.php',
+                updateAction: 'php/editar/editarperiodos.php',
+                deleteAction: 'php/eliminar/eliminarperiodos.php',
+            },
+            fields: {
+                id_periodo: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_periodo: {
+                    title: 'Código',
+                    width: '10%',
+                },
+
+                fecha_inicio: {
+                    title: 'Fecha de Inicio',
+                    type: 'date',
+                    width: '10%'
+                },
+
+                fecha_terminacion: {
+                    title: 'Fecha de Terminación',
+                    type: 'date',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer3').jtable('load');
+
+    $('#PersonTableContainer4').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Períodos Académicos',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listaredificios.php',
+                createAction: 'php/ingresar/ingresaredificios.php',
+                updateAction: 'php/editar/editaredificios.php',
+                deleteAction: 'php/eliminar/eliminaredificios.php',
+            },
+            fields: {
+                id_edificio: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_edificio: {
+                    title: 'Código',
+                    width: '5%',
+                },
+
+                nombre: {
+                    title: 'Nombre',
+                    width: '15%'
+                },
+
+                pisos: {
+                    title: 'Cantidad de Pisos',
+                    width: '10%'
+                },
+
+                cantidad_aulas: {
+                    title: 'Cantidad de Aulas',
+                    width: '10%'
+                },
+
+                cantidad_laboratorios: {
+                    title: 'Cantidad de Laboratorios',
+                    width: '10%'
+                },
+
+                cantidad_auditorios: {
+                    title: 'Cantidad de Auditorios',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer4').jtable('load');
+
+    $('#PersonTableContainer5').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Aulas',
             actions: {
                 listAction: 'php/listar/listarsalones.php',
                 createAction: 'php/ingresar/ingresarsalones.php',
@@ -86,13 +276,12 @@ $(document).ready(function () {
                 codigo_aula: {
                     title: 'Codigo',
                     width: '10%',
-                    /*list: false*/
                 },
 
                 id_edificio: {
                     title: 'Edificio',
+                    options: '../opciones/php/options/option5.php',
                     width: '10%',
-                    list: false
                 },
 
                 num_aula: {
@@ -125,114 +314,6 @@ $(document).ready(function () {
                     width: '10%'
                 },
 
-
-            }
-        });
-
-    $('#PersonTableContainer2').jtable('load');
-
-    $('#PersonTableContainer4').jtable({
-            messages: Spanishmessages, //Localizacion
-            title: 'Carreras',
-            paging: true,
-            actions: {
-                listAction: 'php/listar/listarcarreras.php',
-                createAction: 'php/ingresar/ingresarcarreras.php',
-                updateAction: 'php/editar/editarcarreras.php',
-                deleteAction: 'php/eliminar/eliminarcarreras.php',
-            },
-            fields: {
-                id_carrera: {
-                    key: true,
-                    list: false
-                },
-
-                codigo_carrera: {
-                    title: 'Código',
-                    width: '5%'
-
-                },
-
-                nombre_carrera: {
-                    title: 'Nombre',
-                    width: '12%'
-
-                },
-
-                id_facultad: {
-                    title: 'Facultad',
-                    width: '12%'
-                },
-
-               codigo_empleado: {
-                    title: 'Coordinador',
-                    width: '10%'
-                },
-
-
-
-            }
-        });
-
-    //Re-load records when user click 'load records' button.
-        /*$('#LoadRecordsButton').click(function (e) {
-            e.preventDefault();
-            $('#PersonTableContainer4').jtable('load', {
-                nombre_carrera: $('#nombre_carrera').val(),
-                id_facultad: $('#id_facultad').val()
-            });
-        });
-
-        //Load all records when page is first shown
-        $('#LoadRecordsButton').click();*/
-
-    $('#PersonTableContainer4').jtable('load');
-
-    $('#PersonTableContainer5').jtable({
-            messages: Spanishmessages, //Localizacion
-            title: 'Cursos',
-            paging: true,
-            actions: {
-                listAction: 'php/listar/listarasignaturas.php',
-                createAction: 'php/ingresar/ingresarasignaturas.php',
-                updateAction: 'php/editar/editarasignaturas.php',
-                deleteAction: 'php/eliminar/eliminarasignaturas.php',
-            },
-            fields: {
-                id_curso: {
-                    key: true,
-                    list: false
-                },
-
-                codigo_curso: {
-                    title: 'Código',
-                    width: '5%'
-                },
-
-                nombre_curso: {
-                    title: 'Nombre',
-                    width: '10%'
-                },
-
-                uv: {
-                    title: 'UV',
-                    width: '10%'
-                },
-
-                 horas_practicas: {
-                    title: 'Horas Prácticas',
-                    width: '10%'
-                },
-
-                 horas_teoricas: {
-                    title: 'Horas Teóricas',
-                    width: '10%'
-                },
-
-                 periodo: {
-                    title: 'Periodo',
-                    width: '10%'
-                },
 
             }
         });
@@ -527,39 +608,6 @@ $(document).ready(function () {
 
     $('#PersonTableContainer10').jtable('load');
 
-    $('#PersonTableContainer11').jtable({
-            messages: Spanishmessages, //Localizacion
-            title: 'Períodos Académicos',
-            paging: true,
-            actions: {
-                listAction: 'php/listar/listarperiodos.php',
-            },
-            fields: {
-                id_periodo: {
-                    key: true,
-                    list: false
-                },
 
-                codigo_periodo: {
-                    title: 'Código',
-                    width: '10%',
-                },
-
-                fecha_inicio: {
-                    title: 'Fecha de Inicio',
-                    type: 'date',
-                    width: '10%'
-                },
-
-                fecha_terminacion: {
-                    title: 'Fecha de Terminación',
-                    type: 'date',
-                    width: '10%'
-                },
-
-            }
-        });
-
-    $('#PersonTableContainer11').jtable('load');
 
     });
