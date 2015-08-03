@@ -187,7 +187,7 @@ $(document).ready(function () {
 
                 codigo_periodo: {
                     title: 'Código',
-                    width: '10%',
+                    width: '10%'
                 },
 
                 fecha_inicio: {
@@ -225,7 +225,7 @@ $(document).ready(function () {
 
                 codigo_edificio: {
                     title: 'Código',
-                    width: '5%',
+                    width: '5%'
                 },
 
                 nombre: {
@@ -275,13 +275,13 @@ $(document).ready(function () {
 
                 codigo_aula: {
                     title: 'Codigo',
-                    width: '10%',
+                    width: '10%'
                 },
 
                 id_edificio: {
                     title: 'Edificio',
                     options: '../opciones/php/options/option5.php',
-                    width: '10%',
+                    width: '10%'
                 },
 
                 num_aula: {
@@ -331,56 +331,62 @@ $(document).ready(function () {
                 deleteAction: 'php/eliminar/eliminarcursos.php',
             },
             fields: {
-                id_curso: {
+                id_programacion: {
                     key: true,
                     list: false
                 },
 
-                id_asignatura: {
-                    title: 'Asignatura',
+                codigo_prog_curso: {
+                    title: 'Codigo',
                     width: '10%',
-                    /*options: {
-                        '1': 'Arquitectura', '2': 'Ingenieria en Infotecnologia', '3': 'Administracion de Empresas', '4': 'Ingenieria Civil', '5': 'Diseno de Interiores', '6': 'Administracion de Empresas Turisticas'
-                    }*/
                 },
 
-                periodo: {
+                id_periodo: {
                     title: 'Periodo',
+                    options: '../opciones/php/options/option6.php',
                     width: '10%'
                 },
 
-                hora_inicial: {
-                    title: 'Inicio',
-                    width: '10%'
-                },
-
-                hora_final: {
-                    title: 'Final',
-                    width: '10%'
-                },
-
-                 dias: {
-                    title: 'Dias',
-                    width: '10%'
-                },
-
-                 id_docente: {
-                    title: 'Docente',
-                    width: '10%'
-                },
-
-                id_salon: {
-                    title: 'Salon',
-                    width: '10%'
-                },
-
-                id_edificio: {
-                    title: 'Edificio',
+                codigo_curso: {
+                    title: 'Curso',
+                    options: '../opciones/php/options/option7.php',
                     width: '10%'
                 },
 
                 seccion: {
-                    title: 'Seccion',
+                    title: 'Sección',
+                    width: '10%'
+                },
+
+                hora_inicio: {
+                    title: 'Hora Inicio',
+                    width: '10%'
+                },
+
+                hora_termina: {
+                    title: 'Hora Final',
+                    width: '10%'
+                },
+
+                dias: {
+                    title: 'Días',
+                    width: '10%'
+                },
+
+                id_empleado: {
+                    title: 'Docente',
+                    options: '../opciones/php/options/option8.php',
+                    width: '10%'
+                },
+
+                id_aula: {
+                    title: 'Aula',
+                    options: '../opciones/php/options/option9.php',
+                    width: '10%'
+                },
+
+                estatus_curso: {
+                    title: 'Estatus',
                     width: '10%'
                 },
 
