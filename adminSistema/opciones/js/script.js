@@ -107,8 +107,70 @@ $(document).ready(function () {
 
     $('#PersonTableContainer1').jtable('load');
 
-
     $('#PersonTableContainer2').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Cursos',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarasignaturas.php',
+                createAction: 'php/ingresar/ingresarasignaturas.php',
+                updateAction: 'php/editar/editarasignaturas.php',
+                deleteAction: 'php/eliminar/eliminarasignaturas.php',
+            },
+            fields: {
+                id_curso: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_curso: {
+                    title: 'Código',
+                    width: '5%'
+                },
+
+                nombre_curso: {
+                    title: 'Nombre',
+                    width: '10%'
+                },
+
+                uv: {
+                    title: 'UV',
+                    width: '5%'
+                },
+
+                 horas_practicas: {
+                    title: 'Horas Prácticas',
+                    width: '5%'
+                },
+
+                 horas_teoricas: {
+                    title: 'Horas Teóricas',
+                    width: '5%'
+                },
+
+                laboratorio: {
+                    title: 'Laboratorio',
+                    width: '5%'
+                },
+
+                id_plan_estudio: {
+                    title: 'Plan de Estudio',
+                    options: '../opciones/php/options/option4.php',
+                    width: '18%'
+                },
+
+                 periodo: {
+                    title: 'Periodo',
+                    width: '5%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer2').jtable('load');
+
+
+    $('#PersonTableContainer3').jtable({
             messages: Spanishmessages, //Localizacion
             title: 'Salones',
             actions: {
@@ -169,60 +231,11 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer2').jtable('load');
+    $('#PersonTableContainer3').jtable('load');
 
 
 
-    $('#PersonTableContainer5').jtable({
-            messages: Spanishmessages, //Localizacion
-            title: 'Cursos',
-            paging: true,
-            actions: {
-                listAction: 'php/listar/listarasignaturas.php',
-                createAction: 'php/ingresar/ingresarasignaturas.php',
-                updateAction: 'php/editar/editarasignaturas.php',
-                deleteAction: 'php/eliminar/eliminarasignaturas.php',
-            },
-            fields: {
-                id_curso: {
-                    key: true,
-                    list: false
-                },
 
-                codigo_curso: {
-                    title: 'Código',
-                    width: '5%'
-                },
-
-                nombre_curso: {
-                    title: 'Nombre',
-                    width: '10%'
-                },
-
-                uv: {
-                    title: 'UV',
-                    width: '10%'
-                },
-
-                 horas_practicas: {
-                    title: 'Horas Prácticas',
-                    width: '10%'
-                },
-
-                 horas_teoricas: {
-                    title: 'Horas Teóricas',
-                    width: '10%'
-                },
-
-                 periodo: {
-                    title: 'Periodo',
-                    width: '10%'
-                },
-
-            }
-        });
-
-    $('#PersonTableContainer5').jtable('load');
 
     $('#PersonTableContainer6').jtable({
             messages: Spanishmessages, //Localizacion

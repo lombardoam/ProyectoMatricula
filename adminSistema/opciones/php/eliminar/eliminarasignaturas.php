@@ -3,7 +3,7 @@ header('Content-type: application/json');
 require '../../require/conexion.php';
 
 //Delete from database
-$result = mysqli_query($conexion, "DELETE FROM asignaturas WHERE id_asignatura = " . $_POST["id_asignatura"] . ";");
+$result = mysqli_query($conexion, "DELETE FROM cursos WHERE id_curso = " . $_POST["id_curso"] . ";");
 
 //Return result to jTable
 $jTableResult = array();
