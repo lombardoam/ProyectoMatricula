@@ -555,11 +555,13 @@ $(document).ready(function () {
 
                 id_estudiante: {
                     title: 'Estudiante',
+                    options: '../opciones/php/options/option13.php',
                     width: '10%',
                 },
 
                 id_programacion: {
                     title: 'Codigo Programación',
+                    options: '../opciones/php/options/option14.php',
                     width: '5%'
                 },
 
