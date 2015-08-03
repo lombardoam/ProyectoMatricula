@@ -53,7 +53,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesion </a>
+                            <a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesion </a>
                         </li>
                     </ul>
                 </li>
