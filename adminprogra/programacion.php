@@ -55,7 +55,7 @@
                     },
 
 
-					codigo_curso: {
+				id_curso: {
 						title: 'Asignatura',
                         options: 'param/paramcursos.php',
 
