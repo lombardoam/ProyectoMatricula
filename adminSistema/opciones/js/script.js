@@ -338,7 +338,7 @@ $(document).ready(function () {
 
                 codigo_prog_curso: {
                     title: 'Codigo',
-                    width: '10%',
+                    width: '10%'
                 },
 
                 id_periodo: {
@@ -347,7 +347,7 @@ $(document).ready(function () {
                     width: '10%'
                 },
 
-                codigo_curso: {
+                id_curso: {
                     title: 'Curso',
                     options: '../opciones/php/options/option7.php',
                     width: '10%'
