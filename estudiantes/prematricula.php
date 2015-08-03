@@ -44,7 +44,7 @@ require'header.php';
     <tbody>
     <?php
     $conexion = mysqli_connect("localhost", "root", "", "matricula");
-    $sql=mysqli_query($conexion, "SELECT nombre_asignatra, hora_inicial, hora_final, dias, seccion FROM cursos INNER JOIN asignaturas WHERE cursos.id_asignatura = asignaturas.id_asignatura");
+    $sql=mysqli_query($conexion, "SELECT nombre_curso, hora_inicio, hora_termina, dias, seccion FROM cursos INNER JOIN programacion_cursos WHERE cursos.id_curso = programacion_cursos.id_curso AND ");
 
     $i = 0;
 
@@ -53,9 +53,9 @@ require'header.php';
 
     <tr>
     <td width="5%"><input class="check" type="checkbox" name="select[]" value="<?php echo $i++; ?>"/></td>
-    <td><input class="asignaturas" type="text" name="asignatura[]" readonly id="nombre_asignatra" value="<?php echo $row['nombre_asignatra']; ?>"></td>
-    <td><input class="horas" type="text" name="inicial[]" readonly id="hora_inicial" value="<?php echo $row['hora_inicial']; ?>"></td>
-    <td><input class="horas" type="text" name="final[]" readonly id="hora_final" value="<?php echo $row['hora_final']; ?>"></td>
+    <td><input class="asignaturas" type="text" name="curso[]" readonly id="nombre_curso" value="<?php echo $row['nombre_curso']; ?>"></td>
+    <td><input class="horas" type="text" name="inicio[]" readonly id="hora_inicio" value="<?php echo $row['hora_inicio']; ?>"></td>
+    <td><input class="horas" type="text" name="termina[]" readonly id="hora_termina" value="<?php echo $row['hora_termina']; ?>"></td>
     <td><input class="dias" type="text" name="dias[]" readonly id="dias" value="<?php echo $row['dias']; ?>"></td>
     <td><input class="seccion" type="text" name="seccion[]" readonly id="seccion" value="<?php echo $row['seccion']; ?>"></td>
     </tr>
@@ -66,14 +66,15 @@ require'header.php';
 
     </table>
     <input class="btn" type="submit" name="submit" value="Pre Matricular"/>
+    <?php echo $_SESSION['id_carrera']; ?>
     </form>
 
     <?php
     if(isset($_POST['submit'])){
     $select=$_POST['select'];
-    $asignatura=$_POST['asignatura'];
-    $hora_inicial=$_POST['inicial'];
-    $hora_final=$_POST['final'];
+    $asignatura=$_POST['curso'];
+    $hora_inicial=$_POST['inicio'];
+    $hora_final=$_POST['termina'];
     $dias=$_POST['dias'];
     $seccion=$_POST['seccion'];
 
@@ -83,7 +84,7 @@ require'header.php';
        VALUES('".$row['asignatura']."',
             '".$row['seccion']."', '".$row['horario']."')");*/
 
-         $query=mysqli_query($conexion, "INSERT INTO prem(asignatura, hora_inicial, hora_final, dias, seccion)
+         $query=mysqli_query($conexion, "INSERT INTO prematricula(asignatura, hora_inicial, hora_final, dias, seccion)
        VALUES('{$asignatura [$i]}',
             '{$hora_inicial [$i]}', '{$hora_final [$i]}', '{$dias [$i]}', '{$seccion [$i]}')");
 

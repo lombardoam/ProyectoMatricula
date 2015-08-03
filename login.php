@@ -36,7 +36,7 @@
                   $res = mysqli_query($conexion, $sql);
                   $array = mysqli_fetch_assoc($res);
                   $_SESSION['id_carrera'] = $array['id_carrera'];
-                  header('Location:index.php?alumno');
+                  header('Location:estudiantes/index.php');
                   break;
                case 4; //Encargado
                   header('Location:adminmatricula/index.php');
