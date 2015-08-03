@@ -616,7 +616,43 @@ $(document).ready(function () {
 
     $('#PersonTableContainer11').jtable('load');
 
+    $('#PersonTableContainer12').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Requisitos de Cursos',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarrequisitos.php',
+                createAction: 'php/ingresar/ingresarrequisitos.php',
+                updateAction: 'php/editar/editarrequisitos.php',
+                deleteAction: 'php/eliminar/eliminarrequisitos.php',
+            },
+            fields: {
+                id_requisito: {
+                    key: true,
+                    list: false
+                },
 
+                codigo_requisito: {
+                    title: 'Codigo',
+                    width: '5%',
+                },
+
+                id_curso: {
+                    title: 'Curso',
+                    options: '../opciones/php/options/option7.php',
+                    width: '10%'
+                },
+
+                codigo_curso_requisito: {
+                    title: 'Requisito',
+                    /*options: '../opciones/php/options/option15.php',*/
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer12').jtable('load');
 
     $('#PersonTableContainer100').jtable({
             messages: Spanishmessages, //Localizacion
