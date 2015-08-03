@@ -931,5 +931,36 @@ $(document).ready(function () {
 
     $('#PersonTableContainer17').jtable('load');
 
+    $('#PersonTableContainer18').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Tipos de Equivalencias',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listartipos_eq.php',
+                createAction: 'php/ingresar/ingresartipos_eq.php',
+                updateAction: 'php/editar/editartipos_eq.php',
+                deleteAction: 'php/eliminar/eliminartipos_eq.php',
+            },
+            fields: {
+                id_tipo: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_tipo_eq: {
+                    title: 'Codigo EQ',
+                    width: '3%',
+                },
+
+                descripcion: {
+                    title: 'Descripción',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer18').jtable('load');
+
 
     });
