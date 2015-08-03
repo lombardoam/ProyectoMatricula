@@ -1,35 +1,37 @@
 <?php
 header('Content-type: application/json');
-   require '../conexion.php';
+   require 'conexion.php';
 
 //Insert record into database
 $result = mysqli_query($conexion, "INSERT INTO estudiantes(
 num_cuenta,
-apellidos,
 nombres,
-correo,
+apellidos,
+tipo_estudiante,
 lugar_nacimiento,
 fecha_nacimiento,
-telefono,
-nacionalidad,
 estado_civil,
-direccion,
-trabaja,
-tel_trabajo,
-dir_trabajo) VALUES(
+direccion_vivienda,
+telefono,
+direccion_trabajo,
+telefono_trabajo,
+fecha_ingreso,
+id_carrera,
+saldo) VALUES(
 " .  $_POST["num_cuenta"] . ",
-'" . $_POST["apellidos"] . "',
 '" . $_POST["nombres"] . "',
-'" .  $_POST["correo"] . "',
+'" . $_POST["apellidos"] . "',
+'" .  $_POST["tipo_estudiante"] . "',
 '" .  $_POST["lugar_nacimiento"]   . "',
 '" .   $_POST["fecha_nacimiento"]   . "',
-'" .   $_POST["telefono"]   . "',
-'" .   $_POST["nacionalidad"]  . "',
-'" .  $_POST["estado_civil"] . "',
-'" .  $_POST["direccion"] . "',
-'" .  $_POST["trabaja"] . "',
-'" .  $_POST["tel_trabajo"] . "',
-'" .  $_POST["dir_trabajo"] . "'
+'" .   $_POST["estado_civil"]   . "',
+'" .   $_POST["direccion_vivienda"]  . "',
+'" .  $_POST["telefono"] . "',
+'" .  $_POST["direccion_trabajo"] . "',
+'" .  $_POST["telefono_trabajo"] . "',
+'" .  $_POST["fecha_ingreso"] . "',
+'" .  $_POST["id_carrera"] . "',
+'" .  $_POST["saldo"] . "'
 )");
 
 

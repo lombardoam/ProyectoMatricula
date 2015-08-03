@@ -6,7 +6,7 @@
 
 	<script src="scripts/jquery-1.6.4.min.js" type="text/javascript"></script>
     <script src="scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
-   <script src="scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
+    <script src="scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
     <script src="jtable/localization/jquery.jtable.es.js" type="text/javascript"></script>
 
   </head>
@@ -21,9 +21,10 @@
 			$('#PeopleTableContainer').jtable(
 			{
 				title: 'Carreras',
-                paging:'true',
+                paging: 'true',
 					actions: {
 					 listAction: 'listarcarreras.php',
+
 				},
 
 
@@ -34,20 +35,39 @@
 						key: true,
 						create: false,
 						edit: false,
-						list: false
+						list: false,
 					},
 
 
+                    codigo_carrera: {
+                        title: 'Código',
+
+						 },
+
 					nombre_carrera: {
 						title: 'Nombre carrera',
-						width: '15%'
+
 						 },
 
 
                      id_facultad: {
 						title: 'Facultad',
-						width: '15%'
+
+                        options: 'param/paramfacultades.php',
 						 },
+
+                      codigo_empleado: {
+						title: 'Director',
+                        options: 'param/paramdirector.php',
+
+                     },
+
+                      id_puesto: {
+						title: 'Puesto',
+                        options: 'param/parampuestos.php',
+
+						 },
+
 
 
 				}

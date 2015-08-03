@@ -64,7 +64,8 @@
 
 
 					tipo_estudiante: {
-						title: 'Tipo'
+						title: 'Tipo',
+                        options: {'Reingreso':'Reingreso','Primer ingreso':'Primer ingreso', 'Élite':'Élite','Egresado':'Egresado','Egresada':'Egresada' },
 
 
 					},
@@ -75,8 +76,8 @@
 
 					fecha_nacimiento: {
 						title: 'Nacimiento',
-                        type: 'date',
-                        displayFormat: 'dd-mm-yy'
+                     type: 'date',
+                     displayFormat: 'yy-mm-dd'
 
 					},
 
@@ -102,7 +103,7 @@
 					},
 
                     direccion_trabajo: {
-						title: 'dir. trabajo',
+						title: 'Dir. trabajo',
                         list: false
 
 
@@ -110,44 +111,23 @@
 
                      telefono_trabajo:
 					{
-						title: 'tel. trabajo'
+						title: 'Tel. trabajo'
 
 					},
 
-
-                    trabaja: {
-						title: 'Trabaja',
-                        list: false,
-                        options: { '1': 'Sí', '0': 'No'
-                },
-
-
-					},
 
                      fecha_ingreso: {
 						title: 'Ingreso',
                         list: false,
                         type: 'date',
-                        displayFormat: 'dd-mm-yy'
-
-
-					},
-                     dir_trabajo: {
-						title: 'Dir. trabajo',
-                        list:false
+                        displayFormat: 'yy-mm-dd'
 
 
 					},
 
-                    fecha_nacimiento: {
-						title: 'Nacimiento',
-                        type: 'date',
-                        displayFormat: 'dd-mm-yy'
-
-					},
-
-                     id_carrera: {
+                       id_carrera: {
 						title: 'Carrera',
+                         options: 'param/paramcarreras.php',
 
 
 					},

@@ -5,10 +5,11 @@
     <link href="themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
 	<link href="Scripts/jtable/themes/metro/blue/jtable.css" rel="stylesheet" type="text/css" />
 
-	<script src="scripts/jquery-1.6.4.min.js" type="text/javascript"></script>
+    <script src="scripts/jquery-1.6.4.min.js" type="text/javascript"></script>
     <script src="scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
     <script src="jtable/localization/jquery.jtable.es.js" type="text/javascript"></script>
+
 
   </head>
   <body>
@@ -21,8 +22,8 @@
 		    //Prepare jTable
 			$('#PeopleTableContainer').jtable(
 			{
-				title: 'Ver alumnos matriculados en la universidad',
-                paging:true,
+				title: 'Ver alumnos de Primer Ingreso en la universidad',
+                paging: true,
 				actions:
 				 {
 					 listAction: 'verestudiantes.php',
@@ -49,7 +50,12 @@
 
                     },
 
+		            nombres: {
+						title: 'Nombres'
 
+
+
+					},
 
 					apellidos: {
 						title: 'Apellidos'
@@ -57,14 +63,9 @@
 					},
 
 
-					nombres: {
-						title: 'Nombres'
-
-
-
-					},
-					correo: {
-						title: 'Correo'
+					tipo_estudiante: {
+						title: 'Tipo',
+                        options: {'Primer ingreso':'Primer ingreso' },
 
 
 					},
@@ -75,21 +76,8 @@
 
 					fecha_nacimiento: {
 						title: 'Nacimiento',
-                        type: 'date',
-                        displayFormat: 'dd-mm-yy'
-
-					},
-
-					telefono: {
-						title: 'Teléfono'
-
-
-					},
-
-                    nacionalidad: {
-						title: 'Nacionalidad',
-                        list: false
-
+                     type: 'date',
+                     displayFormat: 'yy-mm-dd'
 
 					},
 
@@ -102,30 +90,50 @@
 
 					},
 
-					direccion:
+                     direccion_vivienda:
 					{
 						title: 'Dirección'
 
 					},
 
-                    trabaja: {
-						title: 'Trabaja',
-                        list: false,
-                        options: { '1': 'Sí', '0': 'No'
-                },
+                     telefono: {
+						title: 'Teléfono'
 
 
 					},
 
-                     tel_trabajo: {
-						title: 'Tel. trabajo',
+                    direccion_trabajo: {
+						title: 'Dir. trabajo',
                         list: false
 
 
 					},
-                     dir_trabajo: {
-						title: 'Dir. trabajo',
-                        list:false
+
+                     telefono_trabajo:
+					{
+						title: 'Tel. trabajo'
+
+					},
+
+
+                     fecha_ingreso: {
+						title: 'Ingreso',
+                        list: false,
+                        type: 'date',
+                        displayFormat: 'yy-mm-dd'
+
+
+					},
+
+                       id_carrera: {
+						title: 'Carrera',
+                         options: 'param/paramcarreras.php',
+
+
+					},
+
+                     saldo: {
+						title: 'Saldo',
 
 
 					},

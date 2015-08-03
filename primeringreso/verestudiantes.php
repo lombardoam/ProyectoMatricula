@@ -1,14 +1,15 @@
 <?php
   header('Content-type: application/json');
-  require '../conexion.php';
+  require 'conexion.php';
 
 //Get record count
 		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM estudiantes");
 		$row = mysqli_fetch_array($result);
 		$recordCount = $row['RecordCount'];
 
-  //Get records from database
-  $result = mysqli_query($conexion, "SELECT * FROM estudiantes");
+
+//Get records from database
+  $result = mysqli_query($conexion, "SELECT * FROM estudiantes WHERE tipo_estudiante='Primer Ingreso'");
 
   //Add all records to an array
   $rows = array();

@@ -6,7 +6,7 @@
 
 	<script src="scripts/jquery-1.6.4.min.js" type="text/javascript"></script>
     <script src="scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
-    <script src="scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
+     <script src="scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
     <script src="jtable/localization/jquery.jtable.es.js" type="text/javascript"></script>
 
   </head>
@@ -23,13 +23,14 @@
 				title: 'Asignaturas',
                     paging:'true',
 					actions: {
-					listAction: 'asignaturas.php'
+					 listAction: 'asignaturas.php',
+
 				},
 
 
 				fields:
 				 {
-					id_asignatura:
+					id_curso:
 					{
 						key: true,
 						create: false,
@@ -38,40 +39,46 @@
 					},
 
 
-					nombre_clase: {
-						title: 'Nombre Clase',
-						width: '15%'
-						 },
-
-
-
-					codigo_clase: {
+                    codigo_curso: {
 						title: 'Código',
-						width: '15%'
 						 },
 
-                     UV: {
+
+					nombre_curso: {
+						title: 'Nombre Clase',
+						 },
+
+
+
+                     uv: {
 						title: 'UV',
-						width: '15%',
-                        options: { '1': '1', '2': '2', '3': '3', '4': '4', '5': '5'
-                },
-						 },
-
-
-                     periodo: {
-						title: 'Periodo-Año',
-						width: '15%'
-						 },
+						options: { '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6':'6' },
+					},
 
                      horas_practicas: {
 						title: 'Horas Prácticas',
-						width: '15%'
 						 },
 
                      horas_teoricas: {
 						title: 'Horas Teóricas',
-						width: '15%'
 						 },
+
+                     laboratorio: {
+						title: 'Laboratorio',
+						options: { '0':'No','1':'Sí' },
+						 },
+
+                     id_plan_estudio : {
+                         title: 'Plan',
+                         options: 'param/paramplan.php'
+                     },
+
+                     periodo: {
+						title: 'Periodo',
+
+						 },
+
+
 
 				}
 			});

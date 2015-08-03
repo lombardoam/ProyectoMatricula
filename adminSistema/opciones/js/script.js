@@ -24,49 +24,41 @@ $(document).ready(function () {
     deleteProggress: 'Borrado {0} de {1} registros, procesando...'
 }
 
-        $('#PersonTableContainer').jtable({
+    $('#PersonTableContainer').jtable({
             messages: Spanishmessages, //Localizacion
-            title: 'Edificios',
+            title: 'Facultades',
             actions: {
-                listAction: 'php/listaredificio.php',
-                createAction: 'php/ingresaredificio.php',
-                updateAction: 'php/editaredificio.php',
-                deleteAction: 'php/eliminaredificio.php',
+                listAction: 'php/listar/listarfacultades.php',
+                createAction: 'php/ingresar/ingresarfacultades.php',
+                updateAction: 'php/editar/editarfacultades.php',
+                deleteAction: 'php/eliminar/eliminarfacultades.php',
             },
             fields: {
-                id_edificio: {
+                id_facultad: {
                     key: true,
                     list: false
                 },
 
-                codigo_edificio: {
-                    title: 'Codigo',
+                codigo_facultad: {
+                    title: 'Código',
                     width: '5%'
                 },
 
-                nombre: {
-                    title: 'Nombre',
+                nombre_facultad: {
+                    title: 'Nombre de la Facultad',
                     width: '10%'
                 },
 
-                pisos: {
-                    title: 'Cantidad de Pisos',
-                    width: '10%'
+                codigo_empleado: {
+                    title: 'Decano',
+                    options: '../opciones/php/options/option1.php',
+                    width: '8%'
                 },
 
-                cantidad_aulas: {
-                    title: 'Numero de Aulas',
-                    width: '10%'
-                },
-
-                cantidad_laboratorios: {
-                    title: 'Numero de Laboratorios',
-                    width: '10%'
-                },
-
-                cantidad_auditorios: {
-                    title: 'Numero de Auditorios',
-                    width: '10%'
+                id_puesto: {
+                    title: 'Puesto',
+                    options: '../opciones/php/options/option2.php',
+                    width: '5%'
                 },
 
 
@@ -80,10 +72,10 @@ $(document).ready(function () {
             messages: Spanishmessages, //Localizacion
             title: 'Salones',
             actions: {
-                listAction: 'php/listarsalones.php',
-                createAction: 'php/ingresarsalones.php',
-                updateAction: 'php/editarsalones.php',
-                deleteAction: 'php/eliminarsalones.php',
+                listAction: 'php/listar/listarsalones.php',
+                createAction: 'php/ingresar/ingresarsalones.php',
+                updateAction: 'php/editar/editarsalones.php',
+                deleteAction: 'php/eliminar/eliminarsalones.php',
             },
             fields: {
                 id_aula: {
@@ -139,51 +131,15 @@ $(document).ready(function () {
 
     $('#PersonTableContainer2').jtable('load');
 
-    $('#PersonTableContainer3').jtable({
-            messages: Spanishmessages, //Localizacion
-            title: 'Facultades',
-            actions: {
-                listAction: 'php/listarfacultades.php',
-                createAction: 'php/ingresarfacultades.php',
-                updateAction: 'php/editarfacultades.php',
-                deleteAction: 'php/eliminarfacultades.php',
-            },
-            fields: {
-                id_facultad: {
-                    key: true,
-                    list: false
-                },
-
-                codigo_facultad: {
-                    title: 'Código',
-                    width: '5%'
-                },
-
-                nombre_facultad: {
-                    title: 'Nombre de la Facultad',
-                    width: '10%'
-                },
-
-                codigo_empleado: {
-                    title: 'Decano',
-                    width: '10%'
-                },
-
-
-            }
-        });
-
-    $('#PersonTableContainer3').jtable('load');
-
     $('#PersonTableContainer4').jtable({
             messages: Spanishmessages, //Localizacion
             title: 'Carreras',
             paging: true,
             actions: {
-                listAction: 'php/listarcarreras.php',
-                createAction: 'php/ingresarcarreras.php',
-                updateAction: 'php/editarcarreras.php',
-                deleteAction: 'php/eliminarcarreras.php',
+                listAction: 'php/listar/listarcarreras.php',
+                createAction: 'php/ingresar/ingresarcarreras.php',
+                updateAction: 'php/editar/editarcarreras.php',
+                deleteAction: 'php/eliminar/eliminarcarreras.php',
             },
             fields: {
                 id_carrera: {
@@ -237,10 +193,10 @@ $(document).ready(function () {
             title: 'Cursos',
             paging: true,
             actions: {
-                listAction: 'php/listarasignaturas.php',
-                createAction: 'php/ingresarasignaturas.php',
-                updateAction: 'php/editarasignaturas.php',
-                deleteAction: 'php/eliminarasignaturas.php',
+                listAction: 'php/listar/listarasignaturas.php',
+                createAction: 'php/ingresar/ingresarasignaturas.php',
+                updateAction: 'php/editar/editarasignaturas.php',
+                deleteAction: 'php/eliminar/eliminarasignaturas.php',
             },
             fields: {
                 id_curso: {
@@ -288,10 +244,10 @@ $(document).ready(function () {
             title: 'Programación de Cursos',
             paging: true,
             actions: {
-                listAction: 'php/listarcursos.php',
-                createAction: 'php/ingresarcursos.php',
-                updateAction: 'php/editarcursos.php',
-                deleteAction: 'php/eliminarcursos.php',
+                listAction: 'php/listar/listarcursos.php',
+                createAction: 'php/ingresar/ingresarcursos.php',
+                updateAction: 'php/editar/editarcursos.php',
+                deleteAction: 'php/eliminar/eliminarcursos.php',
             },
             fields: {
                 id_curso: {
@@ -357,10 +313,10 @@ $(document).ready(function () {
             title: 'Planes de Estudio',
             paging: true,
             actions: {
-                listAction: 'php/listarcursos.php',
-                createAction: 'php/ingresarcursos.php',
-                updateAction: 'php/editarcursos.php',
-                deleteAction: 'php/eliminarcursos.php',
+                listAction: 'php/listar/listarcursos.php',
+                createAction: 'php/ingresar/ingresarcursos.php',
+                updateAction: 'php/editar/editarcursos.php',
+                deleteAction: 'php/eliminar/eliminarcursos.php',
             },
             fields: {
                 id_curso: {
@@ -427,7 +383,7 @@ $(document).ready(function () {
             title: 'Registros de Prematricula',
             paging: true,
             actions: {
-                listAction: 'php/listarprematricula.php',
+                listAction: 'php/listar/listarprematricula.php',
             },
             fields: {
                 id_curso: {
@@ -470,7 +426,7 @@ $(document).ready(function () {
             title: 'Planes de Estudio',
             paging: true,
             actions: {
-                listAction: 'php/listarplanes.php',
+                listAction: 'php/listar/listarplanes.php',
             },
             fields: {
                 id_plan_estudio: {
@@ -518,7 +474,7 @@ $(document).ready(function () {
             title: 'Empleados',
             paging: true,
             actions: {
-                listAction: 'php/listarempleados.php',
+                listAction: 'php/listar/listarempleados.php',
             },
             fields: {
                 id_empleado: {
@@ -576,7 +532,7 @@ $(document).ready(function () {
             title: 'Períodos Académicos',
             paging: true,
             actions: {
-                listAction: 'php/listarperiodos.php',
+                listAction: 'php/listar/listarperiodos.php',
             },
             fields: {
                 id_periodo: {

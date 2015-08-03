@@ -1,12 +1,11 @@
 <?php
   header('Content-type: application/json');
-  require '../conexion.php';
+  require 'conexion.php';
 
 //Get record count
 		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM cursos");
 		$row = mysqli_fetch_array($result);
 		$recordCount = $row['RecordCount'];
-
   //Get records from database
   $result = mysqli_query($conexion, "SELECT * FROM cursos");
 

@@ -6,7 +6,7 @@
 
 	<script src="scripts/jquery-1.6.4.min.js" type="text/javascript"></script>
     <script src="scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
-    <script src="scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
+     <script src="scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
     <script src="jtable/localization/jquery.jtable.es.js" type="text/javascript"></script>
 
   </head>
@@ -21,58 +21,66 @@
 				title: 'Ingreso Docentes',
                 paging:'true',
 				actions: {
-					 listAction: 'leerdocentes.php'
+					 listAction: 'leerdocentes.php',
+
 				},
 
 				fields: {
-					id_docente: {
+					id_empleado: {
 						key: true,
 						create: false,
 						edit: false,
-						list: false
-					},
-					nombre: {
-						title: 'Nombre Docente',
-						width: '30%',
-					},
-					apellido: {
-						title: 'Apellido Docente',
-						width: '30%',
+						list: false,
 					},
 
-						telefono: {
-						title: 'Teléfono',
-						width: '15%',
+                	codigo_empleado: {
+						title: 'Código',
 
 					},
-					correo: {
-						title: 'Correo',
-						width: '30%',
+
+					nombres: {
+						title: 'Nombres',
 
 					},
-					id_carrera: {
-						title: 'Carrera',
-						width: '30%',
 
-						 },
+                    apellidos: {
+						title: 'Apellidos',
 
-				 genero: {
+					},
+
+                   genero: {
                     title: 'Género',
-                    width: '13%',
-                    options: { 'H': 'Hombre', 'M': 'Mujer' },
+
+                    options: { 'M': 'Hombre', 'F': 'Mujer' },
 
                 },
 
+					telefono: {
+						title: 'Teléfono',
 
-
-					cordinador: {
-						title: 'Coordinador',
-						width: '30%',
-                    options: { '0': 'No', '1': 'Si' },
 
 					},
+
+					email: {
+						title: 'Correo',
+
+
+					},
+					codigo_carrera: {
+						title: 'Carrera',
+						options: 'param/paramcarrera.php',
+						 },
+
+
+					id_puesto: {
+						title: 'Puesto',
+						options: 'param/parampuestos.php',
+					},
+
+
 				}
 			});
+
 
 			//Load person list from server
 			$('#PeopleTableContainer').jtable('load');
