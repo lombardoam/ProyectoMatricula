@@ -487,7 +487,57 @@ $(document).ready(function () {
 
     $('#PersonTableContainer8').jtable('load');
 
+    $('#PersonTableContainer9').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Planes de Estudio',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarplanes.php',
+                createAction: 'php/ingresar/ingresarplanes.php',
+                updateAction: 'php/editar/editarplanes.php',
+                deleteAction: 'php/eliminar/eliminarplanes.php',
+            },
+            fields: {
+                id_plan_estudio: {
+                    key: true,
+                    list: false
+                },
 
+                codigo_plan: {
+                    title: 'Código',
+                    width: '5%',
+                },
+
+                nombre_plan: {
+                    title: 'Nombre',
+                    width: '10%'
+                },
+
+                duracion: {
+                    title: 'Duración',
+                    width: '10%'
+                },
+
+                cantidad_cursos: {
+                    title: 'Cantidad de Cursos',
+                    width: '10%'
+                },
+
+                total_uv: {
+                    title: 'Total UV',
+                    width: '10%'
+                },
+
+                id_carrera: {
+                    title: 'Carrera',
+                    options: '../opciones/php/options/option12.php',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer9').jtable('load');
 
     $('#PersonTableContainer80').jtable({
             messages: Spanishmessages, //Localizacion
@@ -602,53 +652,7 @@ $(document).ready(function () {
 
     $('#PersonTableContainer81').jtable('load');
 
-    $('#PersonTableContainer9').jtable({
-            messages: Spanishmessages, //Localizacion
-            title: 'Planes de Estudio',
-            paging: true,
-            actions: {
-                listAction: 'php/listar/listarplanes.php',
-            },
-            fields: {
-                id_plan_estudio: {
-                    key: true,
-                    list: false
-                },
 
-                codigo_plan: {
-                    title: 'Código',
-                    width: '5%',
-                },
-
-                nombre_plan: {
-                    title: 'Nombre',
-                    width: '10%'
-                },
-
-                duracion: {
-                    title: 'Duración',
-                    width: '10%'
-                },
-
-                cantidad_cursos: {
-                    title: 'Cantidad de Cursos',
-                    width: '10%'
-                },
-
-                total_uv: {
-                    title: 'Total UV',
-                    width: '10%'
-                },
-
-                id_carrera: {
-                    title: 'Carrera',
-                    width: '10%'
-                },
-
-            }
-        });
-
-    $('#PersonTableContainer9').jtable('load');
 
     $('#PersonTableContainer10').jtable({
             messages: Spanishmessages, //Localizacion
