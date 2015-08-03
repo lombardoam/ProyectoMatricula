@@ -57,17 +57,10 @@
 						 },
 
                       codigo_empleado: {
-						title: 'Director',
-                        options: 'param/paramdirector.php',
+						title: 'Coordinador',
+                       options: 'param/paramdirector.php',
 
                      },
-
-                      id_puesto: {
-						title: 'Puesto',
-                        options: 'param/parampuestos.php',
-
-						 },
-
 
 
 				}

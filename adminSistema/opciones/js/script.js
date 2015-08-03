@@ -49,7 +49,7 @@ $(document).ready(function () {
                     width: '10%'
                 },
 
-                codigo_empleado: {
+                id_empleado: {
                     title: 'Decano',
                     options: '../opciones/php/options/option1.php',
                     width: '8%'
@@ -94,7 +94,7 @@ $(document).ready(function () {
                     width: '12%'
                 },
 
-               codigo_empleado: {
+               id_empleado: {
                     title: 'Coordinador',
                    options: '../opciones/php/options/option3.php',
                     width: '10%'
@@ -109,7 +109,7 @@ $(document).ready(function () {
 
     $('#PersonTableContainer2').jtable({
             messages: Spanishmessages, //Localizacion
-            title: 'Cursos',
+            title: 'Asignaturas',
             paging: true,
             actions: {
                 listAction: 'php/listar/listarasignaturas.php',
@@ -187,7 +187,7 @@ $(document).ready(function () {
 
                 codigo_periodo: {
                     title: 'Código',
-                    width: '10%',
+                    width: '10%'
                 },
 
                 fecha_inicio: {
@@ -209,7 +209,7 @@ $(document).ready(function () {
 
     $('#PersonTableContainer4').jtable({
             messages: Spanishmessages, //Localizacion
-            title: 'Períodos Académicos',
+            title: 'Edificios',
             paging: true,
             actions: {
                 listAction: 'php/listar/listaredificios.php',
@@ -225,7 +225,7 @@ $(document).ready(function () {
 
                 codigo_edificio: {
                     title: 'Código',
-                    width: '5%',
+                    width: '5%'
                 },
 
                 nombre: {
@@ -275,13 +275,13 @@ $(document).ready(function () {
 
                 codigo_aula: {
                     title: 'Codigo',
-                    width: '10%',
+                    width: '10%'
                 },
 
                 id_edificio: {
                     title: 'Edificio',
                     options: '../opciones/php/options/option5.php',
-                    width: '10%',
+                    width: '10%'
                 },
 
                 num_aula: {
@@ -331,56 +331,62 @@ $(document).ready(function () {
                 deleteAction: 'php/eliminar/eliminarcursos.php',
             },
             fields: {
-                id_curso: {
+                id_programacion: {
                     key: true,
                     list: false
                 },
 
-                id_asignatura: {
-                    title: 'Asignatura',
-                    width: '10%',
-                    /*options: {
-                        '1': 'Arquitectura', '2': 'Ingenieria en Infotecnologia', '3': 'Administracion de Empresas', '4': 'Ingenieria Civil', '5': 'Diseno de Interiores', '6': 'Administracion de Empresas Turisticas'
-                    }*/
+                codigo_prog_curso: {
+                    title: 'Codigo',
+                    width: '10%'
                 },
 
-                periodo: {
+                id_periodo: {
                     title: 'Periodo',
+                    options: '../opciones/php/options/option6.php',
                     width: '10%'
                 },
 
-                hora_inicial: {
-                    title: 'Inicio',
-                    width: '10%'
-                },
-
-                hora_final: {
-                    title: 'Final',
-                    width: '10%'
-                },
-
-                 dias: {
-                    title: 'Dias',
-                    width: '10%'
-                },
-
-                 id_docente: {
-                    title: 'Docente',
-                    width: '10%'
-                },
-
-                id_salon: {
-                    title: 'Salon',
-                    width: '10%'
-                },
-
-                id_edificio: {
-                    title: 'Edificio',
+                id_curso: {
+                    title: 'Curso',
+                    options: '../opciones/php/options/option7.php',
                     width: '10%'
                 },
 
                 seccion: {
-                    title: 'Seccion',
+                    title: 'Sección',
+                    width: '10%'
+                },
+
+                hora_inicio: {
+                    title: 'Hora Inicio',
+                    width: '10%'
+                },
+
+                hora_termina: {
+                    title: 'Hora Final',
+                    width: '10%'
+                },
+
+                dias: {
+                    title: 'Días',
+                    width: '10%'
+                },
+
+                id_empleado: {
+                    title: 'Docente',
+                    options: '../opciones/php/options/option8.php',
+                    width: '10%'
+                },
+
+                id_aula: {
+                    title: 'Aula',
+                    options: '../opciones/php/options/option9.php',
+                    width: '10%'
+                },
+
+                estatus_curso: {
+                    title: 'Estatus',
                     width: '10%'
                 },
 
@@ -391,65 +397,37 @@ $(document).ready(function () {
 
     $('#PersonTableContainer7').jtable({
             messages: Spanishmessages, //Localizacion
-            title: 'Planes de Estudio',
-            paging: true,
+            title: 'Contenidos de Cursos',
             actions: {
-                listAction: 'php/listar/listarcursos.php',
-                createAction: 'php/ingresar/ingresarcursos.php',
-                updateAction: 'php/editar/editarcursos.php',
-                deleteAction: 'php/eliminar/eliminarcursos.php',
+                listAction: 'php/listar/listarcontenido.php',
+                createAction: 'php/ingresar/ingresarcontenido.php',
+                updateAction: 'php/editar/editarcontenido.php',
+                deleteAction: 'php/eliminar/eliminarcontenido.php',
             },
             fields: {
-                id_curso: {
+                id_contenido: {
                     key: true,
                     list: false
                 },
 
-                id_asignatura: {
-                    title: 'Asignatura',
-                    width: '10%',
-                    /*options: {
-                        '1': 'Arquitectura', '2': 'Ingenieria en Infotecnologia', '3': 'Administracion de Empresas', '4': 'Ingenieria Civil', '5': 'Diseno de Interiores', '6': 'Administracion de Empresas Turisticas'
-                    }*/
+                codigo_contenido: {
+                    title: 'Código',
+                    width: '5%'
                 },
 
-                periodo: {
-                    title: 'Periodo',
+                id_curso: {
+                    title: 'Curso',
+                    options: '../opciones/php/options/option10.php',
                     width: '10%'
                 },
 
-                hora_inicial: {
-                    title: 'Inicio',
+                tema: {
+                    title: 'Tema',
                     width: '10%'
                 },
 
-                hora_final: {
-                    title: 'Final',
-                    width: '10%'
-                },
-
-                 dias: {
-                    title: 'Dias',
-                    width: '10%'
-                },
-
-                 id_docente: {
-                    title: 'Docente',
-                    width: '10%'
-                },
-
-                id_salon: {
-                    title: 'Salon',
-                    width: '10%'
-                },
-
-                id_edificio: {
-                    title: 'Edificio',
-                    width: '10%'
-                },
-
-                seccion: {
-                    title: 'Seccion',
+                descripcion: {
+                    title: 'Descripción',
                     width: '10%'
                 },
 
@@ -458,42 +436,49 @@ $(document).ready(function () {
 
     $('#PersonTableContainer7').jtable('load');
 
-
     $('#PersonTableContainer8').jtable({
             messages: Spanishmessages, //Localizacion
-            title: 'Registros de Prematricula',
-            paging: true,
+            title: 'Control de Cursos',
             actions: {
-                listAction: 'php/listar/listarprematricula.php',
+                listAction: 'php/listar/listarcontrol.php',
+                createAction: 'php/ingresar/ingresarcontrol.php',
+                updateAction: 'php/editar/editarcontrol.php',
+                deleteAction: 'php/eliminar/eliminarcontrol.php',
             },
             fields: {
-                id_curso: {
+                id_control: {
                     key: true,
                     list: false
                 },
 
-                asignatura: {
-                    title: 'Asignatura',
-                    width: '10%',
+                id_programacion: {
+                    title: 'Programación',
+                    options: '../opciones/php/options/option11.php',
+                    width: '5%'
                 },
 
-                hora_inicial: {
-                    title: 'Hora Inicial',
+                prematriculados: {
+                    title: 'Prematriculados',
                     width: '10%'
                 },
 
-                hora_final: {
-                    title: 'Hora Final',
+                matriculados: {
+                    title: 'Matriculados',
                     width: '10%'
                 },
 
-                dias: {
-                    title: 'Dias',
+                aprobados: {
+                    title: 'Aprobados',
                     width: '10%'
                 },
 
-                seccion: {
-                    title: 'Seccion',
+                reprobados: {
+                    title: 'Reprobados',
+                    width: '10%'
+                },
+
+                retirados: {
+                    title: 'Retirados',
                     width: '10%'
                 },
 
@@ -508,6 +493,9 @@ $(document).ready(function () {
             paging: true,
             actions: {
                 listAction: 'php/listar/listarplanes.php',
+                createAction: 'php/ingresar/ingresarplanes.php',
+                updateAction: 'php/editar/editarplanes.php',
+                deleteAction: 'php/eliminar/eliminarplanes.php',
             },
             fields: {
                 id_plan_estudio: {
@@ -542,6 +530,7 @@ $(document).ready(function () {
 
                 id_carrera: {
                     title: 'Carrera',
+                    options: '../opciones/php/options/option12.php',
                     width: '10%'
                 },
 
@@ -552,10 +541,223 @@ $(document).ready(function () {
 
     $('#PersonTableContainer10').jtable({
             messages: Spanishmessages, //Localizacion
+            title: 'Registros de Matricula',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarmatricula.php',
+            },
+            fields: {
+                id_matricula: {
+                    title: 'Nº',
+                    width: '5%',
+                    key: true,
+                },
+
+                id_estudiante: {
+                    title: 'Estudiante',
+                    options: '../opciones/php/options/option13.php',
+                    width: '10%',
+                },
+
+                id_programacion: {
+                    title: 'Codigo Programación',
+                    options: '../opciones/php/options/option14.php',
+                    width: '5%'
+                },
+
+                tipo_matricula: {
+                    title: 'Tipo Matrícula',
+                    width: '8%'
+                },
+
+                estatus_curso: {
+                    title: 'Estatus',
+                    width: '8%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer10').jtable('load');
+
+    $('#PersonTableContainer11').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Registros de Prematricula',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarprematricula.php',
+            },
+            fields: {
+                id_prematricula: {
+                    title: 'Nº',
+                    key: true,
+                    width: '5%'
+                },
+
+                id_estudiante: {
+                    title: 'Estudiante',
+                    options: '../opciones/php/options/option13.php',
+                    width: '10%',
+                },
+
+                id_programacion: {
+                    title: 'Codigo Programación',
+                    options: '../opciones/php/options/option14.php',
+                    width: '5%'
+                },
+
+                estatus_curso: {
+                    title: 'Estatus',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer11').jtable('load');
+
+    $('#PersonTableContainer12').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Requisitos de Cursos',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarrequisitos.php',
+                createAction: 'php/ingresar/ingresarrequisitos.php',
+                updateAction: 'php/editar/editarrequisitos.php',
+                deleteAction: 'php/eliminar/eliminarrequisitos.php',
+            },
+            fields: {
+                id_requisito: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_requisito: {
+                    title: 'Codigo',
+                    width: '5%',
+                },
+
+                id_curso: {
+                    title: 'Curso',
+                    options: '../opciones/php/options/option7.php',
+                    width: '10%'
+                },
+
+                codigo_curso_requisito: {
+                    title: 'Requisito',
+                    /*options: '../opciones/php/options/option15.php',*/
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer12').jtable('load');
+
+    $('#PersonTableContainer13').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Estudiantes',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarestudiantes.php',
+                createAction: 'php/ingresar/ingresarestudiantes.php',
+                updateAction: 'php/editar/editarestudiantes.php',
+                deleteAction: 'php/eliminar/eliminarestudiantes.php',
+            },
+            fields: {
+                id_estudiante: {
+                    key: true,
+                    list: false
+                },
+
+                num_cuenta: {
+                    title: 'Cuenta',
+                    width: '8%',
+                },
+
+                nombres: {
+                    title: 'Nombres',
+                    width: '10%'
+                },
+
+                apellidos: {
+                    title: 'Apellidos',
+                    width: '10%'
+                },
+
+                tipo_estudiante: {
+                    title: 'Tipo Estudiante',
+                    width: '10%'
+                },
+
+                lugar_nacimiento: {
+                    title: 'Lugar de Nacimiento',
+                    width: '10%',
+                    list: false
+                },
+
+                fecha_nacimiento: {
+                    title: 'Fecha Nacimiento',
+                    type: 'date',
+                    width: '10%',
+                    list: false
+                },
+
+                estado_civil: {
+                    title: 'Estado Civil',
+                    width: '10%',
+                    list: false
+                },
+
+                direccion_vivienda: {
+                    title: 'Dirección',
+                    width: '10%',
+                    list: false
+                },
+
+                telefono: {
+                    title: 'Teléfono',
+                    width: '10%',
+                    list: false
+                },
+
+                direccion_trabajo: {
+                    title: 'Dirección Trabajo',
+                    width: '10%',
+                    list: false
+                },
+
+                telefono_trabajo: {
+                    title: 'Teléfono Trabajo',
+                    width: '10%',
+                    list: false
+                },
+
+                id_carrera: {
+                    title: 'Carrera',
+                    options: '../opciones/php/options/option12.php',
+                    width: '15%'
+                },
+
+                saldo: {
+                    title: 'Saldo',
+                    width: '5%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer13').jtable('load');
+
+    $('#PersonTableContainer14').jtable({
+            messages: Spanishmessages, //Localizacion
             title: 'Empleados',
             paging: true,
             actions: {
                 listAction: 'php/listar/listarempleados.php',
+                createAction: 'php/ingresar/ingresarempleados.php',
+                updateAction: 'php/editar/editarempleados.php',
+                deleteAction: 'php/eliminar/eliminarempleados.php',
             },
             fields: {
                 id_empleado: {
@@ -580,12 +782,12 @@ $(document).ready(function () {
 
                 genero: {
                     title: 'Género',
-                    width: '10%'
+                    width: '5%'
                 },
 
                 telefono: {
                     title: 'Teléfono',
-                    width: '10%'
+                    width: '7%'
                 },
 
                 email: {
@@ -595,19 +797,170 @@ $(document).ready(function () {
 
                 codigo_carrera: {
                     title: 'Codigo Carrera',
-                    width: '10%'
+                    /*Ver si poner mejor el nombre de la carrera*/
+                    width: '8%'
                 },
 
                 id_puesto: {
                     title: 'Puesto',
+                    options: '../opciones/php/options/option16.php',
+                    width: '10%'
+                },
+
+                num_cuenta: {
+                    title: 'Cuenta',
+                    width: '10%'
+                }
+
+            }
+        });
+
+    $('#PersonTableContainer14').jtable('load');
+
+    $('#PersonTableContainer15').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Puestos',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarpuestos.php',
+                createAction: 'php/ingresar/ingresarpuestos.php',
+                updateAction: 'php/editar/editarpuestos.php',
+                deleteAction: 'php/eliminar/eliminarpuestos.php',
+            },
+            fields: {
+                id_puesto: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_puesto: {
+                    title: 'Código',
+                    width: '1%',
+                },
+
+                descripcion: {
+                    title: 'Descripción',
                     width: '10%'
                 },
 
             }
         });
 
-    $('#PersonTableContainer10').jtable('load');
+    $('#PersonTableContainer15').jtable('load');
 
+    $('#PersonTableContainer16').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Control de Usuarios',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarusuarios.php',
+                createAction: 'php/ingresar/ingresarusuarios.php',
+                updateAction: 'php/editar/editarusuarios.php',
+                deleteAction: 'php/eliminar/eliminarusuarios.php',
+            },
+            fields: {
+                id_usuario: {
+                    key: true,
+                    list: false
+                },
+
+                nombre: {
+                    title: 'Nombre',
+                    width: '10%',
+                },
+
+                apellido: {
+                    title: 'Apellido',
+                    width: '10%'
+                },
+
+                nombre_usuario: {
+                    title: 'Nombre de Usuario',
+                    width: '10%'
+                },
+
+                contrasena: {
+                    title: 'Contraseña',
+                    width: '10%'
+                },
+
+                tipo_usuario: {
+                    title: 'Tipo de Usuario',
+                    options: '../opciones/php/options/option17.php',
+                    width: '10%'
+                },
+
+                num_cuenta: {
+                    title: 'Cuenta',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer16').jtable('load');
+
+    $('#PersonTableContainer17').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Tipos de Usuarios',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listartipos.php',
+                createAction: 'php/ingresar/ingresartipos.php',
+                updateAction: 'php/editar/editartipos.php',
+                deleteAction: 'php/eliminar/eliminartipos.php',
+            },
+            fields: {
+                tipo_usuario: {
+                    key: true,
+                    list: false
+                },
+
+                nombre: {
+                    title: 'Nombre',
+                    width: '3%',
+                },
+
+                descripcion: {
+                    title: 'Descripción',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer17').jtable('load');
+
+    $('#PersonTableContainer18').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Tipos de Equivalencias',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listartipos_eq.php',
+                createAction: 'php/ingresar/ingresartipos_eq.php',
+                updateAction: 'php/editar/editartipos_eq.php',
+                deleteAction: 'php/eliminar/eliminartipos_eq.php',
+            },
+            fields: {
+                id_tipo: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_tipo_eq: {
+                    title: 'Codigo EQ',
+                    width: '3%',
+                },
+
+                descripcion: {
+                    title: 'Descripción',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer18').jtable('load');
 
 
     });
