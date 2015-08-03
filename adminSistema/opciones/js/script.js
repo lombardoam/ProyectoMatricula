@@ -848,5 +848,57 @@ $(document).ready(function () {
 
     $('#PersonTableContainer15').jtable('load');
 
+    $('#PersonTableContainer16').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Control de Usuarios',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarusuarios.php',
+                createAction: 'php/ingresar/ingresarusuarios.php',
+                updateAction: 'php/editar/editarusuarios.php',
+                deleteAction: 'php/eliminar/eliminarusuarios.php',
+            },
+            fields: {
+                id_usuario: {
+                    key: true,
+                    list: false
+                },
+
+                nombre: {
+                    title: 'Nombre',
+                    width: '10%',
+                },
+
+                apellido: {
+                    title: 'Apellido',
+                    width: '10%'
+                },
+
+                nombre_usuario: {
+                    title: 'Nombre de Usuario',
+                    width: '10%'
+                },
+
+                contrasena: {
+                    title: 'Contraseña',
+                    width: '10%'
+                },
+
+                tipo_usuario: {
+                    title: 'Tipo de Usuario',
+                    options: '../opciones/php/options/option17.php',
+                    width: '10%'
+                },
+
+                num_cuenta: {
+                    title: 'Cuenta',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer16').jtable('load');
+
 
     });
