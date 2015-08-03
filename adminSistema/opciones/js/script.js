@@ -209,7 +209,7 @@ $(document).ready(function () {
 
     $('#PersonTableContainer4').jtable({
             messages: Spanishmessages, //Localizacion
-            title: 'Períodos Académicos',
+            title: 'Edificios',
             paging: true,
             actions: {
                 listAction: 'php/listar/listaredificios.php',
@@ -397,6 +397,47 @@ $(document).ready(function () {
 
     $('#PersonTableContainer7').jtable({
             messages: Spanishmessages, //Localizacion
+            title: 'Contenidos de Cursos',
+            actions: {
+                listAction: 'php/listar/listarcontenido.php',
+                createAction: 'php/ingresar/ingresarcontenido.php',
+                updateAction: 'php/editar/editarcontenido.php',
+                deleteAction: 'php/eliminar/eliminarcontenido.php',
+            },
+            fields: {
+                id_contenido: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_contenido: {
+                    title: 'Código',
+                    width: '5%'
+                },
+
+                id_curso: {
+                    title: 'Curso',
+                    options: '../opciones/php/options/option10.php',
+                    width: '10%'
+                },
+
+                tema: {
+                    title: 'Tema',
+                    width: '10%'
+                },
+
+                descripcion: {
+                    title: 'Descripción',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer7').jtable('load');
+
+    $('#PersonTableContainer80').jtable({
+            messages: Spanishmessages, //Localizacion
             title: 'Planes de Estudio',
             paging: true,
             actions: {
@@ -462,7 +503,7 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer7').jtable('load');
+    $('#PersonTableContainer80').jtable('load');
 
 
     $('#PersonTableContainer8').jtable({
