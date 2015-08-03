@@ -900,5 +900,36 @@ $(document).ready(function () {
 
     $('#PersonTableContainer16').jtable('load');
 
+    $('#PersonTableContainer17').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Tipos de Usuarios',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listartipos.php',
+                createAction: 'php/ingresar/ingresartipos.php',
+                updateAction: 'php/editar/editartipos.php',
+                deleteAction: 'php/eliminar/eliminartipos.php',
+            },
+            fields: {
+                tipo_usuario: {
+                    key: true,
+                    list: false
+                },
+
+                nombre: {
+                    title: 'Nombre',
+                    width: '3%',
+                },
+
+                descripcion: {
+                    title: 'Descripción',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer17').jtable('load');
+
 
     });
