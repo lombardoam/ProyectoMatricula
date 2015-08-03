@@ -654,6 +654,101 @@ $(document).ready(function () {
 
     $('#PersonTableContainer12').jtable('load');
 
+    $('#PersonTableContainer13').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Estudiantes',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarestudiantes.php',
+                createAction: 'php/ingresar/ingresarestudiantes.php',
+                updateAction: 'php/editar/editarestudiantes.php',
+                deleteAction: 'php/eliminar/eliminarestudiantes.php',
+            },
+            fields: {
+                id_estudiante: {
+                    key: true,
+                    list: false
+                },
+
+                num_cuenta: {
+                    title: 'Cuenta',
+                    width: '8%',
+                },
+
+                nombres: {
+                    title: 'Nombres',
+                    width: '10%'
+                },
+
+                apellidos: {
+                    title: 'Apellidos',
+                    width: '10%'
+                },
+
+                tipo_estudiante: {
+                    title: 'Tipo Estudiante',
+                    width: '10%'
+                },
+
+                lugar_nacimiento: {
+                    title: 'Lugar de Nacimiento',
+                    width: '10%',
+                    list: false
+                },
+
+                fecha_nacimiento: {
+                    title: 'Fecha Nacimiento',
+                    type: 'date',
+                    width: '10%',
+                    list: false
+                },
+
+                estado_civil: {
+                    title: 'Estado Civil',
+                    width: '10%',
+                    list: false
+                },
+
+                direccion_vivienda: {
+                    title: 'Dirección',
+                    width: '10%',
+                    list: false
+                },
+
+                telefono: {
+                    title: 'Teléfono',
+                    width: '10%',
+                    list: false
+                },
+
+                direccion_trabajo: {
+                    title: 'Dirección Trabajo',
+                    width: '10%',
+                    list: false
+                },
+
+                telefono_trabajo: {
+                    title: 'Teléfono Trabajo',
+                    width: '10%',
+                    list: false
+                },
+
+                id_carrera: {
+                    title: 'Carrera',
+                    options: '../opciones/php/options/option12.php',
+                    width: '15%'
+                },
+
+                saldo: {
+                    title: 'Saldo',
+                    width: '5%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer13').jtable('load');
+
     $('#PersonTableContainer100').jtable({
             messages: Spanishmessages, //Localizacion
             title: 'Empleados',
