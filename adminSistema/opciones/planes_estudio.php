@@ -95,11 +95,11 @@
             </nav>
 
        <div class="panel">
-          <center><a href="edificios.php">PANEL DE PLANES DEE ESTUDIO</a></center>
+          <center><a href="edificios.php">PANEL DE PLANES DE ESTUDIO</a></center>
        </div>
 
        <center><div class="tablas">
-        <div id="PersonTableContainer9"></div><br><br>
+        <div></div><br><br>
        </div></center>
 
         <div class="footer">

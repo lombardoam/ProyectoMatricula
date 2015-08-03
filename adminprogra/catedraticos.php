@@ -48,6 +48,12 @@
 
 					},
 
+
+                    apellidos: {
+						title: 'Apellidos',
+
+					},
+
                    genero: {
                     title: 'Género',
 

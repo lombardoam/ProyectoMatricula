@@ -211,27 +211,10 @@
                    <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="glyphicon glyphicon-cog"></i> Clases sin configuración</h3>
+                                <h3 class="panel-title"><i class="glyphicon glyphicon-cog"></i> Clases Asistencia</h3>
                             </div>
-                            <div class="panel-body">
-                                <div class="list-group">
-                                    <a href="config.php" class="list-group-item">
-                                        <span class="badge">Justo ahora</span>
-                                        Ingeniería de Software
-                                    </a>
-                                    <a href="config.php" class="list-group-item">
-                                        <span class="badge">Justo ahora</span>
-                                        Planeación Estratégica
-                                    </a>
-                                    <a href="config.php" class="list-group-item">
-                                        <span class="badge">Justo ahora</span>
-                                        Diseño Web y Admon. de Contenido
-                                    </a>
-                                </div>
-                                 <div class="alert alert-info alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <i class="fa fa-info-circle"></i>  <strong>Es importante que gestione sus evaluaciones para poner ingresar las notas.</strong>
-                                 </div>
+
+
                                 <div class="text-right">
                                     <a href="config.php">Gestionar Evaluaciones <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>

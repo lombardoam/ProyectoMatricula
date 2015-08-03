@@ -27,6 +27,9 @@ $(document).ready(function () {
     $('#PersonTableContainer').jtable({
             messages: Spanishmessages, //Localizacion
             title: 'Facultades',
+            paging: true,
+            sorting: true,
+            defaultSorting: 'Name ASC',
             actions: {
                 listAction: 'php/listar/listarfacultades.php',
                 createAction: 'php/ingresar/ingresarfacultades.php',
@@ -614,7 +617,16 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer11').jtable('load');
+    //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+        $('#PersonTableContainer11').jtable('load', {
+                name: $('#codigo_prog_curso').val(),
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
     $('#PersonTableContainer12').jtable({
             messages: Spanishmessages, //Localizacion
