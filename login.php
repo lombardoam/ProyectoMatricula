@@ -42,7 +42,7 @@
                   header('Location:adminmatricula/index.php');
                   break;
                case 5; //Contador
-                  header('Location:index.html?contador');
+                  header('Location:contabilidad/index.php');
                   break;
                case 6; //Programación de cursos
                   header('Location:adminprogra/index.php');
