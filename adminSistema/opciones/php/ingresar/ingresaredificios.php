@@ -3,7 +3,7 @@ header('Content-type: application/json');
 require '../../require/conexion.php';
 
 //Insert record into database
-$result = mysqli_query($conexion, "INSERT INTO edificios(nombreedificio, numero_pisos, cantidad_aulas, cantidad_auditorios, cantidad_laboratorios) VALUES('" . $_POST["nombreedificio"] . "'," . $_POST["numero_pisos"] . "," . $_POST["cantidad_aulas"] . "," . $_POST["cantidad_auditorios"] . "," . $_POST["cantidad_laboratorios"] . ");");
+$result = mysqli_query($conexion, "INSERT INTO edificios(codigo_edificio, nombre, pisos, cantidad_aulas, cantidad_laboratorios, cantidad_auditorios) VALUES('" . $_POST["codigo_edificio"] . "', '" . $_POST["nombre"] . "', " . $_POST["pisos"] . ", " . $_POST["cantidad_aulas"] . ", " . $_POST["cantidad_laboratorios"] . ", " . $_POST["cantidad_auditorios"] . ");");
 
 //Get last inserted record (to return to jTable)
 $result = mysqli_query($conexion, "SELECT * FROM edificios WHERE id_edificio = LAST_INSERT_ID();");

@@ -207,6 +207,56 @@ $(document).ready(function () {
 
     $('#PersonTableContainer3').jtable('load');
 
+    $('#PersonTableContainer4').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Períodos Académicos',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listaredificios.php',
+                createAction: 'php/ingresar/ingresaredificios.php',
+                updateAction: 'php/editar/editaredificios.php',
+                deleteAction: 'php/eliminar/eliminaredificios.php',
+            },
+            fields: {
+                id_edificio: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_edificio: {
+                    title: 'Código',
+                    width: '5%',
+                },
+
+                nombre: {
+                    title: 'Nombre',
+                    width: '15%'
+                },
+
+                pisos: {
+                    title: 'Cantidad de Pisos',
+                    width: '10%'
+                },
+
+                cantidad_aulas: {
+                    title: 'Cantidad de Aulas',
+                    width: '10%'
+                },
+
+                cantidad_laboratorios: {
+                    title: 'Cantidad de Laboratorios',
+                    width: '10%'
+                },
+
+                cantidad_auditorios: {
+                    title: 'Cantidad de Auditorios',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer4').jtable('load');
 
     $('#PersonTableContainer40').jtable({
             messages: Spanishmessages, //Localizacion
