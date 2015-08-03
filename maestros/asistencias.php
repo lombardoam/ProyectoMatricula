@@ -216,7 +216,7 @@
 <div class="panel-body">
 
 
-    <iframe src="http://localhost/datos/maestros/listas" width="830" height="450"></iframe>
+    <iframe src="http://localhost/datos/maestros/listas" width="830" height="450" frameborder="0" ></iframe>
 
 
 
