@@ -213,8 +213,14 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="glyphicon glyphicon-cog"></i> Clases Asistencia</h3>
                             </div>
+<div class="panel-body">
 
 
+    <iframe src="http://localhost/datos/maestros/reporte" width="830" height="450"></iframe>
+
+
+
+                            </div>
                                 <div class="text-right">
                                     <a href="config.php">Gestionar Evaluaciones <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
