@@ -817,6 +817,36 @@ $(document).ready(function () {
 
     $('#PersonTableContainer14').jtable('load');
 
+    $('#PersonTableContainer15').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Puestos',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarpuestos.php',
+                createAction: 'php/ingresar/ingresarpuestos.php',
+                updateAction: 'php/editar/editarpuestos.php',
+                deleteAction: 'php/eliminar/eliminarpuestos.php',
+            },
+            fields: {
+                id_puesto: {
+                    key: true,
+                    list: false
+                },
+
+                codigo_puesto: {
+                    title: 'Código',
+                    width: '1%',
+                },
+
+                descripcion: {
+                    title: 'Descripción',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer15').jtable('load');
 
 
     });
