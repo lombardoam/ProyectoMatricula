@@ -436,6 +436,59 @@ $(document).ready(function () {
 
     $('#PersonTableContainer7').jtable('load');
 
+    $('#PersonTableContainer8').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Control de Cursos',
+            actions: {
+                listAction: 'php/listar/listarcontrol.php',
+                createAction: 'php/ingresar/ingresarcontrol.php',
+                updateAction: 'php/editar/editarcontrol.php',
+                deleteAction: 'php/eliminar/eliminarcontrol.php',
+            },
+            fields: {
+                id_control: {
+                    key: true,
+                    list: false
+                },
+
+                id_programacion: {
+                    title: 'Programación',
+                    options: '../opciones/php/options/option11.php',
+                    width: '5%'
+                },
+
+                prematriculados: {
+                    title: 'Prematriculados',
+                    width: '10%'
+                },
+
+                matriculados: {
+                    title: 'Matriculados',
+                    width: '10%'
+                },
+
+                aprobados: {
+                    title: 'Aprobados',
+                    width: '10%'
+                },
+
+                reprobados: {
+                    title: 'Reprobados',
+                    width: '10%'
+                },
+
+                retirados: {
+                    title: 'Retirados',
+                    width: '10%'
+                },
+
+            }
+        });
+
+    $('#PersonTableContainer8').jtable('load');
+
+
+
     $('#PersonTableContainer80').jtable({
             messages: Spanishmessages, //Localizacion
             title: 'Planes de Estudio',
@@ -506,7 +559,7 @@ $(document).ready(function () {
     $('#PersonTableContainer80').jtable('load');
 
 
-    $('#PersonTableContainer8').jtable({
+    $('#PersonTableContainer81').jtable({
             messages: Spanishmessages, //Localizacion
             title: 'Registros de Prematricula',
             paging: true,
@@ -547,7 +600,7 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer8').jtable('load');
+    $('#PersonTableContainer81').jtable('load');
 
     $('#PersonTableContainer9').jtable({
             messages: Spanishmessages, //Localizacion
