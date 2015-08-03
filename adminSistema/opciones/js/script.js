@@ -49,7 +49,7 @@ $(document).ready(function () {
                     width: '10%'
                 },
 
-                codigo_empleado: {
+                id_empleado: {
                     title: 'Decano',
                     options: '../opciones/php/options/option1.php',
                     width: '8%'
@@ -94,7 +94,7 @@ $(document).ready(function () {
                     width: '12%'
                 },
 
-               codigo_empleado: {
+               id_empleado: {
                     title: 'Coordinador',
                    options: '../opciones/php/options/option3.php',
                     width: '10%'
@@ -109,7 +109,7 @@ $(document).ready(function () {
 
     $('#PersonTableContainer2').jtable({
             messages: Spanishmessages, //Localizacion
-            title: 'Cursos',
+            title: 'Asignaturas',
             paging: true,
             actions: {
                 listAction: 'php/listar/listarasignaturas.php',
