@@ -178,6 +178,9 @@
                     <li class="active">
                         <a href="asistencias.php"><i class="glyphicon glyphicon-tasks"></i> Control de Asistencias</a>
                     </li>
+                    <li>
+                        <a href="reporte.php"><i class="glyphicon glyphicon-tasks"></i> Reporte</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
