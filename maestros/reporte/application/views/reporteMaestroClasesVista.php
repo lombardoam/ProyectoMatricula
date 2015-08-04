@@ -94,8 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Reporte</h1>
 
 	<div id="body">
-        <h4>Catedratico Pedro Gonzales</h4>
-
+<h4>Catedratico   <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h4>
 		<code>  <div class="row">
     <div id="col-sm-4">
       <h3></h3>
