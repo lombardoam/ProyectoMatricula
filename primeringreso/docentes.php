@@ -1,6 +1,7 @@
 <?php
 
 require'header.php';
+require 'noautorizado.php';
 
 ?>
         <div id="page-wrapper">

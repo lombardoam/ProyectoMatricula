@@ -9,7 +9,7 @@
       )
    ){
       header('Location:../index.php?no_aut');
-   } else if($_SESSION['tipo_usuario'] != 4){
+   } else if($_SESSION['tipo_usuario'] != 7){
       header('Location:../index.php?no_aut');
    }
 ?>
