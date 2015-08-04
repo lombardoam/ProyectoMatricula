@@ -1,7 +1,8 @@
 <?php
 
-
 require'header.php';
+require 'noautorizado.php';
+
 
 ?>
 
