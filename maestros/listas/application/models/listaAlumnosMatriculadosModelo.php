@@ -26,6 +26,24 @@ class ListaAlumnosMatriculadosModelo extends CI_Model
 
     }
 
+    function  setClase($id)
+    {
+
+         $this->db->select('cursos.nombre_curso');
+         $this->db->from('cursos');
+         $this->db->join('programacion_cursos', 'programacion_cursos.id_curso = cursos.id_curso');
+         $this->db->where('programacion_cursos.id_programacion', $id);
+         $query = $this->db->get();
+
+
+    foreach ($query->result() as &$valor)
+            {
+                    setcookie("nombre_curso", $valor->nombre_curso);
+
+            }
+
+    }
+
 
     function getFecha()
     {

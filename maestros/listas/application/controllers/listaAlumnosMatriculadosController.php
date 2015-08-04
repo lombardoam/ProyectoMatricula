@@ -32,6 +32,7 @@ class ListaAlumnosMatriculadosController extends CI_Controller
 
         $resultado['resultado'] = $this->listaAlumnosMatriculadosModelo->getListaAlumnos($id_horario);
 
+         $this->listaAlumnosMatriculadosModelo->setClase($id_horario);
 
      $this->load->view('listaAlumnosMatriculadosVista',$resultado);
 
