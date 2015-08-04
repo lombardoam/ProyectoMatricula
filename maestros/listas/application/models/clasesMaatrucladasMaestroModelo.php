@@ -25,6 +25,7 @@ edificios.nombre');
         $this->db->join('empleados',
                         ' programacion_cursos.id_empleado =  empleados.id_empleado');
 
+
          $this->db->join('aulas',
                          ' aulas.id_aula = programacion_cursos.id_aula');
 
@@ -33,6 +34,8 @@ edificios.nombre');
 
          $this->db->join('edificios',
                          'edificios.id_edificio =  aulas.id_edificio');
+        $this->db->where('empleados.nombres', $_COOKIE["nombre"]);
+                 $this->db->where('empleados.apellidos', $_COOKIE["apellido"]);
 
 
          $query = $this->db->get();

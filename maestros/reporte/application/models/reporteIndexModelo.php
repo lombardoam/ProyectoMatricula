@@ -15,13 +15,19 @@ class ReporteIndexModelo extends CI_Model
     {
 
 
-         $this->db->select('cursos.nombre_curso');
-         $this->db->from('cursos');
-         $this->db->join('programacion_cursos', 'programacion_cursos.codigo_curso = cursos.codigo_curso');
-         $this->db->where('programacion_cursos.id_empleado', $id_maestro);
-         $query = $this->db->get();
 
-         return $query;
+                 $this->db->select('cursos.nombre_curso');
+                 $this->db->from('usuarios');
+                 $this->db->join('empleados', 'usuarios.nombre = empleados.nombres');
+                 $this->db->join('programacion_cursos', 'programacion_cursos.id_empleado = empleados.id_empleado');
+                 $this->db->join('cursos', 'cursos.id_curso = programacion_cursos.id_curso');
+                 $this->db->where('empleados.nombres', $_COOKIE["nombre"]);
+                 $this->db->where('empleados.apellidos', $_COOKIE["apellido"]);
+                 $query = $this->db->get();
+
+
+
+
 
     }
 
