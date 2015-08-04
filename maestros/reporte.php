@@ -216,7 +216,7 @@
 <div class="panel-body">
 
 
-    <iframe src="http://localhost/datos/maestros/reporte" width="830" height="450" frameborder="0"></iframe>
+    <iframe src="reporte/" width="830" height="450" frameborder="0"></iframe>
 
 
 
