@@ -47,6 +47,9 @@
                case 6; //Programación de cursos
                   header('Location:adminprogra/index.php');
                   break;
+               case 7; //Primer Ingreso
+                  header('Location:primeringreso/index.php');
+                  break;
             }
 
          }else{

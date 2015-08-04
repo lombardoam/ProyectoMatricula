@@ -1,4 +1,9 @@
- <html>
+<?php
+
+require 'noautorizado.php';
+?>
+
+<html>
   <head>
 
     <link href="themes/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
