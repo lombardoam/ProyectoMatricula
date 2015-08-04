@@ -1,3 +1,8 @@
+<?php
+
+require 'noautorizado.php';
+?>
+
 <html>
   <head>
 

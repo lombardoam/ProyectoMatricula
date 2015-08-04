@@ -1,3 +1,19 @@
+<?php
+    session_start();
+   if(!(
+      isset($_SESSION['nombre']) &&
+      isset($_SESSION['apellido']) &&
+      isset($_SESSION['usuario']) &&
+      isset($_SESSION['tipo_usuario']) &&
+      isset($_SESSION['num_cuenta'])
+      )
+   ){
+      header('Location:../index.php?no_aut');
+   } else if($_SESSION['tipo_usuario'] != 7){
+      header('Location:../index.php?no_aut');
+   }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -131,7 +147,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['usuario'] ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><font color="#000000"><i class="fa fa-fw fa-user"></i>Perfil</font></a>
@@ -144,7 +160,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><font color="#000000"><i class="fa fa-fw fa-power-off"></i>Salir</font></a>
+                            <a href="logout.php"><font color="#000000"><i class="fa fa-fw fa-power-off"></i>Salir</font></a>
                         </li>
                     </ul>
                 </li>
