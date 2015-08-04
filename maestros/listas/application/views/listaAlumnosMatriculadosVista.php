@@ -102,11 +102,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         {
      echo form_open('listaAlumnosMatriculadosController/setLista');
 
-echo"<label> $valor->nombre </label><label class='checkbox-inline'>
-  <input tabindex='1' type='checkbox' name='ausente[]' id='$valor->nombre' value='$valor->nombre' class'form-control'> Ausente
+echo"<label> $valor->nombres $valor->apellidos  </label><label class='checkbox-inline'>
+  <input tabindex='1' type='checkbox' name='ausente[]' id='$valor->nombres' value='$valor->nombres' class'form-control'> Ausente
 </label>
 <label class='checkbox-inline'>
-  <input tabindex='1' type='checkbox' name='asistio[]' id='$valor->nombre' value='$valor->nombre' class'form-control'> Asistio
+  <input tabindex='1' type='checkbox' name='asistio[]' id='$valor->nombres' value='$valor->nombres' class'form-control'> Asistio
 </label><br>";
 
 
@@ -116,6 +116,12 @@ echo"<p><input type='submit' class='myButton' name='seleccionado' value='Subir r
 
 
  echo form_close();
+
+if (count($resultado->result()) == 0)
+{
+        echo"<p><h3>No Tiene Alumnos Matriculados</h3></p>";
+
+}
 
      ?>
 
