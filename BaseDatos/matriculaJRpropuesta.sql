@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-08-2015 a las 09:10:57
+-- Tiempo de generación: 04-08-2015 a las 07:38:03
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -241,7 +241,7 @@ INSERT INTO `empleados` (`id_empleado`, `codigo_empleado`, `nombres`, `apellidos
 (8, 'KE', 'Karen', 'Estrada', 'F', 12312312, 'kestrada@gmail.com', 'INGC', 5, 20150007),
 (9, 'JR', 'Juan', 'Reyes', 'M', 23232312, 'jreyes@gmail.com', 'IIT', 6, 20150008),
 (10, 'KE2', 'Karen', 'Estrada', 'F', 21312312, 'kestrada@gmail.com', 'INGC', 5, 20150007),
-(12, 'PG1', 'Pedro', 'Gallardo', 'M', 23654789, 'pg@gmail.com', 'INGC', 1, 0);
+(12, 'PG1', 'Pedro', 'Gallardo', 'M', 23654787, 'pg@gmail.com', 'INGC', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -483,7 +483,7 @@ CREATE TABLE IF NOT EXISTS `programacion_cursos` (
   KEY `codigo_curso_idx` (`id_curso`),
   KEY `codigo_periodo_idx` (`id_periodo`),
   KEY `codigo_empleado_idx` (`id_empleado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `programacion_cursos`
@@ -491,7 +491,8 @@ CREATE TABLE IF NOT EXISTS `programacion_cursos` (
 
 INSERT INTO `programacion_cursos` (`id_programacion`, `codigo_prog_curso`, `id_periodo`, `id_curso`, `seccion`, `hora_inicio`, `hora_termina`, `dias`, `id_empleado`, `id_aula`, `estatus_curso`) VALUES
 (1, 'PROG1', 1, 1, 'A', '15:50', '17:40', 'L-Mi-V', 6, 1, 'Activo'),
-(2, 'PROG2', 1, 2, 'A', '12:50', '14:40', 'Ma-J', 5, 4, 'Activo');
+(2, 'PROG2', 1, 2, 'A', '12:50', '14:40', 'Ma-J', 5, 4, 'Activo'),
+(3, 'PROG3', 1, 4, 'A', '15:50', '19:40', 'Ma', 10, 9, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -557,7 +558,7 @@ CREATE TABLE IF NOT EXISTS `tipos_usuarios` (
   `nombre` varchar(45) NOT NULL,
   `descripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`tipo_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `tipos_usuarios`
@@ -568,7 +569,9 @@ INSERT INTO `tipos_usuarios` (`tipo_usuario`, `nombre`, `descripcion`) VALUES
 (2, 'Docente', 'Accesa a la interfaz de docentes'),
 (3, 'Alumno', 'Accesa a la interfaz de alumnos'),
 (4, 'Encargado', 'Gestiona las caracteristicas de la matricula'),
-(5, 'Contador', 'Gestiona la interfaz de contabilidad');
+(5, 'Contador', 'Gestiona la interfaz de contabilidad'),
+(6, 'Programacion', 'Encargado de programacion academica'),
+(7, 'Primer', 'Encargado de Primer Ingreso');
 
 -- --------------------------------------------------------
 
@@ -608,7 +611,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuarios_tipos_usuarios_idx` (`tipo_usuario`),
   KEY `fk_usuarios_empleados_idx` (`num_cuenta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -619,7 +622,9 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `nombre_usuario`, `c
 (2, 'Jeiky', 'Tovar', 'jeiky.tovar', 'chilo123', 2, 20150006),
 (3, 'Ricardo', 'Valladares', 'ricardo.valladares', 'chilo123', 3, 201500001),
 (4, 'Karen', 'Estrada', 'karen.estrada', 'chilo123', 4, 20150007),
-(5, 'Juan', 'Reyes', 'juan.reyes', 'chilo123', 5, 20150008);
+(5, 'Juan', 'Reyes', 'juan.reyes', 'chilo123', 5, 20150008),
+(6, 'Taylor', 'Swift', 'taylor.swift', 'chilo123', 6, 201520345),
+(7, 'Cristian', 'Orlando', 'cristian.orlando', 'chilo123', 7, 201560321);
 
 --
 -- Restricciones para tablas volcadas
@@ -726,8 +731,8 @@ ALTER TABLE `prematriculas`
 -- Filtros para la tabla `programacion_cursos`
 --
 ALTER TABLE `programacion_cursos`
-  ADD CONSTRAINT `fk_programacion_cursos` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_programacion_aulas` FOREIGN KEY (`id_aula`) REFERENCES `aulas` (`id_aula`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_programacion_cursos` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_programacion_empleados` FOREIGN KEY (`id_empleado`) REFERENCES `empleados` (`id_empleado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_programacion_periodos` FOREIGN KEY (`id_periodo`) REFERENCES `periodos_academicos` (`id_periodo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
