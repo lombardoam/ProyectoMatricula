@@ -207,24 +207,18 @@
                 </div>
                 <!-- /.row -->
 
+
                 <div class="row">
                    <div class="col-lg-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="glyphicon glyphicon-cog"></i> Clases Asistencia</h3>
-                            </div>
-<div class="panel-body">
-
-
-    <iframe src="listas/" width="830" height="450" frameborder="0" ></iframe>
 
 
 
-                            </div>
-                                <div class="text-right">
-                                    <a href="config.php">Gestionar Evaluaciones <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
+    <iframe src="listas/" width="830" height="450" frameborder="0"></iframe>
+
+
+
+
+
                         </div>
                     </div>
                 </div>
