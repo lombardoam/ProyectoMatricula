@@ -1,13 +1,183 @@
 $("document").ready(function(){
-
+   evaluaciones();
+   clases();
+   seccion();
+   parcial();
+   hidden();
+   $("#clases").change(function(){
+      idconfiguracion();
+   });
 });
-function getEval(){
+
+$(document).keydown(function(tecla){
+    if (tecla.keyCode == 116) {
+      if (confirm('Actualizar la página hará que pierda los cambios, ¿Desea continuar?')) {
+      }else{
+         return false;
+      }
+    }
+    if (tecla.keyCode == 221) {
+      if (confirm('Cerrar la pestaña hará que pierda los cambios, ¿Desea continuar?')) {
+      }else{
+         return false;
+      }
+    }
+});
+function parcial(){
    $.ajax({
-      method: "POST",
+      type: "GET",
+      url: "php/getdata.php",
+      data: "parciales",
+      success: function(data){
+         $("div#parciales").html(data);
+      }
+   });
+}
+function clases(){
+   var cuenta = $("input#num_cuenta").val();
+   $.ajax({
+      type: "GET",
+      url: "php/getdata.php",
+      data: "clases&cuenta="+cuenta,
+      success: function(data){
+         $("select#clases").html(data);
+      }
+   });
+}
+function seccion(){
+   var cuenta = $("input#num_cuenta").val();
+   $.ajax({
+      type: "GET",
+      url: "php/getdata.php",
+      data: "seccion&cuenta="+cuenta,
+      success: function(data){
+         $("label#seccion").html(data);
+      }
+   });
+}
+function hidden(){
+   var cuenta = $("input#num_cuenta").val();
+   $.ajax({
+      type: "GET",
+      url: "php/getdata.php",
+      data: "hidden",
+      success: function(data){
+         $("div#hidden").html(data);
+      }
+   });
+}
+function agregar(parcial){
+   $("tbody#"+parcial).append("<tr><td><input type=\"text\" class=\"form-control\" placeholder=\"Nombre\" name=\"nombre\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"Descripcion\" name=\"descripcion\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"0\" name=\"puntos\"></td><td><a href=\"javascript:\" class=\"btn btn-success\" onclick=\"guardareditar("+parcial+", this)\">Guardar</a> <a href=\"javascript:\" class=\"btn btn-danger\" onclick=\"eliminar("+parcial+", this)\">X</a></td></tr>");
+   var valor = parseInt($("#h"+parcial).val());
+   valor += 1;
+   $("#h"+parcial).val(valor);
+   //alert(valor);
+}
+function eliminar(parcial, elem){
+   var valor = parseInt($("#h"+parcial).val());
+   valor -= 1;
+   $("#h"+parcial).val(valor);
+   $(elem).parent().parent().remove();
+   //alert(valor);
+}
+function guardareditar(parcial, elem){
+
+   if($('#id_config').val() != ""){
+      var hermanos = $(elem).parent().siblings();
+      var nombre, descripcion, puntos;
+      hermanos.each(function(){
+         var input = $(this).find('input');
+         input.attr("readonly", "true");
+         switch(input.attr('id')){
+            case nombre:
+               nombre = input.val();
+               break;
+            case descripcion:
+               descripcion = input.val();
+               break;
+            case puntos:
+               puntos = parseInt(input.val());
+         }
+         //$(this).find('input').replaceWith(function(){
+         //   return '<td>'+this.value+'<td>';
+         //});
+      });
+      $(elem).replaceWith(function(){
+         return "<a href=\"javascript:\" class=\"btn btn-success\" onclick=\"habilitareditar("+parcial+", this)\">Editar</a>";
+      });
+      var id_config = $('#id_config').val();
+      $.ajax({
+         type: "GET",
+         url: "php/submitdata.php",
+         data: "id_config="+id_config+"&nombre="+nombre+"&descripcion="+descripcion+"&puntos="+puntos+"&parcial="+parcial,
+         success: function(data){
+            var obj = jQuery.parseJSON(data);
+            if(obj['cambio'] != null){
+               bootbox.alert(obj['mensaje']);
+               $(elem).parent().appendChild();
+            }
+
+         }
+      });
+   }else{
+      bootbox.alert("<h4>Por favor seleccione una clase</h4>");
+   }
+
+   //alert(valor);
+}
+function habilitareditar(parcial, elem){
+   var hermanos = $(elem).parent().siblings();
+   hermanos.each(function(){
+      $(this).find('input').removeAttr("readonly");
+      //$(this).find('input').replaceWith(function(){
+      //   return '<td>'+this.value+'<td>';
+      //});
+   });
+   $(elem).replaceWith(function(){
+      return "<a href=\"javascript:\" class=\"btn btn-success\" onclick=\"guardareditar("+parcial+", this)\">Guardar</a>";
+   });
+}
+function evaluaciones(){
+   $.ajax({
+      type: "GET",
       url: "php/getdata.php",
       data: "eval",
-      sucess: function(data){
-         alert(data);
+      success: function(data){
+         $("select#tipo_evaluacion").html(data);
+      }
+   });
+}
+function guardar(){
+   if($("#clases").val() != "Seleccione una clase.."){
+      var tipo = $("#tipo_evaluacion").val();
+      var progra = $("#clases").val();
+      $.ajax({
+         type: "GET",
+         url: "php/submitdata.php",
+         data: "tipo_eval&tipo="+tipo+"&progra="+progra,
+         success: function(data){
+            var result = jQuery.parseJSON(data);
+            if(result['cambio'] != null){
+               bootbox.alert(result['mensaje']);
+               $("#id_config").val(result['id_config']);
+            }else{
+               bootbox.alert(result['mensaje']);
+            }
+         }
+      });
+   }else{
+      bootbox.alert("<h4>Por favor seleccione una clase.</h4>");
+   }
+
+}
+function idconfiguracion(){
+   var id_prog = $("#clases").val();
+   $.ajax({
+      data: "id_prog="+id_prog,
+      url: "php/getdata.php",
+      type: "GET",
+      success: function(response){
+         $("#id_config").val(response);
       }
    });
 }
