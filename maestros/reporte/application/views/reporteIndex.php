@@ -97,11 +97,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="container">
 	<h1>Asistencia Reportes</h1>
 	<div id="body">
+        <h2>Catedratico  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
+
      <?php
  foreach ($resultado->result() as &$valor)
         {
 
- echo"<h4>$valor->maestro</h4>";
 break;
 
 
@@ -117,7 +118,7 @@ break;
  foreach ($resultado->result() as &$valor)
         {
 
-          echo"<h4>$valor->clase -  Periodo 1  -  Año 2015</h4>";
+          echo"<h4>$valor->nombre_curso -  Periodo 1  -  Año 2015</h4>";
             break;
 
          }
@@ -142,8 +143,8 @@ break;
                 foreach ($resultado->result() as &$valor)
                {
                    echo" <td>-</td>";
-                   echo" <td>$valor->id_alumno</td>";
-                  echo"   <td>$valor->nombre</td>";
+                   echo" <td>$valor->num_cuenta</td>";
+                  echo"   <td>$valor->nombres</td>";
                   echo"   <td>$valor->fecha</td>";
                   echo"   <td >-</td>";
                   echo"    <td >-</td>";
