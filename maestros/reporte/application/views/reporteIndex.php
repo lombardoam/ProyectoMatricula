@@ -172,15 +172,15 @@ break;
 
              <thead>
                 <tr>
+                   <th>Total</th>
                     <th>Asistio</th>
                     <th>Falto</th>
-                    <th>Total</th>
                 </tr>
             </thead>
                 <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td><?php $n1= $_COOKIE["Ausente"];  $n2= $_COOKIE["Asistio"];echo $n1+$n2;?></td>
+                    <td><?php echo $_COOKIE["Ausente"]; ?></td>
+                    <td><?php echo $_COOKIE["Asistio"]; ?></td>
 
                 </tr>
                 </tbody>

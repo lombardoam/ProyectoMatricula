@@ -30,8 +30,43 @@ class ReporteIndexModelo extends CI_Model
     }
 
 
+    function setAsistioYausentes()
+    {
+    $this->db->select('count(*) AS total_ausente');
+         $this->db->from('asistencia');
+         $this->db->where( 'asistencia.estado','Ausente');
+        $this->db->where( 'asistencia.id_estudiante',3);
+
+         $query2 = $this->db->get();
+
+
+ foreach ($query2->result() as &$valor)
+            {
+                    setcookie('Ausente', $valor->total_ausente);
+            }
+
+
+        $this->db->select('count(*) AS total_asistio');
+         $this->db->from('asistencia');
+         $this->db->where( 'asistencia.estado','Asistio');
+        $this->db->where( 'asistencia.id_estudiante',3);
+
+         $query2 = $this->db->get();
+
+
+ foreach ($query2->result() as &$valor)
+            {
+                    setcookie('Asistio', $valor->total_asistio);
+            }
+
+
+    }
+
+
     function getNombre($id_programacion)
     {
+        $this->setAsistioYausentes();
+
 
      $this->db->select('estudiantes.nombres,estudiantes.apellidos,estudiantes.num_cuenta,asistencia.fecha,asistencia.estado,cursos.nombre_curso');
 
@@ -44,9 +79,14 @@ class ReporteIndexModelo extends CI_Model
          $this->db->where('estudiantes.id_estudiante', 3);
 $this->db->group_by('id_asistencia');
 
+                 $query = $this->db->get();
 
 
-         $query = $this->db->get();
+
+
+
+
+
 
 
 
