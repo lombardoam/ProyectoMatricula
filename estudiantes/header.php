@@ -110,7 +110,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><font color="#000000"><i class="fa fa-fw fa-power-off"></i>Salir</font></a>
+                            <a href="logout.php"><font color="#000000"><i class="fa fa-fw fa-power-off"></i>Salir</font></a>
                         </li>
                     </ul>
                 </li>
