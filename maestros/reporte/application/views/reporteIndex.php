@@ -142,8 +142,8 @@ break;
   $i=1;
                 foreach ($resultado->result() as &$valor)
                {
-                   echo" <td>$i</td>";
-                   echo" <td>$valor->num_cuenta</td>";
+                   echo"<td>$i</td>";
+                   echo"<td>$valor->num_cuenta</td>";
                   echo"   <td>$valor->nombres</td>";
                   echo"   <td>$valor->fecha</td>";
                   echo"   <td >$valor->estado</td>";

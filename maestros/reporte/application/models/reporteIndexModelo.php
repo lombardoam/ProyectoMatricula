@@ -85,16 +85,31 @@ $this->db->group_by('id_asistencia');
                  $query = $this->db->get();
 
 
+         return $query;
+
+    }
 
 
 
+function getPrincipa($id_programacion)
+    {
+       // $this->setAsistioYausentes();
 
 
+             $this->db->select('estudiantes.num_cuenta,estudiantes.nombres,estudiantes.apellidos, cursos.nombre_curso');
+             $this->db->from('estudiantes');
+             $this->db->join('matriculas', 'estudiantes.id_estudiante = matriculas.id_estudiante ');
+             $this->db->join('programacion_cursos', 'programacion_cursos.id_programacion = matriculas.id_programacion');
+             $this->db->join('cursos', 'cursos.id_curso = programacion_cursos.id_curso');
+         $this->db->where('programacion_cursos.id_programacion', $id_programacion);
+$this->db->group_by('estudiantes.num_cuenta');
 
 
+$query = $this->db->get();
 
 
          return $query;
+
 
     }
 }

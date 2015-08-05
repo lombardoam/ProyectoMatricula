@@ -129,11 +129,11 @@ break;
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Dia de Clase</th>
+                    <th>Numero Alumnos</th>
                     <th>Numero Cuenta</th>
                     <th>Nombre</th>
-                    <th>Fecha</th>
-                    <th>Estado</th>
+                    <th>Asistio</th>
+                    <th>Faltas</th>
                 </tr>
             </thead>
             <tbody>
@@ -143,12 +143,14 @@ break;
                 foreach ($resultado->result() as &$valor)
                {
                    echo" <td>$i</td>";
-                   echo" <td>$valor->num_cuenta</td>";
-                  echo"   <td>$valor->nombres</td>";
-                  echo"   <td>$valor->fecha</td>";
-                  echo"   <td >$valor->estado</td>";
+                    $_SESSION['numero_cuenta']= $valor->num_cuenta;
+                   echo" <td><a href='cargaReportePrincipal'>$valor->num_cuenta</a></td>";
+                  echo"   <td>$valor->nombres $valor->apellidos</td>";
+                //  echo"   <td>$valor->fecha</td>";
+                 // echo"   <td >$valor->estado</td>";
                 echo"</tr>";
                     $i++;
+
                 }
 ?>
 
@@ -172,15 +174,16 @@ break;
 
              <thead>
                 <tr>
-                   <th>Total</th>
+                   <th>Total alumnos</th>
                     <th>Asistio</th>
                     <th>Falto</th>
                 </tr>
             </thead>
                 <tr>
-                    <td><?php $n1= $_COOKIE["Ausente"];  $n2= $_COOKIE["Asistio"];echo $n1+$n2;?></td>
-                    <td><?php echo $_COOKIE["Ausente"]; ?></td>
-                    <td><?php echo $_COOKIE["Asistio"]; ?></td>
+                    <td>-</td>
+                    <td><?php //echo $_SESSION["Asistio"]; ?></td>
+                    <td><?php //echo $_SESSION["Ausente"]; ?></td>
+
 
                 </tr>
                 </tbody>

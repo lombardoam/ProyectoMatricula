@@ -16,16 +16,41 @@ class ReporteIndexControlador extends CI_Controller
     }
     public function cargaReporte()
 	{
-    $id_horario= $this->input->post('seleccionado');
+         $_SESSION["Ausente"]=0;
+        $_SESSION["Asistio"]=0;
+        $_SESSION["total"]=0;
+        $_SESSION["clase"]=0;
+
+
+    $id_horario= $_SESSION["clase"];
+
 
       $this->load->model('reporteIndexModelo');
 
-     $resultado['resultado'] =   $this->reporteIndexModelo->getNombre($id_horario);
+     $resultado['resultado'] =  $this->reporteIndexModelo->getNombre($id_horario);
 
-        count($resultado);
     $this->load->view('reporteIndex',$resultado);
 
 	}
+
+
+
+    public function  cargaReportePrincipal()
+    {
+
+    $id_horario= $this->input->post('seleccionado');
+      $_SESSION["clase"]=$id_horario;
+      $this->load->model('reporteIndexModelo');
+
+     $resultado['resultado'] =   $this->reporteIndexModelo->getPrincipa($id_horario);
+
+    $this->load->view('reporMaster',$resultado);
+
+
+    }
+
+
+
 
 	public function index()
 	{
