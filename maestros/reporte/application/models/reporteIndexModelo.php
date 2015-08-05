@@ -42,7 +42,7 @@ class ReporteIndexModelo extends CI_Model
 
  foreach ($query2->result() as &$valor)
             {
-                    setcookie('Ausente', $valor->total_ausente);
+                       $_SESSION['Ausente']=$valor->total_ausente;
             }
 
 
@@ -56,9 +56,12 @@ class ReporteIndexModelo extends CI_Model
 
  foreach ($query2->result() as &$valor)
             {
-                    setcookie('Asistio', $valor->total_asistio);
+                    $_SESSION['Asistio']=$valor->total_asistio;
             }
 
+        $n1= $_SESSION["Ausente"];  $n2= $_SESSION["Asistio"];$total =$n1+$n2;
+
+                            $_SESSION['total']= $total;
 
     }
 
