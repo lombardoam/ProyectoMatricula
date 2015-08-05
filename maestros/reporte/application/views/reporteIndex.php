@@ -133,8 +133,7 @@ break;
                     <th>Numero Cuenta</th>
                     <th>Nombre</th>
                     <th>Fecha</th>
-                    <th>Falto</th>
-                    <th>Asistio</th>
+                    <th>Estado</th>
                 </tr>
             </thead>
             <tbody>
@@ -146,8 +145,7 @@ break;
                    echo" <td>$valor->num_cuenta</td>";
                   echo"   <td>$valor->nombres</td>";
                   echo"   <td>$valor->fecha</td>";
-                  echo"   <td >-</td>";
-                  echo"    <td >-</td>";
+                  echo"   <td >$valor->estado</td>";
                 echo"</tr>";
                 }
 ?>
