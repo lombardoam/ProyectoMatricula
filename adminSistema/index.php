@@ -8,7 +8,9 @@
       isset($_SESSION['num_cuenta'])
       )
    ){
-      header('Location:../index.php?no_aut');
+        header('Location:../index.php?no_aut');
+   }    elseif($_SESSION['tipo_usuario'] !=1){
+        header('Location:../index.php?no_aut');
    }
 ?>
 <!DOCTYPE html>

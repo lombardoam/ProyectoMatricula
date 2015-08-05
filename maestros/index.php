@@ -103,8 +103,12 @@
                         <a href="config.php"><i class="glyphicon glyphicon-cog"></i> Gestionar Evaluación</a>
                     </li>
                     <li>
-                        <a href="asistencias.php"><i class="glyphicon glyphicon-tasks"></i> Control de Asistencias</a>
+                        <a href="reporte.php"><i class="glyphicon glyphicon-tasks"></i> Asistencias</a>
                     </li>
+                    <li>
+                        <a href="asistencias.php"><i class="glyphicon glyphicon-tasks"></i> Reportes</a>
+                    </li>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -124,7 +128,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.php">Inicio</a>
+                                <i class="fa fa-dashboard"></i>  <a href="asistencias.php">Inicio</a>
                             </li>
                         </ol>
                     </div>

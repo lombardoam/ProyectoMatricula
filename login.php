@@ -15,6 +15,12 @@
             $_SESSION['usuario'] = $result[3];
             $_SESSION['tipo_usuario'] = $result[5];
 
+
+             setcookie("nombre", $result[1]);
+            setcookie("apellido", $result[2]);
+
+
+
             /* La variable $_SESSION['num_cuenta'] está relacionada con las tablas de empleados y estudiantes.
              * Es para poder acceder a toda la información del usuario que está actualmente logeado
              * en el sistema independientemente si es un estudiante o es algún empleado (administrador, encargado
@@ -42,10 +48,13 @@
                   header('Location:adminmatricula/index.php');
                   break;
                case 5; //Contador
-                  header('Location:index.html?contador');
+                  header('Location:contabilidad/index.php');
                   break;
                case 6; //Programación de cursos
                   header('Location:adminprogra/index.php');
+                  break;
+               case 7; //Primer Ingreso
+                  header('Location:primeringreso/index.php');
                   break;
             }
 

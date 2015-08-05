@@ -6,7 +6,7 @@ header('Content-type: application/json');
 $result = mysqli_query($conexion, "UPDATE programacion_cursos SET codigo_prog_curso =
 '" . $_POST["codigo_prog_curso"] . "',
 id_periodo = '" . $_POST["id_periodo"] . "',
-codigo_curso = '" . $_POST["codigo_curso"]  . "',
+id_curso = '" . $_POST["id_curso"]  . "',
 seccion = '" . $_POST["seccion"]  . "',
 hora_inicio = '" . $_POST["hora_inicio"]  . "',
 hora_termina = '" . $_POST["hora_termina"]  . "',

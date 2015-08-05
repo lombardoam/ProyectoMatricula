@@ -1,4 +1,7 @@
+<?php
 
+require 'noautorizado.php';
+?>
  <html>
   <head>
 
@@ -45,6 +48,12 @@
 
 					nombres: {
 						title: 'Nombres',
+
+					},
+
+
+                    apellidos: {
+						title: 'Apellidos',
 
 					},
 

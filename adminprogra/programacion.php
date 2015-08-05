@@ -1,3 +1,7 @@
+<?php
+
+require 'noautorizado.php';
+?>
 
  <html>
   <head>
@@ -55,7 +59,7 @@
                     },
 
 
-					codigo_curso: {
+				id_curso: {
 						title: 'Asignatura',
                         options: 'param/paramcursos.php',
 

@@ -1,3 +1,8 @@
+<?php
+
+require 'noautorizado.php';
+?>
+
 <html>
   <head>
 
@@ -111,14 +116,14 @@
 
                      telefono_trabajo:
 					{
-						title: 'Tel. trabajo'
+						title: 'Tel. trabajo',
+                        list: false
 
 					},
 
 
                      fecha_ingreso: {
 						title: 'Ingreso',
-                        list: false,
                         type: 'date',
                         displayFormat: 'yy-mm-dd'
 

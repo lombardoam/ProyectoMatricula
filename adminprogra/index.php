@@ -1,8 +1,7 @@
 <?php
 
-
-require'header.php';
-
+require 'header.php';
+require 'noautorizado.php';
 ?>
 
 <!--Código HTML editable-->
