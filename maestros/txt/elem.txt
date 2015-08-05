@@ -1,0 +1,18 @@
+<tr>
+                              <th><input type=\"text\" class=\"form-control\" placeholder=\"Nombre\"></th>
+                              <th><input type=\"text\" class=\"form-control\" placeholder=\"Descripcion\"></th>
+                              <th><input type=\"text\" class=\"form-control\" placeholder=\"0\"></th>
+                              <th><a href=\"javascript:\" class=\"btn btn-danger\" onclick=\"$(this).parent().parent().remove()\">X</a></th>
+                           </tr>
+                           <tr>
+                              <th><input type=\"text\" class=\"form-control\" placeholder=\"Nombre\"></th>
+                              <th><input type=\"text\" class=\"form-control\" placeholder=\"Descripcion\"></th>
+                              <th><input type=\"text\" class=\"form-control\" placeholder=\"0\"></th>
+                              <th><a href=\"javascript:\" class=\"btn btn-danger\" onclick=\"$(this).parent().parent().remove()\">X</a></th>
+                           </tr>
+                           <tr>
+                              <th><input type=\"text\" class=\"form-control\" placeholder=\"Nombre\"></th>
+                              <th><input type=\"text\" class=\"form-control\" placeholder=\"Descripcion\"></th>
+                              <th><input type=\"text\" class=\"form-control\" placeholder=\"0\"></th>
+                              <th><a href=\"javascript:\" class=\"btn btn-danger\" onclick=\"$(this).parent().parent().remove()\">X</a></th>
+                           </tr>

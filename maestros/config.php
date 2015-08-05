@@ -39,11 +39,16 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/scripts.js" type="text/javascript"></script>
+    <script src="js/bootbox.js" type="text/javascript"></script>
+    <script src="js/bootstrap.js" type="text/javascript"></script>
 </head>
 
 <body>
-
+   <div id="hidden"></div>
+   <input type="hidden" id="num_cuenta" value="<?php echo $_SESSION['num_cuenta']?>">
+   <input type="hidden" id="id_config" value="<?php ?>">
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -60,86 +65,7 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>Catedrático</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>Catedrático</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['nombre'];?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -151,7 +77,6 @@
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -208,58 +133,36 @@
             </div>
 
             <div class="container-fluid">
-
-               <form class="form-inline">
+               <h2 class="page-header">General</h2>
+               <div class="alert alert-info">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <i class="fa fa-info-circle"></i> <strong> Nota!</strong> Asegurese de guardar el tipo de evaluación antes de guardar las evaluaciones por parcial.
+               </div>
+               <form class="form-inline" id="form_tipo_eval">
                  <div class="form-group">
                    <label for="select-clase">Tipo de evaluación: </label>
-                     <select class="form-control" id="select-clase">
-                       <option>Puntos Oro</option>
-                       <option>Base a 100%</option>
+                     <select class="form-control" id="tipo_evaluacion">
                      </select>
-                  </div>
+                  </div> <a href="javascript:" type="button" class="btn btn-success" onclick="guardar()">Guardar</a>
                </form><br>
                <form class="form-inline">
                  <div class="form-group">
                    <label for="select-clase">Clase: </label>
-                     <select class="form-control" id="select-clase">
-                       <option>Ingeniera de Software</option> placeholder="0" class="form-control"
-                       <option>Planeación Estratégica</option>
-                       <option>Diseño Web y admon. de contenido</option>
+                     <select class="form-control" id="clases">
                      </select>
                   </div>
                  <div class="form-group">
-                   <label for="select-clase">Sección: </label>
-                     <select class="form-control" id="select-seccion">
-                       <option>A</option>
-                       <option>B</option>
-                       <option>C</option>
-                     </select>
+                   <label> Sección:  </label><label id="seccion" class="text-uppercase"></label>
                   </div>
                  <button type="submit" class="btn btn-default">Seleccionar</button>
                </form>
                <br>
 
+               <h2 class="page-header">Evaluaciones</h2>
+               <div id="parciales">
+                  <!--Petición de ajax-->
+               </div>
 
-               <h3>Primer parcial <button type="submit" class="btn btn-info">Agregar</button></h3>
-               <table class="table table-hover">
-                  <thead>
-                     <th>Nombre</th>
-                     <th>Descripción</th>
-                     <th>Puntos</th>
-                     <th>Acciones</th>
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <td>Examen</td>
-                        <td>Examen teórico</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><a href="#" type="button" class="btn btn-danger" placeholder="Eliminar">X</a></td>
-                     </tr>
-                  </tbody>
-               </table>
-
-
-                  <a href="#" type="button" class="btn btn-success">Guardar Cambios</a>
             </div><br>
 
         </div>
