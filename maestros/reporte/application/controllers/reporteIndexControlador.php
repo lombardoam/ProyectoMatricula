@@ -11,6 +11,8 @@ class ReporteIndexControlador extends CI_Controller
         parent::__construct();
                   $this->load->database();
                        $this->load->helper('form');
+                  $this->load->library('session');
+
 
 
     }
@@ -19,7 +21,6 @@ class ReporteIndexControlador extends CI_Controller
          $_SESSION["Ausente"]=0;
         $_SESSION["Asistio"]=0;
         $_SESSION["total"]=0;
-        $_SESSION["clase"]=0;
 
 
     $id_horario= $_SESSION["clase"];

@@ -96,7 +96,7 @@ function getPrincipa($id_programacion)
        // $this->setAsistioYausentes();
 
 
-             $this->db->select('estudiantes.num_cuenta,estudiantes.nombres,estudiantes.apellidos, cursos.nombre_curso');
+             $this->db->select('estudiantes.num_cuenta,estudiantes.nombres,estudiantes.apellidos, cursos.nombre_curso,estudiantes.id_estudiante');
              $this->db->from('estudiantes');
              $this->db->join('matriculas', 'estudiantes.id_estudiante = matriculas.id_estudiante ');
              $this->db->join('programacion_cursos', 'programacion_cursos.id_programacion = matriculas.id_programacion');

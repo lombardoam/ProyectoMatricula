@@ -20,8 +20,10 @@ aulas.num_aula,
 edificios.nombre');
 
         $this->db->from('programacion_cursos');
+
+
         $this->db->join('periodos_academicos',
-                        'periodos_academicos.id_periodo=     programacion_cursos.id_periodo');
+                        'periodos_academicos.id_periodo = programacion_cursos.id_periodo');
 
         $this->db->join('empleados',
                         ' programacion_cursos.id_empleado =  empleados.id_empleado');
@@ -41,7 +43,10 @@ edificios.nombre');
 
          $query = $this->db->get();
 
-         return $query;
+
+
+
+        return $query;
 
 
     }

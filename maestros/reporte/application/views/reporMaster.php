@@ -143,8 +143,8 @@ break;
                 foreach ($resultado->result() as &$valor)
                {
                    echo" <td>$i</td>";
-                    $_SESSION['numero_cuenta']= $valor->num_cuenta;
-                   echo" <td><a href='cargaReportePrincipal'>$valor->num_cuenta</a></td>";
+                    $_SESSION['numero_cuenta']= $valor->id_estudiante;
+                   echo" <td><a href='cargaReporte'>$valor->num_cuenta</a></td>";
                   echo"   <td>$valor->nombres $valor->apellidos</td>";
                 //  echo"   <td>$valor->fecha</td>";
                  // echo"   <td >$valor->estado</td>";
