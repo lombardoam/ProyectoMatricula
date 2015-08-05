@@ -86,10 +86,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1>Clases Maestro</h1>
+
+<h2> <?php echo" "; echo $_COOKIE["nombre_curso"];?></h2>
 
 	<div id="body">
-        <h4>Catedratico Pedro Gonzales</h4>
+<h2>Catedratico  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
 
 		<code>  <div class="row">
     <div id="col-sm-4">
@@ -102,11 +103,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         {
      echo form_open('listaAlumnosMatriculadosController/setLista');
 
-echo"<label> $valor->nombre </label><label class='checkbox-inline'>
-  <input tabindex='1' type='checkbox' name='ausente[]' id='$valor->nombre' value='$valor->nombre' class'form-control'> Ausente
+echo"<label> $valor->nombres $valor->apellidos  </label><label class='checkbox-inline'>
+  <input tabindex='1' type='checkbox' name='ausente[]' id='$valor->nombres' value='$valor->nombres' class'form-control'> Ausente
 </label>
 <label class='checkbox-inline'>
-  <input tabindex='1' type='checkbox' name='asistio[]' id='$valor->nombre' value='$valor->nombre' class'form-control'> Asistio
+  <input tabindex='1' type='checkbox' name='asistio[]' id='$valor->nombres' value='$valor->nombres' class'form-control'> Asistio
 </label><br>";
 
 
@@ -116,6 +117,12 @@ echo"<p><input type='submit' class='myButton' name='seleccionado' value='Subir r
 
 
  echo form_close();
+
+if (count($resultado->result()) == 0)
+{
+        echo"<p><h3>No Tiene Alumnos Matriculados</h3></p>";
+
+}
 
      ?>
 

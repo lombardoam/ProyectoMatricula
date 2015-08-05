@@ -178,10 +178,9 @@ break;
                 </tr>
             </thead>
                 <tr>
-                    <td><?php echo $_SESSION['total'];?></td>
-                    <td><?php echo $_SESSION["Asistio"]; ?></td>
-                    <td><?php echo $_SESSION["Ausente"]; ?></td>
-
+                    <td><?php $n1= $_COOKIE["Ausente"];  $n2= $_COOKIE["Asistio"];echo $n1+$n2;?></td>
+                    <td><?php echo $_COOKIE["Ausente"]; ?></td>
+                    <td><?php echo $_COOKIE["Asistio"]; ?></td>
 
                 </tr>
                 </tbody>

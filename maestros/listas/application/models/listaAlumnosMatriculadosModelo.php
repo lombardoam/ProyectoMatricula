@@ -13,13 +13,34 @@ class ListaAlumnosMatriculadosModelo extends CI_Model
      function getListaAlumnos($id)
     {
 
-         $this->db->select('alumnos.nombre');
-         $this->db->from('matriculado');
-         $this->db->join('alumnos', 'alumnos.id_alumno = matriculado.id_alumno');
-         $this->db->where('matriculado.id_horario', $id);
+         $this->db->select('estudiantes.nombres, estudiantes.apellidos');
+         $this->db->from('estudiantes');
+         $this->db->join('matriculas', 'estudiantes.id_estudiante = matriculas.id_estudiante');
+         $this->db->where('matriculas.id_programacion', $id);
          $query = $this->db->get();
 
+
+
+
          return $query;
+
+    }
+
+    function  setClase($id)
+    {
+
+         $this->db->select('cursos.nombre_curso');
+         $this->db->from('cursos');
+         $this->db->join('programacion_cursos', 'programacion_cursos.id_curso = cursos.id_curso');
+         $this->db->where('programacion_cursos.id_programacion', $id);
+         $query = $this->db->get();
+
+
+    foreach ($query->result() as &$valor)
+            {
+                    setcookie("nombre_curso", $valor->nombre_curso);
+
+            }
 
     }
 
@@ -35,8 +56,7 @@ class ListaAlumnosMatriculadosModelo extends CI_Model
 
      function setListaAsistenciaAsistio($nombre_alumno)
     {
-         //id nombre alumno
-           $fecha=$this->getFecha();
+         $fecha=$this->getFecha();
 
            $data = $this->session->userdata('id_horario');
            $id_horario;
@@ -46,27 +66,28 @@ class ListaAlumnosMatriculadosModelo extends CI_Model
             $id_horario;
            $id_alumno;
 
-      // echo count($nombre_alumno);
           for ($i = 0; $i < count($nombre_alumno); $i++)
           {
             // echo $id[$i];
 
-
-           $this->db->select('id_alumno');
-           $this->db->from('alumnos');
-           $this->db->where('nombre', $nombre_alumno[$i]);
+           $this->db->select('id_estudiante');
+           $this->db->from('estudiantes');
+           $this->db->where('nombres', $nombre_alumno[$i]);
            $query = $this->db->get();
 
             foreach ($query->result() as &$valor)
             {
 
-              $this->db->insert('asistencia', array('id_horario'=>$id_horario,
-                       'id_alumno'=>$valor->id_alumno,
+              $this->db->insert('asistencia', array('id_programacion'=>$id_horario,
+                       'id_estudiante'=>$valor->id_estudiante,
                    'fecha'=>$fecha,
-                   'estado'=>'Asistio'));
+                   'estado'=>'Asistio',
+                    'id_asistencia'=> 0,
+                    'id_periodo'=>1));
             }
 
           }
+
 
     }
 
@@ -88,18 +109,20 @@ class ListaAlumnosMatriculadosModelo extends CI_Model
           {
             // echo $id[$i];
 
-           $this->db->select('id_alumno');
-           $this->db->from('alumnos');
-           $this->db->where('nombre', $nombre_alumno[$i]);
+           $this->db->select('id_estudiante');
+           $this->db->from('estudiantes');
+           $this->db->where('nombres', $nombre_alumno[$i]);
            $query = $this->db->get();
 
             foreach ($query->result() as &$valor)
             {
 
-              $this->db->insert('asistencia', array('id_horario'=>$id_horario,
-                       'id_alumno'=>$valor->id_alumno,
+              $this->db->insert('asistencia', array('id_programacion'=>$id_horario,
+                       'id_estudiante'=>$valor->id_estudiante,
                    'fecha'=>$fecha,
-                   'estado'=>'Ausente'));
+                   'estado'=>'Ausente',
+                    'id_asistencia'=> 0,
+                    'id_periodo'=>1));
             }
 
           }

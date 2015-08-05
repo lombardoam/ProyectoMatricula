@@ -118,6 +118,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
          }
 
+if (count($user_data->result()) == 0)
+{
+        echo"<p><h3>No Tiene Clases Asignadas</h3></p>";
+
+}
+
 
 
 
