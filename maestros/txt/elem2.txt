@@ -1,0 +1,8 @@
+<tr>
+	<form action=\"\" method=\"get\">
+		<td><input type=\"text\" class=\"form-control\" placeholder=\"Nombre\" name=\"nombre\"></td>
+		<td><input type=\"text\" class=\"form-control\" placeholder=\"Descripcion\" name=\"descripcion\"></td>
+		<td><input type=\"text\" class=\"form-control\" placeholder=\"0\" name=\"puntos\"></td>
+		<td><a href=\"javascript:\" class=\"btn btn-success\" onclick=\"guardareditar("+parcial+", this)\">Guardar</a> <a href=\"javascript:\" class=\"btn btn-danger\" onclick=\"eliminar("+parcial+", this)\">X</a></td>
+	</form>
+</tr>

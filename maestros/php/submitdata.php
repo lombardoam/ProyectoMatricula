@@ -23,7 +23,7 @@
       }
 
    }
-   if((isset($_GET['id_config'])) && (isset($_GET['nombre'])) && (isset($_GET['descripcion'])) && (isset($_GET['puntos'])) && (isset($_GET['parcial']))){
+   if((isset($_GET['insert'])) && (isset($_GET['id_config'])) && (isset($_GET['nombre'])) && (isset($_GET['descripcion'])) && (isset($_GET['puntos'])) && (isset($_GET['parcial']))){
       $config = $_GET['id_config'];
       $nombre = $_GET['nombre'];
       $descripcion = $_GET['descripcion'];
@@ -31,6 +31,16 @@
       $parcial = $_GET['parcial'];
       $parcial += 1;
       ingresareval($config, $nombre, $descripcion, $puntos, $parcial, $con);
+   }
+   if((isset($_GET['update'])) && (isset($_GET['id_eval'])) && (isset($_GET['id_config'])) && (isset($_GET['nombre'])) && (isset($_GET['descripcion'])) && (isset($_GET['puntos'])) && (isset($_GET['parcial']))){
+      $id_eval = $_GET['id_eval'];
+      $config = $_GET['id_config'];
+      $nombre = $_GET['nombre'];
+      $descripcion = $_GET['descripcion'];
+      $puntos = $_GET['puntos'];
+      $parcial = $_GET['parcial'];
+      $parcial += 1;
+      editareval($id_eval, $config, $nombre, $descripcion, $puntos, $parcial, $con);
    }
    //end
 
@@ -101,6 +111,24 @@
       }
    }
    function editareval($id_eval, $id_config, $name, $desc, $pts, $parc, $conexion){
-      $sql = "SELECT id_evaluaciones FROM evaluaciones WHERE id_evaluacion = LAST_INSERT_ID()";
+      $sql = "UPDATE evaluaciones SET
+      id_configuracion = $id_config,
+      nombre = '$name',
+      descripcion = '$desc',
+      valor = $pts,
+      id_parcial = $parc
+      WHERE
+      id_evaluacion = $id_eval
+      ";
+      $query = mysqli_query($conexion, $sql);
+      if($query){
+         $array = array(
+            'cambio' => 'si',
+            'mensaje' => '<h4>Se ha actualizado la evaluación.</h4>',
+         );
+         echo json_encode($array);
+      }else{
+         echo "<h4>No se pudo actualizar la evaluacion, intenta más tarde.</h4>";
+      }
    }
 ?>

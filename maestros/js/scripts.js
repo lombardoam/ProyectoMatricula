@@ -67,7 +67,7 @@ function hidden(){
    });
 }
 function agregar(parcial){
-   $("tbody#"+parcial).append("<tr><td><input type=\"text\" class=\"form-control\" placeholder=\"Nombre\" name=\"nombre\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"Descripcion\" name=\"descripcion\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"0\" name=\"puntos\"></td><td><a href=\"javascript:\" class=\"btn btn-success\" onclick=\"guardareditar("+parcial+", this)\">Guardar</a> <a href=\"javascript:\" class=\"btn btn-danger\" onclick=\"eliminar("+parcial+", this)\">X</a></td></tr>");
+   $("tbody#"+parcial).append("<tr><td><input type=\"text\" class=\"form-control\" placeholder=\"Nombre\" name=\"nombre\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"Descripcion\" name=\"descripcion\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"0\" name=\"puntos\"></td><td><a href=\"javascript:\" class=\"btn btn-success\" onclick=\"guardareditar("+parcial+", this)\">Guardar</a> <input type=\"hidden\" value=\"hola\" id=\"hideval\"> <a href=\"javascript:\" class=\"btn btn-danger\" onclick=\"eliminar("+parcial+", this)\">X</a></td></tr>");
    var valor = parseInt($("#h"+parcial).val());
    valor += 1;
    $("#h"+parcial).val(valor);
@@ -83,11 +83,15 @@ function eliminar(parcial, elem){
 function guardareditar(parcial, elem){
 
    if($('#id_config').val() != ""){
+
+      //Obtenemos a los hermanos del elemento actual
       var hermanos = $(elem).parent().siblings();
+      var hide = $(elem).parent().find("#hideval");
+
+
       var nombre, descripcion, puntos;
       hermanos.each(function(){
          var input = $(this).find('input');
-         input.attr("readonly", "true");
          switch(input.attr('id')){
             case nombre:
                nombre = input.val();
@@ -102,23 +106,35 @@ function guardareditar(parcial, elem){
          //   return '<td>'+this.value+'<td>';
          //});
       });
-      $(elem).replaceWith(function(){
-         return "<a href=\"javascript:\" class=\"btn btn-success\" onclick=\"habilitareditar("+parcial+", this)\">Editar</a>";
-      });
-      var id_config = $('#id_config').val();
-      $.ajax({
-         type: "GET",
-         url: "php/submitdata.php",
-         data: "id_config="+id_config+"&nombre="+nombre+"&descripcion="+descripcion+"&puntos="+puntos+"&parcial="+parcial,
-         success: function(data){
-            var obj = jQuery.parseJSON(data);
-            if(obj['cambio'] != null){
-               bootbox.alert(obj['mensaje']);
-               $(elem).parent().appendChild();
-            }
-
+      if(nombre != "" && descripcion != "" && puntos != ""){
+         if($.isNumeric(puntos)){
+            var id_config = $('#id_config').val();
+            hermanos.each(function(){
+               var input = $(this).find('input');
+               input.attr("readonly", "true");
+            });
+            $.ajax({
+               type: "GET",
+               url: "php/submitdata.php",
+               data: "insert&id_config="+id_config+"&nombre="+nombre+"&descripcion="+descripcion+"&puntos="+puntos+"&parcial="+parcial,
+               success: function(data){
+                  var obj = jQuery.parseJSON(data);
+                  if(obj['cambio'] != null){
+                     bootbox.alert(obj['mensaje']);
+                     hide.val(obj['last_id']);
+                     alert(hide.val());
+                  }
+               }
+            });
+            $(elem).replaceWith(function(){
+               return "<a href=\"javascript:\" class=\"btn btn-success\" onclick=\"habilitareditar("+parcial+", this)\">Editar</a>";
+            });
+         }else{
+            bootbox.alert("<h4>Los puntos solo pueden tener números</h4>");
          }
-      });
+      }else{
+         bootbox.alert("<h4>Por favor llene todos los campos antes de guardar</h4>");
+      }
    }else{
       bootbox.alert("<h4>Por favor seleccione una clase</h4>");
    }
@@ -134,7 +150,7 @@ function habilitareditar(parcial, elem){
       //});
    });
    $(elem).replaceWith(function(){
-      return "<a href=\"javascript:\" class=\"btn btn-success\" onclick=\"guardareditar("+parcial+", this)\">Guardar</a>";
+      return "<a href=\"javascript:\" class=\"btn btn-success\" onclick=\"actualizareditar("+parcial+", this)\">Guardar</a>";
    });
 }
 function evaluaciones(){
@@ -148,25 +164,29 @@ function evaluaciones(){
    });
 }
 function guardar(){
-   if($("#clases").val() != "Seleccione una clase.."){
-      var tipo = $("#tipo_evaluacion").val();
-      var progra = $("#clases").val();
-      $.ajax({
-         type: "GET",
-         url: "php/submitdata.php",
-         data: "tipo_eval&tipo="+tipo+"&progra="+progra,
-         success: function(data){
-            var result = jQuery.parseJSON(data);
-            if(result['cambio'] != null){
-               bootbox.alert(result['mensaje']);
-               $("#id_config").val(result['id_config']);
-            }else{
-               bootbox.alert(result['mensaje']);
+   if($("#tipo_evaluacion").val() != "Seleccione un tipo de evaluacion.."){
+      if($("#clases").val() != "Seleccione una clase.."){
+         var tipo = $("#tipo_evaluacion").val();
+         var progra = $("#clases").val();
+         $.ajax({
+            type: "GET",
+            url: "php/submitdata.php",
+            data: "tipo_eval&tipo="+tipo+"&progra="+progra,
+            success: function(data){
+               var result = jQuery.parseJSON(data);
+               if(result['cambio'] != null){
+                  bootbox.alert(result['mensaje']);
+                  $("#id_config").val(result['id_config']);
+               }else{
+                  bootbox.alert(result['mensaje']);
+               }
             }
-         }
-      });
+         });
+      }else{
+         bootbox.alert("<h4>Por favor seleccione una clase.</h4>");
+      }
    }else{
-      bootbox.alert("<h4>Por favor seleccione una clase.</h4>");
+      bootbox.alert("<h4>Por favor seleccione un tipo de evaluación.</h4>");
    }
 
 }
@@ -177,7 +197,60 @@ function idconfiguracion(){
       url: "php/getdata.php",
       type: "GET",
       success: function(response){
-         $("#id_config").val(response);
+         var obj = jQuery.parseJSON(response);
+         if(obj['mensaje']){
+            bootbox.alert(obj['mensaje']);
+         }else{
+            $("#id_config").val(obj['id_config']);
+            $('select#tipo_evaluacion option[value="'+ obj['tipo_eval'] +'"]').attr('selected', 'selected');
+            alert(obj);
+
+         }
       }
    });
+}
+function actualizareditar(parcial, elem){
+   if($("#id_config").val() != null){
+
+      //Obtenemos el id de la evaluación actual
+      var id_eval = $(elem).parent().find("#hideval").val();
+
+      //Para obtener el valor de cada uno de los inputs
+      var nombre, descripcion, puntos;
+      var hermanos = $(elem).parent().siblings();
+      hermanos.each(function(){
+         var input = $(this).find('input');
+         input.attr("readonly", "true");
+         switch(input.attr('id')){
+            case nombre:
+               nombre = input.val();
+               break;
+            case descripcion:
+               descripcion = input.val();
+               break;
+            case puntos:
+               puntos = parseInt(input.val());
+         }
+      });
+
+      var id_config = $('#id_config').val();
+      $.ajax({
+         type: "GET",
+         url: "php/submitdata.php",
+         data: "update&id_eval="+id_eval+"&id_config="+id_config+"&nombre="+nombre+"&descripcion="+descripcion+"&puntos="+puntos+"&parcial="+parcial,
+         success: function(data){
+            var obj = jQuery.parseJSON(data);
+            if(obj['cambio'] != null){
+               bootbox.alert(obj['mensaje']);
+               alert(hide.val());
+            }
+         }
+      });
+      $(elem).replaceWith(function(){
+         return "<a href=\"javascript:\" class=\"btn btn-success\" onclick=\"habilitareditar("+parcial+", this)\">Editar</a>";
+      });
+   }
+}
+function mostrardata(){
+
 }
