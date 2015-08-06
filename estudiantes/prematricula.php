@@ -4,6 +4,7 @@ require'header.php';
 
 ?>
 
+<link href="style.css" rel="stylesheet" type="text/css"/>
 
         <div id="page-wrapper">
 
