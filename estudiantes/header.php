@@ -26,7 +26,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet" type="text/css"/>
+
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
@@ -97,7 +97,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Usuario <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['num_cuenta'] ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><font color="#000000"><i class="fa fa-fw fa-user"></i>Perfil</font></a>
@@ -110,7 +110,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><font color="#000000"><i class="fa fa-fw fa-power-off"></i>Salir</font></a>
+                            <a href="logout.php"><font color="#000000"><i class="fa fa-fw fa-power-off"></i>Salir</font></a>
                         </li>
                     </ul>
                 </li>
@@ -118,7 +118,7 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li class="active"><br>
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
                     </li>
                     <li>
@@ -128,7 +128,7 @@
                         <a href="aulas.php"><i class="fa fa-fw fa-edit"></i>Matricula</a>
                     </li>
                     <li>
-                        <a href="facultades.php"><i class="fa fa-fw fa-table"></i>Horarios</a>
+                        <a href="horarios.php"><i class="fa fa-fw fa-table"></i>Horarios</a>
                     </li>
                 </ul>
             </div>
