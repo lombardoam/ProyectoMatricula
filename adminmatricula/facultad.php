@@ -56,7 +56,7 @@ require 'noautorizado.php';
 
 					id_empleado: {
 						title: 'Nombre decano',
-						options: 'param/paramdocentes.php',
+						options: 'param/paramfacultad.php',
 						 },
 
 

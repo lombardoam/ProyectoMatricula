@@ -44,6 +44,7 @@ require 'noautorizado.php';
                 	codigo_empleado: {
 						title: 'Código',
 
+
 					},
 
 					nombres: {

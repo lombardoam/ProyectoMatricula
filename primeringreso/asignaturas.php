@@ -3,11 +3,11 @@
   require 'conexion.php';
 
 //Get record count
-		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM cursos");
+		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM cursos WHERE periodo ='1'");
 		$row = mysqli_fetch_array($result);
 		$recordCount = $row['RecordCount'];
   //Get records from database
-  $result = mysqli_query($conexion, "SELECT * FROM cursos");
+  $result = mysqli_query($conexion, "SELECT * FROM cursos WHERE periodo ='1'");
 
   //Add all records to an array
   $rows = array();
