@@ -16,7 +16,7 @@ require 'noautorizado.php';
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Programación del período académico
-                            <small>Definir y almacenar horarios de las clases</small>
+                            <small>Horarios disponibles de clases</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
