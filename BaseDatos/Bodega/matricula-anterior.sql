@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-08-2015 a las 06:38:18
+-- Tiempo de generación: 07-08-2015 a las 03:14:23
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `carreras` (
   `id_empleado` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_carrera`,`codigo_carrera`),
   KEY `codigo_facultad_idx` (`id_facultad`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `carreras`
@@ -104,8 +104,7 @@ CREATE TABLE IF NOT EXISTS `carreras` (
 INSERT INTO `carreras` (`id_carrera`, `codigo_carrera`, `nombre_carrera`, `id_facultad`, `id_empleado`) VALUES
 (1, 'ARQ', 'Arquitectura', 1, 3),
 (2, 'INGC', 'Ingenieria Civil', 1, 4),
-(3, 'IIT', 'Ingenieria en Infotecnologia', 1, 5),
-(4, 'DER', 'Derecho', 2, 13);
+(3, 'IIT', 'Ingenieria en Infotecnologia', 1, 5);
 
 -- --------------------------------------------------------
 
@@ -194,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `cursos` (
   `periodo` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_curso`,`codigo_curso`),
   KEY `codigo_plan_idx` (`id_plan_estudio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `cursos`
@@ -206,10 +205,7 @@ INSERT INTO `cursos` (`id_curso`, `codigo_curso`, `nombre_curso`, `uv`, `horas_p
 (3, 'IIT4012', 'Ingenieria de Software II', 3, 0, 3, 0, 1, 10),
 (4, 'IIT4010', 'DiseÃ±o Web', 3, 50, 10, 1, 1, 9),
 (5, 'MAT101', 'Orientacion Universitaria', 3, 50, 0, 0, 2, 1),
-(6, 'ECO101', 'Ecologia', 3, 0, 50, 0, 3, 1),
-(7, 'DIS101', 'Diseno I', 4, 50, 10, 0, 3, 2),
-(8, 'DER101', 'Derecho Constitucional', 4, 50, 0, 0, 4, 7),
-(9, 'DER102', 'Derecho Penal', 4, 0, 50, 0, 4, 8);
+(6, 'ECO101', 'Ecologia', 3, 0, 50, 0, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -256,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `empleados` (
   PRIMARY KEY (`id_empleado`,`codigo_empleado`,`num_cuenta`),
   KEY `codigo_puesto_idx` (`id_puesto`),
   KEY `codigo_carrera_idx` (`codigo_carrera`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `empleados`
@@ -273,8 +269,7 @@ INSERT INTO `empleados` (`id_empleado`, `codigo_empleado`, `nombres`, `apellidos
 (8, 'KE', 'Karen', 'Estrada', 'F', 12312312, 'kestrada@gmail.com', 'INGC', 5, 20150007),
 (9, 'JR', 'Juan', 'Reyes', 'M', 23232312, 'jreyes@gmail.com', 'IIT', 6, 20150008),
 (10, 'KE2', 'Karen', 'Estrada', 'F', 21312312, 'kestrada@gmail.com', 'INGC', 5, 20150007),
-(12, 'PG1', 'Pedro', 'Gallardo', 'M', 23654787, 'pg@gmail.com', 'INGC', 1, 0),
-(13, 'CLF', 'Claudia', 'Flores', '2', 45151225, 'clau@gmail.com', 'DER', 2, 20124582);
+(12, 'PG1', 'Pedro', 'Gallardo', 'M', 23654787, 'pg@gmail.com', 'INGC', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -466,7 +461,7 @@ CREATE TABLE IF NOT EXISTS `planes_estudio` (
   `id_carrera` int(11) NOT NULL,
   PRIMARY KEY (`id_plan_estudio`,`codigo_plan`),
   KEY `codigo_carrera_idx` (`id_carrera`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `planes_estudio`
@@ -475,8 +470,7 @@ CREATE TABLE IF NOT EXISTS `planes_estudio` (
 INSERT INTO `planes_estudio` (`id_plan_estudio`, `codigo_plan`, `nombre_plan`, `duracion`, `cantidad_cursos`, `total_uv`, `id_carrera`) VALUES
 (1, 'IIT2013', 'Ingenieria en Infotecnologia', '4 anos', 61, 219, 3),
 (2, 'INGC2013', 'Ingenieria Civil', '4 anos', 58, 195, 2),
-(3, 'ARQ2013', 'Arquitectura', '4 anos', 54, 179, 1),
-(4, 'DER', 'Derecho', '4 anos', 60, 249, 4);
+(3, 'ARQ2013', 'Arquitectura', '4 anos', 54, 179, 1);
 
 -- --------------------------------------------------------
 
@@ -505,7 +499,6 @@ CREATE TABLE IF NOT EXISTS `programacion_cursos` (
   `codigo_prog_curso` varchar(10) NOT NULL,
   `id_periodo` int(11) DEFAULT NULL,
   `id_curso` int(11) NOT NULL,
-  `id_plan_estudio` int(11) NOT NULL,
   `seccion` char(1) DEFAULT NULL,
   `hora_inicio` varchar(5) DEFAULT NULL,
   `hora_termina` varchar(5) DEFAULT NULL,
@@ -518,21 +511,16 @@ CREATE TABLE IF NOT EXISTS `programacion_cursos` (
   KEY `codigo_curso_idx` (`id_curso`),
   KEY `codigo_periodo_idx` (`id_periodo`),
   KEY `codigo_empleado_idx` (`id_empleado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `programacion_cursos`
 --
 
-INSERT INTO `programacion_cursos` (`id_programacion`, `codigo_prog_curso`, `id_periodo`, `id_curso`, `id_plan_estudio`, `seccion`, `hora_inicio`, `hora_termina`, `dias`, `id_empleado`, `id_aula`, `estatus_curso`) VALUES
-(1, 'PROG1', 1, 1, 1, 'A', '15:50', '17:40', 'L-Mi-V', 6, 1, 'Activo'),
-(2, 'PROG2', 1, 2, 1, 'A', '12:50', '14:40', 'Ma-J', 5, 4, 'Activo'),
-(3, 'PROG3', 1, 4, 1, 'A', '15:50', '19:40', 'Ma', 12, 9, 'Activo'),
-(4, 'PROG4', 1, 5, 2, 'B', '6:50', '8:40', 'L-Mi-V', 12, 4, 'Activo'),
-(5, 'PROGARQ1', 1, 5, 3, 'A', '6:50', '7:40', 'L-Mi-V', 3, 4, 'Activo'),
-(6, 'PROGDER1', 1, 8, 4, 'A', '15:50', '17:40', 'L-Mi-V', 13, 6, 'Activo'),
-(7, 'PROGDER2', 1, 9, 4, 'B', '16:50', '18:40', 'Ma-J', 13, 6, 'Activo'),
-(8, 'PROG5', 1, 5, 2, 'A', '6:50', '8:40', 'L-Mi-V', 3, 4, 'Activo');
+INSERT INTO `programacion_cursos` (`id_programacion`, `codigo_prog_curso`, `id_periodo`, `id_curso`, `seccion`, `hora_inicio`, `hora_termina`, `dias`, `id_empleado`, `id_aula`, `estatus_curso`) VALUES
+(1, 'PROG1', 1, 1, 'A', '15:50', '17:40', 'L-Mi-V', 6, 1, 'Activo'),
+(2, 'PROG2', 1, 2, 'A', '12:50', '14:40', 'Ma-J', 5, 4, 'Activo'),
+(3, 'PROG3', 1, 4, 'A', '15:50', '19:40', 'Ma', 12, 9, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -648,27 +636,24 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `contrasena` varchar(45) NOT NULL,
   `tipo_usuario` int(11) NOT NULL,
   `num_cuenta` int(11) NOT NULL,
-  `id_plan_estudio` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuarios_tipos_usuarios_idx` (`tipo_usuario`),
   KEY `fk_usuarios_empleados_idx` (`num_cuenta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `nombre_usuario`, `contrasena`, `tipo_usuario`, `num_cuenta`, `id_plan_estudio`) VALUES
-(1, 'Marco', 'Diaz', 'marco.diaz', 'chilo123', 1, 20150005, 0),
-(2, 'Jeiky', 'Tovar', 'jeiky.tovar', 'chilo123', 2, 20150006, 0),
-(3, 'Ricardo', 'Valladares', 'ricardo.valladares', 'chilo123', 3, 201500001, 0),
-(4, 'Karen', 'Estrada', 'karen.estrada', 'chilo123', 4, 20150007, 0),
-(5, 'Juan', 'Reyes', 'juan.reyes', 'chilo123', 5, 20150008, 0),
-(6, 'Ingeniero', 'Mejia', 'ing.mejia', 'chilo123', 6, 201520345, 2),
-(7, 'Cristian', 'Orlando', 'cristian.orlando', 'chilo123', 7, 201560321, 0),
-(8, 'Marco', 'Diaz', 'Marco', 'chilo123', 6, 2015203620, 1),
-(9, 'Arquitecto', 'Martinez', 'martinez', 'chilo123', 6, 2015236230, 3),
-(10, 'Claudia', 'Flores', 'claudia.flores', 'chilo123', 6, 2012457820, 4);
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `nombre_usuario`, `contrasena`, `tipo_usuario`, `num_cuenta`) VALUES
+(1, 'Marco', 'Diaz', 'marco.diaz', 'chilo123', 1, 20150005),
+(2, 'Jeiky', 'Tovar', 'jeiky.tovar', 'chilo123', 2, 20150006),
+(3, 'Ricardo', 'Valladares', 'ricardo.valladares', 'chilo123', 3, 201500001),
+(4, 'Karen', 'Estrada', 'karen.estrada', 'chilo123', 4, 20150007),
+(5, 'Juan', 'Reyes', 'juan.reyes', 'chilo123', 5, 20150008),
+(6, 'Taylor', 'Swift', 'taylor.swift', 'chilo123', 6, 201520345),
+(7, 'Cristian', 'Orlando', 'cristian.orlando', 'chilo123', 7, 201560321),
+(8, 'Marco', 'Diaz', 'Marco', 'chilo123', 6, 2015203620);
 
 --
 -- Restricciones para tablas volcadas
