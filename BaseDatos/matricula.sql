@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-08-2015 a las 06:38:18
+-- Tiempo de generación: 08-08-2015 a las 10:06:47
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -274,7 +274,7 @@ INSERT INTO `empleados` (`id_empleado`, `codigo_empleado`, `nombres`, `apellidos
 (9, 'JR', 'Juan', 'Reyes', 'M', 23232312, 'jreyes@gmail.com', 'IIT', 6, 20150008),
 (10, 'KE2', 'Karen', 'Estrada', 'F', 21312312, 'kestrada@gmail.com', 'INGC', 5, 20150007),
 (12, 'PG1', 'Pedro', 'Gallardo', 'M', 23654787, 'pg@gmail.com', 'INGC', 1, 0),
-(13, 'CLF', 'Claudia', 'Flores', '2', 45151225, 'clau@gmail.com', 'DER', 2, 20124582);
+(13, 'CLF', 'Claudia', 'Flores', 'F', 45151225, 'clau@gmail.com', 'DER', 2, 20124582);
 
 -- --------------------------------------------------------
 
