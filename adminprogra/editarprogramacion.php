@@ -7,6 +7,7 @@ $result = mysqli_query($conexion, "UPDATE programacion_cursos SET codigo_prog_cu
 '" . $_POST["codigo_prog_curso"] . "',
 id_periodo = '" . $_POST["id_periodo"] . "',
 id_curso = '" . $_POST["id_curso"]  . "',
+id_plan_estudio = '" . $_POST["id_plan_estudio"]  . "',
 seccion = '" . $_POST["seccion"]  . "',
 hora_inicio = '" . $_POST["hora_inicio"]  . "',
 hora_termina = '" . $_POST["hora_termina"]  . "',

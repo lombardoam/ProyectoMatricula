@@ -65,6 +65,12 @@ require 'noautorizado.php';
 
                     },
 
+                id_plan_estudio: {
+						title: 'Plan',
+                        options: 'param/paramplan.php',
+
+                    },
+
 
                      seccion: {
 						title: 'Sección',
