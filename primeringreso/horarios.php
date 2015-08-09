@@ -31,7 +31,11 @@ require 'noautorizado.php';
                 <!-- /.row -->
 
             </div>
-            <!-- /.container-fluid -->
+            <!-- /.container-fluid --><div align="center">
+                            <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Consulte los horarios de clases disponibles para las asignaturas de alumnos de primer ingreso.
+            </div></div>
 <?php
 require'verprogra.php';
 ?>

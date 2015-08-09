@@ -32,6 +32,10 @@ require 'noautorizado.php';
             </div>
             <!-- /.container-fluid -->
             <div align="center">
+                <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Consulte las asignaturas de su carrera
+                        </div>
                             <?php
             require'cursos.php';
             ?>

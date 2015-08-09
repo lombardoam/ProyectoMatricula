@@ -32,8 +32,11 @@ require 'noautorizado.php';
                 </div>
                 <!-- /.row -->
 
-            </div>
-
+            </div><div align="center">
+                <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Consulte y programe los horarios de clases de su carrera.
+            </div></div>
 
 
             <!-- /.container-fluid -->

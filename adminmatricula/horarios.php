@@ -31,6 +31,11 @@ require'header.php';
 
             </div>
             <!-- /.container-fluid -->
+            <div align="center">
+                            <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Consulte, revise y programe los horarios de clases de todas las carreras en el periodo académico.
+                </div></div>
 <?php
 require'verprogra.php';
 ?>

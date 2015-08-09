@@ -29,6 +29,10 @@ require 'noautorizado.php';
                 <!-- /.row -->
 
             </div>
+                            <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Consulte e ingrese al sistema los alumnos de primer ingreso a la universidad.
+                        </div>
             <!-- /.container-fluid -->
             <!-- /.Colocar aquí el código y contenido que se desee poner en la página -->
             <div align="center">

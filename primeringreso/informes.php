@@ -43,7 +43,7 @@ require 'noautorizado.php';
                                 <h3 class="panel-title">Programación académica</h3>
                             </div>
                             <div class="panel-body">
-                               <a href="reportehorarios.php" target="_blank"><img src="images/libreta.jpg" width="70%" height="70%" /></a>
+                               <a href="reportehorarios.php" target="_blank"><img src="images/libreta.jpg" width="100%" height="100%" /></a>
                             </div>
                         </div>
 
@@ -55,7 +55,7 @@ require 'noautorizado.php';
                                 <h3 class="panel-title">Asignaturas primer periodo</h3>
                             </div>
                             <div class="panel-body">
-                               <a href="reporteclases.php" target="_blank"><img src="images/libreta.jpg" width="70%" height="70%" /></a>
+                               <a href="reporteclases.php" target="_blank"><img src="images/libreta.jpg" width="100%" height="100%" /></a>
                             </div>
                         </div>
 
@@ -67,7 +67,7 @@ require 'noautorizado.php';
                                 <h3 class="panel-title">Docentes universitarios</h3>
                             </div>
                             <div class="panel-body">
-                               <a href="reportedocentes.php" target="_blank"><img src="images/libreta.jpg" width="70%" height="70%"  /></a>
+                               <a href="reportedocentes.php" target="_blank"><img src="images/libreta.jpg" width="100%" height="100%"  /></a>
                             </div>
                         </div>
 
@@ -79,7 +79,7 @@ require 'noautorizado.php';
                                 <h3 class="panel-title">Alumnos de Primer Ingreso</h3>
                             </div>
                             <div class="panel-body">
-                               <a href="reportealumnos.php" target="_blank"><img src="images/libreta.jpg" width="70%" height="70%"  /></a>
+                               <a href="reportealumnos.php" target="_blank"><img src="images/libreta.jpg" width="100%" height="100%"  /></a>
                             </div>
                         </div>
 
