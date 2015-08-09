@@ -12,7 +12,7 @@ require 'noautorizado.php';
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Página principal de Administración
+                            Administración
                             <small>Sistema de matrícula</small>
                         </h1>
                         <ol class="breadcrumb">
