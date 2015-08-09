@@ -40,14 +40,14 @@ require 'noautorizado.php';
 require'estudiantes.php';
 
 ?>
-
-                <br><br>
-
+               <br><br>
+            <div align="center">
+<a href="reportealumnos.php" target="_blank" class="btn btn-primary btn-lg" role="button">Versión imprimible</a>
             </div>
+            <br><br>
 
-   </div>
+        </div>
         <!-- /#page-wrapper -->
-
 
 
     <!-- /#wrapper -->
@@ -55,4 +55,6 @@ require'estudiantes.php';
 
   </body>
 </html>
+
+
 

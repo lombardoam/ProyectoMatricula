@@ -1,4 +1,3 @@
-
 <?php
     session_start();
    if(!(
@@ -11,7 +10,7 @@
       )
    ){
       header('Location:../index.php?no_aut');
-   } else if($_SESSION['tipo_usuario'] != 7){
+   } else if($_SESSION['tipo_usuario'] != 4){
       header('Location:../index.php?no_aut');
    }
 ?>
@@ -20,34 +19,38 @@
 
 <!--Código HTML editable-->
 
-        <div id="page-wrapper">
+       <div id="page-wrapper">
 
             <div class="container-fluid">
 
                 <!-- Page Heading -->
+                <div align="center">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div align="center"><h1 class="page-header">
-                            Programación del período académico
-                        <small>- Definición de horarios</small></div>
+                        <h1 class="page-header">
+                            Equivalencias
+
                         </h1>
+                        <ol class="breadcrumb">
 
                         </ol>
                     </div>
                 </div>
                 <!-- /.row -->
 
-            </div>
+                </div></div>
             <!-- /.container-fluid -->
-
-            <form>
+            <!-- /.Colocar aquí el código y contenido que se desee poner en la página -->
+            <div align="center">
 
 <?php
-require'verprogra.php';
+
+require'equivalencia.php';
+
 ?>
 
             <br><br>
-            <div align="center">
+
   <form>
 <input type='button' onclick='window.print();' value='Impresión' class="btn btn-primary btn-lg" role="button">
                 </form>           </div>
