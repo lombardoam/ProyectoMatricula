@@ -33,11 +33,17 @@ require 'noautorizado.php';
                 <!-- /.row -->
 
             </div>
+
+
+
             <!-- /.container-fluid -->
 <?php
 require'programacion.php';
 ?>
-
+            <br><br>
+            <div align="center">
+<a href="reportehorarios.php" target="_blank" class="btn btn-primary btn-lg" role="button">Versión imprimible</a>
+            </div>
             <br><br>
 
         </div>

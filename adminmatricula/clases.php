@@ -40,8 +40,11 @@ require'cursos.php';
 
 ?>
 
-                <br><br>
-
+                           <br><br>
+            <div align="center">
+<a href="reporteclases.php" target="_blank" class="btn btn-primary btn-lg" role="button">Versión imprimible</a>
+            </div>
+            <br><br>
             </div>
 
         </div>
