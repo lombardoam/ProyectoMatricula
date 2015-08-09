@@ -30,15 +30,17 @@ require 'noautorizado.php';
             </div>
             <!-- /.container-fluid -->
             <!-- /.Colocar aquí el código y contenido que se desee poner en la página -->
-                        <div align="center"><img src="images/ujcv.png" width="20%" height="20%" />
+                        <div align="center"><img src="images/ujcv.png" width="15%" height="15%" />
+
+                            <div class="alert alert-warning">
 
             <h3>Este es el sistema de gestión de alumnos de primer ingreso de la UJCV.<br />
                 <br />
                 Aquí podrá realizar sus labores administrativas respecto al área de primer ingreso.</h3></div>
 
-        </div>
+            </div>
 
-        </div>
+</div>
         <!-- /#page-wrapper -->
 
 

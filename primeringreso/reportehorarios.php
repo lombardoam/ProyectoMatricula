@@ -28,8 +28,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div align="center"><h1 class="page-header">
-                            Programación del período académico
-                        <small>- Definición de horarios</small></div>
+                            Programación del período académico - Horarios</div>
                         </h1>
 
                         </ol>

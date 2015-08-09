@@ -14,8 +14,8 @@ require 'noautorizado.php';
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Clases
-                            <small>Informes</small>
+                            Reportes
+
                         </h1>
                         <ol class="breadcrumb">
                             <li>
@@ -29,9 +29,47 @@ require 'noautorizado.php';
                 </div>
                 <!-- /.row -->
 
+                        </div>
+                                                  <div class="alert alert-info">
+
+                                                      Aquí se encuentran versiones imprimibles de las tablas más importantes del sistema.<br />
+                </div>
+
             </div>
             <!-- /.container-fluid -->
-            <div align="center"><img src="images/ujcv.png" /></div>
+            <div class="col-sm-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Programación académica</h3>
+                            </div>
+                            <div class="panel-body">
+                               <a href="reportehorarios.php" target="_blank"><img src="images/libreta.jpg" width="70%" height="70%" /></a>
+                            </div>
+                        </div>
+
+        </div>
+
+                       <div class="col-sm-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Asignaturas existentes</h3>
+                            </div>
+                            <div class="panel-body">
+                               <a href="reporteclases.php" target="_blank"><img src="images/libreta.jpg" width="70%" height="70%" /></a>
+                            </div>
+                        </div>
+
+        </div>
+
+                       <div class="col-sm-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Docentes universitarios</h3>
+                            </div>
+                            <div class="panel-body">
+                               <a href="reportedocentes.php" target="_blank"><img src="images/libreta.jpg" width="70%" height="70%"  /></a>
+                            </div>
+                        </div>
 
         </div>
         <!-- /#page-wrapper -->
