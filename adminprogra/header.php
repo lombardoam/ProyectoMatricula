@@ -179,7 +179,7 @@
                         <a href="index.php"><i class="fa fa-fw fa-university"></i> Escritorio</a>
                     </li>
                     <li>
-                        <a href="clases.php"><i class="fa fa-fw fa-sign-in"></i> Clases</a>
+                        <a href="clases.php"><i class="fa fa-fw fa-book"></i> Clases</a>
                     </li>
                     <li>
                         <a href="docentes.php"><i class="fa fa-fw fa-user"></i> Docentes</a>
@@ -189,7 +189,7 @@
                     </li>
 
                     <li>
-                        <a href="prematricula.php"><i class="fa fa-fw fa-paperclip"></i>Prematricula</a>
+                        <a href="prematricula.php"><i class="fa fa-fw fa-paperclip"></i> Prematricula</a>
                     </li>
 
                     <li>

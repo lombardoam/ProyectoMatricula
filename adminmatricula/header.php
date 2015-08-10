@@ -194,23 +194,23 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Administración <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="clases.php"><i class="fa fa-fw fa-wrench"></i>Clases</a>
+                                <a href="clases.php"><i class="fa fa-fw fa-wrench"></i> Clases</a>
                             </li>
 
                             <li>
-                                <a href="docentes.php"><i class="fa fa-fw fa-wrench"></i>Docentes</a>
+                                <a href="docentes.php"><i class="fa fa-fw fa-wrench"></i> Docentes</a>
                             </li>
                             <li>
                                 <a href="horarios.php"><i class="fa fa-fw fa-wrench"></i> Horarios</a>
                             </li>
                             <li>
-                                <a href="alumnos.php"><i class="fa fa-fw fa-wrench"></i>Alumnos</a>
+                                <a href="alumnos.php"><i class="fa fa-fw fa-wrench"></i> Alumnos</a>
                             </li>
                                  <li>
-                                <a href="equivalencias.php"><i class="fa fa-fw fa-wrench"></i>Equivalencias</a>
+                                <a href="equivalencias.php"><i class="fa fa-fw fa-wrench"></i> Equivalencias</a>
                             </li>
                               <li>
-                                <a href="tipequivalencias.php"><i class="fa fa-fw fa-wrench"></i>Tipos de equivalencias</a>
+                                <a href="tipequivalencias.php"><i class="fa fa-fw fa-wrench"></i> Tipos de equivalencias</a>
                             </li>
 
                         </ul>

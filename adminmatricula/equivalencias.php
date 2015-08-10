@@ -39,9 +39,9 @@ require 'noautorizado.php';
 
             ?>
 
-               <br><br>
-            <div align="center">
-<a href="reporteequivalencia.php" target="_blank" class="btn btn-primary btn-lg" role="button">Versión imprimible</a>
+
+            <div align="right">
+<a href="reporteequivalencia.php" target="_blank" class="btn btn-primary" role="button" title="Versión imprimible"><i class="fa fa-fw fa-print"></i></a>
             </div>
             <br><br>
 

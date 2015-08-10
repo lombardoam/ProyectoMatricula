@@ -182,7 +182,7 @@
                     </li>
 
                     <li>
-                        <a href="clases.php"><i class="fa fa-fw fa-sign-in"></i> Clases</a>
+                        <a href="clases.php"><i class="fa fa-fw fa-book"></i> Clases</a>
                     </li>
 
                      <li>
