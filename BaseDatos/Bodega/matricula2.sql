@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-08-2015 a las 09:59:42
+-- Tiempo de generación: 08-08-2015 a las 10:06:47
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -31,26 +31,20 @@ CREATE TABLE IF NOT EXISTS `asistencia` (
   `id_estudiante` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `estado` varchar(45) NOT NULL,
-  `id_asistencia` int(11) NOT NULL AUTO_INCREMENT,
-  `id_periodo` int(11) NOT NULL,
-  PRIMARY KEY (`id_asistencia`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+  `id_asistencia` int(11) NOT NULL,
+  `id_periodo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `asistencia`
 --
 
 INSERT INTO `asistencia` (`id_programacion`, `id_estudiante`, `fecha`, `estado`, `id_asistencia`, `id_periodo`) VALUES
+(1, 2, '0000-00-00', 'dd', 1, 1),
 (3, 3, '2015-08-05', 'Ausente', 2, 1),
-(3, 3, '2015-08-06', 'Ausente', 3, 1),
-(3, 3, '2015-08-07', 'Ausente', 4, 1),
-(3, 3, '2015-08-08', 'Asistio', 5, 1),
-(3, 3, '2015-08-05', 'Asistio', 6, 1),
-(3, 3, '2015-08-05', 'Asistio', 12, 1),
-(3, 3, '2015-08-05', 'Asistio', 13, 1),
-(3, 4, '2015-08-05', 'Ausente', 14, 1),
-(3, 5, '2015-08-05', 'Ausente', 15, 1),
-(3, 3, '2015-08-05', 'Asistio', 16, 1);
+(3, 3, '2015-08-05', 'Ausente', 3, 1),
+(3, 3, '2015-08-05', 'Ausente', 4, 1),
+(3, 3, '2015-08-05', 'Asistio', 5, 1);
 
 -- --------------------------------------------------------
 

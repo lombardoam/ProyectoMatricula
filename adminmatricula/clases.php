@@ -32,7 +32,7 @@ require 'noautorizado.php';
             </div>
                             <div align="center"><div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            Consulte las asignaturas de todas las carreras.
+                            Consulte, edite y agregue las asignaturas de todas las carreras.
                                 </div></div>
             <!-- /.container-fluid -->
             <!-- /.Colocar aquí el código y contenido que se desee poner en la página -->
@@ -44,9 +44,8 @@ require'cursos.php';
 
 ?>
 
-                           <br><br>
-            <div align="center">
-<a href="reporteclases.php" target="_blank" class="btn btn-primary btn-lg" role="button">Versión imprimible</a>
+            <div align="right">
+<a href="reporteclases.php" target="_blank" class="btn btn-primary" role="button" title="Versión imprimible"><i class="fa fa-fw fa-print"></i></a>
             </div>
             <br><br>
             </div>

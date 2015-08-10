@@ -170,44 +170,47 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active"><br>
-                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
+                        <a href="index.php"><i class="fa fa-fw fa-university"></i> Escritorio</a>
+                    </li>
+                      <li>
+                        <a href="matricula.php"><i class="fa fa-fw fa-pencil"></i> Matrícula</a>
                     </li>
                     <li>
-                        <a href="carreras.php"><i class="fa fa-fw fa-bar-chart-o"></i> Carreras</a>
+                        <a href="carreras.php"><i class="fa fa-fw fa-folder-open-o"></i> Carreras</a>
                     </li>
                     <li>
-                        <a href="facultades.php"><i class="fa fa-fw fa-table"></i> Facultades</a>
+                        <a href="facultades.php"><i class="fa fa-graduation-cap"></i> Facultades</a>
                     </li>
                     <li>
-                        <a href="aulas.php"><i class="fa fa-fw fa-edit"></i>Aulas</a>
+                        <a href="aulas.php"><i class="fa fa-fw fa-building"></i> Aulas</a>
                     </li>
 
 
                      <li>
-                        <a href="preingreso.php"><i class="fa fa-fw fa-desktop"></i>Prematricula</a>
+                        <a href="preingreso.php"><i class="fa fa-fw fa-paperclip"></i> Prematricula</a>
                     </li>
 
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Administración <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="clases.php"><i class="fa fa-fw fa-wrench"></i>Clases</a>
+                                <a href="clases.php"><i class="fa fa-fw fa-wrench"></i> Clases</a>
                             </li>
 
                             <li>
-                                <a href="docentes.php"><i class="fa fa-fw fa-wrench"></i>Docentes</a>
+                                <a href="docentes.php"><i class="fa fa-fw fa-wrench"></i> Docentes</a>
                             </li>
                             <li>
                                 <a href="horarios.php"><i class="fa fa-fw fa-wrench"></i> Horarios</a>
                             </li>
                             <li>
-                                <a href="alumnos.php"><i class="fa fa-fw fa-wrench"></i>Alumnos</a>
+                                <a href="alumnos.php"><i class="fa fa-fw fa-wrench"></i> Alumnos</a>
                             </li>
                                  <li>
-                                <a href="equivalencias.php"><i class="fa fa-fw fa-wrench"></i>Equivalencias</a>
+                                <a href="equivalencias.php"><i class="fa fa-fw fa-wrench"></i> Equivalencias</a>
                             </li>
                               <li>
-                                <a href="tipequivalencias.php"><i class="fa fa-fw fa-wrench"></i>Tipos de equivalencias</a>
+                                <a href="tipequivalencias.php"><i class="fa fa-fw fa-wrench"></i> Tipos de equivalencias</a>
                             </li>
 
                         </ul>

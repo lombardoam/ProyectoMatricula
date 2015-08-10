@@ -13,7 +13,7 @@ require 'noautorizado.php';
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Docentes
-                            <small>Gestión de docentes</small>
+                            <small>Listado de docentes</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
@@ -37,9 +37,9 @@ require 'noautorizado.php';
 require'catedraticos.php';
 
 ?>
-               <br><br>
-            <div align="center">
-<a href="reportedocentes.php" target="_blank" class="btn btn-primary btn-lg" role="button">Versión imprimible</a>
+
+            <div align="right">
+<a href="reportedocentes.php" target="_blank" class="btn btn-primary" role="button" title="Versión imprimible"><i class="fa fa-fw fa-print"></i></a>
             </div>
             <br><br>
 

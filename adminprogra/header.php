@@ -176,20 +176,20 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active"><br>
-                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
+                        <a href="index.php"><i class="fa fa-fw fa-university"></i> Escritorio</a>
                     </li>
                     <li>
-                        <a href="clases.php"><i class="fa fa-fw fa-bar-chart-o"></i> Clases</a>
+                        <a href="clases.php"><i class="fa fa-fw fa-book"></i> Clases</a>
                     </li>
                     <li>
-                        <a href="docentes.php"><i class="fa fa-fw fa-table"></i> Docentes</a>
+                        <a href="docentes.php"><i class="fa fa-fw fa-user"></i> Docentes</a>
                     </li>
                     <li>
-                        <a href="aulas.php"><i class="fa fa-fw fa-edit"></i> Aulas</a>
+                        <a href="aulas.php"><i class="fa fa-fw fa-building"></i> Aulas</a>
                     </li>
 
                     <li>
-                        <a href="prematricula.php"><i class="fa fa-fw fa-desktop"></i>Prematricula</a>
+                        <a href="prematricula.php"><i class="fa fa-fw fa-paperclip"></i> Prematricula</a>
                     </li>
 
                     <li>
