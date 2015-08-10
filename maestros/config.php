@@ -134,13 +134,7 @@
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                   <i class="fa fa-info-circle"></i> <strong> Nota!</strong> Asegurese de guardar el tipo de evaluación antes de guardar las evaluaciones por parcial.
                </div>
-               <form class="form-inline" id="form_tipo_eval">
-                 <div class="form-group">
-                   <label for="select-clase">Tipo de evaluación: </label>
-                     <select class="form-control" id="tipo_evaluacion">
-                     </select>
-                  </div> <a href="javascript:" type="button" class="btn btn-success" onclick="guardar()">Guardar</a>
-               </form><br>
+
                <form class="form-inline">
                  <div class="form-group">
                    <label for="select-clase">Clase: </label>
@@ -150,9 +144,14 @@
                  <div class="form-group">
                    <label> Sección:  </label><label id="seccion" class="text-uppercase"></label>
                   </div>
-                 <button type="submit" class="btn btn-default">Seleccionar</button>
+               </form><br>
+               <form class="form-inline" id="form_tipo_eval">
+                 <div class="form-group">
+                   <label for="select-clase">Tipo de evaluación: </label>
+                     <select class="form-control" id="tipo_evaluacion">
+                     </select>
+                  </div> <a href="javascript:" type="button" class="btn btn-success" onclick="guardar()">Guardar</a>
                </form>
-               <br>
 
                <h2 class="page-header">Evaluaciones</h2>
                <div id="parciales">

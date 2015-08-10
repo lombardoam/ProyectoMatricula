@@ -36,7 +36,7 @@ function hidden(){
 function agregar(parcial){
    if($("#id_config").val() != ""){
       if($("#clases").val() != 0){
-         $("tbody#"+parcial).append("<tr><td><input type=\"text\" class=\"form-control\" placeholder=\"Nombre\" name=\"nombre\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"Descripcion\" name=\"descripcion\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"0\" name=\"puntos\"></td><td><a href=\"javascript:\" class=\"btn btn-success\" onclick=\"guardareditar("+parcial+", this)\">Guardar</a> <input type=\"hidden\" value=\"hola\" id=\"hideval\"> <a href=\"javascript:\" class=\"btn btn-danger\" onclick=\"eliminar("+parcial+", this)\">X</a></td></tr>");
+         $("tbody#"+parcial).append("<tr><td><input type=\"text\" class=\"form-control\" placeholder=\"Nombre\" name=\"nombre\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"Descripcion\" name=\"descripcion\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"0\" name=\"puntos\"></td><td><a href=\"javascript:\" class=\"btn btn-success\" onclick=\"guardareditar("+parcial+", this)\">Guardar</a> <input type=\"hidden\" value=\"hola\" id=\"hideval\"> <a href=\"javascript:\" class=\"btn btn-danger\" id=\"elimsolo\" onclick=\"eliminarsolo(this)\">X</a></td></tr>");
          var valor = parseInt($("#h"+parcial).val());
          valor += 1;
          $("#h"+parcial).val(valor);
@@ -45,7 +45,16 @@ function agregar(parcial){
          bootbox.alert("<h4>Por favor seleccione una clase</h4>");
       }
    }else{
-      bootbox.alert("<h4>Por favor seleccione una clase</h4>");
+      bootbox.dialog({
+         message: "Por favor seleccione un Tipo de Evaluación para esta clase, luego hace click en guardar antes de agregar evaluaciones.",
+         title: "No ha configurado esta clase!",
+         buttons: {
+            success: {
+               label: "Entendido",
+               className: "btn-primary"
+            }
+         }
+      });
    }
 }
 function guardareditar(parcial, elem){
@@ -54,6 +63,7 @@ function guardareditar(parcial, elem){
       //Obtenemos a los hermanos del elemento actual
       var hermanos = $(elem).parent().siblings();
       var hide = $(elem).parent().find("#hideval");
+      var elima = $(elem).parent().find("#elimsolo");
       var nombre, descripcion, puntos;
       hermanos.each(function(){
          var input = $(this).find('input');
@@ -103,7 +113,11 @@ function guardareditar(parcial, elem){
    }else{
       bootbox.alert("<h4>Por favor seleccione una clase</h4>");
    }
-
+   if(elima != null){
+      elima.replaceWith(function(){
+         return "<a href=\"javascript:\" class=\"btn btn-danger\" onclick=\"eliminar("+parcial+", this)\">X</a>";
+      });
+   }
    //alert(valor);
 }
 function habilitareditar(parcial, elem){
@@ -161,7 +175,16 @@ function idconfiguracion(){
       success: function(response){
          var obj = jQuery.parseJSON(response);
          if(obj['mensaje']){
-            bootbox.alert(obj['mensaje']);
+            bootbox.dialog({
+               message: "Por favor seleccione un Tipo de Evaluación para esta clase, luego hace click en guardar antes de agregar evaluaciones.",
+               title: obj['mensaje'],
+               buttons: {
+                  success: {
+                     label: "Entendido",
+                     className: "btn-primary"
+                  }
+               }
+            });
          }else{
             $("#id_config").val(obj['id_config']);
             $("#tipo_evaluacion").val(obj['tipo_eval']);
@@ -256,7 +279,9 @@ function mostrareval(config){
 
       }
 }
-
+function eliminarsolo(elem){
+   $(elem).parent().parent().remove();
+}
 function eliminar(parcial, elem){
    //var valor = parseInt($("#h"+parcial).val());
    //valor -= 1;

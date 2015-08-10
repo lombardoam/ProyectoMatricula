@@ -182,7 +182,7 @@
 
             //No existe configuracion para el id prog
             $array = array(
-               'mensaje' => '<h4>No ha configurado esta clase.</h4>',
+               'mensaje' => 'No ha configurado esta clase!',
             );
             echo json_encode($array);
          }
@@ -236,6 +236,7 @@
    if((isset($_GET['notas'])) && (isset($_GET['idprog'])) && (isset($_GET['parcial'])) ){
       $idprog = $_GET['idprog'];
       $parcial = $_GET['parcial'];
+      $array = array();
       $sql = "SELECT id_evaluacion, nombre FROM evaluaciones INNER JOIN configuraciones WHERE evaluaciones.id_configuracion = configuraciones.id_configuracion AND configuraciones.id_programacion = $idprog AND evaluaciones.id_parcial = $parcial";
       $query = mysqli_query($con, $sql);
       if($query){
@@ -249,14 +250,50 @@
          while($rows = mysqli_fetch_assoc($query)){
             $header = $header . "
                <th>$rows[nombre]</th>
+               <th>Valor</th>
             ";
             $evals++;
          }
-         $array = array(
-            'result' => 'bien',
-            'header' => $header,
-            'mensaje' => '<h4>Se han capturado las evaluaciones.</h4>'
-         );
+         if($evals != 0){
+            $array = array(
+               'result' => 'bien',
+               'header' => $header,
+               'mensaje' => '<h4>Se han capturado las evaluaciones.</h4>'
+            );
+         }else{
+            $array = array(
+               'result' => 'error',
+               'header' => $header,
+               'mensaje' => '<h4>No hay evaluaciones para esta clase.</h4>Configure las evaluaciones desde la ventana Gestionar Evaluación'
+            );
+         }
+         //alumnos + evaluaciones
+         $sql = "SELECT estudiantes.id_estudiante, estudiantes.num_cuenta, estudiantes.id_estudiante, estudiantes.nombres, estudiantes.apellidos FROM programacion_cursos INNER JOIN matriculas INNER JOIN estudiantes WHERE programacion_cursos.id_programacion = matriculas.id_programacion AND estudiantes.id_estudiante = matriculas.id_estudiante AND programacion_cursos.id_programacion = ".$idprog;
+         $query = mysqli_query($con, $sql);
+         $content = "";
+         $num_estudiante = 1;
+         while($estudiantes = mysqli_fetch_assoc($query)){
+            $sql2 = "SELECT id_evaluacion, nombre, valor FROM evaluaciones INNER JOIN configuraciones WHERE evaluaciones.id_configuracion = configuraciones.id_configuracion AND configuraciones.id_programacion = $idprog AND evaluaciones.id_parcial = $parcial";
+            $query2 = mysqli_query($con, $sql2);
+            $content = $content . "
+               <tr>
+                  <input type=\"hidden\" value=\"$estudiantes[id_estudiante]\" id=\"id_estudiante\">
+                  <td>$num_estudiante</td>
+                  <td>$estudiantes[num_cuenta]</td>
+                  <td>$estudiantes[nombres]</td>
+                  <td>$estudiantes[apellidos]</td>
+            ";
+            while($evaluaciones = mysqli_fetch_assoc($query2)){
+               $content = $content . "
+                  <td id=\"coleval\"><input type=\"text\" name=\"\" id=\"eval\" placeholder=\"0\" class=\"form-control\">
+                  <input type=\"hidden\" value=\"$evaluaciones[id_evaluacion]\" id=\"id_evaluacion\"></td>
+                  <td>/ $evaluaciones[valor]</td>
+               ";
+            }
+            $num_estudiante++;
+            $content = $content . "</tr>";
+         }
+         $array['content'] = $content;
          echo json_encode($array);
       }else{
          $array = array(

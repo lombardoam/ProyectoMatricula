@@ -159,14 +159,27 @@
                   </div>
                  <a href="javascript:" class="btn btn-default" id="seleccionar">Seleccionar</a>
                </form>
-               <h2 class="page-header">Evaluaciones</h2>
+               <h2 class="page-header">Evaluación de los alumnos</h2>
                <table class="table table-hover">
                   <thead>
                      <tr id="header">
+
                      </tr>
                   </thead>
-                  <tbody>
-                     <tr id="body">
+                  <tbody id="body">
+                    <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <center>En esta sección podrá visualiar la lista de estudiantes de la clase seleccionada y podrá ingresar las notas al sistema. <br>Seleccione una clase en el menú de la parte superior.</center>
+                            <tr>
+                              <th>1</th>
+                              <th>Número de cuenta</th>
+                              <th>Nombre del Estudiante</th>
+                              <th>Apellido</th>
+                              <th><input type="text" name="" id="" placeholder="Evaluación" class="form-control"></th>
+                           </tr>
+                        </div>
+                    <!--
+                     <tr>
                         <td>1</td>
                         <td>20121019</td>
                         <td>Ricardo</td>
@@ -174,10 +187,11 @@
                         <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
                         <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
                      </tr>
+                     -->
 
                   </tbody>
                </table>
-                  <a href="config.php" type="button" class="btn-lg btn-primary">Guardar notas</a>
+                  <a href="javascript:" type="button" class="btn-lg btn-primary" id="guardnts">Guardar notas</a>
                   <a href="config.php" type="button" class="btn btn-default">Gestionar Evaluación</a>
             </div><br>
 
