@@ -123,13 +123,13 @@
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
                     </li>
                     <li>
-                        <a href="prematricula.php"><i class="fa fa-fw fa-bar-chart-o"></i> Pre matrícula</a>
+                        <a href="prematricula.php"><i class="fa fa-fw fa-paperclip"></i> Prematrícula</a>
                     </li>
                     <li>
-                        <a href="aulas.php"><i class="fa fa-fw fa-edit"></i>Matricula</a>
+                        <a href="aulas.php"><i class="fa fa-fw fa-pencil"></i> Matricula</a>
                     </li>
                     <li>
-                        <a href="horarios.php"><i class="fa fa-fw fa-table"></i>Horarios</a>
+                        <a href="horarios.php"><i class="fa fa-fw fa-table"></i> Horarios</a>
                     </li>
                 </ul>
             </div>

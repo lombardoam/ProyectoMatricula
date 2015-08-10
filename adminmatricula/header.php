@@ -170,24 +170,24 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active"><br>
-                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
+                        <a href="index.php"><i class="fa fa-fw fa-university"></i> Escritorio</a>
                     </li>
                       <li>
-                        <a href="matricula.php"><i class="fa fa-fw fa-wrench"></i> Matrícula</a>
+                        <a href="matricula.php"><i class="fa fa-fw fa-pencil"></i> Matrícula</a>
                     </li>
                     <li>
-                        <a href="carreras.php"><i class="fa fa-fw fa-bar-chart-o"></i> Carreras</a>
+                        <a href="carreras.php"><i class="fa fa-fw fa-folder-open-o"></i> Carreras</a>
                     </li>
                     <li>
-                        <a href="facultades.php"><i class="fa fa-fw fa-table"></i> Facultades</a>
+                        <a href="facultades.php"><i class="fa fa-graduation-cap"></i> Facultades</a>
                     </li>
                     <li>
-                        <a href="aulas.php"><i class="fa fa-fw fa-edit"></i>Aulas</a>
+                        <a href="aulas.php"><i class="fa fa-fw fa-building"></i> Aulas</a>
                     </li>
 
 
                      <li>
-                        <a href="preingreso.php"><i class="fa fa-fw fa-desktop"></i>Prematricula</a>
+                        <a href="preingreso.php"><i class="fa fa-fw fa-paperclip"></i> Prematricula</a>
                     </li>
 
                     <li>
