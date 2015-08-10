@@ -28,7 +28,11 @@ require 'noautorizado.php';
                 </div>
                 <!-- /.row -->
 
-            </div>
+            </div>          <div align="center">
+                            <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Consulte e ingrese al sistema los alumnos de primer ingreso de la universidad.
+            </div></div>
             <!-- /.container-fluid -->
             <!-- /.Colocar aquí el código y contenido que se desee poner en la página -->
             <div align="center">
@@ -38,14 +42,14 @@ require 'noautorizado.php';
 require'estudiantes.php';
 
 ?>
-                <br /><br />
-
-
+               <br><br>
+            <div align="center">
+<a href="reportealumnos.php" target="_blank" class="btn btn-primary btn-lg" role="button">Versión imprimible</a>
             </div>
+            <br><br>
 
-   </div>
+        </div>
         <!-- /#page-wrapper -->
-
 
 
     <!-- /#wrapper -->

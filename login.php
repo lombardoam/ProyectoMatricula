@@ -14,6 +14,7 @@
             $_SESSION['apellido'] = $result[2];
             $_SESSION['usuario'] = $result[3];
             $_SESSION['tipo_usuario'] = $result[5];
+            $_SESSION['id_plan_estudio'] = $result[7];
 
 
             setcookie("nombre", $result[1]);

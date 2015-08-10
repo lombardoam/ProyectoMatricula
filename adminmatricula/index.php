@@ -12,7 +12,7 @@ require 'noautorizado.php';
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Página principal de Administración
+                            Administración
                             <small>Sistema de matrícula</small>
                         </h1>
                         <ol class="breadcrumb">
@@ -30,11 +30,12 @@ require 'noautorizado.php';
             </div>
             <!-- /.container-fluid -->
             <!-- /.Colocar aquí el código y contenido que se desee poner en la página -->
-                        <div align="center"><img src="images/ujcv.png" width="20%" height="20%" />
+                        <div align="center"><img src="images/ujcv.png" width="15%" height="15%" />
 
-            <h3>Este es el sistema de gestión de matrículas de la UJCV.<br />
+            <div class="alert alert-warning">
+                            <h3>Este es el sistema de gestión de matrículas de la UJCV.<br />
                 <br />
-                Aquí podrá realizar sus labores administrativas respecto al área de matrícula.</h3></div>
+                Aquí podrá realizar sus labores administrativas respecto al área de matrícula.</h3></div></div>
 
         </div>
 

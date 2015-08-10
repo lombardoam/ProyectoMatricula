@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-08-2015 a las 07:38:03
+-- Tiempo de generación: 06-08-2015 a las 22:36:35
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `carreras` (
   `codigo_carrera` varchar(10) NOT NULL,
   `nombre_carrera` varchar(45) DEFAULT NULL,
   `id_facultad` int(11) DEFAULT NULL,
-  `codigo_empleado` varchar(10) DEFAULT NULL,
+  `id_empleado` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_carrera`,`codigo_carrera`),
   KEY `codigo_facultad_idx` (`id_facultad`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
@@ -75,10 +75,10 @@ CREATE TABLE IF NOT EXISTS `carreras` (
 -- Volcado de datos para la tabla `carreras`
 --
 
-INSERT INTO `carreras` (`id_carrera`, `codigo_carrera`, `nombre_carrera`, `id_facultad`, `codigo_empleado`) VALUES
-(1, 'ARQ', 'Arquitectura', 1, 'LER02'),
-(2, 'INGC', 'Ingenieria Civil', 1, 'IM01'),
-(3, 'IIT', 'Ingenieria en Infotecnologia', 1, 'LER03');
+INSERT INTO `carreras` (`id_carrera`, `codigo_carrera`, `nombre_carrera`, `id_facultad`, `id_empleado`) VALUES
+(1, 'ARQ', 'Arquitectura', 1, 3),
+(2, 'INGC', 'Ingenieria Civil', 1, 4),
+(3, 'IIT', 'Ingenieria en Infotecnologia', 1, 5);
 
 -- --------------------------------------------------------
 
@@ -337,18 +337,18 @@ CREATE TABLE IF NOT EXISTS `facultades` (
   `id_facultad` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_facultad` varchar(10) NOT NULL,
   `nombre_facultad` varchar(45) DEFAULT NULL,
-  `codigo_empleado` varchar(10) DEFAULT NULL,
+  `id_empleado` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_facultad`,`codigo_facultad`),
-  KEY `codigo_empleado_idx` (`codigo_empleado`)
+  KEY `codigo_empleado_idx` (`id_empleado`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `facultades`
 --
 
-INSERT INTO `facultades` (`id_facultad`, `codigo_facultad`, `nombre_facultad`, `codigo_empleado`) VALUES
-(1, 'FIA', 'Facultad de Ingenierias y Arquitectura', '1'),
-(2, 'FCE', 'Facultad de Ciencias Economicas', '2');
+INSERT INTO `facultades` (`id_facultad`, `codigo_facultad`, `nombre_facultad`, `id_empleado`) VALUES
+(1, 'FIA', 'Facultad de Ingenierias y Arquitectura', 1),
+(2, 'FCE', 'Facultad de Ciencias Economicas', 2);
 
 -- --------------------------------------------------------
 
@@ -611,7 +611,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuarios_tipos_usuarios_idx` (`tipo_usuario`),
   KEY `fk_usuarios_empleados_idx` (`num_cuenta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -624,7 +624,8 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `nombre_usuario`, `c
 (4, 'Karen', 'Estrada', 'karen.estrada', 'chilo123', 4, 20150007),
 (5, 'Juan', 'Reyes', 'juan.reyes', 'chilo123', 5, 20150008),
 (6, 'Taylor', 'Swift', 'taylor.swift', 'chilo123', 6, 201520345),
-(7, 'Cristian', 'Orlando', 'cristian.orlando', 'chilo123', 7, 201560321);
+(7, 'Cristian', 'Orlando', 'cristian.orlando', 'chilo123', 7, 201560321),
+(8, 'Marco', 'Diaz', 'Marco', 'chilo123', 6, 2015203620);
 
 --
 -- Restricciones para tablas volcadas

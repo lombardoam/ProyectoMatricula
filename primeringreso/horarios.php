@@ -16,7 +16,7 @@ require 'noautorizado.php';
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Programación del período académico
-                            <small>Definir y almacenar horarios de las clases</small>
+                            <small>Horarios disponibles de clases</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
@@ -31,11 +31,20 @@ require 'noautorizado.php';
                 <!-- /.row -->
 
             </div>
-            <!-- /.container-fluid -->
+            <!-- /.container-fluid --><div align="center">
+                            <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Consulte los horarios de clases disponibles para las asignaturas de los alumnos.
+            </div></div>
 <?php
 require'verprogra.php';
 ?>
-<br /><br />
+              <br><br>
+            <div align="center">
+<a href="reportehorarios.php" target="_blank" class="btn btn-primary btn-lg" role="button">Versión imprimible</a>
+            </div>
+            <br><br>
+
         </div>
         <!-- /#page-wrapper -->
 
@@ -45,5 +54,6 @@ require'verprogra.php';
 
   </body>
 </html>
+
 
 

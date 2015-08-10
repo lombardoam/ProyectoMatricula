@@ -2,7 +2,7 @@
     header('Content-type: application/json');
     $conexion = mysqli_connect('localhost','root','','matricula');
     //Get records from database
-    $result = mysqli_query($conexion, "SELECT nombres AS DisplayText , id_empleado AS Value FROM empleados");
+    $result = mysqli_query($conexion, "SELECT nombres AS DisplayText , id_empleado AS Value FROM empleados WHERE id_puesto ='1'||id_puesto='2'");
 
     //Add all records to an array
     $rows = array();

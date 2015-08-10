@@ -5,7 +5,8 @@
       isset($_SESSION['apellido']) &&
       isset($_SESSION['usuario']) &&
       isset($_SESSION['tipo_usuario']) &&
-      isset($_SESSION['num_cuenta'])
+      isset($_SESSION['num_cuenta']) &&
+      isset($_SESSION['id_plan_estudio'])
       )
    ){
       header('Location:../index.php?no_aut');
@@ -153,10 +154,10 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['usuario'] ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['nombre']; echo' '; echo $_SESSION['apellido']  ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><font color="#000000"><i class="fa fa-fw fa-user"></i>Perfil</font></a>
+                            <a href="#"><font color="#000000"><i class="fa fa-fw fa-user"></i><?php echo $_SESSION['usuario'] ?> </font></a>
                         </li>
                         <li>
                             <a href="#"><font color="#000000"><i class="fa fa-fw fa-envelope"></i>Inbox</font></a>

@@ -39,13 +39,14 @@ require 'noautorizado.php';
 
             ?>
 
-                <br><br>
-
+               <br><br>
+            <div align="center">
+<a href="reporteequivalencia.php" target="_blank" class="btn btn-primary btn-lg" role="button">Versión imprimible</a>
             </div>
+            <br><br>
 
         </div>
         <!-- /#page-wrapper -->
-
 
 
     <!-- /#wrapper -->

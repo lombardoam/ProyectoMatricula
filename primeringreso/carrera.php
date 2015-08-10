@@ -61,7 +61,7 @@ require 'noautorizado.php';
                         options: 'param/paramfacultades.php',
 						 },
 
-                      codigo_empleado: {
+                      id_empleado: {
 						title: 'Coordinador',
                        options: 'param/paramdirector.php',
 
