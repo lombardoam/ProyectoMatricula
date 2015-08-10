@@ -172,6 +172,9 @@
                     <li class="active"><br>
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
                     </li>
+                      <li>
+                        <a href="matricula.php"><i class="fa fa-fw fa-wrench"></i> Matrícula</a>
+                    </li>
                     <li>
                         <a href="carreras.php"><i class="fa fa-fw fa-bar-chart-o"></i> Carreras</a>
                     </li>
