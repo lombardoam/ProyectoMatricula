@@ -16,7 +16,7 @@
             $_SESSION['tipo_usuario'] = $result[5];
 
 
-             setcookie("nombre", $result[1]);
+            setcookie("nombre", $result[1]);
             setcookie("apellido", $result[2]);
 
 

@@ -36,17 +36,18 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.js" type="text/javascript"></script>
+    <script src="js/notas.js" type="text/javascript"></script>
+    <script src="js/common.js" type="text/javascript"></script>
+    <script src="js/bootbox.js" type="text/javascript"></script>
 </head>
 
 <body>
-
+<input type="hidden" id="num_cuenta" value="<?php echo $_SESSION['num_cuenta']?>">
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -145,90 +146,31 @@
               <form class="form-inline">
                  <div class="form-group">
                    <label for="select-clase">Clase: </label>
-                     <select class="form-control" id="select-clase">
-                       <option>Ingeniera de Software</option> placeholder="0" class="form-control"
-                       <option>Planeación Estratégica</option>
-                       <option>Diseño Web y admon. de contenido</option>
+                     <select class="form-control" id="clases">
                      </select>
                   </div>
                  <div class="form-group">
-                   <label for="select-seccion">Sección: </label>
-                     <select class="form-control" id="select-seccion">
-                       <option>A</option>
-                       <option>B</option>
-                       <option>C</option>
-                     </select>
+                   <label> Sección:  </label><label id="seccion" class="text-uppercase"></label>
                   </div>
                  <div class="form-group">
                    <label for="select-seccion">Parcial: </label>
-                     <select class="form-control" id="select-seccion">
-                       <option>Primer Parcial</option>
-                       <option>Segundo Parcial</option>
-                       <option>Tercer Parcial</option>
+                     <select class="form-control" id="parciales">
                      </select>
                   </div>
-                 <button type="submit" class="btn btn-default">Seleccionar</button>
+                 <a href="javascript:" class="btn btn-default" id="seleccionar">Seleccionar</a>
                </form>
-               <br>
+               <h2 class="page-header">Evaluaciones</h2>
                <table class="table table-hover">
                   <thead>
-                     <th>#</th>
-                     <th>Cuenta</th>
-                     <th>Nombre</th>
-                     <th>Apellido</th>
-                     <th>Examen</th>
-                     <th>Trabajo en clase</th>
-                     <th>Asistencia</th>
-                     <th>Proyecto</th>
+                     <tr id="header">
+                     </tr>
                   </thead>
                   <tbody>
-                     <tr>
+                     <tr id="body">
                         <td>1</td>
                         <td>20121019</td>
                         <td>Ricardo</td>
                         <td>Valladares</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                     </tr>
-                     <tr>
-                        <td>2</td>
-                        <td>20121019</td>
-                        <td>Ricardo</td>
-                        <td>Valladares</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                     </tr>
-                     <tr>
-                        <td>3</td>
-                        <td>20121019</td>
-                        <td>Ricardo</td>
-                        <td>Valladares</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                     </tr>
-                     <tr>
-                        <td>4</td>
-                        <td>20121019</td>
-                        <td>Ricardo</td>
-                        <td>Valladares</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                     </tr>
-                     <tr>
-                        <td>5</td>
-                        <td>20121019</td>
-                        <td>Ricardo</td>
-                        <td>Valladares</td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
-                        <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
                         <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
                         <td><input type="text" name="" id="" placeholder="0" class="form-control"></td>
                      </tr>
@@ -244,25 +186,6 @@
 
     </div>
     <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
-
-    <!-- Flot Charts JavaScript -->
-    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-    <script src="js/plugins/flot/jquery.flot.js"></script>
-    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
-    <script src="js/plugins/flot/flot-data.js"></script>
 
 </body>
 

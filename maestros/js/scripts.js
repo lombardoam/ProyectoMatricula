@@ -1,14 +1,13 @@
 $("document").ready(function(){
    evaluaciones();
    clases();
-   seccion();
    parcial();
    hidden();
    $("#clases").change(function(){
       idconfiguracion();
+      seccion();
    });
 });
-
 $(document).keydown(function(tecla){
     if (tecla.keyCode == 116) {
       if (confirm('Actualizar la página hará que pierda los cambios, ¿Desea continuar?')) {
@@ -23,38 +22,6 @@ $(document).keydown(function(tecla){
       }
     }
 });
-function parcial(){
-   $.ajax({
-      type: "GET",
-      url: "php/getdata.php",
-      data: "parciales",
-      success: function(data){
-         $("div#parciales").html(data);
-      }
-   });
-}
-function clases(){
-   var cuenta = $("input#num_cuenta").val();
-   $.ajax({
-      type: "GET",
-      url: "php/getdata.php",
-      data: "clases&cuenta="+cuenta,
-      success: function(data){
-         $("select#clases").html(data);
-      }
-   });
-}
-function seccion(){
-   var cuenta = $("input#num_cuenta").val();
-   $.ajax({
-      type: "GET",
-      url: "php/getdata.php",
-      data: "seccion&cuenta="+cuenta,
-      success: function(data){
-         $("label#seccion").html(data);
-      }
-   });
-}
 function hidden(){
    var cuenta = $("input#num_cuenta").val();
    $.ajax({
@@ -67,28 +34,26 @@ function hidden(){
    });
 }
 function agregar(parcial){
-   $("tbody#"+parcial).append("<tr><td><input type=\"text\" class=\"form-control\" placeholder=\"Nombre\" name=\"nombre\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"Descripcion\" name=\"descripcion\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"0\" name=\"puntos\"></td><td><a href=\"javascript:\" class=\"btn btn-success\" onclick=\"guardareditar("+parcial+", this)\">Guardar</a> <input type=\"hidden\" value=\"hola\" id=\"hideval\"> <a href=\"javascript:\" class=\"btn btn-danger\" onclick=\"eliminar("+parcial+", this)\">X</a></td></tr>");
-   var valor = parseInt($("#h"+parcial).val());
-   valor += 1;
-   $("#h"+parcial).val(valor);
-   //alert(valor);
-}
-function eliminar(parcial, elem){
-   var valor = parseInt($("#h"+parcial).val());
-   valor -= 1;
-   $("#h"+parcial).val(valor);
-   $(elem).parent().parent().remove();
-   //alert(valor);
+   if($("#id_config").val() != ""){
+      if($("#clases").val() != 0){
+         $("tbody#"+parcial).append("<tr><td><input type=\"text\" class=\"form-control\" placeholder=\"Nombre\" name=\"nombre\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"Descripcion\" name=\"descripcion\"></td><td><input type=\"text\" class=\"form-control\" placeholder=\"0\" name=\"puntos\"></td><td><a href=\"javascript:\" class=\"btn btn-success\" onclick=\"guardareditar("+parcial+", this)\">Guardar</a> <input type=\"hidden\" value=\"hola\" id=\"hideval\"> <a href=\"javascript:\" class=\"btn btn-danger\" onclick=\"eliminar("+parcial+", this)\">X</a></td></tr>");
+         var valor = parseInt($("#h"+parcial).val());
+         valor += 1;
+         $("#h"+parcial).val(valor);
+         //alert(valor);
+      }else{
+         bootbox.alert("<h4>Por favor seleccione una clase</h4>");
+      }
+   }else{
+      bootbox.alert("<h4>Por favor seleccione una clase</h4>");
+   }
 }
 function guardareditar(parcial, elem){
-
-   if($('#id_config').val() != ""){
+   if($('#id_config').val() != 0){
 
       //Obtenemos a los hermanos del elemento actual
       var hermanos = $(elem).parent().siblings();
       var hide = $(elem).parent().find("#hideval");
-
-
       var nombre, descripcion, puntos;
       hermanos.each(function(){
          var input = $(this).find('input');
@@ -101,6 +66,7 @@ function guardareditar(parcial, elem){
                break;
             case puntos:
                puntos = parseInt(input.val());
+               break;
          }
          //$(this).find('input').replaceWith(function(){
          //   return '<td>'+this.value+'<td>';
@@ -122,7 +88,6 @@ function guardareditar(parcial, elem){
                   if(obj['cambio'] != null){
                      bootbox.alert(obj['mensaje']);
                      hide.val(obj['last_id']);
-                     alert(hide.val());
                   }
                }
             });
@@ -145,9 +110,6 @@ function habilitareditar(parcial, elem){
    var hermanos = $(elem).parent().siblings();
    hermanos.each(function(){
       $(this).find('input').removeAttr("readonly");
-      //$(this).find('input').replaceWith(function(){
-      //   return '<td>'+this.value+'<td>';
-      //});
    });
    $(elem).replaceWith(function(){
       return "<a href=\"javascript:\" class=\"btn btn-success\" onclick=\"actualizareditar("+parcial+", this)\">Guardar</a>";
@@ -164,8 +126,8 @@ function evaluaciones(){
    });
 }
 function guardar(){
-   if($("#tipo_evaluacion").val() != "Seleccione un tipo de evaluacion.."){
-      if($("#clases").val() != "Seleccione una clase.."){
+   if($("#tipo_evaluacion").val() != 0){
+      if($("#clases").val() != 0){
          var tipo = $("#tipo_evaluacion").val();
          var progra = $("#clases").val();
          $.ajax({
@@ -202,15 +164,14 @@ function idconfiguracion(){
             bootbox.alert(obj['mensaje']);
          }else{
             $("#id_config").val(obj['id_config']);
-            $('select#tipo_evaluacion option[value="'+ obj['tipo_eval'] +'"]').attr('selected', 'selected');
-            alert(obj);
-
+            $("#tipo_evaluacion").val(obj['tipo_eval']);
+            mostrareval(obj['id_config']);
          }
       }
    });
 }
 function actualizareditar(parcial, elem){
-   if($("#id_config").val() != null){
+   if($("#id_config").val() != 0){
 
       //Obtenemos el id de la evaluación actual
       var id_eval = $(elem).parent().find("#hideval").val();
@@ -230,9 +191,9 @@ function actualizareditar(parcial, elem){
                break;
             case puntos:
                puntos = parseInt(input.val());
+               break;
          }
       });
-
       var id_config = $('#id_config').val();
       $.ajax({
          type: "GET",
@@ -242,7 +203,6 @@ function actualizareditar(parcial, elem){
             var obj = jQuery.parseJSON(data);
             if(obj['cambio'] != null){
                bootbox.alert(obj['mensaje']);
-               alert(hide.val());
             }
          }
       });
@@ -251,6 +211,108 @@ function actualizareditar(parcial, elem){
       });
    }
 }
-function mostrardata(){
+function mostrareval(config){
+   if($("#clases").val() != 0){
+      if(config != 0){
+
+         //Petición ajax para conseguir las evaluaciones
+         $.ajax({
+            type: "GET",
+            url: "php/getdata.php",
+            data: "mostrar&id_config="+config,
+            success: function(data){
+               var obj = jQuery.parseJSON(data);
+               bootbox.dialog({
+                  message: "Puede modificar la información en cada evaluación.",
+                  title: "Cargando..",
+                  buttons: {
+                     success: {
+                        label: "Entendido",
+                        className: "btn-primary"
+                     }
+                  }
+               });
+               //para asignar las evaluaciones a cada parcial
+               var parciales = $("#cantidadparciales").val();
+               for(i = 1; i <= parciales; i++){
+                  $("tbody#"+(i-1)).html(obj[i][1]);
+               }
+
+            }
+         });
+      }else{
+         bootbox.dialog({
+            message: "Seleccione un tipo de evaluación y luego hace click en guardar, despues procede a configurar las evaluaciones.",
+            title: "No hay ninguna configuración almacenada.",
+            buttons: {
+               success: {
+                  label: "Entendido",
+                  className: "btn-primary"
+               }
+            }
+         });
+      }
+   }else{
+
+      }
+}
+
+function eliminar(parcial, elem){
+   //var valor = parseInt($("#h"+parcial).val());
+   //valor -= 1;
+   //$("#h"+parcial).val(valor);
+   //Para obtener el valor de cada uno de los inputs
+   var hideval = $(elem).parent().find("#hideval").val();
+   var result;
+   var yo = elem;
+   if($("#clases").val() != 0){
+      bootbox.dialog({
+         message: "Deberá actualizar las demás evaluaciones para que los puntos concuerden con la evaluación en puntos oro o en base a 100.",
+         title: "¿Está seguro que desea eliminar la evaluacion?",
+         buttons: {
+            success: {
+               label: "Eliminar",
+               className: "btn-danger",
+               callback: function(yo) {
+                  $.ajax({
+                     type: "GET",
+                     url: "php/submitdata.php",
+                     data: "eliminar&id_eval="+hideval,
+                     success: function(data){
+                        var obj = jQuery.parseJSON(data);
+                        if(obj['cambio'] == 'si'){
+                           bootbox.alert(obj['mensaje']);
+                           result = 'si';
+                           $(elem).parent().parent().remove();
+                        }else{
+                           bootbox.alert(obj['mensaje']);
+                           result = 'no';
+                        }
+                     }
+                  });
+               }
+            },
+            main: {
+               label: "Cancelar",
+               className: "btn-primary"
+            }
+         }
+      });
+   }else{
+      bootbox.alert("<h4>Por favor seleccione una clase</h4>");
+   }
 
 }
+function mensaje(){
+   bootbox.dialog({
+      message: "Para agregar evaluaciones al sistema, seleccione una clase desde la sección general de esta ventana, luego proceda a gestinar sus evaluaciones.",
+      title: "Seleccione una clase.",
+      buttons: {
+         success: {
+            label: "Entendido",
+            className: "btn-primary"
+         }
+      }
+   });
+}
+window.setTimeout( mensaje, 300 );

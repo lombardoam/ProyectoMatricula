@@ -39,8 +39,11 @@
       $descripcion = $_GET['descripcion'];
       $puntos = $_GET['puntos'];
       $parcial = $_GET['parcial'];
-      $parcial += 1;
       editareval($id_eval, $config, $nombre, $descripcion, $puntos, $parcial, $con);
+   }
+   if((isset($_GET['eliminar'])) && (isset($_GET['id_eval']))){
+      $id_eval = $_GET['id_eval'];
+      eliminareval($id_eval, $con);
    }
    //end
 
@@ -124,11 +127,32 @@
       if($query){
          $array = array(
             'cambio' => 'si',
-            'mensaje' => '<h4>Se ha actualizado la evaluación.</h4>',
+            'mensaje' => '<h4>Se ha actualizado la evaluación.</h4>'
          );
          echo json_encode($array);
       }else{
-         echo "<h4>No se pudo actualizar la evaluacion, intenta más tarde.</h4>";
+         $array = array(
+            'cambio' => 'si',
+            'mensaje' => '<h4>No se ha podido completar la actualizacion, intente más tarde.</h4>'
+         );
+         echo json_encode($array);
+      }
+   }
+   function eliminareval($ideval, $conexion){
+      $sql = "DELETE FROM evaluaciones WHERE id_evaluacion = " . $ideval;
+      $query = mysqli_query($conexion, $sql);
+      if($query){
+         $array = array(
+            'cambio' => 'si',
+            'mensaje' => '<h4>Se ha eliminado la evaluacion.</h4>'
+         );
+         echo json_encode($array);
+      }else{
+         $array = array(
+            'cambio' => 'no',
+            'mensaje' => '<h4>Ha ocurrido un error al eliminar</h4>'
+         );
+         echo json_encode($array);
       }
    }
 ?>
