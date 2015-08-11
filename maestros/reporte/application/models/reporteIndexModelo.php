@@ -37,7 +37,7 @@ class ReporteIndexModelo extends CI_Model
     $this->db->select('count(*) AS total_ausente');
          $this->db->from('asistencia');
          $this->db->where( 'asistencia.estado','Ausente');
-// $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
+$this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
 
          $query2 = $this->db->get();
 
@@ -51,8 +51,8 @@ class ReporteIndexModelo extends CI_Model
         $this->db->select('count(*) AS total_asistio');
          $this->db->from('asistencia');
          $this->db->where( 'asistencia.estado','Asistio');
-        $this->db->where( 'asistencia.id_estudiante',3);
-// $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
+        //$this->db->where( 'asistencia.id_estudiante',3);
+$this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
 
 
          $query2 = $this->db->get();
@@ -83,8 +83,8 @@ class ReporteIndexModelo extends CI_Model
                         $this->db->join('matriculas', 'matriculas.id_programacion = programacion_cursos.id_programacion');
                         $this->db->join('estudiantes', 'estudiantes.id_estudiante = estudiantes.id_estudiante');
 
-        // $this->db->where('estudiantes.id_estudiante', $_SESSION['numero_cuenta']);
-         $this->db->where('estudiantes.id_estudiante', 3);
+         $this->db->where('estudiantes.id_estudiante', $_SESSION['numero_cuenta']);
+        // $this->db->where('estudiantes.id_estudiante', 3);
 
 $this->db->group_by('id_asistencia');
 

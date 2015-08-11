@@ -22,8 +22,8 @@ class ReporteIndexControlador extends CI_Controller
         $_SESSION["Asistio"]=0;
         $_SESSION["total"]=0;
 
+    $cuenta= $this->input->post('seleccionado');
 
-    $cuenta= $_SESSION["cuenta"];
 
 
       $this->load->model('reporteIndexModelo');
