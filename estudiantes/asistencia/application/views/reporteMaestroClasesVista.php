@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-<h2>Catedratico  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
+<h2>Alumno  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
 	<div id="body">
 
 		<code>  <div class="row">
@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 if (count($user_data->result()) == 0)
 {
-        echo"<p><h3>No Tiene Clases Asignadas</h3></p>";
+        echo"<p><h3>No Tiene Clases Matriculadas</h3></p>";
 
 }
 ?>
