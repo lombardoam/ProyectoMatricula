@@ -97,7 +97,7 @@ $this->db->group_by('id_asistencia');
 
 
 
-function getPrincipa($id_programacion)
+function getPrincipa($cuenta)
     {
        // $this->setAsistioYausentes();
 
@@ -107,7 +107,7 @@ function getPrincipa($id_programacion)
              $this->db->join('matriculas', 'estudiantes.id_estudiante = matriculas.id_estudiante ');
              $this->db->join('programacion_cursos', 'programacion_cursos.id_programacion = matriculas.id_programacion');
              $this->db->join('cursos', 'cursos.id_curso = programacion_cursos.id_curso');
-         $this->db->where('programacion_cursos.id_programacion', $id_programacion);
+         $this->db->where('programacion_cursos.id_programacion', $cuenta);
 $this->db->group_by('estudiantes.num_cuenta');
 
 
