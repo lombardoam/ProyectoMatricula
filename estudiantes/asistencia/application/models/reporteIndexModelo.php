@@ -83,8 +83,8 @@ class ReporteIndexModelo extends CI_Model
                         $this->db->join('matriculas', 'matriculas.id_programacion = programacion_cursos.id_programacion');
                         $this->db->join('estudiantes', 'estudiantes.id_estudiante = estudiantes.id_estudiante');
 
-        // $this->db->where('estudiantes.id_estudiante', $_SESSION['numero_cuenta']);
-         $this->db->where('estudiantes.id_estudiante', 3);
+         $this->db->where('estudiantes.id_estudiante', $_SESSION['numero_cuenta']);
+        // $this->db->where('estudiantes.id_estudiante', 3);
 
 $this->db->group_by('id_asistencia');
 
