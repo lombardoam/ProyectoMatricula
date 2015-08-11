@@ -52,6 +52,7 @@
                             <li><a href="carreras.php">CARRERAS</a></li>
                             <li><a href="asignaturas.php">ASIGNATURAS</a></li>
                             <li><a href="periodos.php">PERÍODOS</a></li>
+                            <li><a href="parciales.php">PARCIALES</a></li>
                         </ul>
                     </li>
                     <li class="active"><a href="aulas.php"><span><i class="fa fa-building fa-2x"></i></span>AULAS</a>
