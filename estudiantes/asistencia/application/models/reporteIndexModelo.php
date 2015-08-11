@@ -78,13 +78,25 @@ class ReporteIndexModelo extends CI_Model
      $this->db->select('estudiantes.nombres,estudiantes.apellidos,estudiantes.num_cuenta,asistencia.fecha,asistencia.estado,cursos.nombre_curso');
 
      $this->db->from('asistencia');
-    $this->db->join('programacion_cursos', 'asistencia.id_programacion ='.$id_programacion);
+    $this->db->join('programacion_cursos', 'asistencia.id_programacion =programacion_cursos.id_programacion');
                         $this->db->join('cursos', 'cursos.id_curso = programacion_cursos.id_programacion');
                         $this->db->join('matriculas', 'matriculas.id_programacion = programacion_cursos.id_programacion');
-                        $this->db->join('estudiantes', 'estudiantes.id_estudiante = estudiantes.id_estudiante');
+                        $this->db->join('estudiantes', 'estudiantes.id_estudiante =asistencia.id_estudiante');
 
-         $this->db->where('estudiantes.id_estudiante', $_SESSION['numero_cuenta']);
-        // $this->db->where('estudiantes.id_estudiante', 3);
+              $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
+                $this->db->where('asistencia.id_programacion', $id_programacion);
+
+
+
+
+
+
+
+
+
+
+
+
 
 $this->db->group_by('id_asistencia');
 
@@ -94,8 +106,6 @@ $this->db->group_by('id_asistencia');
          return $query;
 
     }
-
-
 
 function getPrincipa($cuenta)
     {
