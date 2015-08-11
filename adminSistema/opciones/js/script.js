@@ -974,5 +974,29 @@ $(document).ready(function () {
 
     $('#PersonTableContainer18').jtable('load');
 
+    $('#PersonTableContainer19').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Parciales',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarparciales.php',
+                createAction: 'php/ingresar/ingresarparciales.php',
+                updateAction: 'php/editar/editarparciales.php',
+                deleteAction: 'php/eliminar/eliminarparciales.php',
+            },
+            fields: {
+                id_parcial: {
+                    title: 'ID',
+                    key: true,
+                },
+
+                nombre: {
+                    title: 'Descripción',
+                    width: '30%',
+                },
+            }
+        });
+
+    $('#PersonTableContainer19').jtable('load');
 
     });
