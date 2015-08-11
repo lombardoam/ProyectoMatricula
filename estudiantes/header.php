@@ -131,6 +131,9 @@
                     <li>
                         <a href="horarios.php"><i class="fa fa-fw fa-table"></i> Horarios</a>
                     </li>
+                    <li>
+                        <a href="asistencia/"><i class="fa fa-fw fa-table"></i>Asistencias</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
