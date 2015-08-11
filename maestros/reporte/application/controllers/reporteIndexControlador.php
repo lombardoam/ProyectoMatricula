@@ -10,18 +10,19 @@ class ReporteIndexControlador extends CI_Controller
     {
         parent::__construct();
                   $this->load->database();
-                       $this->load->helper('form');
+                  $this->load->helper('form');
                   $this->load->library('session');
+                  $this->load->helper('url');
 
 
 
     }
     public function cargaReporte()
 	{
-         $_SESSION["Ausente"]=0;
+        $_SESSION["Ausente"]=0;
         $_SESSION["Asistio"]=0;
         $_SESSION["total"]=0;
-
+        $_SESSION["numero_cuenta"] =  $this->uri->segment(3);
 
     $id_horario= $_SESSION["clase"];
 

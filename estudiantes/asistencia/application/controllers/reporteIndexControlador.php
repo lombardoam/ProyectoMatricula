@@ -24,6 +24,7 @@ class ReporteIndexControlador extends CI_Controller
 
     $cuenta= $this->input->post('seleccionado');
 
+         $_SESSION["id_progra"]=$cuenta;
 
 
       $this->load->model('reporteIndexModelo');
