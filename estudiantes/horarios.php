@@ -35,7 +35,9 @@ require'header.php';
 <?php
 require'programacion.php';
 ?>
-
+            <div align="right">
+<a href="reportehorarios.php" target="_blank" class="btn btn-primary" role="button" title="Versión imprimible"><i class="fa fa-fw fa-print"></i></a>
+            </div>
             <br><br>
 
         </div>
