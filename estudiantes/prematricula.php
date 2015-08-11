@@ -4,7 +4,7 @@ require'header.php';
 
 ?>
 
-<link href="style.css" rel="stylesheet" type="text/css"/>
+<!--<link href="style.css" rel="stylesheet" type="text/css"/>-->
 
         <div id="page-wrapper">
 
@@ -58,7 +58,7 @@ require'header.php';
     <td width="5%"><input class="check" type="checkbox" name="select[]" value="<?php echo $i++; ?>"/></td>
     <td><input class="seccion" type="text" name="id[]" readonly id="id" value="<?php echo $row['id_programacion']; ?>"></td>
     <td><input class="asignaturas" type="text" name="curso[]" readonly id="nombre_curso" value="<?php echo $row['nombre_curso']; ?>"></td>
-    <td><input class="horas" type="text" name="inicio[]" readonly id="hora_inicio" value="<?php echo $row['hora_inicio']; ?>"></td>
+    <td width="30px"><input class="horas" type="text" name="inicio[]" readonly id="hora_inicio" value="<?php echo $row['hora_inicio']; ?>"></td>
     <td><input class="horas" type="text" name="termina[]" readonly id="hora_termina" value="<?php echo $row['hora_termina']; ?>"></td>
     <td><input class="dias" type="text" name="dias[]" readonly id="dias" value="<?php echo $row['dias']; ?>"></td>
     <td><input class="seccion" type="text" name="seccion[]" readonly id="seccion" value="<?php echo $row['seccion']; ?>">
