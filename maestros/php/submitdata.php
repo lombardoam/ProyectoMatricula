@@ -45,6 +45,33 @@
       $id_eval = $_GET['id_eval'];
       eliminareval($id_eval, $con);
    }
+   if((isset($_GET['notas'])) && (isset($_GET['object']))){
+      $object = json_decode($_GET['object']);
+      $cantestudiantes = sizeof($object);
+      $resultado = true;
+      for($i = 0; $i < $cantestudiantes; $i++){
+         $id_estudiante = $object[$i]->id_estudiante;
+         $cantevals = sizeof($object[$i]->evaluaciones);
+         for($j = 0; $j < $cantevals; $j++){
+            $id_eval = $object[$i]->evaluaciones[$j]->id_evaluacion;
+            $valor = $object[$i]->evaluaciones[$j]->valor;
+            ingresarnota($resultado, $id_estudiante, $id_eval, $valor, $con);
+         }
+      }
+      if($resultado){
+         $array = array(
+            'cambio' => 'si',
+            'mensaje' => '<h4>Se han ingresado las notas</h4>'
+         );
+         echo json_encode($array);
+      }else{
+         $array = array(
+            'cambio' => null,
+            'mensaje' => '<h4>Ha ocurrido un error al ingresar</h4>'
+         );
+         echo json_encode($array);
+      }
+   }
    //end
 
    //funciones
@@ -154,5 +181,13 @@
          );
          echo json_encode($array);
       }
+   }
+   function ingresarnota($result, $id_estudiante, $id_evaluacion, $valor, $conexion){
+      $sql = "INSERT INTO historiales_academicos(id_estudiante, id_evaluacion, valor) VALUES($id_estudiante, $id_evaluacion, $valor)";
+      $query = mysqli_query($conexion, $sql);
+      if(!$query){
+         $result = false;
+      }
+      return $result;
    }
 ?>

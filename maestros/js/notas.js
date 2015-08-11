@@ -28,6 +28,18 @@ function estudeval(){
                   $("#body").html(obj['content']);
                }
                bootbox.alert(obj['mensaje']);
+               if(obj['noestudiante'] != null){
+                  bootbox.dialog({
+                     message: "Por favor tome nota de ello.",
+                     title: obj['noestudiante'],
+                     buttons: {
+                        success: {
+                           label: "Entendido",
+                           className: "btn-primary"
+                        }
+                     }
+                  });
+               }
             }
          });
       }else{
@@ -39,14 +51,61 @@ function estudeval(){
 }
 function guardnts(){
    var trs = $("tbody#body").find("tr");
-   var valores = new Array();
+   var valores = Array();
+   var cantidad = 0;
+   var valido = true;
    trs.each(function(){
-      var id_estudiante = $(this).find("#id_estudiante").val();
-      var colevals = $(this).find("td#coleval");
-      alert(colevals.length);
+      var colevals = $(this).find("td.coleval");
       for(i = 0; i < colevals.length; i++){
-         var eval = colevals[i].children("input#id_evaluacion").val();
-         alert(eval);
+         var tdactual = $(this).find("td#coleval"+i);
+         var valor = tdactual.children("#eval").val();
+         if(valor == ""){
+            valido = false;
+         }
+         if(!/^[0-9]*$/.test(valor)){
+            valido = false;
+         }
       }
    });
+   if(valido){
+      trs.each(function(){
+         var evaluacion = new Array();
+         var estudiante = $(this).find("#id_estudiante").val()
+         var colevals = $(this).find("td.coleval");
+         for(i = 0; i < colevals.length; i++){
+            var tdactual = $(this).find("td#coleval"+i);
+            evaluacion.push({
+               id_evaluacion: tdactual.children("#id_evaluacion").val(),
+               valor: tdactual.children("#eval").val()
+            });
+         }
+         valores.push({
+            id_estudiante: estudiante,
+            evaluaciones: evaluacion
+         });
+         cantidad++;
+      });
+      //alert(JSON.stringify(valores));
+
+      $.ajax({
+         type: "GET",
+         url: "php/submitdata.php",
+         data: "notas&object="+JSON.stringify(valores),
+         success: function(data){
+            bootbox.alert(data);
+         }
+      });
+   }else{
+      bootbox.dialog({
+         message: "Por favor tome nota de ello.",
+         title: '<h4>El espacio para las notas no puede esta vacío y solo puede contener números</h4>',
+         buttons: {
+            success: {
+               label: "Entendido",
+               className: "btn-primary"
+            }
+         }
+      });
+   }
+
 }

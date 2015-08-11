@@ -283,15 +283,26 @@
                   <td>$estudiantes[nombres]</td>
                   <td>$estudiantes[apellidos]</td>
             ";
+            $i = 0;
             while($evaluaciones = mysqli_fetch_assoc($query2)){
                $content = $content . "
-                  <td id=\"coleval\"><input type=\"text\" name=\"\" id=\"eval\" placeholder=\"0\" class=\"form-control\">
+                  <td class=\"coleval\" id=\"coleval$i\"><input type=\"text\" name=\"\" id=\"eval\" placeholder=\"0\" class=\"form-control\" maxlength=\"". strlen($evaluaciones['valor']) ."\">
                   <input type=\"hidden\" value=\"$evaluaciones[id_evaluacion]\" id=\"id_evaluacion\"></td>
                   <td>/ $evaluaciones[valor]</td>
                ";
+               $i++;
             }
             $num_estudiante++;
             $content = $content . "</tr>";
+         }
+         if($num_estudiante == 1){
+            $array['noestudiante'] = '<h4>No hay estudiantes matriculados en esta clase</h4>';
+            $colspan = 4 + $evals*2;
+            $content = "
+               <tr><td colspan=\"$colspan\"><div class=\"alert alert-warning\">
+                   <center><i class=\"fa fa-info-circle\"></i>  <strong>No hay estudiantes matriculados en esta clase.</strong></center>
+               </div></td></tr>
+            ";
          }
          $array['content'] = $content;
          echo json_encode($array);
