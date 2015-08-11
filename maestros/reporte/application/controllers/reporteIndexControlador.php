@@ -63,7 +63,6 @@ class ReporteIndexControlador extends CI_Controller
     public function buscar()
 	{
        $usuario= $this->input->post('nombre');
-        echo $usuario;
 
 	}
 

@@ -50,9 +50,6 @@ $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
             {
                        $_SESSION['Ausente']=$valor->total_ausente;
             }
-echo"sii:".$_SESSION['Ausente'];
-         echo" num:".$_SESSION["numero_cuenta"];
-        echo" clase:".$_SESSION["clase"];
 
 
         $this->db->select('count(*) AS total_asistio');
@@ -94,8 +91,7 @@ $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
               $this->db->where('estudiantes.id_estudiante', $_SESSION['numero_cuenta']);
                 $this->db->where('asistencia.id_programacion', $id_programacion);
 
-echo"idclase ".$id_programacion;
-     echo"numcuenta ". $_SESSION['numero_cuenta'];
+
 
 
 
