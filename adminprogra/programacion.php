@@ -31,7 +31,7 @@ while($row = mysqli_fetch_assoc($result)){
 }
         ?>
         </select>&nbsp;&nbsp;&nbsp;
-        <button type="submit" id="LoadRecordsButton">Buscar</button>
+        <button type="submit" id="LoadRecordsButton" class="btn btn-primary">Buscar</button>
     </form>
       </div> <br></div>
 	<div align="center"><div id="PeopleTableContainer" style="width: 80%; height:"></div></div>

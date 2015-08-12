@@ -19,11 +19,21 @@
   require 'conexion.php';
 
 //Get record count
+if (empty($_POST['nombre'])){
+            }
 		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM programacion_cursos");
 		$row = mysqli_fetch_array($result);
 		$recordCount = $row['RecordCount'];
   //Get records from database
+if (empty($_POST['nombre'])){
   $result = mysqli_query($conexion, "SELECT * FROM programacion_cursos");
+        }
+
+    else
+    {
+        $nombre = $_POST['nombre'];
+          $result = mysqli_query($conexion, "SELECT * FROM programacion_cursos WHERE id_curso LIKE '%$nombre%'");
+        }
 
   //Add all records to an array
   $rows = array();
