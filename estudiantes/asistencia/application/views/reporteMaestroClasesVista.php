@@ -97,7 +97,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<code>  <div class="row">
     <div id="col-sm-4">
       <h3></h3>
-        <div class="centrar"
       <?php
 
 
@@ -123,7 +122,6 @@ if (count($user_data->result()) == 0)
 }
 ?>
 
-    </div>
              </div>
   </div></code>
 

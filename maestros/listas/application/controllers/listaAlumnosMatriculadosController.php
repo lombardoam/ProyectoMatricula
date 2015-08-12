@@ -6,7 +6,7 @@ class ListaAlumnosMatriculadosController extends CI_Controller
  function __construct()
     {
         parent::__construct();
-                  $this->load->database();
+     $this->load->database();
      $this->load->helper('form');
      $this->load->library('session');
      $this->load->model('listaAlumnosMatriculadosModelo');
