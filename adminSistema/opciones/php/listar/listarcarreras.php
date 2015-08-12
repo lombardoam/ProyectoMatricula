@@ -11,7 +11,7 @@ if (empty($_POST['nombre']) && empty($_POST['facultad'])){
         $nombre = $_POST['nombre'];
         $facultad = $_POST['facultad'];
 
-        $result = mysqli_query($conexion, "SELECT * FROM carreras WHERE nombre_carrera LIKE '%$nombre%' AND id_facultad = '$facultad' ");
+        $result = mysqli_query($conexion, "SELECT * FROM carreras WHERE nombre_carrera LIKE '%$nombre%' AND id_facultad = '$facultad' "); /*Corregir esa parte, ya que no me deja buscar con */
     }
 
   //Add all records to an array
