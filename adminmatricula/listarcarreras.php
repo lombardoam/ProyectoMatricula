@@ -23,7 +23,14 @@
 		$row = mysqli_fetch_array($result);
 		$recordCount = $row['RecordCount'];
   //Get records from database
+if (empty($_POST['nombre'])){
   $result = mysqli_query($conexion, "SELECT * FROM carreras");
+    }
+
+    else
+    {
+        $result = mysqli_query($conexion, "SELECT * FROM carreras WHERE nombre_carrera = '" .$_POST["nombre"]. "'");
+    }
 
   //Add all records to an array
   $rows = array();
