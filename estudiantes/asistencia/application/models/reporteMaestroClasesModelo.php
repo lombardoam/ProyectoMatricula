@@ -12,11 +12,7 @@ class ReporteMaestroClasesModelo extends CI_Model
 
     function get_user()
     {
-
-
-
-
-$this->db->select('cursos.nombre_curso,programacion_cursos.hora_inicio,programacion_cursos.hora_termina,programacion_cursos.dias,aulas.num_aula,programacion_cursos.seccion, edificios.nombre,programacion_cursos.id_programacion,estudiantes.num_cuenta');
+        $this->db->select('cursos.nombre_curso,programacion_cursos.hora_inicio,programacion_cursos.hora_termina,programacion_cursos.dias,aulas.num_aula,programacion_cursos.seccion, edificios.nombre,programacion_cursos.id_programacion,estudiantes.num_cuenta');
 
                 $this->db->from('matriculas');
 
