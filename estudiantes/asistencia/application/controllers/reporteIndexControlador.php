@@ -10,26 +10,26 @@ class ReporteIndexControlador extends CI_Controller
     {
         parent::__construct();
                   $this->load->database();
-                       $this->load->helper('form');
+                  $this->load->helper('form');
                   $this->load->library('session');
+                  $this->load->helper('url');
 
 
 
     }
     public function cargaReporte()
 	{
-         $_SESSION["Ausente"]=0;
+        $_SESSION["Ausente"]=0;
         $_SESSION["Asistio"]=0;
         $_SESSION["total"]=0;
+        $_SESSION["numero_cuenta"] =  $this->uri->segment(3);
 
-    $cuenta= $this->input->post('seleccionado');
-
-         $_SESSION["id_progra"]=$cuenta;
+    $id_horario= $_SESSION["clase"];
 
 
       $this->load->model('reporteIndexModelo');
 
-     $resultado['resultado'] =  $this->reporteIndexModelo->getNombre($cuenta);
+     $resultado['resultado'] =  $this->reporteIndexModelo->getNombre($id_horario);
 
     $this->load->view('reporteIndex',$resultado);
 
@@ -40,11 +40,11 @@ class ReporteIndexControlador extends CI_Controller
     public function  cargaReportePrincipal()
     {
 
-    $cuenta= $this->input->post('seleccionado');
-      $_SESSION["clase"]=$cuenta;
+    $id_horario= $this->input->post('seleccionado');
+      $_SESSION["clase"]=$id_horario;
       $this->load->model('reporteIndexModelo');
 
-     $resultado['resultado'] =   $this->reporteIndexModelo->getPrincipa($cuenta);
+     $resultado['resultado'] =   $this->reporteIndexModelo->getPrincipa($id_horario);
 
     $this->load->view('reporMaster',$resultado);
 
@@ -63,7 +63,6 @@ class ReporteIndexControlador extends CI_Controller
     public function buscar()
 	{
        $usuario= $this->input->post('nombre');
-        echo $usuario;
 
 	}
 
