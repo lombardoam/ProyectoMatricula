@@ -3,13 +3,15 @@
   header('Content-type: application/json');
  require '../../require/conexion.php';
 
-if(empty($_POST['nombre'])){
-    $result = mysqli_query($conexion, "SELECT * FROM facultades");
-}else{
-    $nombre = $_POST['nombre'];
 
-    $result = mysqli_query($conexion, "SELECT * FROM facultades WHERE nombre_facultad LIKE '%$nombre%'");
-}
+    $result = mysqli_query($conexion, "SELECT * FROM facultades");
+/*}else{
+    $nombre = $_POST['nombre'];*/
+
+
+
+
+
 
   //Add all records to an array
   $rows = array();
