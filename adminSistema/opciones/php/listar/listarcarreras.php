@@ -2,7 +2,7 @@
 header('Content-type: application/json');
 require '../../require/conexion.php';
 
-if (empty($_POST['nombre'])){
+if (empty($_POST['nombre']) && empty($_POST['facultad'])){
     $result = mysqli_query($conexion, "SELECT * FROM carreras");
 }
 
