@@ -109,8 +109,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  echo"<p><button type='submit' class='btn btn-default' name='seleccionado' value = $valor->id_programacion >$valor->nombre_curso # $valor->hora_inicio -  $valor->hora_termina # $valor->dias # $valor->seccion$valor->num_aula # $valor->nombre</button></p>";
 
 
-     $_SESSION["ides"]=$valor->id_estudiante;
-     $_SESSION["numcu"]=$valor->num_cuenta;
 
 
 

@@ -36,7 +36,13 @@ class ReporteMaestroClasesModelo extends CI_Model
 
 $query = $this->db->get();
 
+foreach ($query->result() as &$valor)
+        {
+    $_SESSION["ides"]=$valor->id_estudiante;
+     $_SESSION["numcu"]=$valor->num_cuenta;
 
+
+}
         return $query;
 
 

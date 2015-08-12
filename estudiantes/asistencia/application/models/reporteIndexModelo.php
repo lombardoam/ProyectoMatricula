@@ -93,16 +93,6 @@ $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
 
 
 
-
-
-
-
-
-
-
-
-
-
 $this->db->group_by('id_asistencia');
 
                  $query = $this->db->get();
