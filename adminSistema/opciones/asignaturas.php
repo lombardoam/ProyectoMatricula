@@ -100,6 +100,24 @@
        </div>
 
        <center><div class="tablas">
+       <div class="filtering">
+    <form>
+        Plan de Estudio: <select name="plan" id="plan">
+          <option selected="selected" value="0">* Selecciona un Plan de Estudio</option>
+           <?php
+            require 'require/conexion.php';
+            $result = mysqli_query($conexion, "SELECT nombre_plan AS DisplayText, id_plan_estudio AS Value FROM planes_estudio");
+$i=1;
+while($row = mysqli_fetch_assoc($result)){
+    echo "<option value='".$i."'> ". $row[DisplayText]."</option>";
+    $i++;
+}
+        ?>
+        </select>&nbsp;&nbsp;&nbsp;
+        Asignatura: <input type="text" name="nombre" id="nombre" />
+        <button type="submit" id="LoadRecordsButton">Buscar</button>
+    </form>
+</div> <br>
         <div id="PersonTableContainer2"></div><br><br>
        </div></center>
 
