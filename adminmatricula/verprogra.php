@@ -19,18 +19,7 @@ require 'noautorizado.php';
   <body><div align="center">
                     <div class="filtering">
     <form>
-        Clase: <select name="nombre" id="nombre">
-        <option selected="selected" value="0">* Selecciona una asignatura</option>
-           <?php
-            $conexion = mysqli_connect('localhost','root','','matricula');
-            $result = mysqli_query($conexion, "SELECT nombre_curso AS DisplayText, id_curso AS Value FROM cursos");
-$i=1;
-while($row = mysqli_fetch_assoc($result)){
-    echo "<option value='".$i."'> ". $row[DisplayText]."</option>";
-    $i++;
-}
-        ?>
-        </select>
+
         Plan: <select name="plan" id="plan">
         <option selected="selected" value="0">* Selecciona un Plan de Estudio</option>
            <?php
@@ -169,7 +158,6 @@ while($row = mysqli_fetch_assoc($result)){
         $('#LoadRecordsButton').click(function (e) {
             e.preventDefault();
             $('#PeopleTableContainer').jtable('load', {
-                nombre: $('#nombre').val(),
                 plan: $('#plan').val(),
 
             });
