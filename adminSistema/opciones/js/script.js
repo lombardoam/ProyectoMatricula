@@ -352,7 +352,16 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer5').jtable('load');
+    //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+        $('#PersonTableContainer5').jtable('load', {
+                numero: $('#numero').val(),
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
     $('#PersonTableContainer6').jtable({
             messages: Spanishmessages, //Localizacion

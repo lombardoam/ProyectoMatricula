@@ -100,6 +100,12 @@
        </div>
 
        <center><div class="tablas">
+       <div class="filtering">
+    <form>
+        Número de Salón: <input type="text" name="numero" id="numero" />
+        <button type="submit" id="LoadRecordsButton">Buscar</button>
+    </form>
+</div> <br>
         <div id="PersonTableContainer5"></div><br><br>
        </div></center>
 
