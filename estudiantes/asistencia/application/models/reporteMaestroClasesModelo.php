@@ -40,6 +40,8 @@ foreach ($query->result() as &$valor)
         {
     $_SESSION["ides"]=$valor->id_estudiante;
      $_SESSION["numcu"]=$valor->num_cuenta;
+        $_SESSION["di"]=$valor->id_estudiante;
+
 
 
 }
