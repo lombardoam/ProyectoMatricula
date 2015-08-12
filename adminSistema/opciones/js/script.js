@@ -108,6 +108,17 @@ $(document).ready(function () {
             }
         });
 
+    //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+        $('#PersonTableContainer1').jtable('load', {
+                name: $('#nombre_carrera').val(),
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
+
     $('#PersonTableContainer1').jtable('load');
 
     $('#PersonTableContainer2').jtable({

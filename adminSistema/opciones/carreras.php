@@ -99,7 +99,15 @@
           <center><a href="edificios.php">PANEL DE CARRERAS</a></center>
        </div>
 
-       <center><div class="tablas"> <!--
+       <center><div class="tablas">
+
+        <div class="filtering">
+    <form>
+        Carreras: <input type="text" name="nombre_carrera" id="nombre_carrera" />
+
+        <button type="submit" id="LoadRecordsButton">Buscar</button>
+    </form>
+</div> <!--
        <div class="filtering">
     <form>
         Carrera: <input type="text" name="nombre_carrera" id="nombre_carrera" />
