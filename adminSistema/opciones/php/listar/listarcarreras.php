@@ -9,8 +9,9 @@ if (empty($_POST['nombre']) && empty($_POST['facultad'])){
     else
     {
         $nombre = $_POST['nombre'];
+        $facultad = $_POST['facultad'];
 
-        $result = mysqli_query($conexion, "SELECT * FROM carreras WHERE nombre_carrera LIKE '%$nombre%' AND id_facultad = '".$_POST["facultad"]."' ");
+        $result = mysqli_query($conexion, "SELECT * FROM carreras WHERE nombre_carrera LIKE '%$nombre%' AND id_facultad = '$facultad' ");
     }
 
   //Add all records to an array
