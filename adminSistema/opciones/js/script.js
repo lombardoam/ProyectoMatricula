@@ -112,14 +112,15 @@ $(document).ready(function () {
         $('#LoadRecordsButton').click(function (e) {
             e.preventDefault();
         $('#PersonTableContainer1').jtable('load', {
-                name: $('#nombre_carrera').val(),
+                nombre: $('#nombre').val(),
+                facultad: $('#facultad').val(),
             });
         });
 
         //Load all records when page is first shown
         $('#LoadRecordsButton').click();
 
-    $('#PersonTableContainer1').jtable('load');
+
 
     $('#PersonTableContainer2').jtable({
             messages: Spanishmessages, //Localizacion

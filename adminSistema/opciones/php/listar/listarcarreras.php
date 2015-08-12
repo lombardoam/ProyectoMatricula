@@ -2,8 +2,16 @@
 header('Content-type: application/json');
 require '../../require/conexion.php';
 
-  //Get records from database
-  $result = mysqli_query($conexion, "SELECT * FROM carreras WHERE nombre_carrera = '%nombre_carrera%'");
+if (empty($_POST['nombre'])){
+    $result = mysqli_query($conexion, "SELECT * FROM carreras");
+}
+
+    else
+    {
+        $nombre = $_POST['nombre'];
+
+        $result = mysqli_query($conexion, "SELECT * FROM carreras WHERE nombre_carrera LIKE '%$nombre%' AND id_facultad = '".$_POST["facultad"]."' ");
+    }
 
   //Add all records to an array
   $rows = array();
@@ -17,4 +25,5 @@ require '../../require/conexion.php';
   $jTableResult['Result'] = "OK";
   $jTableResult['Records'] = $rows;
   print json_encode($jTableResult);
+
 ?>

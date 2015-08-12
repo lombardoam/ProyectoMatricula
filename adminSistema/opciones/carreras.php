@@ -103,11 +103,22 @@
 
         <div class="filtering">
     <form>
-        Carreras: <input type="text" name="nombre_carrera" id="nombre_carrera" />
-
+        Carrera: <input type="text" name="nombre" id="nombre" />
+        Facultad: <select name="facultad" id="facultad">
+          <option selected="selected" value="0">Todas las Facultades</option>
+           <?php
+            require 'require/conexion.php';
+            $result = mysqli_query($conexion, "SELECT nombre_facultad AS DisplayText, id_facultad AS Value FROM facultades");
+$i=1;
+while($row = mysqli_fetch_assoc($result)){
+    echo "<option value='".$i."'> ". $row[DisplayText]."</option>";
+    $i++;
+}
+        ?>
+        </select>
         <button type="submit" id="LoadRecordsButton">Buscar</button>
     </form>
-</div> <!--
+</div> <br><!--
        <div class="filtering">
     <form>
         Carrera: <input type="text" name="nombre_carrera" id="nombre_carrera" />
