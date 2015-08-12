@@ -2,8 +2,14 @@
 header('Content-type: application/json');
 require '../../require/conexion.php';
 
-  //Get records from database
+
+    //Get records from database
   $result = mysqli_query($conexion, "SELECT * FROM puestos");
+/*}else{
+    $puesto = $_POST['puesto'];*/
+
+
+
 
   //Add all records to an array
   $rows = array();

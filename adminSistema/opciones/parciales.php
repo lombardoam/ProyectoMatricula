@@ -46,7 +46,7 @@
                 <ul>
                     <!--<li><img src="logo-escudo-ujcv1-300x53.png"></li>-->
                     <li><a href="../index.php"><span><i class="fa fa-home fa-2x"></i></span>INICIO</a></li>
-                    <li><a href="academica.php"><span><i class="fa fa-graduation-cap fa-2x"></i></span>ACADÉMICA</a>
+                    <li class="active"><a href="academica.php"><span><i class="fa fa-graduation-cap fa-2x"></i></span>ACADÉMICA</a>
                         <ul>
                             <li><a href="facultades.php">FACULTADES</a></li>
                             <li><a href="carreras.php">CARRERAS</a></li>
@@ -55,7 +55,7 @@
                             <li><a href="parciales.php">PARCIALES</a></li>
                         </ul>
                     </li>
-                    <li class="active"><a href="aulas.php"><span><i class="fa fa-building fa-2x"></i></span>AULAS</a>
+                    <li><a href="aulas.php"><span><i class="fa fa-building fa-2x"></i></span>AULAS</a>
                         <ul>
                             <li><a href="edificios.php">EDIFICIOS</a></li>
                             <li><a href="salones.php">SALONES</a></li>
@@ -78,7 +78,7 @@
                     </li>
                     <li><a href="usuarios.php"><span><i class="fa fa-users fa-2x"></i></span>USUARIOS</a>
                         <ul>
-                            <li><a href="estudiantes.php">ESTUDIANTES</a></li>
+                            li><a href="estudiantes.php">ESTUDIANTES</a></li>
                             <li><a href="empleados.php">EMPLEADOS</a></li>
                             <li><a href="puestos.php">PUESTOS</a></li>
                         </ul>
@@ -96,11 +96,11 @@
             </nav>
 
        <div class="panel">
-          <center><a href="edificios.php">PANEL DE AULAS</a></center>
+          <center><a href="edificios.php">PANEL DE ACADÉMICA</a></center>
        </div>
 
        <center><div class="tablas">
-        <div></div><br><br>
+        <div id="PersonTableContainer19"></div><br><br>
        </div></center>
 
         <div class="footer">

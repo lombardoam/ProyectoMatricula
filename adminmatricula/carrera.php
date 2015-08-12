@@ -16,6 +16,12 @@ require 'noautorizado.php';
 
   </head>
   <body>
+              <div class="filtering">
+    <form>
+        Carrera: <input type="text" name="nombre" id="nombre" />
+        <button type="submit" id="LoadRecordsButton">Buscar</button>
+    </form>
+</div> <br>
 	<div id="PeopleTableContainer" style="width: 80%; height:"></div>
 	<script type="text/javascript">
 
@@ -71,8 +77,17 @@ require 'noautorizado.php';
 				}
 			});
 
-			//Load person list from server
-			$('#PeopleTableContainer').jtable('load');
+		//Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+            $('#PeopleTableContainer').jtable('load', {
+                nombre: $('#nombre').val(),
+
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
 		});
 

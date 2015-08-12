@@ -3,12 +3,15 @@
   header('Content-type: application/json');
  require '../../require/conexion.php';
 
-  /*//Get records from database
-  $result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount  FROM facultades");
-  $row = mysqli_fetch_array($result);
-  $recordCount = $row['RecordCount'];*/
 
-  $result = mysqli_query($conexion, "SELECT * FROM facultades");
+    $result = mysqli_query($conexion, "SELECT * FROM facultades");
+/*}else{
+    $nombre = $_POST['nombre'];*/
+
+
+
+
+
 
   //Add all records to an array
   $rows = array();

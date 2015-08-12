@@ -12,40 +12,39 @@ class ReporteMaestroClasesModelo extends CI_Model
 
     function get_user()
     {
-         $this->db->select('cursos.nombre_curso, programacion_cursos.hora_inicio,
-programacion_cursos.hora_termina,
-programacion_cursos.dias,
-programacion_cursos.seccion,programacion_cursos.id_programacion,
-aulas.num_aula,
-edificios.nombre');
+        $this->db->select('cursos.nombre_curso,programacion_cursos.hora_inicio,programacion_cursos.hora_termina,programacion_cursos.dias,aulas.num_aula,programacion_cursos.seccion, edificios.nombre,programacion_cursos.id_programacion,estudiantes.num_cuenta,estudiantes.id_estudiante');
 
-        $this->db->from('programacion_cursos');
+                $this->db->from('matriculas');
 
+        $this->db->join('estudiantes',
+                        'matriculas.id_estudiante = estudiantes.id_estudiante');
 
-        $this->db->join('periodos_academicos',
-                        'periodos_academicos.id_periodo = programacion_cursos.id_periodo');
+        $this->db->join('programacion_cursos',
+                        'programacion_cursos.id_programacion = matriculas.id_programacion');
 
-        $this->db->join('empleados',
-                        ' programacion_cursos.id_empleado =  empleados.id_empleado');
+         $this->db->join('cursos',
+                        'cursos.id_curso = programacion_cursos.id_curso');
 
+          $this->db->join('aulas',
+                        'aulas.id_aula = programacion_cursos.id_aula');
 
-         $this->db->join('aulas',
-                         ' aulas.id_aula = programacion_cursos.id_aula');
+        $this->db->join('edificios',
+                        'edificios.id_edificio = aulas.id_edificio');
 
-          $this->db->join('cursos',
-                          'cursos.id_curso = programacion_cursos.id_curso');
+        $this->db->where('estudiantes.nombres', $_COOKIE["nombre"]);
+                 $this->db->where('estudiantes.apellidos', $_COOKIE["apellido"]);
 
-         $this->db->join('edificios',
-                         'edificios.id_edificio =  aulas.id_edificio');
-        $this->db->where('empleados.nombres', $_COOKIE["nombre"]);
-                 $this->db->where('empleados.apellidos', $_COOKIE["apellido"]);
+$query = $this->db->get();
 
-
-         $query = $this->db->get();
-
+foreach ($query->result() as &$valor)
+        {
+    $_SESSION["ides"]=$valor->id_estudiante;
+     $_SESSION["numcu"]=$valor->num_cuenta;
+        $_SESSION["di"]=$valor->id_estudiante;
 
 
 
+}
         return $query;
 
 

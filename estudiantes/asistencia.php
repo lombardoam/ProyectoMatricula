@@ -15,15 +15,15 @@ require'header.php';
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Programación del período académico
-                            <small>Horarios disponibles de los cursos</small>
+                            Asistencia  Y
+                            <small>Faltas</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.php">Escritorio</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-file"></i> Programación
+                                <i class="fa fa-file"></i> Asistencias
                             </li>
                         </ol>
                     </div>
@@ -32,12 +32,9 @@ require'header.php';
 
             </div>
             <!-- /.container-fluid -->
-<?php
-require'programacion.php';
-?>
-            <div align="right">
-<a href="reportehorarios.php" target="_blank" class="btn btn-primary" role="button" title="Versión imprimible"><i class="fa fa-fw fa-print"></i></a>
-            </div>
+    <iframe src="asistencia/" width="830" height="450" frameborder="0"></iframe>
+
+
             <br><br>
 
         </div>

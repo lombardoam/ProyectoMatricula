@@ -52,6 +52,7 @@
                             <li><a href="carreras.php">CARRERAS</a></li>
                             <li><a href="asignaturas.php">ASIGNATURAS</a></li>
                             <li><a href="periodos.php">PERÍODOS</a></li>
+                            <li><a href="parciales.php">PARCIALES</a></li>
                         </ul>
                     </li>
                     <li><a href="aulas.php"><span><i class="fa fa-building fa-2x"></i></span>AULAS</a>
@@ -98,20 +99,26 @@
           <center><a href="edificios.php">PANEL DE CARRERAS</a></center>
        </div>
 
-       <center><div class="tablas"> <!--
-       <div class="filtering">
+       <center><div class="tablas">
+
+        <div class="filtering">
     <form>
-        Carrera: <input type="text" name="nombre_carrera" id="nombre_carrera" />
-        Facultad:
-        <select id="id_facultad" name="id_facultad">
-            <option selected="selected" value="0">Todas las facultades</option>
-            <option value="1">Ingenierias y Arquitectura</option>
-            <option value="2">Ciencias Economicas y Sociales</option>
-        </select>
+        Facultad: <select name="facultad" id="facultad">
+          <option selected="selected" value="0">* Selecciona una Facultad</option>
+           <?php
+            require 'require/conexion.php';
+            $result = mysqli_query($conexion, "SELECT nombre_facultad AS DisplayText, id_facultad AS Value FROM facultades");
+$i=1;
+while($row = mysqli_fetch_assoc($result)){
+    echo "<option value='".$i."'> ". $row[DisplayText]."</option>";
+    $i++;
+}
+        ?>
+        </select>&nbsp;&nbsp;&nbsp;
+        Carrera: <input type="text" name="nombre" id="nombre" />
         <button type="submit" id="LoadRecordsButton">Buscar</button>
     </form>
-</div>
-        <br>-->
+</div> <br>
         <div id="PersonTableContainer1"></div><br><br>
        </div></center>
 

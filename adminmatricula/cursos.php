@@ -16,6 +16,24 @@ require 'noautorizado.php';
 
   </head>
   <body>
+      <div align="center">
+                    <div class="filtering">
+    <form>
+        Clase: <select name="nombre" id="nombre">
+        <option selected="selected" value="0">* Selecciona un Plan de Estudio</option>
+           <?php
+            $conexion = mysqli_connect('localhost','root','','matricula');
+            $result = mysqli_query($conexion, "SELECT nombre_plan AS DisplayText, id_plan_estudio AS Value FROM planes_estudio");
+$i=1;
+while($row = mysqli_fetch_assoc($result)){
+    echo "<option value='".$i."'> ". $row[DisplayText]."</option>";
+    $i++;
+}
+        ?>
+        </select>&nbsp;&nbsp;&nbsp;
+        <button type="submit" id="LoadRecordsButton" class="btn btn-primary">Buscar</button>
+    </form>
+      </div> <br></div>
 	<div id="PeopleTableContainer" style="width: 80%; height:"></div>
 	<script type="text/javascript">
 
@@ -91,7 +109,17 @@ require 'noautorizado.php';
 			});
 
 			//Load person list from server
-			$('#PeopleTableContainer').jtable('load');
+		//Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+            $('#PeopleTableContainer').jtable('load', {
+                nombre: $('#nombre').val(),
+
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
 		});
 

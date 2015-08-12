@@ -1,3 +1,4 @@
+
 <?php
     session_start();
    if(!(
@@ -15,52 +16,58 @@
    }
 ?>
 
-<meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Reportes - Cursos</title>
+   <link rel="stylesheet" href="css/bootstrap.css">
+   <script src="js/bootstrap.js"></script>
+</head>
+<body><br><br>
+    <div align="center">
+        <img src="images/UJCV.jpg" alt="UJCV Logo" width="10%" height="10%" /><h1>Cursos - Asignaturas disponibles</h1>
+  <div class="container">
+      <center><a href="javascript:window.print(); void 0;"  class="btn btn-default"><i class="glyphicon glyphicon-print"></i></a><br></center></div><br>
+        <div class="table-responsive">
+   <table class="table table-bordered">
+      <theader>
+         <tr>
+            <th>Codigo</th>
+            <th>Nombre Clase</th>
+            <th>UV</th>
+            <th>Horas teóricas</th>
+            <th>Horas prácticas</th>
+            <th>Laboratorio</th>
+            <th>Plan</th>
+            <th>Periodo</th>
 
-<!--Código HTML editable-->
+         </tr>
+      </theader>
+      <tbody >
+        <?php
+            $conexion = mysqli_connect('localhost','root','','matricula');
+            $sql = "SELECT cursos.id_curso, cursos.codigo_curso, cursos.nombre_curso, cursos.uv, cursos.horas_practicas, cursos.horas_teoricas, cursos.laboratorio, planes_estudio.nombre_plan, cursos.periodo FROM cursos INNER JOIN planes_estudio WHERE cursos.id_plan_estudio = planes_estudio.id_plan_estudio ORDER BY id_curso;;";
+            $query = mysqli_query($conexion, $sql);
+            while($rows = mysqli_fetch_assoc($query)){
+               echo "
+                  <tr>
+                     <td>$rows[codigo_curso]</td>
+                     <td>$rows[nombre_curso]</td>
+                     <td>$rows[uv]</td>
+                     <td>$rows[horas_practicas]</td>
+                     <td>$rows[horas_teoricas]</td>
+                     <td>$rows[laboratorio]</td>
+                     <td>$rows[nombre_plan]</td>
+                     <td>$rows[periodo]</td>
 
-        <div id="page-wrapper">
+                  </tr>
+               ";
+            }
+         ?>
 
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div align="center">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Cursos
-                            <small> - Información de las clases con sus UV</small>
-                        </h1>
-                        <ol class="breadcrumb">
-
-                        </ol>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-            </div>
-            <!-- /.container-fluid -->
-
-            <div align="center">
-
-<?php
-require'cursos.php';
-?>
-
-            <br><br>
-
-  <form>
-<input type='button' onclick='window.print();' value='Impresión' class="btn btn-primary btn-lg" role="button">
-                </form>           </div>
-
-            <br><br>
-
-        </div>
-        <!-- /#page-wrapper -->
-
-
-    <!-- /#wrapper -->
-
-
-  </body>
+      </tbody>
+            </table></div>
+   </div>
+</body>
 </html>

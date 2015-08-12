@@ -1,8 +1,16 @@
 <?php
 header('Content-type: application/json');
   require '../../require/conexion.php';
-  //Get records from database
+
+if(empty($_POST['plan']) && empty($_POST['nombre'])){
+    //Get records from database
   $result = mysqli_query($conexion, "SELECT * FROM cursos");
+}else{
+    $plan = $_POST['plan'];
+    $nombre = $_POST['nombre'];
+
+        $result = mysqli_query($conexion, "SELECT * FROM cursos WHERE id_plan_estudio = '$plan' AND nombre_curso LIKE '%$nombre%' ");
+}
 
   //Add all records to an array
   $rows = array();

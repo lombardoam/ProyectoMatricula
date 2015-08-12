@@ -52,6 +52,7 @@
                             <li><a href="carreras.php">CARRERAS</a></li>
                             <li><a href="asignaturas.php">ASIGNATURAS</a></li>
                             <li><a href="periodos.php">PERÍODOS</a></li>
+                            <li><a href="parciales.php">PARCIALES</a></li>
                         </ul>
                     </li>
                     <li><a href="aulas.php"><span><i class="fa fa-building fa-2x"></i></span>AULAS</a>
@@ -99,6 +100,13 @@
        </div>
 
        <center><div class="tablas">
+       <div class="filtering">
+    <form>
+        Curso: <input type="text" name="nombre" id="nombre" />&nbsp;&nbsp;&nbsp;
+        Docente:  <input type="text" name="docente" id="docente">
+        <button type="submit" id="LoadRecordsButton">Buscar</button>
+    </form>
+</div> <br>
         <div id="PersonTableContainer6"></div><br><br>
        </div></center>
 

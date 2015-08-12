@@ -61,7 +61,9 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer').jtable('load');
+
+        $('#PersonTableContainer').jtable('load');
+
 
     $('#PersonTableContainer1').jtable({
             messages: Spanishmessages, //Localizacion
@@ -108,7 +110,19 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer1').jtable('load');
+    //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+        $('#PersonTableContainer1').jtable('load', {
+                nombre: $('#nombre').val(),
+                facultad: $('#facultad').val(),
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
+
+
 
     $('#PersonTableContainer2').jtable({
             messages: Spanishmessages, //Localizacion
@@ -170,7 +184,17 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer2').jtable('load');
+    //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+        $('#PersonTableContainer2').jtable('load', {
+                nombre: $('#nombre').val(),
+                plan: $('#plan').val(),
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
     $('#PersonTableContainer3').jtable({
             messages: Spanishmessages, //Localizacion
@@ -321,7 +345,16 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer5').jtable('load');
+    //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+        $('#PersonTableContainer5').jtable('load', {
+                numero: $('#numero').val(),
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
     $('#PersonTableContainer6').jtable({
             messages: Spanishmessages, //Localizacion
@@ -396,7 +429,17 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer6').jtable('load');
+    //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+        $('#PersonTableContainer6').jtable('load', {
+                nombre: $('#nombre').val(),
+                docente: $('#docente').val(),
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
     $('#PersonTableContainer7').jtable({
             messages: Spanishmessages, //Localizacion
@@ -540,7 +583,16 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer9').jtable('load');
+    //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+        $('#PersonTableContainer9').jtable('load', {
+                nombre: $('#nombre').val(),
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
     $('#PersonTableContainer10').jtable({
             messages: Spanishmessages, //Localizacion
@@ -759,7 +811,16 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer13').jtable('load');
+    //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+        $('#PersonTableContainer13').jtable('load', {
+                cuenta: $('#cuenta').val(),
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
     $('#PersonTableContainer14').jtable({
             messages: Spanishmessages, //Localizacion
@@ -827,7 +888,16 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer14').jtable('load');
+    //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+        $('#PersonTableContainer14').jtable('load', {
+                cuenta: $('#cuenta').val(),
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
     $('#PersonTableContainer15').jtable({
             messages: Spanishmessages, //Localizacion
@@ -858,7 +928,7 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer15').jtable('load');
+        $('#PersonTableContainer15').jtable('load');
 
     $('#PersonTableContainer16').jtable({
             messages: Spanishmessages, //Localizacion
@@ -910,7 +980,16 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer16').jtable('load');
+    //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+        $('#PersonTableContainer16').jtable('load', {
+                cuenta: $('#cuenta').val(),
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
     $('#PersonTableContainer17').jtable({
             messages: Spanishmessages, //Localizacion
@@ -974,5 +1053,29 @@ $(document).ready(function () {
 
     $('#PersonTableContainer18').jtable('load');
 
+    $('#PersonTableContainer19').jtable({
+            messages: Spanishmessages, //Localizacion
+            title: 'Parciales',
+            paging: true,
+            actions: {
+                listAction: 'php/listar/listarparciales.php',
+                createAction: 'php/ingresar/ingresarparciales.php',
+                updateAction: 'php/editar/editarparciales.php',
+                deleteAction: 'php/eliminar/eliminarparciales.php',
+            },
+            fields: {
+                id_parcial: {
+                    title: 'ID',
+                    key: true,
+                },
+
+                nombre: {
+                    title: 'Descripción',
+                    width: '30%',
+                },
+            }
+        });
+
+    $('#PersonTableContainer19').jtable('load');
 
     });

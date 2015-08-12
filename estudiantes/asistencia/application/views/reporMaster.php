@@ -95,9 +95,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1>Asistencia Reportes</h1>
 	<div id="body">
-        <h2>Catedratico  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
+        <h2>Alumno  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
 
      <?php
  foreach ($resultado->result() as &$valor)
@@ -143,8 +142,9 @@ break;
                 foreach ($resultado->result() as &$valor)
                {
                    echo" <td>$i</td>";
-                    $_SESSION['numero_cuenta']= $valor->id_estudiante;
-                   echo" <td><a href='cargaReporte'>$valor->num_cuenta</a></td>";
+                   // $_SESSION['numero_cuenta']= $valor->id_estudiante;
+     echo "<td>";echo anchor('reporteIndexControlador/cargaReporte/'.$valor->id_estudiante, $valor->num_cuenta);echo"</td>";
+
                   echo"   <td>$valor->nombres $valor->apellidos</td>";
                 //  echo"   <td>$valor->fecha</td>";
                  // echo"   <td >$valor->estado</td>";

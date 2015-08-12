@@ -91,23 +91,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-<h2>Catedratico  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
+<h2>Alumno  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
 	<div id="body">
 
 		<code>  <div class="row">
     <div id="col-sm-4">
       <h3></h3>
-        <div class="centrar"
       <?php
 
 
  foreach ($user_data->result() as &$valor)
         {
 
-     echo form_open('reporteIndexControlador/cargaReportePrincipal');
-    // echo form_open('reporteIndexControlador/cargaReporte');
+    // echo form_open('reporteIndexControlador/cargaReportePrincipal');
+     echo form_open('reporteIndexControlador/cargaReporte');
 
  echo"<p><button type='submit' class='btn btn-default' name='seleccionado' value = $valor->id_programacion >$valor->nombre_curso # $valor->hora_inicio -  $valor->hora_termina # $valor->dias # $valor->seccion$valor->num_aula # $valor->nombre</button></p>";
+
+
 
 
 
@@ -118,12 +119,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 if (count($user_data->result()) == 0)
 {
-        echo"<p><h3>No Tiene Clases Asignadas</h3></p>";
+        echo"<p><h3>No Tiene Clases Matriculadas</h3></p>";
 
 }
 ?>
 
-    </div>
              </div>
   </div></code>
 

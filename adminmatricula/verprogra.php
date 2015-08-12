@@ -3,7 +3,7 @@
 require 'noautorizado.php';
 ?>
 
-<html>
+ <html>
   <head>
 
 
@@ -16,7 +16,25 @@ require 'noautorizado.php';
     <script src="jtable/localization/jquery.jtable.es.js" type="text/javascript"></script>
 
   </head>
-  <body>
+  <body><div align="center">
+                    <div class="filtering">
+    <form>
+
+        Plan: <select name="plan" id="plan">
+        <option selected="selected" value="0">* Selecciona un Plan de Estudio</option>
+           <?php
+            $conexion = mysqli_connect('localhost','root','','matricula');
+            $result = mysqli_query($conexion, "SELECT nombre_plan AS DisplayText, id_plan_estudio AS Value FROM planes_estudio");
+$i=1;
+while($row = mysqli_fetch_assoc($result)){
+    echo "<option value='".$i."'> ". $row[DisplayText]."</option>";
+    $i++;
+}
+        ?>
+        </select>&nbsp;&nbsp;&nbsp;
+        <button type="submit" id="LoadRecordsButton" class="btn btn-primary">Buscar</button>
+    </form>
+      </div> <br></div>
 	<div align="center"><div id="PeopleTableContainer" style="width: 80%; height:"></div></div>
 	<script type="text/javascript">
 
@@ -136,12 +154,19 @@ require 'noautorizado.php';
 
                  }
 			});
+		//Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+            $('#PeopleTableContainer').jtable('load', {
+                plan: $('#plan').val(),
 
-			//Load person list from server
-			$('#PeopleTableContainer').jtable('load');
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
 		});
-
 
 	</script>
 
