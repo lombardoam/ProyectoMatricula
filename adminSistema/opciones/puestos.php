@@ -100,6 +100,12 @@
        </div>
 
        <center><div class="tablas">
+       <div class="filtering">
+    <form>
+        Descripción del puesto: <input type="text" name="puesto" id="puesto" />
+        <button type="submit" id="LoadRecordsButton">Buscar</button>
+    </form>
+</div> <br>
         <div id="PersonTableContainer15"></div><br><br>
        </div></center>
 
