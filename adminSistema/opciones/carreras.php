@@ -118,20 +118,7 @@ while($row = mysqli_fetch_assoc($result)){
         </select>
         <button type="submit" id="LoadRecordsButton">Buscar</button>
     </form>
-</div> <br><!--
-       <div class="filtering">
-    <form>
-        Carrera: <input type="text" name="nombre_carrera" id="nombre_carrera" />
-        Facultad:
-        <select id="id_facultad" name="id_facultad">
-            <option selected="selected" value="0">Todas las facultades</option>
-            <option value="1">Ingenierias y Arquitectura</option>
-            <option value="2">Ciencias Economicas y Sociales</option>
-        </select>
-        <button type="submit" id="LoadRecordsButton">Buscar</button>
-    </form>
-</div>
-        <br>-->
+</div> <br>
         <div id="PersonTableContainer1"></div><br><br>
        </div></center>
 

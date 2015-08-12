@@ -100,6 +100,13 @@
        </div>
 
        <center><div class="tablas">
+       <div class="filtering">
+    <form>
+        Nombre de la Facultad: <input type="text" name="nombre" id="nombre" />
+
+        <button type="submit" id="LoadRecordsButton">Buscar</button>
+    </form>
+</div> <br>
         <div id="PersonTableContainer"></div><br><br>
        </div></center>
 
