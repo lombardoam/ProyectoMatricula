@@ -30,6 +30,18 @@ while($row = mysqli_fetch_assoc($result)){
     $i++;
 }
         ?>
+        </select>
+        Plan: <select name="plan" id="plan">
+        <option selected="selected" value="0">* Selecciona un Plan de Estudio</option>
+           <?php
+            $conexion = mysqli_connect('localhost','root','','matricula');
+            $result = mysqli_query($conexion, "SELECT nombre_plan AS DisplayText, id_plan_estudio AS Value FROM planes_estudio");
+$i=1;
+while($row = mysqli_fetch_assoc($result)){
+    echo "<option value='".$i."'> ". $row[DisplayText]."</option>";
+    $i++;
+}
+        ?>
         </select>&nbsp;&nbsp;&nbsp;
         <button type="submit" id="LoadRecordsButton" class="btn btn-primary">Buscar</button>
     </form>
@@ -158,6 +170,7 @@ while($row = mysqli_fetch_assoc($result)){
             e.preventDefault();
             $('#PeopleTableContainer').jtable('load', {
                 nombre: $('#nombre').val(),
+                plan: $('#plan').val(),
 
             });
         });
