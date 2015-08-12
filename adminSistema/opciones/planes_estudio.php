@@ -100,6 +100,23 @@
        </div>
 
        <center><div class="tablas">
+       <div class="filtering">
+    <form>
+        Carrera: <select name="nombre" id="nombre">
+          <option selected="selected" value="0">* Selecciona una Carrera</option>
+           <?php
+            require 'require/conexion.php';
+            $result = mysqli_query($conexion, "SELECT nombre_carrera AS DisplayText, id_carrera AS Value FROM carreras");
+$i=1;
+while($row = mysqli_fetch_assoc($result)){
+    echo "<option value='".$i."'> ". $row[DisplayText]."</option>";
+    $i++;
+}
+        ?>
+        </select>
+        <button type="submit" id="LoadRecordsButton">Buscar</button>
+    </form>
+</div> <br>
         <div id="PersonTableContainer9"></div><br><br>
        </div></center>
 

@@ -2,8 +2,14 @@
 header('Content-type: application/json');
 require '../../require/conexion.php';
 
-  //Get records from database
+if(empty($_POST['nombre'])){
+    //Get records from database
   $result = mysqli_query($conexion, "SELECT * FROM planes_estudio");
+}else{
+    $nombre = $_POST['nombre'];
+
+    $result = mysqli_query($conexion, "SELECT * FROM planes_estudio WHERE id_carrera = '$nombre' ");
+}
 
   //Add all records to an array
   $rows = array();

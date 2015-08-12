@@ -100,6 +100,13 @@
        </div>
 
        <center><div class="tablas">
+       <div class="filtering">
+    <form>
+        Curso: <input type="text" name="nombre" id="nombre" />&nbsp;&nbsp;&nbsp;
+        Docente:  <input type="text" name="docente" id="docente">
+        <button type="submit" id="LoadRecordsButton">Buscar</button>
+    </form>
+</div> <br>
         <div id="PersonTableContainer6"></div><br><br>
        </div></center>
 

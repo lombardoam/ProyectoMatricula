@@ -436,7 +436,17 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer6').jtable('load');
+    //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+        $('#PersonTableContainer6').jtable('load', {
+                nombre: $('#nombre').val(),
+                docente: $('#docente').val(),
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
     $('#PersonTableContainer7').jtable({
             messages: Spanishmessages, //Localizacion
@@ -580,7 +590,16 @@ $(document).ready(function () {
             }
         });
 
-    $('#PersonTableContainer9').jtable('load');
+    //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+        $('#PersonTableContainer9').jtable('load', {
+                nombre: $('#nombre').val(),
+            });
+        });
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 
     $('#PersonTableContainer10').jtable({
             messages: Spanishmessages, //Localizacion
