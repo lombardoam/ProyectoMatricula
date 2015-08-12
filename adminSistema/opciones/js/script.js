@@ -935,16 +935,7 @@ $(document).ready(function () {
             }
         });
 
-    //Re-load records when user click 'load records' button.
-        $('#LoadRecordsButton').click(function (e) {
-            e.preventDefault();
-        $('#PersonTableContainer15').jtable('load', {
-                puesto: $('#puesto').val(),
-            });
-        });
-
-        //Load all records when page is first shown
-        $('#LoadRecordsButton').click();
+        $('#PersonTableContainer15').jtable('load');
 
     $('#PersonTableContainer16').jtable({
             messages: Spanishmessages, //Localizacion
