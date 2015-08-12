@@ -25,6 +25,7 @@ class Welcome extends CI_Controller
         $this->load->model('reporteMaestroClasesModelo');
          $data['user_data']=$this->get_user_data();
 
+
          $this->load->view('reporteMaestroClasesVista',$data);
 
 	}

@@ -103,9 +103,8 @@
 
         <div class="filtering">
     <form>
-        Carrera: <input type="text" name="nombre" id="nombre" />
         Facultad: <select name="facultad" id="facultad">
-          <option selected="selected" value="0">Todas las Facultades</option>
+          <option selected="selected" value="0">* Selecciona una Facultad</option>
            <?php
             require 'require/conexion.php';
             $result = mysqli_query($conexion, "SELECT nombre_facultad AS DisplayText, id_facultad AS Value FROM facultades");
@@ -115,7 +114,8 @@ while($row = mysqli_fetch_assoc($result)){
     $i++;
 }
         ?>
-        </select>
+        </select>&nbsp;&nbsp;&nbsp;
+        Carrera: <input type="text" name="nombre" id="nombre" />
         <button type="submit" id="LoadRecordsButton">Buscar</button>
     </form>
 </div> <br>

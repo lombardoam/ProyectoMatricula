@@ -144,7 +144,7 @@ break;
                {
                    echo"<td>$i</td>";
                    echo"<td>$valor->num_cuenta</td>";
-                  echo"   <td>$valor->nombres</td>";
+                  echo"   <td>$valor->nombres  $valor->apellidos</td>";
                   echo"   <td>$valor->fecha</td>";
                   echo"   <td >$valor->estado</td>";
                 echo"</tr>";
