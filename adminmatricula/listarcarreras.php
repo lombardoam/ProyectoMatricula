@@ -19,7 +19,16 @@
   $conexion = mysqli_connect('localhost','root','','matricula');
 
 //Get record count
+if (empty($_POST['nombre'])){
 		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM carreras");
+        }
+
+    else
+    {
+        $nombre = $_POST['nombre'];
+
+        $result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM carreras WHERE nombre_carrera LIKE '%$nombre%'");
+        }
 		$row = mysqli_fetch_array($result);
 		$recordCount = $row['RecordCount'];
   //Get records from database
@@ -29,7 +38,8 @@ if (empty($_POST['nombre'])){
 
     else
     {
-        $result = mysqli_query($conexion, "SELECT * FROM carreras WHERE nombre_carrera = '" .$_POST["nombre"]. "'");
+        $nombre = $_POST['nombre'];
+        $result = mysqli_query($conexion, "SELECT * FROM carreras WHERE nombre_carrera LIKE '%$nombre%'");
     }
 
   //Add all records to an array
