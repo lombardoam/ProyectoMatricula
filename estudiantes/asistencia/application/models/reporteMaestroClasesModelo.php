@@ -12,7 +12,7 @@ class ReporteMaestroClasesModelo extends CI_Model
 
     function get_user()
     {
-        $this->db->select('cursos.nombre_curso,programacion_cursos.hora_inicio,programacion_cursos.hora_termina,programacion_cursos.dias,aulas.num_aula,programacion_cursos.seccion, edificios.nombre,programacion_cursos.id_programacion,estudiantes.num_cuenta');
+        $this->db->select('cursos.nombre_curso,programacion_cursos.hora_inicio,programacion_cursos.hora_termina,programacion_cursos.dias,aulas.num_aula,programacion_cursos.seccion, edificios.nombre,programacion_cursos.id_programacion,estudiantes.num_cuenta,estudiantes.id_estudiante');
 
                 $this->db->from('matriculas');
 
@@ -36,7 +36,15 @@ class ReporteMaestroClasesModelo extends CI_Model
 
 $query = $this->db->get();
 
+foreach ($query->result() as &$valor)
+        {
+    $_SESSION["ides"]=$valor->id_estudiante;
+     $_SESSION["numcu"]=$valor->num_cuenta;
+        $_SESSION["di"]=$valor->id_estudiante;
 
+
+
+}
         return $query;
 
 

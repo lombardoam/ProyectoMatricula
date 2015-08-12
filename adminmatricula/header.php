@@ -169,10 +169,10 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active"><br>
+                    <li><br>
                         <a href="index.php"><i class="fa fa-fw fa-university"></i> Escritorio</a>
                     </li>
-                      <li>
+                      <li class="active">
                         <a href="matricula.php"><i class="fa fa-fw fa-pencil"></i> Matrícula</a>
                     </li>
                     <li>

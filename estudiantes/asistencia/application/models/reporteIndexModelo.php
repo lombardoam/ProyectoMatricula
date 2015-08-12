@@ -38,7 +38,7 @@ class ReporteIndexModelo extends CI_Model
     $this->db->select('count(*) AS total_ausente');
          $this->db->from('asistencia');
          $this->db->where( 'asistencia.estado','Ausente');
-$this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
+$this->db->where('asistencia.id_estudiante', $_SESSION['di']);
         $this->db->where('asistencia.id_programacion', $_SESSION["clase"]);
 
 
@@ -55,7 +55,7 @@ $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
         $this->db->select('count(*) AS total_asistio');
          $this->db->from('asistencia');
          $this->db->where( 'asistencia.estado','Asistio');
-$this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
+$this->db->where('asistencia.id_estudiante', $_SESSION['di']);
  $this->db->where('asistencia.id_programacion', $_SESSION["clase"]);
 
 
@@ -77,6 +77,8 @@ $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
 
     function getNombre($id_programacion)
     {
+        $_SESSION["clase"] =$id_programacion;
+
         $this->setAsistioYausentes();
 
 
@@ -88,24 +90,17 @@ $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
                         $this->db->join('matriculas', 'matriculas.id_programacion = programacion_cursos.id_programacion');
                         $this->db->join('estudiantes', 'estudiantes.id_estudiante =asistencia.id_estudiante');
 
-              $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
+              $this->db->where('asistencia.id_estudiante', $_SESSION['di']);
                 $this->db->where('asistencia.id_programacion', $id_programacion);
-
-
-
-
-
-
-
-
-
-
 
 
 
 $this->db->group_by('id_asistencia');
 
                  $query = $this->db->get();
+
+
+
 
 
          return $query;
@@ -116,7 +111,6 @@ $this->db->group_by('id_asistencia');
 
 function getPrincipa($id_programacion)
     {
-       // $this->setAsistioYausentes();
 
 
              $this->db->select('estudiantes.num_cuenta,estudiantes.nombres,estudiantes.apellidos, cursos.nombre_curso,estudiantes.id_estudiante');
@@ -138,22 +132,5 @@ $query = $this->db->get();
     }
 }
 
-
-/*/
-
-                 $this->db->where('matriculado.id_horario', $id_programacion);
-
-
-        $this->db->distinct();
-     $this->db->select('horarios.maestro, horarios.clase, alumnos.nombre, alumnos.id_alumno,asistencia.estado,asistencia.fecha');
-
-     $this->db->from('horarios');
-
-                 $this->db->where('horarios.maestro', 'pedro gonzales');
-                $this->db->join('alumnos', 'alumnos.id_alumno = matriculado.id_alumno');
-                        $this->db->join('asistencia', 'asistencia.id_horario = horarios.id_horario');
-        $this->db->group_by('alumnos.id_alumno');
-
-/*/
 
 
