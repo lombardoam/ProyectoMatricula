@@ -100,6 +100,12 @@
        </div>
 
        <center><div class="tablas">
+       <div class="filtering">
+    <form>
+        Número de Cuenta: <input type="text" name="cuenta" id="cuenta" />
+        <button type="submit" id="LoadRecordsButton">Buscar</button>
+    </form>
+</div> <br>
         <div id="PersonTableContainer16"></div><br><br>
        </div></center>
 
