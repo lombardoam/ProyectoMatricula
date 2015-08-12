@@ -22,9 +22,9 @@ class ReporteIndexControlador extends CI_Controller
         $_SESSION["Ausente"]=0;
         $_SESSION["Asistio"]=0;
         $_SESSION["total"]=0;
-        $_SESSION["numero_cuenta"] =  $this->uri->segment(3);
+        $_SESSION["numero_cuenta"] =  $_SESSION["numcu"];
 
-    $id_horario= $_SESSION["clase"];
+    $id_horario= $_SESSION["ides"];
 
 
       $this->load->model('reporteIndexModelo');
@@ -40,14 +40,11 @@ class ReporteIndexControlador extends CI_Controller
     public function  cargaReportePrincipal()
     {
 
-    $id_horario= $this->input->post('seleccionado');
+      $id_horario= $this->input->post('seleccionado');
       $_SESSION["clase"]=$id_horario;
       $this->load->model('reporteIndexModelo');
-
-     $resultado['resultado'] =   $this->reporteIndexModelo->getPrincipa($id_horario);
-
-    $this->load->view('reporMaster',$resultado);
-
+      $resultado['resultado'] = $this->reporteIndexModelo->getPrincipa($id_horario);
+      $this->load->view('reporMaster',$resultado);
 
     }
 
