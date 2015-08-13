@@ -54,8 +54,8 @@ require 'noautorizado.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="consultas">Consultar</label>
   <div class="col-md-8">
-    <button id="consultas" name="consultas" class="btn btn-success">Historial</button>
-    <button id="saldo" name="saldo" class="btn btn-danger">Saldo</button>
+    <button id="consultas" name="consultas" class="btn btn-info">Historial</button>
+    <button id="saldo" name="saldo" class="btn btn-info">Saldo</button>
   </div>
 </div>
 
@@ -110,6 +110,17 @@ require 'noautorizado.php';
       <input type="radio" name="cantidadclases" id="cantidadclases-6" value="7">
       7
     </label>
+  </div>
+</div>
+
+    <!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="tipo">Tipo matrícula</label>
+  <div class="col-md-4">
+    <select id="tipo" name="tipo1" class="form-control">
+      <option value="Tipo 1">Tipo 1</option>
+      <option value="Tipo 22">Tipo 2</option>
+    </select>
   </div>
 </div>
 
@@ -290,16 +301,16 @@ require 'noautorizado.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="agregar"></label>
   <div class="col-md-4">
-    <button id="agregar" name="agregar" class="btn btn-warning">Agregar Clase</button>
+    <button id="agregar" name="agregar" class="btn btn-info">Agregar Clase</button>
   </div>
         </div></div>
-
+<hr>
 <!-- Button (Double) -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="matricular">Validación</label>
   <div class="col-md-8">
-    <button id="matricular" name="matricular" class="btn btn-success">Matricular</button>
-    <button id="imprimir" name="imprimir" class="btn btn-info">Imprimir horario</button>
+    <button id="matricular" name="matricular" class="btn btn-primary">Matricular</button>
+    <button id="imprimir" name="imprimir" class="btn btn-primary">Imprimir horario</button>
   </div>
 </div>
 
@@ -308,7 +319,7 @@ require 'noautorizado.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="finalizarmatricula"></label>
   <div class="col-md-4">
-    <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-danger">Finalizar Matrícula</button>
+    <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-success">Finalizar Matrícula</button>
   </div>
         </div></div>
 
