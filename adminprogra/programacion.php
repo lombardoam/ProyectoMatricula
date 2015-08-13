@@ -23,7 +23,7 @@ require 'noautorizado.php';
         <option selected="selected" value="0">* Selecciona una asignatura</option>
            <?php
             $conexion = mysqli_connect('localhost','root','','matricula');
-            $result = mysqli_query($conexion, "SELECT nombre_curso AS DisplayText, id_curso AS Value FROM cursos WHERE id_plan_estudio='" . ($_SESSION['id_plan_estudio']) . "'");
+            $result = mysqli_query($conexion, "SELECT nombre_curso AS DisplayText, id_curso AS Value FROM cursos");
 $i=1;
 while($row = mysqli_fetch_assoc($result)){
     echo "<option value='".$i."'> ". $row[DisplayText]."</option>";
