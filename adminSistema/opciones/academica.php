@@ -17,6 +17,10 @@
     <meta charset="UTF-8">
     <title>Administrador General</title>
 
+    <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="../materialize.css"  media="screen,projection"/>
+      <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="../css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../style.css" />
     <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css" />
@@ -78,7 +82,7 @@
                     </li>
                     <li><a href="usuarios.php"><span><i class="fa fa-users fa-2x"></i></span>USUARIOS</a>
                         <ul>
-                            li><a href="estudiantes.php">ESTUDIANTES</a></li>
+                            <li><a href="estudiantes.php">ESTUDIANTES</a></li>
                             <li><a href="empleados.php">EMPLEADOS</a></li>
                             <li><a href="puestos.php">PUESTOS</a></li>
                         </ul>
@@ -100,7 +104,40 @@
        </div>
 
        <center><div class="tablas">
-        <div></div><br><br>
+        <ul class="collection">
+    <li class="collection-item avatar">
+      <img src="images/yuna.jpg" alt="" class="circle">
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle">folder</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle green">insert_chart</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle red">play_arrow</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+  </ul>
        </div></center>
 
         <div class="footer">
