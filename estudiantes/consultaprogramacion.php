@@ -17,12 +17,20 @@
   header('Content-type: application/json');
   require 'conexion.php';
 
-//Get record count
+if(empty($_POST['nombre']){
+   //Get record count
 		$result = mysqli_query($conexion, "SELECT COUNT(*) AS RecordCount FROM programacion_cursos");
 		$row = mysqli_fetch_array($result);
 		$recordCount = $row['RecordCount'];
-  //Get records from database
-  $result = mysqli_query($conexion, "SELECT * FROM programacion_cursos");
+}else{
+    $nombre = $_POST['nombre'];
+    //Get records from database
+  $result = mysqli_query($conexion, "SELECT * FROM programacion_cursos WHERE id_curso = '$nombre'");
+
+}
+
+
+
 
   //Add all records to an array
   $rows = array();
