@@ -47,7 +47,7 @@ require'header.php';
     <tbody>
     <?php
     $conexion = mysqli_connect("localhost", "root", "", "matricula");
-    $sql=mysqli_query($conexion, "SELECT id_programacion, nombre_curso, hora_inicio, hora_termina, dias, seccion, estatus_curso FROM cursos INNER JOIN programacion_cursos INNER JOIN planes_estudio INNER JOIN carreras WHERE cursos.id_curso = programacion_cursos.id_curso AND cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND planes_estudio.id_carrera = carreras.id_carrera AND carreras.id_carrera = $_SESSION[id_carrera] ");
+    $sql=mysqli_query($conexion, "SELECT id_programacion, nombre_curso, hora_inicio, hora_termina, dias, seccion, estatus_curso FROM cursos INNER JOIN programacion_cursos INNER JOIN planes_estudio INNER JOIN carreras WHERE cursos.id_curso = programacion_cursos.id_curso AND cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND planes_estudio.id_carrera = carreras.id_carrera AND carreras.id_carrera = $_SESSION[id_carrera] ORDER BY cursos.periodo ASC");
 
     $i = 0;
 

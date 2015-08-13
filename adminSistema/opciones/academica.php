@@ -18,8 +18,7 @@
     <title>Administrador General</title>
 
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css" />
-    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.css" />
 
     <link rel="stylesheet" type="text/css" href="../css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../style.css" />
@@ -100,10 +99,12 @@
             </nav>
 
        <div class="panel">
-          <center><a href="edificios.php">PANEL DE ACADÉMICA</a></center>
+          <center><a href="academica.php">PANEL DE ACADÉMICA</a></center>
        </div>
 
        <center><div class="tablas">
+          <h3> Elige una de las opciones que deseas administrar</h3><br><br><br>
+
         <ul class="collection">
     <li class="collection-item avatar">
       <img src="images/yuna.jpg" alt="" class="circle">
@@ -138,6 +139,7 @@
       <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
     </li>
   </ul>
+
        </div></center>
 
         <div class="footer">
@@ -148,5 +150,6 @@
         </div>
 
    </div>
+   <script type="text/javascript" src="../materialize/js/materialize.js"></script>
 </body>
 </html>
