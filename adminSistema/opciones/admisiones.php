@@ -69,7 +69,7 @@
                         </ul>
                     </li>
                     <li><a href="planes_estudio.php"><span><i class="fa fa-file fa-2x"></i></span>PLANES DE ESTUDIO</a></li>
-                    <li class="active"><a href="odmisiones.php"><span><i class="fa fa-check-square-o fa-2x"></i></span>ADMISIONES</a>
+                    <li class="active"><a href="admisiones.php"><span><i class="fa fa-check-square-o fa-2x"></i></span>ADMISIONES</a>
                         <ul>
                             <li><a href="matricula.php">MATRICULA</a></li>
                             <li><a href="prematricula.php">PREMATRICULA</a></li>

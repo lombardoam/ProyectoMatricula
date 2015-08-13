@@ -18,8 +18,8 @@
     <title>Administrador General</title>
 
     <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="../materialize.css"  media="screen,projection"/>
-      <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css" />
+    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="../css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../style.css" />

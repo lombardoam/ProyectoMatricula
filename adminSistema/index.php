@@ -91,8 +91,8 @@
             <div class="contenedor-cartas">
             <!--Inicio de las cartas-->
             <div class="card">
-              <div class="image">
-                 <img src="img/biblioteca-ujcv1-1024x566.jpg">
+              <div class="image"><a href="opciones/academica.php">
+                 <img src="img/biblioteca-ujcv1-1024x566.jpg"></a>
                     <span class="title">Académica</span>
               </div>
               <div class="content">
@@ -104,8 +104,8 @@
             </div>
 
                       <div class="card">
-              <div class="image">
-                 <img src="img/bloggif_5582f9ec9e313.jpeg">
+              <div class="image"><a href="opciones/aulas.php">
+                  <img src="img/bloggif_5582f9ec9e313.jpeg"></a>
                     <span class="title">Aulas</span>
               </div>
               <div class="content">
@@ -117,8 +117,8 @@
             </div>
 
                       <div class="card">
-              <div class="image">
-                 <img src="img/DSC_0568-1024x569.jpg">
+              <div class="image"><a href="opciones/cursos.php">
+                 <img src="img/DSC_0568-1024x569.jpg"></a>
                     <span class="title">Cursos</span>
               </div>
               <div class="content">
@@ -130,8 +130,8 @@
             </div>
 
                       <div class="card">
-              <div class="image">
-                 <img src="img/biblioteca-ujcv-1024x566.jpg">
+              <div class="image"><a href="opciones/planes_estudio.php">
+                 <img src="img/biblioteca-ujcv-1024x566.jpg"></a>
                     <span class="title">Planes de Estudio</span>
               </div>
               <div class="content">
@@ -143,8 +143,8 @@
             </div>
 
                       <div class="card">
-              <div class="image">
-                 <img src="img/bloggif_558312ba13f40.jpeg">
+              <div class="image"><a href="opciones/admisiones.php">
+                 <img src="img/bloggif_558312ba13f40.jpeg"></a>
                     <span class="title">Admisiones</span>
               </div>
               <div class="content">
@@ -157,8 +157,8 @@
 
 
                       <div class="card">
-              <div class="image">
-                 <img src="img/bloggif_558313109120a.jpeg">
+              <div class="image"><a href="opciones/usuarios.php">
+                 <img src="img/bloggif_558313109120a.jpeg"></a>
                     <span class="title">Usuarios</span>
               </div>
               <div class="content">
