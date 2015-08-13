@@ -285,6 +285,15 @@ require 'noautorizado.php';
   </div>
 </div>
 
+    <!-- Button -->
+    <div align="center">
+<div class="form-group">
+  <label class="col-md-4 control-label" for="agregar"></label>
+  <div class="col-md-4">
+    <button id="agregar" name="agregar" class="btn btn-warning">Agregar Clase</button>
+  </div>
+        </div></div>
+
 <!-- Button (Double) -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="matricular">Validación</label>
@@ -295,12 +304,13 @@ require 'noautorizado.php';
 </div>
 
 <!-- Button -->
+    <div align="center">
 <div class="form-group">
   <label class="col-md-4 control-label" for="finalizarmatricula"></label>
   <div class="col-md-4">
     <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-danger">Finalizar Matrícula</button>
   </div>
-</div>
+        </div></div>
 
 </fieldset>
 </form>
