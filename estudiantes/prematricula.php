@@ -35,8 +35,8 @@ require'header.php';
             <div align="center">
 
             <form name="form" action="prematricula.php" method="post">
-
-            <table><thead><tr>
+    <div class="panel panel-primary filterable">
+            <table id="prematricula" class="table table-bordred table-striped"><thead><tr>
     <th></th>
     <th>ID</th>
     <th>Asignatura</th>
@@ -45,7 +45,7 @@ require'header.php';
     <th>Dias</th>
     <th>Sección</th>
     <th>Período</th>
-    <th>Esatatus</th></tr></thead>
+    <th>Estatus</th></tr></thead>
     <tbody>
 
     <h4>Prematricula - (Plan de <?php $conexion = mysqli_connect("localhost", "root", "", "matricula");
@@ -62,24 +62,27 @@ require'header.php';
 
 
     <tr>
-    <td width="5%"><input class="check" type="checkbox" name="select[]" value="<?php echo $i++; ?>"/></td>
-    <td><input type="text" name="id[]" readonly id="id" value="<?php echo $row['id_programacion']; ?>"></td>
-    <td><input type="text" name="curso[]" readonly id="nombre_curso" value="<?php echo $row['nombre_curso']; ?>"></td>
-    <td width="30px"><input class="horas" type="text" name="inicio[]" readonly id="hora_inicio" value="<?php echo $row['hora_inicio']; ?>"></td>
-    <td><input type="text" name="termina[]" readonly id="hora_termina" value="<?php echo $row['hora_termina']; ?>"></td>
-    <td><input type="text" name="dias[]" readonly id="dias" value="<?php echo $row['dias']; ?>"></td>
-    <td><input type="text" name="seccion[]" readonly id="seccion" value="<?php echo $row['seccion']; ?>">
-    <td><input type="text" name="periodo[]" readonly id="periodo" value="<?php echo $row['periodo'];?>"></td>
-    <td><input type="text" name="estatus[]" readonly id="estatus" value="<?php echo $row['estatus_curso']; ?>"></td>
+    <td><input class="check" type="checkbox" style="border:none; width:25px" name="select[]" value="<?php echo $i++; ?>"/></td>
+    <td><input class="seccion" type="text" style="border:none; width:15px" name="id[]" readonly id="id" value="<?php echo $row['id_programacion']; ?>"></td>
+    <td><input class="asignaturas" type="text" style="border:none; width:250px" name="curso[]" readonly id="nombre_curso" value="<?php echo $row['nombre_curso']; ?>"></td>
+    <td ><input class="horas" type="text" style="border:none; width:50px" name="inicio[]" readonly id="hora_inicio" value="<?php echo $row['hora_inicio']; ?>"></td>
+    <td><input class="horas" type="text" style="border:none; width:50px" name="termina[]" readonly id="hora_termina" value="<?php echo $row['hora_termina']; ?>"></td>
+    <td><input class="dias" type="text" style="border:none;; width:70px" name="dias[]" readonly id="dias" value="<?php echo $row['dias']; ?>"></td>
+    <td><input class="seccion" type="text" style="border:none; width:20px" name="seccion[]" readonly id="seccion" value="<?php echo $row['seccion']; ?>">
+    <td><input type="text" name="periodo[]" style="border:none; width:20px" readonly id="periodo" value="<?php echo $row['periodo'];?>"></td>
+    <td><input class="dias" type="text" style="border:none;; width:50px" name="estatus[]" readonly id="estatus" value="<?php echo $row['estatus_curso']; ?>"></td>
+
+
+
     </tr>
     <?php
     }//end whil loop
     ?>
 
     </tbody>
-
+                </div>
     </table><br>
-    <input class="btn" type="submit" name="submit" value="Pre Matricular"/>
+    <input class="btn btn-primary" type="submit" name="submit"  value="Pre Matricular"/><br><br>
     </form>
 
     <?php
