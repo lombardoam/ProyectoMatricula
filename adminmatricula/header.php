@@ -175,6 +175,24 @@
                       <li class="active">
                         <a href="matricula.php"><i class="fa fa-fw fa-pencil"></i> Matrícula</a>
                     </li>
+
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1">
+                            <i class="glyphicon glyphicon-level-up">
+                            </i>
+                             Editar Matricula <i class="glyphicon glyphicon-menu-down"></i>
+                        </a>
+                            <ul id="demo1" class="collapse">
+                                <li>
+                                    <a href="cancelaciones.php"><i class="glyphicon glyphicon-remove"></i>Cancelaciones</a>
+                                </li>
+                                <li>
+                                    <a href=""><i class="glyphicon glyphicon-ok"></i> Adiciones</a>
+                                </li>
+
+                            </ul>
+                    </li>
+
                     <li>
                         <a href="carreras.php"><i class="fa fa-fw fa-folder-open-o"></i> Carreras</a>
                     </li>
@@ -191,29 +209,31 @@
                     </li>
 
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Administración <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="clases.php"><i class="fa fa-fw fa-wrench"></i> Clases</a>
-                            </li>
-
-                            <li>
-                                <a href="docentes.php"><i class="fa fa-fw fa-wrench"></i> Docentes</a>
-                            </li>
-                            <li>
-                                <a href="horarios.php"><i class="fa fa-fw fa-wrench"></i> Horarios</a>
-                            </li>
-                            <li>
-                                <a href="alumnos.php"><i class="fa fa-fw fa-wrench"></i> Alumnos</a>
-                            </li>
-                                 <li>
-                                <a href="equivalencias.php"><i class="fa fa-fw fa-wrench"></i> Equivalencias</a>
-                            </li>
-                              <li>
-                                <a href="tipequivalencias.php"><i class="fa fa-fw fa-wrench"></i> Tipos de equivalencias</a>
-                            </li>
-
-                        </ul>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo">
+                            <i class="fa fa-fw fa-arrows-v">
+                            </i>
+                             Administración <i class="fa fa-fw fa-caret-down"></i>
+                        </a>
+                            <ul id="demo" class="collapse">
+                                <li>
+                                    <a href="clases.php"><i class="fa fa-fw fa-wrench"></i> Clases</a>
+                                </li>
+                                <li>
+                                    <a href="docentes.php"><i class="fa fa-fw fa-wrench"></i> Docentes</a>
+                                </li>
+                                <li>
+                                    <a href="horarios.php"><i class="fa fa-fw fa-wrench"></i> Horarios</a>
+                                </li>
+                                <li>
+                                    <a href="alumnos.php"><i class="fa fa-fw fa-wrench"></i> Alumnos</a>
+                                </li>
+                                <li>
+                                    <a href="equivalencias.php"><i class="fa fa-fw fa-wrench"></i> Equivalencias</a>
+                                </li>
+                                <li>
+                                    <a href="tipequivalencias.php"><i class="fa fa-fw fa-wrench"></i> Tipos de equivalencias</a>
+                                </li>
+                            </ul>
                     </li>
                     <li class="active">
                         <a href="informes.php"><i class="fa fa-fw fa-file"></i> Informes</a>
