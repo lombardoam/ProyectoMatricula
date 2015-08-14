@@ -56,7 +56,7 @@ require 'noautorizado.php';
   <label class="col-md-4 control-label" for="consultas">Consultar</label>
   <div class="col-md-8">
     <button id="consultas" name="consultas" class="btn btn-primary">Historial</button>
-    <button id="saldo" name="saldo" class="btn btn-danger">Saldo</button>
+    <button id="saldo" name="saldo" class="btn btn-primary">Saldo</button>
   </div>
 </div>
 
@@ -66,7 +66,7 @@ require 'noautorizado.php';
   <label class="col-md-4 control-label" for="saldoalumno">Saldo</label>
   <div class="col-md-4">
     <div class="input-group">
-      <span class="input-group-addon">Cantidad</span>
+      <span class="input-group-addon">Monto</span>
       <input id="saldoalumno" name="saldoalumno" class="form-control" placeholder="" type="text">
       </div></div></div>
 
@@ -123,25 +123,23 @@ require 'noautorizado.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="matricular"></label>
   <div class="col-md-8">
-    <button id="imprimir" name="imprimir" class="btn btn-info">Imprimir horario</button>
-    <button id="matricular" name="matricular" class="btn btn-primary">Matricular</button>
     <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-danger">Finalizar Matrícula</button>
+
   </div>
 </div>
 
 </fieldset>
 </form>
 
+  <!-- / Fin del código del formulario -->
 
-
-            <!-- / Fin del código del formulario -->
-            <!--tabla -->
+<!--Tabla -->
     <div class="container">
 	<div class="row">
 
 
         <div class="col-md-11">
-        <h4>Clases Disponibles</h4>
+        <h4>Cursos Disponibles</h4>
          <div class="panel panel-primary filterable">
 
 
@@ -186,7 +184,7 @@ $query = mysqli_query($conexion, $sql);
             }
 ?>
 
-<!-- Fin consulta -->
+<!-- Fin de la consulta -->
 
     </tbody>
 
@@ -208,6 +206,13 @@ $query = mysqli_query($conexion, $sql);
         </div>
 	</div>
     </div>
+<!-- Final de la tabla -->
+<div align="center">
+<button id="matricular" name="matricular" class="btn btn-success">Realizar Matrícula</button>
+<button id="imprimir" name="imprimir" class="btn btn-primary">Imprimir horario</button>
+
+</div>
+<!-- Botón que inserta la información a la BD -->
                 <br><br>
 
 
