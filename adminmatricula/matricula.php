@@ -11,7 +11,7 @@ require 'noautorizado.php';
 
                 <!-- Page Heading -->
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-11">
                         <h1 class="page-header">
                             Sistema de matrícula
                             <small>Matrícula de estudiantes</small>
@@ -40,7 +40,7 @@ require 'noautorizado.php';
 <fieldset>
 
 <!-- Form Name -->
-    <div align="center"><legend></legend></div>
+    <div align="center"></div>
 
 <!-- Search input-->
 <div class="form-group">
@@ -55,8 +55,8 @@ require 'noautorizado.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="consultas">Consultar</label>
   <div class="col-md-8">
-    <button id="consultas" name="consultas" class="btn btn-success">Historial</button>
-    <button id="saldo" name="saldo" class="btn btn-danger">Saldo</button>
+    <button id="consultas" name="consultas" class="btn btn-primary">Historial</button>
+    <button id="saldo" name="saldo" class="btn btn-primary">Saldo</button>
   </div>
 </div>
 
@@ -66,7 +66,7 @@ require 'noautorizado.php';
   <label class="col-md-4 control-label" for="saldoalumno">Saldo</label>
   <div class="col-md-4">
     <div class="input-group">
-      <span class="input-group-addon">Cantidad</span>
+      <span class="input-group-addon">Monto</span>
       <input id="saldoalumno" name="saldoalumno" class="form-control" placeholder="" type="text">
       </div></div></div>
 
@@ -123,24 +123,23 @@ require 'noautorizado.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="matricular"></label>
   <div class="col-md-8">
-    <button id="imprimir" name="imprimir" class="btn btn-info">Imprimir horario</button>
-    <button id="matricular" name="matricular" class="btn btn-success">Matricular</button>
     <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-danger">Finalizar Matrícula</button>
+
   </div>
 </div>
 
 </fieldset>
 </form>
 
+  <!-- / Fin del código del formulario -->
 
-
-            <!-- / Fin del código del formulario -->
-            <!--tabla -->
+<!--Tabla -->
     <div class="container">
 	<div class="row">
 
-        <div class="col-md-12">
-        <h4>Clases Disponibles</h4>
+
+        <div class="col-md-11">
+        <h4>Cursos Disponibles</h4>
          <div class="panel panel-primary filterable">
 
 
@@ -151,88 +150,41 @@ require 'noautorizado.php';
                    <th><input type="checkbox" id="checkall" /></th>
                    <th>Código</th>
                     <th>Nombre clase</th>
+                    <th>Plan de Estudio</th>
                      <th>Días</th>
                      <th>Sección</th>
-                     <th>Hora inicial</th>
-                     <th>Hora final</th>
+                     <th>Inicio</th>
+                     <th>Final</th>
                      <th>Docente</th>
-                      <th>Plan de Estudio</th>
+                     <th>Salón</th>
+
 
 
                    </thead>
     <tbody>
+<!-- Consulta SQL -->
+<?php
+            $conexion = mysqli_connect('localhost','root','','matricula');
+            $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula ORDER BY id_programacion;;";
 
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>IIT2000</td>
-    <td>Ingeniería de Software I</td>
-    <td>L-M-V</td>
-    <td>A</td>
-    <td>13:50</td>
-    <td>14:40</td>
-    <td>Marco Antonio</td>
-    <td>Ingeniería en Infotecnología</td>
+$query = mysqli_query($conexion, $sql);
+            while($rows = mysqli_fetch_assoc($query)){
+               echo "    <tr>
+    <td><input type='checkbox' class='checkthis' /></td>
+    <td>$rows[codigo_prog_curso]</td>
+    <td>$rows[nombre_curso]</td>
+    <td>$rows[nombre_plan]</td>
+    <td>$rows[dias]</td>
+    <td>$rows[seccion]</td>
+    <td>$rows[hora_inicio]</td>
+    <td>$rows[hora_termina]</td>
+    <td>$rows[nombres]</td>
+    <td>$rows[codigo_aula]</td>
+    ";
+            }
+?>
 
-    </tr>
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>IIT2001</td>
-    <td>Ingeniería de Software II</td>
-    <td>L-M-V</td>
-    <td>B</td>
-    <td>14:50</td>
-    <td>15:40</td>
-    <td>Marco Antonio</td>
-    <td>Ingeniería en Infotecnología</td>
-
-    </tr>
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>DER1001</td>
-    <td>Derecho Constitucional</td>
-    <td>L-M-V</td>
-    <td>B</td>
-    <td>16:50</td>
-    <td>18:40</td>
-    <td>Claudia</td>
-    <td>Derecho</td>
-
-    </tr>
-
-
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>ARQ2000</td>
-    <td>Diseño I I</td>
-    <td>L-M-V</td>
-    <td>A</td>
-    <td>15:50</td>
-    <td>18:40</td>
-    <td>Mejía</td>
-    <td>Arquitectura</td>
-
-    </tr>
-
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>MAT1001</td>
-    <td>Orientación Universitaria</td>
-    <td>L-M-V</td>
-    <td>A</td>
-    <td>6:50</td>
-    <td>8:40</td>
-    <td>Martinez</td>
-    <td>Ingeniería Civil</td>
-
-    </tr>
-
-
-
-
+<!-- Fin de la consulta -->
 
     </tbody>
 
@@ -254,6 +206,13 @@ require 'noautorizado.php';
         </div>
 	</div>
     </div>
+<!-- Final de la tabla -->
+<div align="center">
+<button id="matricular" name="matricular" class="btn btn-primary">Realizar Matrícula</button>
+<button id="imprimir" name="imprimir" class="btn btn-info">Imprimir horario</button>
+
+</div>
+<!-- Botón que inserta la información a la BD -->
                 <br><br>
 
 

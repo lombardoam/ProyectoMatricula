@@ -45,9 +45,9 @@ tr:hover td { background: #d0dafd; color: #339; }
 thead, tbody { display: block; }
 
 tbody {
-    height: 200px;       /* Just for the demo          */
-    overflow-y: auto;    /* Trigger vertical scroll    */
-    overflow-x: hidden;  /* Hide the horizontal scroll */
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .btn {
