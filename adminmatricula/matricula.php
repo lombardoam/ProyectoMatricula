@@ -208,8 +208,8 @@ $query = mysqli_query($conexion, $sql);
     </div>
 <!-- Final de la tabla -->
 <div align="center">
-<button id="matricular" name="matricular" class="btn btn-success">Realizar Matrícula</button>
-<button id="imprimir" name="imprimir" class="btn btn-primary">Imprimir horario</button>
+<button id="matricular" name="matricular" class="btn btn-primary">Realizar Matrícula</button>
+<button id="imprimir" name="imprimir" class="btn btn-info">Imprimir horario</button>
 
 </div>
 <!-- Botón que inserta la información a la BD -->
