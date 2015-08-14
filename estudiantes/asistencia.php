@@ -18,6 +18,7 @@ require'header.php';
                             Asistencia  Y
                             <small>Faltas</small>
                         </h1>
+
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.php">Escritorio</a>

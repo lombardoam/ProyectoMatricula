@@ -100,20 +100,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h2>Catedratico  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
 
      <?php
- foreach ($resultado->result() as &$valor)
-        {
+ foreach ($resultado->result() as &$valor) {
 
 break;
-
-
-         }
-
+   }
         ?>
-
-
-
-
-
          <p><button type='submit' class='btn btn-default' name='seleccionado' value ='Buscar'</button></p> <?php
  foreach ($resultado->result() as &$valor)
         {
@@ -139,21 +130,75 @@ break;
             <tbody>
                 <tr>
 <?php
-  $i=1;
+$rojo = $_SESSION["FALTAS"];
+                        $amarillo = $rojo/2;// la mitad
+                        $naranja = $rojo -3;// faltan 3
+                         $verde = $amarillo-1;
+
+$amarillo=ceil($amarillo);
+$naranja=ceil($naranja);
+$verde=ceil($verde);
+
+  $i=0;
+      $z=1;
                 foreach ($resultado->result() as &$valor)
                {
-                   echo" <td>$i</td>";
+                   echo" <td>$z</td>";
                    // $_SESSION['numero_cuenta']= $valor->id_estudiante;
      echo "<td>";echo anchor('reporteIndexControlador/cargaReporte/'.$valor->id_estudiante, $valor->num_cuenta);echo"</td>";
 
                   echo"   <td>$valor->nombres $valor->apellidos</td>";
-                //  echo"   <td>$valor->fecha</td>";
-                 // echo"   <td >$valor->estado</td>";
+
+
+                echo"   <td> $resultado4[$i]</td>";
+
+                 echo"   <td> $resultado3[$i]</td>";
+
+
+                  /*/
+                    if($resultado3[$i] > $rojo)
+                        {
+                            echo "<td bgcolor='#FF0000'>";echo$resultado3[$i];echo"</td>";
+                        }
+
+
+                        if($resultado3[$i] >= $amarillo)
+                        {
+                            if($resultado3[$i] < $naranja){echo "<td bgcolor='#D7DF01'>";echo $resultado3[$i];echo"</td>";
+                                                              }
+                        }
+
+
+                    if($resultado3[$i]>= $naranja)
+                    {
+                        if($resultado3[$i] < $rojo+1)
+                        {
+
+                           echo "<td bgcolor='#FF8000'>";echo $resultado3[$i];echo"</td>";
+
+                        }
+                    }
+
+
+
+    if($resultado3[$i] < $amarillo){ echo "<td bgcolor='#4B8A08'>";echo $resultado3[$i];echo"</td>";}
                 echo"</tr>";
+                    /*/
+                    echo"</tr>";
                     $i++;
+                    $z++;
 
                 }
+
+
+
+
+
+
 ?>
+
+
+
 
 
 
@@ -169,24 +214,27 @@ break;
          $datestring = "%d/%m/%Y";
          $time = time();
          $fecha  =   mdate($datestring, $time);
+$rojo = $_SESSION["FALTAS"];
+                        $amarillo = $rojo/2;// la mitad
+                        $naranja = $rojo -3;// faltan 3
+                         $verde = $amarillo-1;
 
-            echo"<h4>Fecha Reporte: $fecha    </h4>";
+$amarillo=ceil($amarillo);
+$naranja=ceil($naranja);
+$verde=ceil($verde);
+/*/ echo"
+            <h4><font color='#4B8A08'>
+ Mas de la Mitad: $verde </font><h4><font color='#D7DF01'>
+ Mitad o Menos: $amarillo - </font>
+ <font color='#FF8000'>Faltan tres: $naranja - </font>
+ <font color='#FF0000'>Sin Dereho Mas de: $rojo</font></h4>";/*/
+
+
+            //echo"<h4>Fecha Reporte: $fecha    </h4>";
             ?>
 
-             <thead>
-                <tr>
-                   <th>Total alumnos</th>
-                    <th>Asistio</th>
-                    <th>Falto</th>
-                </tr>
-            </thead>
-                <tr>
-                    <td>-</td>
-                    <td><?php //echo $_SESSION["Asistio"]; ?></td>
-                    <td><?php //echo $_SESSION["Ausente"]; ?></td>
 
 
-                </tr>
                 </tbody>
             </table>
     </div>

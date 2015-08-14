@@ -35,11 +35,11 @@ class ReporteIndexModelo extends CI_Model
 
     function setAsistioYausentes()
     {
-    $this->db->select('count(*) AS total_ausente');
+         $this->db->select('count(*) AS total_ausente');
          $this->db->from('asistencia');
          $this->db->where( 'asistencia.estado','Ausente');
-$this->db->where('asistencia.id_estudiante', $_SESSION['di']);
-        $this->db->where('asistencia.id_programacion', $_SESSION["clase"]);
+         $this->db->where('asistencia.id_estudiante', $_SESSION['di']);
+         $this->db->where('asistencia.id_programacion', $_SESSION["clase"]);
 
 
 
@@ -70,9 +70,12 @@ $this->db->where('asistencia.id_estudiante', $_SESSION['di']);
 
         $n1= $_SESSION["Ausente"];  $n2= $_SESSION["Asistio"];$total =$n1+$n2;
 
-                            $_SESSION['total']= $total;
+         $_SESSION['total']= $total;
 
     }
+
+
+
 
 
     function getNombre($id_programacion)
@@ -82,30 +85,58 @@ $this->db->where('asistencia.id_estudiante', $_SESSION['di']);
         $this->setAsistioYausentes();
 
 
-     $this->db->select('estudiantes.nombres,estudiantes.apellidos,estudiantes.num_cuenta,asistencia.fecha,asistencia.estado,cursos.nombre_curso');
+        $this->db->select('estudiantes.nombres,estudiantes.apellidos,estudiantes.num_cuenta,asistencia.fecha,asistencia.estado,cursos.nombre_curso');
 
      $this->db->from('asistencia');
-    $this->db->join('programacion_cursos', 'asistencia.id_programacion =programacion_cursos.id_programacion');
+     $this->db->join('programacion_cursos', 'asistencia.id_programacion =programacion_cursos.id_programacion');
                         $this->db->join('cursos', 'cursos.id_curso = programacion_cursos.id_programacion');
                         $this->db->join('matriculas', 'matriculas.id_programacion = programacion_cursos.id_programacion');
                         $this->db->join('estudiantes', 'estudiantes.id_estudiante =asistencia.id_estudiante');
 
-              $this->db->where('asistencia.id_estudiante', $_SESSION['di']);
-                $this->db->where('asistencia.id_programacion', $id_programacion);
+                 $this->db->where('asistencia.id_estudiante', $_SESSION['di']);
+                 $this->db->where('asistencia.id_programacion', $id_programacion);
 
 
 
 $this->db->group_by('id_asistencia');
-
-                 $query = $this->db->get();
-
-
-
+$query = $this->db->get();
+        $this->getHora($id_programacion);
 
 
          return $query;
 
     }
+
+
+
+     function getHora($id_programacion)
+    {
+
+
+
+     $this->db->select('faltas.faltas');
+
+     $this->db->from('cursos');
+    $this->db->join('faltas','cursos.horas_teoricas = faltas.horas_teoricas');
+    $this->db->join('programacion_cursos','cursos.id_curso = programacion_cursos.id_curso');
+
+
+    $this->db->where('programacion_cursos.id_programacion', $id_programacion);
+         $this->db->group_by('id_programacion');
+
+
+                 $query = $this->db->get();
+
+          foreach ($query->result() as &$valor)
+               {
+                 $_SESSION["FALTAS"] = $valor->faltas;
+                }
+
+
+
+    }
+
+
 
 
 

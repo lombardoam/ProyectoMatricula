@@ -146,7 +146,7 @@ break;
                    echo"<td>$valor->num_cuenta</td>";
                   echo"   <td>$valor->nombres  $valor->apellidos</td>";
                   echo"   <td>$valor->fecha</td>";
-                  echo"   <td >$valor->estado</td>";
+          echo "<td>";echo anchor('reporteIndexControlador/cambiarEstado/'.$valor->id_asistencia, $valor->estado);echo"</td>";
                 echo"</tr>";
                     $i++;
                 }
@@ -167,7 +167,23 @@ break;
          $time = time();
          $fecha  =   mdate($datestring, $time);
 
-            echo"<h4>Fecha Reporte: $fecha    </h4>";
+           // echo"<h4>Fecha Reporte: $fecha    </h4>";
+$rojo = $_SESSION["FALTAS"];
+                        $amarillo = $rojo/2;// la mitad
+                        $naranja = $rojo -3;// faltan 3
+                         $verde = $amarillo-1;
+
+$amarillo=ceil($amarillo);
+$naranja=ceil($naranja);
+$verde=ceil($verde);
+
+ /*/ echo"
+            <h4><font color='#4B8A08'>
+ Mas de la Mitad: $verde </font><h4><font color='#D7DF01'>
+ Mitad o Menos: $amarillo - </font>
+ <font color='#FF8000'>Faltan tres: $naranja - </font>
+ <font color='#FF0000'>Sin Dereho Mas de: $rojo</font></h4>";/*/
+
             ?>
 
              <thead>
@@ -181,6 +197,32 @@ break;
                     <td><?php echo $_SESSION['total'];?></td>
                     <td><?php echo $_SESSION["Asistio"]; ?></td>
                     <td><?php echo $_SESSION["Ausente"]; ?></td>
+                   <?php  /*/if($_SESSION["Ausente"] > $rojo)
+                        {
+                            echo "<td bgcolor='#FF0000'>";echo $_SESSION['Ausente'];echo"</td>";
+                        }
+
+
+                        if($_SESSION["Ausente"] >= $amarillo)
+                        {
+                            if($_SESSION["Ausente"] < $naranja){echo "<td bgcolor='#D7DF01'>";echo $_SESSION['Ausente'];echo"</td>";
+                                                              }
+                        }
+
+
+                    if($_SESSION["Ausente"] >= $naranja)
+                    {
+                        if($_SESSION["Ausente"] < $rojo+1)
+                        {
+
+                           echo "<td bgcolor='#FF8000'>";echo $_SESSION['Ausente'];echo"</td>";
+
+                        }
+                    }
+
+
+
+    if($_SESSION["Ausente"] < $amarillo){ echo "<td bgcolor='#4B8A08'>";echo $_SESSION['Ausente'];echo"</td>";}/*/ ?>
 
 
                 </tr>

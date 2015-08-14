@@ -31,6 +31,9 @@ class ReporteIndexControlador extends CI_Controller
       $this->load->model('reporteIndexModelo');
 
      $resultado['resultado'] =  $this->reporteIndexModelo->getNombre($id_horario);
+     $this->getHora($id_horario);
+
+
 
     $this->load->view('reporteIndex',$resultado);
 
@@ -38,7 +41,32 @@ class ReporteIndexControlador extends CI_Controller
 
 
 
+function getHora($id_programacion)
+    {
 
+
+
+     $this->db->select('faltas.faltas');
+
+     $this->db->from('cursos');
+    $this->db->join('faltas','cursos.horas_teoricas = faltas.horas_teoricas');
+    $this->db->join('programacion_cursos','cursos.id_curso = programacion_cursos.id_curso');
+
+
+    $this->db->where('programacion_cursos.id_programacion', $id_programacion);
+         $this->db->group_by('id_programacion');
+
+
+                 $query = $this->db->get();
+
+          foreach ($query->result() as &$valor)
+               {
+                 $_SESSION["FALTAS"] = $valor->faltas;
+                }
+
+
+
+    }
 
 
 
