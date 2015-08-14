@@ -164,84 +164,29 @@ require 'noautorizado.php';
 
                    </thead>
     <tbody>
+<!-- Consulta SQL -->
+<?php
+            $conexion = mysqli_connect('localhost','root','','matricula');
+            $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula ORDER BY id_programacion;;";
 
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>IIT2000</td>
-    <td>Ingeniería de Software I</td>
-    <td>Ingeniería en Infotecnología</td>
-    <td>L-M-V</td>
-    <td>A</td>
-    <td>13:50</td>
-    <td>14:40</td>
-    <td>Marco Antonio</td>
-    <td>402</td>
+$query = mysqli_query($conexion, $sql);
+            while($rows = mysqli_fetch_assoc($query)){
+               echo "    <tr>
+    <td><input type='checkbox' class='checkthis' /></td>
+    <td>$rows[codigo_prog_curso]</td>
+    <td>$rows[nombre_curso]</td>
+    <td>$rows[nombre_plan]</td>
+    <td>$rows[dias]</td>
+    <td>$rows[seccion]</td>
+    <td>$rows[hora_inicio]</td>
+    <td>$rows[hora_termina]</td>
+    <td>$rows[nombres]</td>
+    <td>$rows[codigo_aula]</td>
+    ";
+            }
+?>
 
-
-    </tr>
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>IIT2001</td>
-    <td>Ingeniería de Software II</td>
-    <td>Ingeniería en Infotecnología</td>
-    <td>L-M-V</td>
-    <td>B</td>
-    <td>14:50</td>
-    <td>15:40</td>
-    <td>Marco Antonio</td>
-    <td>402</td>
-
-    </tr>
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>DER1001</td>
-    <td>Derecho Constitucional</td>
-    <td>Derecho</td>
-    <td>L-M-V</td>
-    <td>B</td>
-    <td>16:50</td>
-    <td>18:40</td>
-    <td>Claudia</td>
-    <td>302</td>
-
-    </tr>
-
-
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>ARQ2000</td>
-    <td>Diseño I </td>
-    <td>Arquitectura</td>
-    <td>L-M-V</td>
-    <td>A</td>
-    <td>15:50</td>
-    <td>18:40</td>
-    <td>Mejía</td>
-    <td>501</td>
-
-    </tr>
-
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>MAT1001</td>
-    <td>Orientación Universitaria</td>
-    <td>Ingeniería Civil</td>
-    <td>L-M-V</td>
-    <td>A</td>
-    <td>6:50</td>
-    <td>8:40</td>
-    <td>Martinez</td>
-    <td>103</td>
-
-    </tr>
-
-
-
-
+<!-- Fin consulta -->
 
     </tbody>
 
