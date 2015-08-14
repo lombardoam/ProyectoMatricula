@@ -11,7 +11,7 @@ require 'noautorizado.php';
 
                 <!-- Page Heading -->
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-11">
                         <h1 class="page-header">
                             Sistema de matrícula
                             <small>Matrícula de estudiantes</small>
@@ -40,7 +40,7 @@ require 'noautorizado.php';
 <fieldset>
 
 <!-- Form Name -->
-    <div align="center"><legend></legend></div>
+    <div align="center"></div>
 
 <!-- Search input-->
 <div class="form-group">
@@ -55,7 +55,7 @@ require 'noautorizado.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="consultas">Consultar</label>
   <div class="col-md-8">
-    <button id="consultas" name="consultas" class="btn btn-success">Historial</button>
+    <button id="consultas" name="consultas" class="btn btn-primary">Historial</button>
     <button id="saldo" name="saldo" class="btn btn-danger">Saldo</button>
   </div>
 </div>
@@ -124,7 +124,7 @@ require 'noautorizado.php';
   <label class="col-md-4 control-label" for="matricular"></label>
   <div class="col-md-8">
     <button id="imprimir" name="imprimir" class="btn btn-info">Imprimir horario</button>
-    <button id="matricular" name="matricular" class="btn btn-success">Matricular</button>
+    <button id="matricular" name="matricular" class="btn btn-primary">Matricular</button>
     <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-danger">Finalizar Matrícula</button>
   </div>
 </div>
@@ -139,7 +139,8 @@ require 'noautorizado.php';
     <div class="container">
 	<div class="row">
 
-        <div class="col-md-12">
+
+        <div class="col-md-11">
         <h4>Clases Disponibles</h4>
          <div class="panel panel-primary filterable">
 
@@ -151,12 +152,14 @@ require 'noautorizado.php';
                    <th><input type="checkbox" id="checkall" /></th>
                    <th>Código</th>
                     <th>Nombre clase</th>
+                    <th>Plan de Estudio</th>
                      <th>Días</th>
                      <th>Sección</th>
-                     <th>Hora inicial</th>
-                     <th>Hora final</th>
+                     <th>Inicio</th>
+                     <th>Final</th>
                      <th>Docente</th>
-                      <th>Plan de Estudio</th>
+                     <th>Salón</th>
+
 
 
                    </thead>
@@ -166,12 +169,14 @@ require 'noautorizado.php';
     <td><input type="checkbox" class="checkthis" /></td>
     <td>IIT2000</td>
     <td>Ingeniería de Software I</td>
+    <td>Ingeniería en Infotecnología</td>
     <td>L-M-V</td>
     <td>A</td>
     <td>13:50</td>
     <td>14:40</td>
     <td>Marco Antonio</td>
-    <td>Ingeniería en Infotecnología</td>
+    <td>402</td>
+
 
     </tr>
 
@@ -179,12 +184,13 @@ require 'noautorizado.php';
     <td><input type="checkbox" class="checkthis" /></td>
     <td>IIT2001</td>
     <td>Ingeniería de Software II</td>
+    <td>Ingeniería en Infotecnología</td>
     <td>L-M-V</td>
     <td>B</td>
     <td>14:50</td>
     <td>15:40</td>
     <td>Marco Antonio</td>
-    <td>Ingeniería en Infotecnología</td>
+    <td>402</td>
 
     </tr>
 
@@ -192,12 +198,13 @@ require 'noautorizado.php';
     <td><input type="checkbox" class="checkthis" /></td>
     <td>DER1001</td>
     <td>Derecho Constitucional</td>
+    <td>Derecho</td>
     <td>L-M-V</td>
     <td>B</td>
     <td>16:50</td>
     <td>18:40</td>
     <td>Claudia</td>
-    <td>Derecho</td>
+    <td>302</td>
 
     </tr>
 
@@ -206,13 +213,14 @@ require 'noautorizado.php';
     <tr>
     <td><input type="checkbox" class="checkthis" /></td>
     <td>ARQ2000</td>
-    <td>Diseño I I</td>
+    <td>Diseño I </td>
+    <td>Arquitectura</td>
     <td>L-M-V</td>
     <td>A</td>
     <td>15:50</td>
     <td>18:40</td>
     <td>Mejía</td>
-    <td>Arquitectura</td>
+    <td>501</td>
 
     </tr>
 
@@ -221,12 +229,13 @@ require 'noautorizado.php';
     <td><input type="checkbox" class="checkthis" /></td>
     <td>MAT1001</td>
     <td>Orientación Universitaria</td>
+    <td>Ingeniería Civil</td>
     <td>L-M-V</td>
     <td>A</td>
     <td>6:50</td>
     <td>8:40</td>
     <td>Martinez</td>
-    <td>Ingeniería Civil</td>
+    <td>103</td>
 
     </tr>
 
