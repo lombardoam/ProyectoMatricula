@@ -58,7 +58,6 @@ require 'noautorizado.php';
 if (!empty($_GET['numerocuenta'])){
 
 $conexion = mysqli_connect('localhost','root','','matricula');
-$qcuenta = "0";
 $qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
 $qcuenta = mysqli_query($conexion, $qcuenta);
  while($lineanombres = mysqli_fetch_assoc($qcuenta)){
@@ -159,7 +158,8 @@ $qcuenta = mysqli_query($conexion, $qcuenta);
 <div class="form-group">
   <label class="col-md-4 control-label" for="matricular"></label>
   <div class="col-md-8">
-    <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-danger"><span class="fa fa-fw fa-eraser"></span> Borrar</button>
+    <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-danger" onclick="window.location='matricula.php';" ><span class="fa fa-fw fa-eraser"></span> Borrar
+     </button>
 
   </div>
 </div>
