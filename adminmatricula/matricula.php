@@ -47,9 +47,16 @@ require 'noautorizado.php';
   <label class="col-md-4 control-label" for="numerocuenta">Número de cuenta</label>
   <div class="col-md-2">
     <input id="numerocuenta" name="numerocuenta" type="search" placeholder="Buscar alumno" class="form-control input-md" required="">
-    <p class="help-block">Introduzca la cuenta</p>
-  </div>
+     </div>
 </div>
+    <!-- Prepended text-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nombrealumno">Nombre</label>
+  <div class="col-md-4">
+    <div class="input-group">
+      <span class="input-group-addon"><span class="fa fa-fw fa-user"></span></span>
+      <input id="saldoalumno" name="saldoalumno" class="form-control" placeholder="" type="text">
+      </div></div></div>
 
 <!-- Button (Double) -->
 <div class="form-group">

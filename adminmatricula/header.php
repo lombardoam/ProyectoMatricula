@@ -184,10 +184,10 @@
                         </a>
                             <ul id="demo1" class="collapse">
                                 <li>
-                                    <a href="cancelaciones.php"><i class="glyphicon glyphicon-remove"></i>Cancelaciones</a>
+                                    <a href="cancelaciones.php"><i class="glyphicon glyphicon-remove"></i> Cancelaciones</a>
                                 </li>
                                 <li>
-                                    <a href=""><i class="glyphicon glyphicon-ok"></i> Adiciones</a>
+                                    <a href="adiciones.php"><i class="glyphicon glyphicon-ok"></i> Adiciones</a>
                                 </li>
 
                             </ul>
