@@ -50,6 +50,7 @@ require 'noautorizado.php';
      </div>
 </div>
     <!-- Prepended text-->
+    <!-- Consulta SQL para buscar los nombres y apellidos de los estudiantes tomando el número de cuenta enviado en el buscador -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="nombrealumno">Nombre</label>
   <div class="col-md-4">
@@ -83,6 +84,7 @@ $qcuenta = mysqli_query($conexion, $qcuenta);
 
 
 <!-- Prepended text-->
+    <!-- Consulta SQL para buscar el saldo -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="saldoalumno"> Saldo</label>
   <div class="col-md-4">
@@ -198,8 +200,53 @@ $qcuenta = mysqli_query($conexion, $qcuenta);
 
                    </thead>
     <tbody>
-<!-- Consulta SQL -->
+
+<!-- Consulta SQL, primero verifica si el campo del buscador está vacío, si no lo está busca, muestra nombre, cuenta, saldo, carrera y
+los horarios automáticamente se filtran al plan de estudio al cual pertenece el estudiante.
+
+Primero busca el plan de estudio, luego el query de los horarios en los dos escenarios posibles, si no hay búsqueda muestra los horarios
+generales de todas las carreras que están disponibles -->
+
+        <!-- Primero buscando el plan de estudio del estudiante, al detectarlo procede a filtrar los horarios -->
 <?php
+if (!empty($_GET['numerocuenta'])){
+
+
+  $conexion = mysqli_connect('localhost','root','','matricula');
+$qcuentap = "SELECT planes_estudio.nombre_plan, planes_estudio.id_plan_estudio FROM `planes_estudio` INNER JOIN estudiantes INNER JOIN carreras WHERE estudiantes.id_carrera=carreras.id_carrera AND estudiantes.num_cuenta ='" . $_GET['numerocuenta'] . "' AND carreras.id_carrera=planes_estudio.id_carrera";
+$qcuentap = mysqli_query($conexion, $qcuentap);
+ while($lineaplan = mysqli_fetch_assoc($qcuentap)){
+ echo ' ';
+ echo '<center> <h3>';
+ echo $lineaplan['nombre_plan'];
+ $lineaplan['id_plan_estudio'];
+ echo '</center></h3>';
+
+
+            $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' ORDER BY id_programacion;;";
+
+$query = mysqli_query($conexion, $sql);
+            while($rows = mysqli_fetch_assoc($query)){
+               echo "    <tr>
+    <td><input type='checkbox' class='checkthis' /></td>
+    <td>$rows[codigo_prog_curso]</td>
+    <td>$rows[nombre_curso]</td>
+    <td>$rows[nombre_plan]</td>
+    <td>$rows[dias]</td>
+    <td>$rows[seccion]</td>
+    <td>$rows[hora_inicio]</td>
+    <td>$rows[hora_termina]</td>
+    <td>$rows[nombres]</td>
+    <td>$rows[codigo_aula]</td>
+    ";
+   }
+}
+
+ }
+
+//Si la búsqueda está vacía hace una muestra sin filtro de todos los horarios sin buscar el plan de estudio del estudiante
+
+ if (empty($_GET['numerocuenta'])){
             $conexion = mysqli_connect('localhost','root','','matricula');
             $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula ORDER BY id_programacion;;";
 
@@ -218,9 +265,10 @@ $query = mysqli_query($conexion, $sql);
     <td>$rows[codigo_aula]</td>
     ";
             }
+}
 ?>
 
-<!-- Fin de la consulta -->
+//<!-- Fin de la consulta -->
 
     </tbody>
 
