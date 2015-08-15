@@ -14,7 +14,7 @@ require 'noautorizado.php';
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Sistema de matrícula
-                            <small>Cancelación de Clases</small>
+                            <small>Adición de Clases</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
@@ -66,7 +66,7 @@ require 'noautorizado.php';
   <label class="col-md-4 control-label" for="matricular"></label>
   <div class="col-md-8">
     <button id="imprimir" name="imprimir" class="btn btn-info">Imprimir</button>
-    <button id="matricular" name="matricular" class="btn btn-primary">Cancelar Clases</button>
+    <button id="matricular" name="matricular" class="btn btn-primary">Adicionar Clases</button>
     <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-danger">Finalizar</button>
   </div>
 </div>

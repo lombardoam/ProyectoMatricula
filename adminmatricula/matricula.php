@@ -44,29 +44,78 @@ require 'noautorizado.php';
 
 <!-- Search input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="numerocuenta">Número de cuenta</label>
+  <label class="col-md-4 control-label" for="numerocuenta"><span class="fa fa-fw fa-search"></span> Número de cuenta</label>
   <div class="col-md-2">
     <input id="numerocuenta" name="numerocuenta" type="search" placeholder="Buscar alumno" class="form-control input-md" required="">
-    <p class="help-block">Introduzca la cuenta</p>
-  </div>
+     </div>
 </div>
+    <!-- Prepended text-->
+    <!-- Consulta SQL para buscar los nombres y apellidos de los estudiantes tomando el número de cuenta enviado en el buscador -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="nombrealumno">Nombre</label>
+  <div class="col-md-4">
+    <div class="input-group">
+      <span class="input-group-addon"><span class="fa fa-fw fa-user"></span> <?php
+if (!empty($_GET['numerocuenta'])){
+
+$conexion = mysqli_connect('localhost','root','','matricula');
+$qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
+$qcuenta = mysqli_query($conexion, $qcuenta);
+ while($lineanombres = mysqli_fetch_assoc($qcuenta)){
+ echo $lineanombres['nombres'];
+ echo ' ';
+ echo $lineanombres['apellidos'];
+ }
+}
+
+        ?>
+        </span>
+      <input id="saldoalumno" name="saldoalumno" class="form-control" placeholder="" type="text">
+      </div></div></div>
 
 <!-- Button (Double) -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="consultas">Consultar</label>
   <div class="col-md-8">
-    <button id="consultas" name="consultas" class="btn btn-primary">Historial</button>
-    <button id="saldo" name="saldo" class="btn btn-primary">Saldo</button>
+    <button id="consultas" name="consultas" class="btn btn-primary"><span class="fa fa-fw fa-list-ol"></span> Historial</button>
+    <button id="saldo" name="saldo" class="btn btn-primary"><span class="fa fa-fw fa-exclamation-circle"></span> Saldo</button>
   </div>
 </div>
 
 
 <!-- Prepended text-->
+    <!-- Consulta SQL para buscar el saldo -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="saldoalumno">Saldo</label>
+  <label class="col-md-4 control-label" for="saldoalumno"> Saldo</label>
   <div class="col-md-4">
     <div class="input-group">
-      <span class="input-group-addon">Monto</span>
+      <span class="input-group-addon"><span class="fa fa-fw fa-money"></span>
+        <?php
+if (!empty($_GET['numerocuenta'])){
+
+$conexion = mysqli_connect('localhost','root','','matricula');
+$qcuenta = "SELECT saldo FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
+$qcuenta = mysqli_query($conexion, $qcuenta);
+ while($lineasaldo = mysqli_fetch_assoc($qcuenta)){
+ echo 'L. ';
+ echo $lineasaldo['saldo'];
+
+
+
+
+
+
+if (($lineasaldo['saldo'] != "0" OR $lineasaldo['saldo'] != "0.00" )) {
+    echo '           <div align="center">
+                            <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Alumno insolvente, no puede matricularse.
+                </div></div>';
+}
+ }
+        }
+?>
+        </span>
       <input id="saldoalumno" name="saldoalumno" class="form-control" placeholder="" type="text">
       </div></div></div>
 
@@ -123,7 +172,8 @@ require 'noautorizado.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="matricular"></label>
   <div class="col-md-8">
-    <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-danger">Finalizar Matrícula</button>
+    <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-danger" onclick="window.location='matricula.php';" ><span class="fa fa-fw fa-eraser"></span> Borrar
+     </button>
 
   </div>
 </div>
@@ -162,8 +212,53 @@ require 'noautorizado.php';
 
                    </thead>
     <tbody>
-<!-- Consulta SQL -->
+
+<!-- Consulta SQL, primero verifica si el campo del buscador está vacío, si no lo está busca, muestra nombre, cuenta, saldo, carrera y
+los horarios automáticamente se filtran al plan de estudio al cual pertenece el estudiante.
+
+Primero busca el plan de estudio, luego el query de los horarios en los dos escenarios posibles, si no hay búsqueda muestra los horarios
+generales de todas las carreras que están disponibles -->
+
+        <!-- Primero buscando el plan de estudio del estudiante, al detectarlo procede a filtrar los horarios -->
 <?php
+if (!empty($_GET['numerocuenta'])){
+
+
+  $conexion = mysqli_connect('localhost','root','','matricula');
+$qcuentap = "SELECT planes_estudio.nombre_plan, planes_estudio.id_plan_estudio FROM `planes_estudio` INNER JOIN estudiantes INNER JOIN carreras WHERE estudiantes.id_carrera=carreras.id_carrera AND estudiantes.num_cuenta ='" . $_GET['numerocuenta'] . "' AND carreras.id_carrera=planes_estudio.id_carrera";
+$qcuentap = mysqli_query($conexion, $qcuentap);
+ while($lineaplan = mysqli_fetch_assoc($qcuentap)){
+ echo ' ';
+ echo '<center> <h3>';
+ echo $lineaplan['nombre_plan'];
+ $lineaplan['id_plan_estudio'];
+ echo '</center></h3>';
+
+
+            $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' ORDER BY id_programacion;;";
+
+$query = mysqli_query($conexion, $sql);
+            while($rows = mysqli_fetch_assoc($query)){
+               echo "    <tr>
+    <td><input type='checkbox' class='checkthis' /></td>
+    <td>$rows[codigo_prog_curso]</td>
+    <td>$rows[nombre_curso]</td>
+    <td>$rows[nombre_plan]</td>
+    <td>$rows[dias]</td>
+    <td>$rows[seccion]</td>
+    <td>$rows[hora_inicio]</td>
+    <td>$rows[hora_termina]</td>
+    <td>$rows[nombres]</td>
+    <td>$rows[codigo_aula]</td>
+    ";
+   }
+}
+
+ }
+
+//Si la búsqueda está vacía hace una muestra sin filtro de todos los horarios sin buscar el plan de estudio del estudiante
+
+ if (empty($_GET['numerocuenta'])){
             $conexion = mysqli_connect('localhost','root','','matricula');
             $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula ORDER BY id_programacion;;";
 
@@ -182,9 +277,10 @@ $query = mysqli_query($conexion, $sql);
     <td>$rows[codigo_aula]</td>
     ";
             }
+}
 ?>
 
-<!-- Fin de la consulta -->
+//<!-- Fin de la consulta -->
 
     </tbody>
 
@@ -207,11 +303,27 @@ $query = mysqli_query($conexion, $sql);
 	</div>
     </div>
 <!-- Final de la tabla -->
-<div align="center">
-<button id="matricular" name="matricular" class="btn btn-primary">Realizar Matrícula</button>
-<button id="imprimir" name="imprimir" class="btn btn-info">Imprimir horario</button>
+            <?php
+if (!empty($_GET['numerocuenta'])){
 
-</div>
+echo '<div align="center">
+<button id="matricular" name="matricular" class="btn btn-primary"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+
+<button id="imprimir" name="imprimir" class="btn btn-primary" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
+
+</div>';
+                } else {
+
+echo '<div align="center">
+<button id="matricular" name="matricular" class="btn btn-primary disabled"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+
+<button id="imprimir" name="imprimir" class="btn btn-primary disabled" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
+
+</div>';
+}
+
+?>
+
 <!-- Botón que inserta la información a la BD -->
                 <br><br>
 

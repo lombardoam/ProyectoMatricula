@@ -84,6 +84,10 @@ require 'noautorizado.php';
 						options: 'param/parampuestos.php',
 					},
 
+                    num_cuenta: {
+						title: 'Cuenta',
+					},
+
 
 				}
 			});

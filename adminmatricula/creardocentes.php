@@ -3,7 +3,7 @@ header('Content-type: application/json');
    require 'conexion.php';
 
 //Insert record into database
-		$result = mysqli_query($conexion,"INSERT INTO empleados ( codigo_empleado, nombres, apellidos, genero, telefono, email, codigo_carrera, id_puesto) VALUES(
+		$result = mysqli_query($conexion,"INSERT INTO empleados ( codigo_empleado, nombres, apellidos, genero, telefono, email, codigo_carrera, id_puesto, num_cuenta) VALUES(
         '" . $_POST["codigo_empleado"] . "',
         '" . $_POST["nombres"] . "',
         '" . $_POST["apellidos"] . "',
@@ -11,7 +11,8 @@ header('Content-type: application/json');
         '" . $_POST["telefono"] . "',
         '" . $_POST["email"] . "',
         '" . $_POST["codigo_carrera"] . "',
-        '" . $_POST["id_puesto"] . "')");
+        '" . $_POST["id_puesto"] . "',
+        '" . $_POST["num_cuenta"] . "')");
 
 
 
