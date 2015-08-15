@@ -180,7 +180,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo1">
                             <i class="glyphicon glyphicon-level-up">
                             </i>
-                             Editar Matricula <i class="glyphicon glyphicon-menu-down"></i>
+                             Editar Matricula <i class="fa fa-fw fa-caret-down"></i>
                         </a>
                             <ul id="demo1" class="collapse">
                                 <li>
