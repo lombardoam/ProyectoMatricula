@@ -152,7 +152,7 @@ $verde=ceil($verde);
 
                 echo"   <td> $resultado4[$i]</td>";
 
-                 echo"   <td> $resultado3[$i]</td>";
+                 echo"   <td> $resultado3[$i]</td>";//borrar
 
 
                   /*/
@@ -184,7 +184,7 @@ $verde=ceil($verde);
     if($resultado3[$i] < $amarillo){ echo "<td bgcolor='#4B8A08'>";echo $resultado3[$i];echo"</td>";}
                 echo"</tr>";
                     /*/
-                    echo"</tr>";
+                    echo"</tr>";//borrar
                     $i++;
                     $z++;
 

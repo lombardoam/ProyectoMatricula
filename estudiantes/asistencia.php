@@ -4,7 +4,13 @@ require'header.php';
 
 
 ?>
-
+<style>
+ iframe{
+    overflow:hidden;
+overflow-x:hidden;
+  overflow-Y:hidden;
+ }
+	</style>
 <!--Código HTML editable-->
 
         <div id="page-wrapper">
@@ -33,7 +39,7 @@ require'header.php';
 
             </div>
             <!-- /.container-fluid -->
-    <iframe src="asistencia/" width="830" height="450" frameborder="0"></iframe>
+    <iframe  src="asistencia/" width="830" height="450" frameborder="0"></iframe>
 
 
             <br><br>
