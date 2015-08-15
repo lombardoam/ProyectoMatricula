@@ -94,14 +94,26 @@ $qcuenta = mysqli_query($conexion, $qcuenta);
 if (!empty($_GET['numerocuenta'])){
 
 $conexion = mysqli_connect('localhost','root','','matricula');
-$qcuenta = "0";
 $qcuenta = "SELECT saldo FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
 $qcuenta = mysqli_query($conexion, $qcuenta);
  while($lineasaldo = mysqli_fetch_assoc($qcuenta)){
  echo 'L. ';
  echo $lineasaldo['saldo'];
- }
+
+
+
+
+
+
+if (($lineasaldo['saldo'] != "0" OR $lineasaldo['saldo'] != "0.00" )) {
+    echo '           <div align="center">
+                            <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Alumno insolvente, no puede matricularse.
+                </div></div>';
 }
+ }
+        }
 ?>
         </span>
       <input id="saldoalumno" name="saldoalumno" class="form-control" placeholder="" type="text">
@@ -291,12 +303,27 @@ $query = mysqli_query($conexion, $sql);
 	</div>
     </div>
 <!-- Final de la tabla -->
-<div align="center">
+            <?php
+if (!empty($_GET['numerocuenta'])){
+
+echo '<div align="center">
 <button id="matricular" name="matricular" class="btn btn-primary"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
 
 <button id="imprimir" name="imprimir" class="btn btn-primary" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
 
-</div>
+</div>';
+                } else {
+
+echo '<div align="center">
+<button id="matricular" name="matricular" class="btn btn-primary disabled"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+
+<button id="imprimir" name="imprimir" class="btn btn-primary disabled" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
+
+</div>';
+}
+
+?>
+
 <!-- Botón que inserta la información a la BD -->
                 <br><br>
 
