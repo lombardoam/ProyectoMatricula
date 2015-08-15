@@ -54,7 +54,22 @@ require 'noautorizado.php';
   <label class="col-md-4 control-label" for="nombrealumno">Nombre</label>
   <div class="col-md-4">
     <div class="input-group">
-      <span class="input-group-addon"><span class="fa fa-fw fa-user"></span></span>
+      <span class="input-group-addon"><span class="fa fa-fw fa-user"></span> <?php
+if (!empty($_GET['numerocuenta'])){
+
+$conexion = mysqli_connect('localhost','root','','matricula');
+$qcuenta = "0";
+$qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
+$qcuenta = mysqli_query($conexion, $qcuenta);
+ while($lineanombres = mysqli_fetch_assoc($qcuenta)){
+ echo $lineanombres['nombres'];
+ echo ' ';
+ echo $lineanombres['apellidos'];
+ }
+}
+
+        ?>
+        </span>
       <input id="saldoalumno" name="saldoalumno" class="form-control" placeholder="" type="text">
       </div></div></div>
 
@@ -73,7 +88,21 @@ require 'noautorizado.php';
   <label class="col-md-4 control-label" for="saldoalumno"> Saldo</label>
   <div class="col-md-4">
     <div class="input-group">
-      <span class="input-group-addon"><span class="fa fa-fw fa-money"></span></span>
+      <span class="input-group-addon"><span class="fa fa-fw fa-money"></span>
+        <?php
+if (!empty($_GET['numerocuenta'])){
+
+$conexion = mysqli_connect('localhost','root','','matricula');
+$qcuenta = "0";
+$qcuenta = "SELECT saldo FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
+$qcuenta = mysqli_query($conexion, $qcuenta);
+ while($lineasaldo = mysqli_fetch_assoc($qcuenta)){
+ echo 'L. ';
+ echo $lineasaldo['saldo'];
+ }
+}
+?>
+        </span>
       <input id="saldoalumno" name="saldoalumno" class="form-control" placeholder="" type="text">
       </div></div></div>
 
