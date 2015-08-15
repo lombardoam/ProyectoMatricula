@@ -105,7 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 break;
    }
         ?>
-         <p><button type='submit' class='btn btn-default' name='seleccionado' value ='Buscar'</button></p> <?php
+         <p><td type='submit' class='btn btn-default' name='seleccionado' value ='Buscar'</td></p> <?php
  foreach ($resultado->result() as &$valor)
         {
 
@@ -155,7 +155,7 @@ $verde=ceil($verde);
                  echo"   <td> $resultado3[$i]</td>";//borrar
 
 
-                  /*/
+
                     if($resultado3[$i] > $rojo)
                         {
                             echo "<td bgcolor='#FF0000'>";echo$resultado3[$i];echo"</td>";
@@ -183,8 +183,7 @@ $verde=ceil($verde);
 
     if($resultado3[$i] < $amarillo){ echo "<td bgcolor='#4B8A08'>";echo $resultado3[$i];echo"</td>";}
                 echo"</tr>";
-                    /*/
-                    echo"</tr>";//borrar
+
                     $i++;
                     $z++;
 

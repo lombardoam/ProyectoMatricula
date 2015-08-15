@@ -113,7 +113,7 @@ break;
 
 
 
-         <p><button type='submit' class='btn btn-default' name='seleccionado' value ='Buscar'</button></p> <?php
+         <p><td type='submit' class='btn btn-default' name='seleccionado' value ='Buscar'</td></p> <?php
  foreach ($resultado->result() as &$valor)
         {
 

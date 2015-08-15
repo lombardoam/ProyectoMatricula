@@ -212,7 +212,7 @@
 
 
 
-    <iframe src="reporte/" width="830" height="450" frameborder="0"></iframe>
+    <iframe  class="col-lg-12 col-md-12 col-sm-12"  src="reporte/" width="830" height="450" frameborder="0"></iframe>
 
 
 

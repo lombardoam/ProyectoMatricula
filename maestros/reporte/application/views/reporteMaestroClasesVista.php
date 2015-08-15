@@ -106,7 +106,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      echo form_open('reporteIndexControlador/cargaReportePrincipal');
 
 
- echo"<p><button type='submit' class='btn btn-default' name='seleccionado' value = $valor->id_programacion >$valor->nombre_curso # $valor->hora_inicio -  $valor->hora_termina # $valor->dias # $valor->seccion$valor->num_aula # $valor->nombre</button></p>";
+ echo"<p><td type='submit' class='btn btn-default' name='seleccionado' value = $valor->id_programacion >$valor->nombre_curso # $valor->hora_inicio -  $valor->hora_termina # $valor->dias # $valor->seccion$valor->num_aula # $valor->nombre</td></p>";
 
 
 
