@@ -1,50 +1,38 @@
 <?php
 include 'conexion.php';
-session_start();
-
-if(!empty($_POST['MONTO']))
+if(!empty($_POST['NUMEROCUENTA']))
 {
-$sqla="SELECT a.id_estudiante,c.id_periodo
+$sql2="SELECT * FROM estudiantes WHERE num_cuenta='".$_POST['NUMEROCUENTA']."'";
+$result2=mysqli_query($conexion,$sql2);
+}
+
+if(!empty($_POST['NUMEROCUENTA']))
+{
+$sql="SELECT b.fecha_pago,c.codigo_periodo,b.monto_pago,b.id_cuotas
       FROM estudiantes a
       INNER JOIN cuotas_estudiante b
       ON a.id_estudiante=b.id_estudiante
       INNER JOIN periodos_academicos c
       ON b.id_periodo=c.id_periodo
-      WHERE a.num_cuenta=".$_SESSION['cuenta']."";
-$resulta=mysqli_query($conexion,$sqla);
-while($rw=mysqli_fetch_row($resulta))
-{
-  $_SESSION['estudiante']=$rw[0];
-  $_SESSION['periodo']=$rw[1];
-}
-$sqli="INSERT INTO `matricula`.`cuotas_estudiante` (`id_cuotas`, `id_estudiante`, `id_periodo`, `fecha_factura`, `fecha_pago`, `monto_pago`) VALUES (NULL,'".$_SESSION['estudiante']."','".$_SESSION['periodo']."','".date('Y-m-d H-m-s')."','".date('Y-m-d')."','".$_POST['MONTO']."')";
-mysqli_query($conexion, $sqli);
-mysqli_close($conexion);
-}
-
-if(!empty($_POST['NUMEROCUENTA']))
-{
-$_SESSION['cuenta']=$_POST['NUMEROCUENTA'];
-$sql="SELECT * FROM estudiantes WHERE num_cuenta='".$_POST['NUMEROCUENTA']."'";
+      WHERE a.num_cuenta=".$_POST['NUMEROCUENTA']."";
 $result=mysqli_query($conexion,$sql);
-while($row=mysqli_fetch_row($result))
-{
-  $_SESSION['completo']='&nbsp'.$row[2].'&nbsp'.$row[3].'';
-  $_SESSION['cuentanum']=$row[1];
 }
+session_start();
+unset($_SESSION['completo']);
+unset($_SESSION['cuentanum']);
+unset($_SESSION['cuenta']);
+if(!(
+  isset($_SESSION['nombre']) &&
+  isset($_SESSION['apellido']) &&
+  isset($_SESSION['usuario']) &&
+  isset($_SESSION['tipo_usuario']) &&
+  isset($_SESSION['num_cuenta']) //hola
+  )
+){
+  header('Location:../index.php?no_aut');
+} else if($_SESSION['tipo_usuario'] != 5){
+  header('Location:../index.php?no_aut');
 }
-   if(!(
-      isset($_SESSION['nombre']) &&
-      isset($_SESSION['apellido']) &&
-      isset($_SESSION['usuario']) &&
-      isset($_SESSION['tipo_usuario']) &&
-      isset($_SESSION['num_cuenta']) //hola
-      )
-   ){
-      header('Location:../index.php?no_aut');
-   } else if($_SESSION['tipo_usuario'] != 5){
-      header('Location:../index.php?no_aut');
-   }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,56 +119,72 @@ while($row=mysqli_fetch_row($result))
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Generar Pagos de Mensualidades
+                                <i class="fa fa-dashboard"></i> Generar Historial de Pagos
                             </li>
                         </ol>
                     </div>
                 </div>
 
                 <!-- TABLA DE MENSUALIDADES -->
-                <form class="form-inline" action="index.php" method="post">
+                <form class="form-inline" method="post" action="historial.php">
                     <div class="form-group">
                         <label for="exampleInputName2">Numero de Cuenta</label>
                         <input type="text" class="form-control" id="exampleInputName2" placeholder="Numero de Cuenta" name="NUMEROCUENTA">
                       </div>
                     <button type="submit" class="btn btn-default">Buscar</button>
+                    <br>
+                    <br>
+                    <table>
+                        <tr>
+                         <td>Nombre del Alumno:</td>
+                        <td><?php
+                              if(!(empty($_POST['NUMEROCUENTA'])))
+                              {
+                               while($raw=mysqli_fetch_row($result2))
+                               {
+                                  echo'&nbsp'.$raw[2].'&nbsp'.$raw[3].'';
+                                  echo'</td>';
+                                  echo'<tr>';
+                                  echo'<td>Numero de Cuenta:</td>';
+                                  echo'<td>'.$raw[1].'</td>';
+                                  echo'</tr>';
+                               }
+                              }
+                            ?>
+                    </tr>
+                    </table>
                 </form>
                 <br>
-                <h3>Datos del Alumno</h3>
-                <br>
-                <table>
-                     <tr>
-                         <td>Nombre del Alumno:</td>
-                        <td>
-                        <?php
-                          if(!empty($_SESSION['cuenta']))
-                          {
-                           print_r($_SESSION['completo']);
-                          }
-                         ?>
-                         </td>
-                     <tr>
-                     <td>Numero de Cuenta:</td>
-                    <td><?php
-                        if(!empty($_SESSION['cuenta']))
-                        {
-                        print_r($_SESSION['cuentanum']);
-                        }
-                        ?></td>
-                    </tr>
-                </table>
-                <br>
-                <form class="form-inline" method="post" action="index.php">
-                      <div class="form-group">
-                        <label class="sr-only" for="exampleInputAmount">Cantidad (en Lempiras )</label>
-                        <div class="input-group">
-                          <div class="input-group-addon">L.</div>
-                          <input type="text" class="form-control" id="exampleInputAmount" placeholder="Monto" name="MONTO">
-                          <div class="input-group-addon">.00</div>
-                        </div>
-                      </div>
-                      <button type="submit" class="btn btn-primary">Generar Recibo de Pago</button>
-                </div>
+                                <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha de Pago Max</th>
+                                        <th>Periodo</th>
+                                        <th>Monto</th>
+                                        <th>Identificador de Pago</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                        <?php
+                                          if(!(empty($_POST['NUMEROCUENTA'])))
+                                          {
+                                           while($row=mysqli_fetch_row($result))
+                                           {
+                                              echo'<tr>';
+                                              echo'<td>'.$row[0].'</td>';
+                                              echo'<td>'.$row[1].'</td>';
+                                              echo'<td>'.$row[2].'</td>';
+                                              echo'<td>'.$row[3].'</td>';
+                                              echo'</tr>';
+                                           }
+                                          }
+                                        ?>
+                                </tbody>
+                            </table>
+
+
+            </div>
             <!-- /.container-fluid -->
 
         </div>
