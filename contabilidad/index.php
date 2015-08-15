@@ -1,27 +1,6 @@
 <?php
 include 'conexion.php';
 session_start();
-
-if(!empty($_POST['MONTO']))
-{
-$sqla="SELECT a.id_estudiante,c.id_periodo
-      FROM estudiantes a
-      INNER JOIN cuotas_estudiante b
-      ON a.id_estudiante=b.id_estudiante
-      INNER JOIN periodos_academicos c
-      ON b.id_periodo=c.id_periodo
-      WHERE a.num_cuenta=".$_SESSION['cuenta']."";
-$resulta=mysqli_query($conexion,$sqla);
-while($rw=mysqli_fetch_row($resulta))
-{
-  $_SESSION['estudiante']=$rw[0];
-  $_SESSION['periodo']=$rw[1];
-}
-$sqli="INSERT INTO `matricula`.`cuotas_estudiante` (`id_cuotas`, `id_estudiante`, `id_periodo`, `fecha_factura`, `fecha_pago`, `monto_pago`) VALUES (NULL,'".$_SESSION['estudiante']."','".$_SESSION['periodo']."','".date('Y-m-d H-m-s')."','".date('Y-m-d')."','".$_POST['MONTO']."')";
-mysqli_query($conexion, $sqli);
-mysqli_close($conexion);
-}
-
 if(!empty($_POST['NUMEROCUENTA']))
 {
 $_SESSION['cuenta']=$_POST['NUMEROCUENTA'];
@@ -170,7 +149,7 @@ while($row=mysqli_fetch_row($result))
                     </tr>
                 </table>
                 <br>
-                <form class="form-inline" method="post" action="index.php">
+                <form class="form-inline" method="post" action="llamar_factura.php">
                       <div class="form-group">
                         <label class="sr-only" for="exampleInputAmount">Cantidad (en Lempiras )</label>
                         <div class="input-group">
