@@ -107,8 +107,10 @@ echo"<label> $valor->nombres $valor->apellidos  </label><label class='checkbox-i
 </label>
 <label class='checkbox-inline'>
   <input tabindex='1' type='checkbox' name='asistio[]' id='$valor->nombres' value='$valor->nombres' class'form-control'> Asistio
+</label>
+<label class='checkbox-inline'>
+  <input tabindex='1' type='checkbox' name='justificado[]' id='$valor->nombres' value='$valor->nombres' class'form-control'> Justificado
 </label><br>";
-
 
          }
 
