@@ -44,7 +44,7 @@ require 'noautorizado.php';
 
 <!-- Search input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="numerocuenta">Número de cuenta</label>
+  <label class="col-md-4 control-label" for="numerocuenta"><span class="fa fa-fw fa-search"></span> Número de cuenta</label>
   <div class="col-md-2">
     <input id="numerocuenta" name="numerocuenta" type="search" placeholder="Buscar alumno" class="form-control input-md" required="">
      </div>
@@ -62,18 +62,18 @@ require 'noautorizado.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="consultas">Consultar</label>
   <div class="col-md-8">
-    <button id="consultas" name="consultas" class="btn btn-primary">Historial</button>
-    <button id="saldo" name="saldo" class="btn btn-primary">Saldo</button>
+    <button id="consultas" name="consultas" class="btn btn-primary"><span class="fa fa-fw fa-list-ol"></span> Historial</button>
+    <button id="saldo" name="saldo" class="btn btn-primary"><span class="fa fa-fw fa-exclamation-circle"></span> Saldo</button>
   </div>
 </div>
 
 
 <!-- Prepended text-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="saldoalumno">Saldo</label>
+  <label class="col-md-4 control-label" for="saldoalumno"> Saldo</label>
   <div class="col-md-4">
     <div class="input-group">
-      <span class="input-group-addon">Monto</span>
+      <span class="input-group-addon"><span class="fa fa-fw fa-money"></span></span>
       <input id="saldoalumno" name="saldoalumno" class="form-control" placeholder="" type="text">
       </div></div></div>
 
@@ -130,7 +130,7 @@ require 'noautorizado.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="matricular"></label>
   <div class="col-md-8">
-    <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-danger">Finalizar Matrícula</button>
+    <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-danger"><span class="fa fa-fw fa-eraser"></span> Borrar</button>
 
   </div>
 </div>
@@ -215,8 +215,9 @@ $query = mysqli_query($conexion, $sql);
     </div>
 <!-- Final de la tabla -->
 <div align="center">
-<button id="matricular" name="matricular" class="btn btn-primary">Realizar Matrícula</button>
-<button id="imprimir" name="imprimir" class="btn btn-info">Imprimir horario</button>
+<button id="matricular" name="matricular" class="btn btn-primary"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+
+<button id="imprimir" name="imprimir" class="btn btn-primary" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
 
 </div>
 <!-- Botón que inserta la información a la BD -->
