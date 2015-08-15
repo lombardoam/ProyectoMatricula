@@ -152,7 +152,6 @@ $verde=ceil($verde);
 
                 echo"   <td> $resultado4[$i]</td>";
 
-                 echo"   <td> $resultado3[$i]</td>";//borrar
 
 
 
