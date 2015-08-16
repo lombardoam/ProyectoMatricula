@@ -1,7 +1,7 @@
 <?php
 
 require'header.php';
-
+require 'conexion.php';
 require 'noautorizado.php';
 
 ?>
@@ -35,7 +35,7 @@ require 'noautorizado.php';
 
     <!-- /Inicio de código de formulario -->
 
-<form class="form-horizontal">
+<form class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">>
     <script src="js/table.js"></script>
 <fieldset>
 
@@ -56,9 +56,9 @@ require 'noautorizado.php';
   <div class="col-md-4">
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-fw fa-user"></span> <?php
-if (!empty($_GET['numerocuenta'])){
+if (!empty ($_GET['numerocuenta'])){
 
-$conexion = mysqli_connect('localhost','root','','matricula');
+
 $qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
 $qcuenta = mysqli_query($conexion, $qcuenta);
  while($lineanombres = mysqli_fetch_assoc($qcuenta)){
@@ -93,7 +93,6 @@ $qcuenta = mysqli_query($conexion, $qcuenta);
         <?php
 if (!empty($_GET['numerocuenta'])){
 
-$conexion = mysqli_connect('localhost','root','','matricula');
 $qcuenta = "SELECT saldo FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
 $qcuenta = mysqli_query($conexion, $qcuenta);
  while($lineasaldo = mysqli_fetch_assoc($qcuenta)){
@@ -109,7 +108,7 @@ if (($lineasaldo['saldo'] != "0" OR $lineasaldo['saldo'] != "0.00" )) {
     echo '           <div align="center">
                             <div class="alert alert-danger alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            Alumno insolvente, no puede matricularse.
+                            Alumno no solvente.
                 </div></div>';
 }
  }
@@ -259,7 +258,6 @@ $query = mysqli_query($conexion, $sql);
 //Si la búsqueda está vacía hace una muestra sin filtro de todos los horarios sin buscar el plan de estudio del estudiante
 
  if (empty($_GET['numerocuenta'])){
-            $conexion = mysqli_connect('localhost','root','','matricula');
             $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula ORDER BY id_programacion;;";
 
 $query = mysqli_query($conexion, $sql);
@@ -280,7 +278,7 @@ $query = mysqli_query($conexion, $sql);
 }
 ?>
 
-//<!-- Fin de la consulta -->
+<!-- Fin de la consulta -->
 
     </tbody>
 
@@ -303,29 +301,28 @@ $query = mysqli_query($conexion, $sql);
 	</div>
     </div>
 <!-- Final de la tabla -->
-            <?php
-if (!empty($_GET['numerocuenta'])){
 
-echo '<div align="center">
-<button id="matricular" name="matricular" class="btn btn-primary"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
-
-<button id="imprimir" name="imprimir" class="btn btn-primary" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
-
-</div>';
-                } else {
-
+<!-- Botón que inserta la información a la BD -->
+    <?php
+if (empty($_GET['numerocuenta'])) {
 echo '<div align="center">
 <button id="matricular" name="matricular" class="btn btn-primary disabled"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
 
 <button id="imprimir" name="imprimir" class="btn btn-primary disabled" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
 
 </div>';
+}else {
+
+ echo '<div align="center">
+<button id="matricular" name="matricular" class="btn btn-primary"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+
+<button id="imprimir" name="imprimir" class="btn btn-primary" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
+
+</div>';
 }
 
 ?>
-
-<!-- Botón que inserta la información a la BD -->
-                <br><br>
+            <br><br>
 
 
         </div>
