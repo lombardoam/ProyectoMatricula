@@ -87,7 +87,7 @@ $qcuenta = mysqli_query($conexion, $qcuenta);
     <!-- Consulta SQL para buscar el saldo -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="saldoalumno"> Saldo</label>
-  <div class="col-md-3">
+  <div class="col-md-2">
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-fw fa-money"></span>
         <?php
@@ -151,7 +151,7 @@ if (($lineasaldo['saldo'] != "0" OR $lineasaldo['saldo'] != "0.00" )) {
     <!-- Consulta SQL para buscar el tipo de alumno -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="tipoestudiante"> Estudiante de </label>
-  <div class="col-md-3">
+  <div class="col-md-2">
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-fw fa-thumb-tack"></span>
         <?php
