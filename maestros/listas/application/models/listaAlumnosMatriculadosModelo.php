@@ -38,7 +38,8 @@ class ListaAlumnosMatriculadosModelo extends CI_Model
 
     foreach ($query->result() as &$valor)
             {
-                    setcookie("nombre_curso", $valor->nombre_curso);
+        $_SESSION["NOMBRE_CURSO"]=$valor->nombre_curso;
+                   // setcookie("nombre_curso", $valor->nombre_curso);
 
             }
 

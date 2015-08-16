@@ -87,7 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 
-<h2> <?php echo" "; echo $_COOKIE["nombre_curso"];?></h2>
+<h2> <?php echo" "; echo  $_SESSION["NOMBRE_CURSO"];// $_COOKIE["nombre_curso"];?></h2>
 
 	<div id="body">
 <h2>Catedratico  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
