@@ -99,6 +99,7 @@ class ReporteIndexControlador extends CI_Controller
      $resultado['resultado2'] =  $this->getHora($id_horario);
 $ausente= array();
 $asistio= array();
+$justificado= array();
 
         foreach ($resultado['resultado']->result() as &$valor)
                {
@@ -106,11 +107,14 @@ $asistio= array();
            $this->reporteIndexModelo->seteo();
            $ausente[]=$_SESSION['Ausente1'];
            $asistio[]=$_SESSION['Asistio1'];
+           $justificado[]=$_SESSION['Justificado1'];
+
 
                 }
 
         $resultado['resultado3'] =$ausente;
          $resultado['resultado4'] =$asistio;
+        $resultado['resultado5'] =$justificado;
 
 $_SESSION['numero_cuenta']=$cuentaVieja;
 

@@ -96,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 	<div id="body">
-        <h2>Alumno  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
+        <h2><?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
 
      <?php
  foreach ($resultado->result() as &$valor)
@@ -113,7 +113,7 @@ break;
 
 
 
-         <p><button type='submit' class='btn btn-default' name='seleccionado' value ='Buscar'</button></p> <?php
+         <p><td type='submit' class='btn btn-default' name='seleccionado' value ='Buscar'</td></p> <?php
  foreach ($resultado->result() as &$valor)
         {
 
@@ -127,7 +127,7 @@ break;
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
-                <tr>
+                <tr bgcolor="E0EEEE">
                     <th>Dia de Clase</th>
                     <th>Numero Cuenta</th>
                     <th>Nombre</th>
@@ -173,21 +173,17 @@ $rojo = $_SESSION["FALTAS"];
 $amarillo=ceil($amarillo);
 $naranja=ceil($naranja);
 $verde=ceil($verde);
-//echo" sin dereho:".$rojo;
-//echo"  mitad o menos :".$amarillo;
-//echo" faltan 3:".$naranja;
-//echo" lo que tengo :".$_SESSION["Ausente"];
-            //echo"<h4>Fecha Reporte: $fecha    </h4>";
+
             echo"
             <h4><font color='#4B8A08'>
- Mas de la Mitad: $verde </font><h4><font color='#D7DF01'>
+ Menos de la Mitad: $verde </font><h4><font color='#D7DF01'>
  Mitad o Menos: $amarillo - </font>
  <font color='#FF8000'>Faltan tres: $naranja - </font>
  <font color='#FF0000'>Sin Dereho Mas de: $rojo</font></h4>";
             ?>
 
              <thead>
-                <tr>
+                <tr bgcolor="E0EEEE">
                    <th>Total</th>
                     <th>Asistio</th>
                     <th>Falto</th>
@@ -215,6 +211,7 @@ $verde=ceil($verde);
 
                     if($_SESSION["Ausente"] >= $naranja)
                     {
+
                         if($_SESSION["Ausente"] < $rojo+1)
                         {
 

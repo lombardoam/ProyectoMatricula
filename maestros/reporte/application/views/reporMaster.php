@@ -105,7 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 break;
    }
         ?>
-         <p><button type='submit' class='btn btn-default' name='seleccionado' value ='Buscar'</button></p> <?php
+         <p><td type='submit' class='btn btn-default' name='seleccionado' value ='Buscar'</td></p> <?php
  foreach ($resultado->result() as &$valor)
         {
 
@@ -119,12 +119,13 @@ break;
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
-                <tr>
+                <tr bgcolor="E0EEEE" >
                     <th>Numero Alumnos</th>
                     <th>Numero Cuenta</th>
                     <th>Nombre</th>
                     <th>Asistio</th>
                     <th>Faltas</th>
+                    <th>Justificadas</th>
                 </tr>
             </thead>
             <tbody>
@@ -152,10 +153,8 @@ $verde=ceil($verde);
 
                 echo"   <td> $resultado4[$i]</td>";
 
-                 echo"   <td> $resultado3[$i]</td>";
 
 
-                  /*/
                     if($resultado3[$i] > $rojo)
                         {
                             echo "<td bgcolor='#FF0000'>";echo$resultado3[$i];echo"</td>";
@@ -182,9 +181,9 @@ $verde=ceil($verde);
 
 
     if($resultado3[$i] < $amarillo){ echo "<td bgcolor='#4B8A08'>";echo $resultado3[$i];echo"</td>";}
-                echo"</tr>";
-                    /*/
+                echo"   <td> $resultado5[$i]</td>";
                     echo"</tr>";
+
                     $i++;
                     $z++;
 
@@ -222,12 +221,12 @@ $rojo = $_SESSION["FALTAS"];
 $amarillo=ceil($amarillo);
 $naranja=ceil($naranja);
 $verde=ceil($verde);
-/*/ echo"
+ echo"
             <h4><font color='#4B8A08'>
  Mas de la Mitad: $verde </font><h4><font color='#D7DF01'>
  Mitad o Menos: $amarillo - </font>
  <font color='#FF8000'>Faltan tres: $naranja - </font>
- <font color='#FF0000'>Sin Dereho Mas de: $rojo</font></h4>";/*/
+ <font color='#FF0000'>Sin Dereho Mas de: $rojo</font></h4>";
 
 
             //echo"<h4>Fecha Reporte: $fecha    </h4>";

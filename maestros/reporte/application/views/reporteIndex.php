@@ -114,7 +114,7 @@ break;
 
 
 
-         <p><button type='submit' class='btn btn-default' name='seleccionado' value ='Buscar'</button></p> <?php
+         <p><td type='submit' class='btn btn-default' name='seleccionado' value ='Buscar'</td></p> <?php
  foreach ($resultado->result() as &$valor)
         {
 
@@ -128,7 +128,7 @@ break;
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
-                <tr>
+                <tr bgcolor="E0EEEE">
                     <th>Dia de Clase</th>
                     <th>Numero Cuenta</th>
                     <th>Nombre</th>
@@ -177,17 +177,17 @@ $amarillo=ceil($amarillo);
 $naranja=ceil($naranja);
 $verde=ceil($verde);
 
- /*/ echo"
+  echo"
             <h4><font color='#4B8A08'>
  Mas de la Mitad: $verde </font><h4><font color='#D7DF01'>
  Mitad o Menos: $amarillo - </font>
  <font color='#FF8000'>Faltan tres: $naranja - </font>
- <font color='#FF0000'>Sin Dereho Mas de: $rojo</font></h4>";/*/
+ <font color='#FF0000'>Sin Dereho Mas de: $rojo</font></h4>";
 
             ?>
 
              <thead>
-                <tr>
+                <tr bgcolor="E0EEEE">
                    <th>Total</th>
                     <th>Asistio</th>
                     <th>Falto</th>
@@ -196,8 +196,8 @@ $verde=ceil($verde);
                 <tr>
                     <td><?php echo $_SESSION['total'];?></td>
                     <td><?php echo $_SESSION["Asistio"]; ?></td>
-                    <td><?php echo $_SESSION["Ausente"]; ?></td>
-                   <?php  /*/if($_SESSION["Ausente"] > $rojo)
+                   <?php
+                   if($_SESSION["Ausente"] > $rojo)
                         {
                             echo "<td bgcolor='#FF0000'>";echo $_SESSION['Ausente'];echo"</td>";
                         }
@@ -222,7 +222,7 @@ $verde=ceil($verde);
 
 
 
-    if($_SESSION["Ausente"] < $amarillo){ echo "<td bgcolor='#4B8A08'>";echo $_SESSION['Ausente'];echo"</td>";}/*/ ?>
+    if($_SESSION["Ausente"] < $amarillo){ echo "<td bgcolor='#4B8A08'>";echo $_SESSION['Ausente'];echo"</td>";}?>
 
 
                 </tr>

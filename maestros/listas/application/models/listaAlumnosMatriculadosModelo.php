@@ -38,7 +38,8 @@ class ListaAlumnosMatriculadosModelo extends CI_Model
 
     foreach ($query->result() as &$valor)
             {
-                    setcookie("nombre_curso", $valor->nombre_curso);
+        $_SESSION["NOMBRE_CURSO"]=$valor->nombre_curso;
+                   // setcookie("nombre_curso", $valor->nombre_curso);
 
             }
 
@@ -90,6 +91,43 @@ class ListaAlumnosMatriculadosModelo extends CI_Model
 
 
     }
+
+   function setListaAsistenciaJustificado($nombre_alumno)
+       {
+
+           $fecha=$this->getFecha();
+
+           $data = $this->session->userdata('id_horario');
+           $id_horario;
+
+            foreach ($data as &$valor){ $id_horario= $valor[0]; }
+
+            $id_horario;
+           $id_alumno;
+
+          for ($i = 0; $i < count($nombre_alumno); $i++)
+          {
+            // echo $id[$i];
+
+           $this->db->select('id_estudiante');
+           $this->db->from('estudiantes');
+           $this->db->where('nombres', $nombre_alumno[$i]);
+           $query = $this->db->get();
+
+            foreach ($query->result() as &$valor)
+            {
+
+              $this->db->insert('asistencia', array('id_programacion'=>$id_horario,
+                       'id_estudiante'=>$valor->id_estudiante,
+                   'fecha'=>$fecha,
+                   'estado'=>'Justificado',
+                    'id_asistencia'=> 0,
+                    'id_periodo'=>1));
+            }
+
+          }
+
+     }
 
 
     function setListaAsistenciaAusento($nombre_alumno)
