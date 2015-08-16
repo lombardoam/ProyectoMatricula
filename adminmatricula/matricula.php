@@ -222,8 +222,6 @@ generales de todas las carreras que están disponibles -->
 <?php
 if (!empty($_GET['numerocuenta'])){
 
-
-  $conexion = mysqli_connect('localhost','root','','matricula');
 $qcuentap = "SELECT planes_estudio.nombre_plan, planes_estudio.id_plan_estudio FROM `planes_estudio` INNER JOIN estudiantes INNER JOIN carreras WHERE estudiantes.id_carrera=carreras.id_carrera AND estudiantes.num_cuenta ='" . $_GET['numerocuenta'] . "' AND carreras.id_carrera=planes_estudio.id_carrera";
 $qcuentap = mysqli_query($conexion, $qcuentap);
  while($lineaplan = mysqli_fetch_assoc($qcuentap)){
