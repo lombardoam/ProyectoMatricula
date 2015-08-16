@@ -39,7 +39,8 @@ overflow-x:hidden;
 
             </div>
             <!-- /.container-fluid -->
-    <iframe  src="asistencia/" width="830" height="450" frameborder="0"></iframe>
+
+    <iframe  class="col-lg-12 col-md-12 col-sm-12" src="asistencia/" width="830" height="450" frameborder="0"></iframe>
 
 
             <br><br>
@@ -49,6 +50,24 @@ overflow-x:hidden;
 
 
     <!-- /#wrapper -->
+
+
+<script language="JavaScript">
+<!--
+function autoResize(id){
+    var newheight;
+    var newwidth;
+
+    if(document.getElementById){
+        newheight=document.getElementById(id).contentWindow.document .body.scrollHeight;
+        newwidth=document.getElementById(id).contentWindow.document .body.scrollWidth;
+    }
+
+    document.getElementById(id).height= (newheight) + "px";
+    document.getElementById(id).width= (newwidth) + "px";
+}
+//-->
+</script>
 
 
   </body>
