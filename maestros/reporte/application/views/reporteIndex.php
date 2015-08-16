@@ -196,7 +196,6 @@ $verde=ceil($verde);
                 <tr>
                     <td><?php echo $_SESSION['total'];?></td>
                     <td><?php echo $_SESSION["Asistio"]; ?></td>
-                    <td><?php echo $_SESSION["Ausente"]; ?></td>
                    <?php
                    if($_SESSION["Ausente"] > $rojo)
                         {
