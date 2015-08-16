@@ -54,6 +54,9 @@ class ListaAlumnosMatriculadosController extends CI_Controller
 
                $this->load->model('clasesMaatrucladasMaestroModelo');
          $data['user_data']=$this->get_user_data();
+
+
+
     echo"<script>alert('Subido Satisfactoriamente!!')</script>";
         $this->load->view('clasesMaatrucladasMaestroVista',$data);
 

@@ -123,9 +123,9 @@ break;
                     <th>Numero Alumnos</th>
                     <th>Numero Cuenta</th>
                     <th>Nombre</th>
+                     <th>Justificadas</th>
                     <th>Asistio</th>
                     <th>Faltas</th>
-                    <th>Justificadas</th>
                 </tr>
             </thead>
             <tbody>
@@ -150,6 +150,7 @@ $verde=ceil($verde);
 
                   echo"   <td>$valor->nombres $valor->apellidos</td>";
 
+                echo"   <td> $resultado5[$i]</td>";
 
                 echo"   <td> $resultado4[$i]</td>";
 
@@ -181,7 +182,6 @@ $verde=ceil($verde);
 
 
     if($resultado3[$i] < $amarillo){ echo "<td bgcolor='#4B8A08'>";echo $resultado3[$i];echo"</td>";}
-                echo"   <td> $resultado5[$i]</td>";
                     echo"</tr>";
 
                     $i++;

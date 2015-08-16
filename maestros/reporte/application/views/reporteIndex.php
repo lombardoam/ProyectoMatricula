@@ -192,12 +192,15 @@ $verde=ceil($verde);
              <thead>
                 <tr bgcolor="E0EEEE">
                    <th>Total</th>
+                  <th>Justifico</th>
                     <th>Asistio</th>
                     <th>Falto</th>
                 </tr>
             </thead>
                 <tr>
                     <td><?php echo $_SESSION['total'];?></td>
+                                        <td><?php echo $_SESSION["Justificado"]; ?></td>
+
                     <td><?php echo $_SESSION["Asistio"]; ?></td>
                    <?php
                    if($_SESSION["Ausente"] > $rojo)

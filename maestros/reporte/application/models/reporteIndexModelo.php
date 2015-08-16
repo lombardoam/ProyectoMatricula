@@ -126,7 +126,6 @@ $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
     function setAsistioYausentes()
     {
 
-
         $this->db->select('count(*) AS total_justificado');
          $this->db->from('asistencia');
          $this->db->where( 'asistencia.estado','Justificado');

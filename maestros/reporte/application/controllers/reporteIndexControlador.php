@@ -41,6 +41,7 @@ class ReporteIndexControlador extends CI_Controller
 	{
         $_SESSION["Ausente"]=0;
         $_SESSION["Asistio"]=0;
+        $_SESSION["Justifico"]=0;
         $_SESSION["total"]=0;
         $_SESSION["numero_cuenta"] =  $this->uri->segment(3);
 
