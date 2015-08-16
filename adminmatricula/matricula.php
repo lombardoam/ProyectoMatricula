@@ -53,7 +53,7 @@ require 'noautorizado.php';
     <!-- Consulta SQL para buscar los nombres y apellidos de los estudiantes tomando el número de cuenta enviado en el buscador -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="nombrealumno">Nombre</label>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-fw fa-user"></span> <?php
 if (!empty ($_GET['numerocuenta'])){
@@ -70,7 +70,7 @@ $qcuenta = mysqli_query($conexion, $qcuenta);
 
         ?>
         </span>
-      <input id="saldoalumno" name="saldoalumno" class="form-control" placeholder="" type="text">
+
       </div></div></div>
 
 <!-- Button (Double) -->
@@ -79,7 +79,7 @@ $qcuenta = mysqli_query($conexion, $qcuenta);
   <div class="col-md-8">
     <button id="consultas" name="consultas" class="btn btn-primary"><span class="fa fa-fw fa-list-ol"></span> Historial</button>
     <button id="saldo" name="saldo" class="btn btn-primary"><span class="fa fa-fw fa-exclamation-circle"></span> Saldo</button>
-  </div>
+      </div>
 </div>
 
 
@@ -87,7 +87,7 @@ $qcuenta = mysqli_query($conexion, $qcuenta);
     <!-- Consulta SQL para buscar el saldo -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="saldoalumno"> Saldo</label>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-fw fa-money"></span>
         <?php
@@ -98,11 +98,6 @@ $qcuenta = mysqli_query($conexion, $qcuenta);
  while($lineasaldo = mysqli_fetch_assoc($qcuenta)){
  echo 'L. ';
  echo $lineasaldo['saldo'];
-
-
-
-
-
 
 if (($lineasaldo['saldo'] != "0" OR $lineasaldo['saldo'] != "0.00" )) {
     echo '           <div align="center">
@@ -115,8 +110,7 @@ if (($lineasaldo['saldo'] != "0" OR $lineasaldo['saldo'] != "0.00" )) {
         }
 ?>
         </span>
-      <input id="saldoalumno" name="saldoalumno" class="form-control" placeholder="" type="text">
-      </div></div></div>
+        </div></div></div>
 
 <!-- Multiple Radios (inline) -->
 <div class="form-group">
@@ -153,17 +147,27 @@ if (($lineasaldo['saldo'] != "0" OR $lineasaldo['saldo'] != "0.00" )) {
   </div>
 </div>
 
-<!-- Select Basic -->
+<!-- Prepended text-->
+    <!-- Consulta SQL para buscar el tipo de alumno -->
 <div class="form-group">
-  <label class="col-md-4 control-label" class="input-small" for="tipomatricula">Tipo de matrícula</label>
-  <div class="col-md-4">
-    <select id="tipomat" name="tipomat" class="form-control">
-      <option value="1">Reingreso</option>
-      <option value="2">Primer Ingreso</option>
-      <option value="3">Élite</option>
-    </select>
-  </div>
-</div>
+  <label class="col-md-4 control-label" for="tipoestudiante"> Estudiante de </label>
+  <div class="col-md-3">
+    <div class="input-group">
+      <span class="input-group-addon"><span class="fa fa-fw fa-thumb-tack"></span>
+        <?php
+if (!empty($_GET['numerocuenta'])){
+
+$qtipo = "SELECT tipo_estudiante FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
+$qtipo = mysqli_query($conexion, $qtipo);
+ while($lineatipo = mysqli_fetch_assoc($qtipo)){
+ echo $lineatipo['tipo_estudiante'];
+}
+ }
+
+?>
+        </span>
+
+      </div></div></div>
 
 
 
@@ -249,9 +253,22 @@ $query = mysqli_query($conexion, $sql);
     <td>$rows[codigo_aula]</td>
     ";
    }
+ }
+     // Si es alumno de primer ingreso, únicamente filtrará la carrera y el periodo "1" de las clases según su plan de estudio
+    $qtipo = "SELECT tipo_estudiante FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
+$qtipo = mysqli_query($conexion, $qtipo);
+ while($lineatipo = mysqli_fetch_assoc($qtipo)){
+  $lineatipo['tipo_estudiante'];
+
+  if ($lineatipo['tipo_estudiante']='Primer Ingreso'){
+
+            $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas INNER JOIN estudiantes WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND estudiantes.num_cuenta='" . $_GET['numerocuenta'] . "' AND estudiantes.tipo_estudiante='" . $lineatipo['tipo_estudiante'] . " ORDER BY id_programacion;;";
+
+
 }
 
  }
+}
 
 //Si la búsqueda está vacía hace una muestra sin filtro de todos los horarios sin buscar el plan de estudio del estudiante
 
