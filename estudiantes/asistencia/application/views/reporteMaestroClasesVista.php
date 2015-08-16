@@ -43,16 +43,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		padding: 14px 15px 10px 15px;
 	}
 
-	code {
+	cosa {
 		font-family: Consolas, Monaco, Courier New, Courier, monospace;
 		font-size: 12px;
 		background-color: #f9f9f9;
-		border: 1px solid #D0D0D0;
-		color: #002166;
-		display: block;
-		margin: 14px 0 14px 0;
-		padding: 12px 10px 12px 10px;
+		width: auto;
+     height: auto;
+     border: 1px solid #555;
+     background: #428bca;
+     margin: 14px 0 14px 0;
+     padding: 12px 10px 12px 10px;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+
 	}
+
+
+
 
         centrar {
 		  text-align:center;
@@ -94,7 +102,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <h2>Alumno  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
 	<div id="body">
 
-		<code>  <div class="row">
+		<cosa>  <div class="row">
     <div id="col-sm-4">
       <h3></h3>
       <?php
@@ -124,7 +132,7 @@ if (count($user_data->result()) == 0)
 ?>
 
              </div>
-  </div></code>
+  </div></cosa>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  : '' ?></p>
 </div>
