@@ -119,7 +119,7 @@ break;
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
-                <tr>
+                <tr bgcolor="E0EEEE" >
                     <th>Numero Alumnos</th>
                     <th>Numero Cuenta</th>
                     <th>Nombre</th>

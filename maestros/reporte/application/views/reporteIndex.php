@@ -128,7 +128,7 @@ break;
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
-                <tr>
+                <tr bgcolor="E0EEEE">
                     <th>Dia de Clase</th>
                     <th>Numero Cuenta</th>
                     <th>Nombre</th>
@@ -187,7 +187,7 @@ $verde=ceil($verde);
             ?>
 
              <thead>
-                <tr>
+                <tr bgcolor="E0EEEE">
                    <th>Total</th>
                     <th>Asistio</th>
                     <th>Falto</th>
