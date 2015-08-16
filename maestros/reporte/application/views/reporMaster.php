@@ -221,12 +221,12 @@ $rojo = $_SESSION["FALTAS"];
 $amarillo=ceil($amarillo);
 $naranja=ceil($naranja);
 $verde=ceil($verde);
-/*/ echo"
+ echo"
             <h4><font color='#4B8A08'>
  Mas de la Mitad: $verde </font><h4><font color='#D7DF01'>
  Mitad o Menos: $amarillo - </font>
  <font color='#FF8000'>Faltan tres: $naranja - </font>
- <font color='#FF0000'>Sin Dereho Mas de: $rojo</font></h4>";/*/
+ <font color='#FF0000'>Sin Dereho Mas de: $rojo</font></h4>";
 
 
             //echo"<h4>Fecha Reporte: $fecha    </h4>";

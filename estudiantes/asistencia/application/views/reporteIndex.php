@@ -96,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 	<div id="body">
-        <h2>Alumno  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
+        <h2><?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
 
      <?php
  foreach ($resultado->result() as &$valor)
