@@ -38,15 +38,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		padding: 14px 15px 10px 15px;
 	}
 
-	code {
+	cosa {
 		font-family: Consolas, Monaco, Courier New, Courier, monospace;
 		font-size: 12px;
 		background-color: #f9f9f9;
-		border: 1px solid #D0D0D0;
-		color: #002166;
-		display: block;
-		margin: 14px 0 14px 0;
-		padding: 12px 10px 12px 10px;
+		width: auto;
+     height: auto;
+     border: 1px solid #555;
+     background: #FAFAFA;
+     padding: 12px 10px 12px 10px;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
 	}
 
         centrar {

@@ -51,7 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      height: auto;
      border: 1px solid #555;
      background: #FAFAFA;
-     margin: 14px 0 14px 0;
      padding: 12px 10px 12px 10px;
      display: block;
      margin-left: auto;
