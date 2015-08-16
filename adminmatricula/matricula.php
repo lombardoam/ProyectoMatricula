@@ -304,7 +304,27 @@ $query = mysqli_query($conexion, $sql);
 
 <!-- Botón que inserta la información a la BD -->
     <?php
+
 if (empty($_GET['numerocuenta'])) {
+echo '<div align="center">
+<button id="matricular" name="matricular" class="btn btn-primary disabled"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+
+<button id="imprimir" name="imprimir" class="btn btn-primary disabled" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
+
+</div>';
+$qcuenta = "SELECT saldo FROM estudiantes WHERE num_cuenta =''";
+$qcuenta = mysqli_query($conexion, $qcuenta);
+ while($lineasaldo = mysqli_fetch_assoc($qcuenta)){
+$lineasaldo['saldo'];
+}
+
+}
+if (!empty($_GET['numerocuenta'])) {
+$qcuenta = "SELECT saldo FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
+$qcuenta = mysqli_query($conexion, $qcuenta);
+ while($lineasaldo = mysqli_fetch_assoc($qcuenta)){
+$lineasaldo['saldo'];
+if ($lineasaldo['saldo']!='0') {
 echo '<div align="center">
 <button id="matricular" name="matricular" class="btn btn-primary disabled"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
 
@@ -320,6 +340,11 @@ echo '<div align="center">
 
 </div>';
 }
+ }
+}
+
+
+
 
 ?>
             <br><br>
