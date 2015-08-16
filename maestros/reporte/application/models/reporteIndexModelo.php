@@ -65,7 +65,27 @@ $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
             }
 
 
-        $this->db->select('count(*) AS total_asistio');
+
+
+
+      $this->db->select('count(*) AS total_justificado');
+         $this->db->from('asistencia');
+         $this->db->where( 'asistencia.estado','Justificado');
+$this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
+ $this->db->where('asistencia.id_programacion', $_SESSION["clase"]);
+
+
+
+         $query2 = $this->db->get();
+
+
+ foreach ($query2->result() as &$valor)
+            {
+                    $_SESSION['Justificado1']=$valor->total_justificado;
+            }
+
+
+    $this->db->select('count(*) AS total_asistio');
          $this->db->from('asistencia');
          $this->db->where( 'asistencia.estado','Asistio');
 $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
@@ -80,8 +100,6 @@ $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
             {
                     $_SESSION['Asistio1']=$valor->total_asistio;
             }
-
-
 
     }
 
@@ -107,6 +125,25 @@ $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
 
     function setAsistioYausentes()
     {
+
+
+        $this->db->select('count(*) AS total_justificado');
+         $this->db->from('asistencia');
+         $this->db->where( 'asistencia.estado','Justificado');
+$this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
+        $this->db->where('asistencia.id_programacion', $_SESSION["clase"]);
+
+
+
+         $query2 = $this->db->get();
+
+
+ foreach ($query2->result() as &$valor)
+            {
+                       $_SESSION['Justificado']=$valor->total_justificado;
+            }
+
+
     $this->db->select('count(*) AS total_ausente');
          $this->db->from('asistencia');
          $this->db->where( 'asistencia.estado','Ausente');
@@ -140,9 +177,10 @@ $this->db->where('asistencia.id_estudiante', $_SESSION['numero_cuenta']);
                     $_SESSION['Asistio']=$valor->total_asistio;
             }
 
-        $n1= $_SESSION["Ausente"];  $n2= $_SESSION["Asistio"];$total =$n1+$n2;
+        $n1= $_SESSION["Ausente"];  $n2= $_SESSION["Asistio"];$total =$n1+$n2+$_SESSION["Justificado"];
 
                             $_SESSION['total']= $total;
+
 
     }
 

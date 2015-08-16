@@ -125,6 +125,7 @@ break;
                     <th>Nombre</th>
                     <th>Asistio</th>
                     <th>Faltas</th>
+                    <th>Justificadas</th>
                 </tr>
             </thead>
             <tbody>
@@ -154,7 +155,6 @@ $verde=ceil($verde);
 
 
 
-
                     if($resultado3[$i] > $rojo)
                         {
                             echo "<td bgcolor='#FF0000'>";echo$resultado3[$i];echo"</td>";
@@ -181,7 +181,8 @@ $verde=ceil($verde);
 
 
     if($resultado3[$i] < $amarillo){ echo "<td bgcolor='#4B8A08'>";echo $resultado3[$i];echo"</td>";}
-                echo"</tr>";
+                echo"   <td> $resultado5[$i]</td>";
+                    echo"</tr>";
 
                     $i++;
                     $z++;
