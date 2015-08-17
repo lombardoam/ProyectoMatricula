@@ -112,41 +112,6 @@ if (($lineasaldo['saldo'] != "0" OR $lineasaldo['saldo'] != "0.00" )) {
         </span>
         </div></div></div>
 
-<!-- Multiple Radios (inline) -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="cantidadclases">Clases a matricular</label>
-  <div class="col-md-4">
-    <label class="radio-inline" for="cantidadclases-0">
-      <input type="radio" name="cantidadclases" id="cantidadclases-0" value="1" checked="checked">
-      1
-    </label>
-    <label class="radio-inline" for="cantidadclases-1">
-      <input type="radio" name="cantidadclases" id="cantidadclases-1" value="2">
-      2
-    </label>
-    <label class="radio-inline" for="cantidadclases-2">
-      <input type="radio" name="cantidadclases" id="cantidadclases-2" value="3">
-      3
-    </label>
-    <label class="radio-inline" for="cantidadclases-3">
-      <input type="radio" name="cantidadclases" id="cantidadclases-3" value="4">
-      4
-    </label>
-    <label class="radio-inline" for="cantidadclases-4">
-      <input type="radio" name="cantidadclases" id="cantidadclases-4" value="5">
-      5
-    </label>
-    <label class="radio-inline" for="cantidadclases-5">
-      <input type="radio" name="cantidadclases" id="cantidadclases-5" value="6">
-      6
-    </label>
-    <label class="radio-inline" for="cantidadclases-6">
-      <input type="radio" name="cantidadclases" id="cantidadclases-6" value="7">
-      7
-    </label>
-  </div>
-</div>
-
 <!-- Prepended text-->
     <!-- Consulta SQL para buscar el tipo de alumno -->
 <div class="form-group">
