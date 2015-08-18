@@ -55,23 +55,26 @@ require 'noautorizado.php';
   <label class="col-md-4 control-label" for="nombrealumno">Nombre</label>
   <div class="col-md-3">
     <div class="input-group">
-      <span class="input-group-addon"><span class="fa fa-fw fa-user"></span> <?php
-if (!empty ($_GET['numerocuenta'])){
+      <span class="input-group-addon"><span class="fa fa-fw fa-user"></span>
+       <?php
+            if (!empty ($_GET['numerocuenta'])){
 
 
-$qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
-$qcuenta = mysqli_query($conexion, $qcuenta);
- while($lineanombres = mysqli_fetch_assoc($qcuenta)){
- echo $lineanombres['nombres'];
- echo ' ';
- echo $lineanombres['apellidos'];
- }
-}
+            $qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
+            $qcuenta = mysqli_query($conexion, $qcuenta);
+            while($lineanombres = mysqli_fetch_assoc($qcuenta)){
+            echo $lineanombres['nombres'];
+            echo ' ';
+            echo $lineanombres['apellidos'];
+            }
+            }
 
-        ?>
-        </span>
+       ?>
+      </span>
 
-      </div></div></div>
+      </div>
+    </div>
+</div>
 
 <!-- Button (Double) -->
 <div class="form-group">
@@ -175,6 +178,7 @@ $qtipo = mysqli_query($conexion, $qtipo);
                      <th>Final</th>
                      <th>Docente</th>
                      <th>Salón</th>
+
 
 
 
