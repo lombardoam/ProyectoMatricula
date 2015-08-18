@@ -60,6 +60,7 @@ require 'noautorizado.php';
             if (!empty ($_GET['numerocuenta'])){
 
 
+<<<<<<< HEAD
             $qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
             $qcuenta = mysqli_query($conexion, $qcuenta);
             while($lineanombres = mysqli_fetch_assoc($qcuenta)){
@@ -68,6 +69,26 @@ require 'noautorizado.php';
             echo $lineanombres['apellidos'];
             }
             }
+=======
+$qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
+$qcuenta = mysqli_query($conexion, $qcuenta);
+$registroscuenta = mysqli_num_rows($qcuenta);
+    if($registroscuenta==0){
+        echo '           <div align="center">
+                            <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            No hay alumnos con este número de cuenta
+                </div></div>';
+}else{
+ while($lineanombres = mysqli_fetch_assoc($qcuenta)){
+ echo $lineanombres['nombres'];
+ echo ' ';
+ echo $lineanombres['apellidos'];
+ }
+
+}
+}
+>>>>>>> origin/master
 
        ?>
       </span>
@@ -197,6 +218,14 @@ if (!empty($_GET['numerocuenta'])){
 
 $qcuentap = "SELECT planes_estudio.nombre_plan, planes_estudio.id_plan_estudio FROM `planes_estudio` INNER JOIN estudiantes INNER JOIN carreras WHERE estudiantes.id_carrera=carreras.id_carrera AND estudiantes.num_cuenta ='" . $_GET['numerocuenta'] . "' AND carreras.id_carrera=planes_estudio.id_carrera";
 $qcuentap = mysqli_query($conexion, $qcuentap);
+    $registroscuenta = mysqli_num_rows($qcuenta);
+    if($registroscuenta==0){
+        echo '           <div align="center">
+                            <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            No hay registros de horarios
+                </div></div>';
+}else{
  while($lineaplan = mysqli_fetch_assoc($qcuentap)){
  echo ' ';
  echo '<center> <h3>';
@@ -225,6 +254,8 @@ $query = mysqli_query($conexion, $sql);
  }
 
 }
+}
+
 
 //Si la búsqueda está vacía hace una muestra sin filtro de todos los horarios sin buscar el plan de estudio del estudiante
 
