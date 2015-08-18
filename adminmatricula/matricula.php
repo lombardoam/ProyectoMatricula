@@ -58,9 +58,6 @@ require 'noautorizado.php';
       <span class="input-group-addon"><span class="fa fa-fw fa-user"></span>
        <?php
             if (!empty ($_GET['numerocuenta'])){
-
-
-<<<<<<< HEAD
             $qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
             $qcuenta = mysqli_query($conexion, $qcuenta);
             while($lineanombres = mysqli_fetch_assoc($qcuenta)){
@@ -68,8 +65,8 @@ require 'noautorizado.php';
             echo ' ';
             echo $lineanombres['apellidos'];
             }
-            }
-=======
+
+
 $qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
 $qcuenta = mysqli_query($conexion, $qcuenta);
 $registroscuenta = mysqli_num_rows($qcuenta);
@@ -79,16 +76,10 @@ $registroscuenta = mysqli_num_rows($qcuenta);
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             No hay alumnos con este número de cuenta
                 </div></div>';
-}else{
- while($lineanombres = mysqli_fetch_assoc($qcuenta)){
- echo $lineanombres['nombres'];
- echo ' ';
- echo $lineanombres['apellidos'];
- }
+}
+            }
 
-}
-}
->>>>>>> origin/master
+
 
        ?>
       </span>
