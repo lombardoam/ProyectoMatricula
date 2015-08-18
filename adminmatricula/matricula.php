@@ -61,11 +61,21 @@ if (!empty ($_GET['numerocuenta'])){
 
 $qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
 $qcuenta = mysqli_query($conexion, $qcuenta);
+$registroscuenta = mysqli_num_rows($qcuenta);
+    if($registroscuenta==0){
+        echo '           <div align="center">
+                            <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            No hay alumnos con este número de cuenta
+                </div></div>';
+}else{
  while($lineanombres = mysqli_fetch_assoc($qcuenta)){
  echo $lineanombres['nombres'];
  echo ' ';
  echo $lineanombres['apellidos'];
  }
+
+}
 }
 
         ?>
