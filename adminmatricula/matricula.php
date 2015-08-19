@@ -347,9 +347,9 @@ echo '<div align="center">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Sistema de matrícula</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body"><div align="center">
         ¿Desea guardar la configuración elegida de matrícula para el estudiante?
-      </div>
+          </div></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
         <button type="button" class="btn btn-primary">Sí</button>
