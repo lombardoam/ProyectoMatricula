@@ -328,7 +328,7 @@ echo '<div align="center">
 }else {
 
  echo '<div align="center">
-<button id="matricular" name="matricular" class="btn btn-primary" onclick="guardarmatricula()"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+<button id="matricular" name="matricular" class="btn btn-primary" data-toggle="modal" data-target="#MatriculaModal"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
 
 <button id="imprimir" name="imprimir" class="btn btn-primary" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
 
@@ -338,16 +338,30 @@ echo '<div align="center">
 }
 
 ?>
-<!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta y cuando confirmas recarga la página -->
+ <!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta y cuando confirmas recarga la página -->
+            <!-- Modal -->
+<div class="modal fade" id="MatriculaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sistema de matrícula</h4>
+      </div>
+      <div class="modal-body">
+        ¿Desea guardar la configuración elegida de matrícula para el estudiante?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary">Sí</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
-function guardarmatricula(){
-     var respuesta=confirm("¿Desea confirmar esta configuración de matrícula?");
-     if(respuesta==true)
-       window.location="matricula.php";
-    else
-         return 0;
-}
-            </script>
+$('#MatriculaModal').on('hidden.bs.modal', function (e) {
+  // do something...
+})
+</script>
             <br><br>
 
 
