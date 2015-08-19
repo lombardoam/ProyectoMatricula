@@ -357,11 +357,8 @@ echo '<div align="center">
     </div>
   </div>
 </div>
-<script>
-$('#MatriculaModal').on('hidden.bs.modal', function (e) {
-  // do something...
-})
-</script>
+
+
             <br><br>
 
 
@@ -378,3 +375,12 @@ $('#MatriculaModal').on('hidden.bs.modal', function (e) {
 
   </body>
 </html>
+
+<script type="text/javascript">
+    $('#MatriculaModal').on('hidden.bs.modal', function (e) {
+  // do something...
+
+})
+
+
+</script>
