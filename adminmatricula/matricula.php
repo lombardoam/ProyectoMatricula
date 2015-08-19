@@ -328,7 +328,7 @@ echo '<div align="center">
 }else {
 
  echo '<div align="center">
-<button id="matricular" name="matricular" class="btn btn-primary"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+<button id="matricular" name="matricular" class="btn btn-primary" onclick="guardarmatricula()"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
 
 <button id="imprimir" name="imprimir" class="btn btn-primary" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
 
@@ -337,10 +337,17 @@ echo '<div align="center">
  }
 }
 
-
-
-
 ?>
+<!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta y cuando confirmas recarga la página -->
+<script>
+function guardarmatricula(){
+     var respuesta=confirm("¿Desea confirmar esta configuración de matrícula?");
+     if(respuesta==true)
+       window.location="matricula.php";
+    else
+         return 0;
+}
+            </script>
             <br><br>
 
 
