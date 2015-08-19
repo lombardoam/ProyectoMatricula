@@ -338,7 +338,7 @@ echo '<div align="center">
 }
 
 ?>
- <!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta y cuando confirmas recarga la página -->
+ <!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta si eliges no, regresa a la página -->
             <!-- Modal -->
 <div class="modal fade" id="MatriculaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
