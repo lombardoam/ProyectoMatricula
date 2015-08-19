@@ -35,6 +35,24 @@ class ReporteIndexModelo extends CI_Model
 
     function setAsistioYausentes()
     {
+
+        $this->db->select('count(*) AS total_justifico');
+         $this->db->from('asistencia');
+         $this->db->where( 'asistencia.estado','Justificado');
+         $this->db->where('asistencia.id_estudiante', $_SESSION['di']);
+         $this->db->where('asistencia.id_programacion', $_SESSION["clase"]);
+
+
+
+         $query2 = $this->db->get();
+
+
+ foreach ($query2->result() as &$valor)
+            {
+                       $_SESSION['Justifico']=$valor->total_justifico;
+            }
+
+
          $this->db->select('count(*) AS total_ausente');
          $this->db->from('asistencia');
          $this->db->where( 'asistencia.estado','Ausente');
@@ -50,6 +68,8 @@ class ReporteIndexModelo extends CI_Model
             {
                        $_SESSION['Ausente']=$valor->total_ausente;
             }
+
+
 
 
         $this->db->select('count(*) AS total_asistio');

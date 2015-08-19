@@ -40,7 +40,7 @@ edificios.nombre');
         $this->db->where('empleados.nombres', $_COOKIE["nombre"]);
                  $this->db->where('empleados.apellidos', $_COOKIE["apellido"]);
 
-
+$_SESSION["numero_cuenta"] =0;
          $query = $this->db->get();
 
 

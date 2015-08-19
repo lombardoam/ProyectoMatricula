@@ -43,13 +43,20 @@ class ListaAlumnosMatriculadosController extends CI_Controller
     {
                 $asistio=$this->input->post('asistio');
                   $ausente=$this->input->post('ausente');
+                          $justificado=$this->input->post('justificado');
+
 
                  $resultado['resultado'] = $this->listaAlumnosMatriculadosModelo->setListaAsistenciaAusento($ausente);
 
                     $resultado['resultado'] = $this->listaAlumnosMatriculadosModelo->setListaAsistenciaAsistio($asistio);
+                            $resultado['justificado'] = $this->listaAlumnosMatriculadosModelo->setListaAsistenciaJustificado($justificado);
+
 
                $this->load->model('clasesMaatrucladasMaestroModelo');
          $data['user_data']=$this->get_user_data();
+
+
+
     echo"<script>alert('Subido Satisfactoriamente!!')</script>";
         $this->load->view('clasesMaatrucladasMaestroVista',$data);
 
