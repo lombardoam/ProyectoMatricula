@@ -35,7 +35,7 @@ require 'noautorizado.php';
 
     <!-- /Inicio de código de formulario -->
 
-<form class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">>
+<form class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <script src="js/table.js"></script>
 <fieldset>
 
