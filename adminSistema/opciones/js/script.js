@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     //Texto de localizacion
     var Spanishmessages = {
-    serverCommunicationError: 'Ha ocurrido un error mientras se trataba de comunicar con el servidor.',
+    serverCommunicationError: 'Ha ocurrido un error mientras se trataba de comunicar con el servidor. Hay un empalme de Docente, aula y/o horario. VERIFIQUE.',
     loadingMessage: 'Cargando Registros...',
     noDataAvailable: 'Ningun dato disponible!',
     addNewRecord: 'Insertar nuevo registro',
