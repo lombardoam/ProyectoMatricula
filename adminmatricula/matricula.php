@@ -55,23 +55,38 @@ require 'noautorizado.php';
   <label class="col-md-4 control-label" for="nombrealumno">Nombre</label>
   <div class="col-md-3">
     <div class="input-group">
-      <span class="input-group-addon"><span class="fa fa-fw fa-user"></span> <?php
-if (!empty ($_GET['numerocuenta'])){
+      <span class="input-group-addon"><span class="fa fa-fw fa-user"></span>
+       <?php
+            if (!empty ($_GET['numerocuenta'])){
+            $qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
+            $qcuenta = mysqli_query($conexion, $qcuenta);
+            while($lineanombres = mysqli_fetch_assoc($qcuenta)){
+            echo $lineanombres['nombres'];
+            echo ' ';
+            echo $lineanombres['apellidos'];
+            }
 
 
 $qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
 $qcuenta = mysqli_query($conexion, $qcuenta);
- while($lineanombres = mysqli_fetch_assoc($qcuenta)){
- echo $lineanombres['nombres'];
- echo ' ';
- echo $lineanombres['apellidos'];
- }
+$registroscuenta = mysqli_num_rows($qcuenta);
+    if($registroscuenta==0){
+        echo '           <div align="center">
+                            <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            No hay alumnos con este número de cuenta
+                </div></div>';
 }
+            }
 
-        ?>
-        </span>
 
-      </div></div></div>
+
+       ?>
+      </span>
+
+      </div>
+    </div>
+</div>
 
 <!-- Button (Double) -->
 <div class="form-group">
@@ -111,41 +126,6 @@ if (($lineasaldo['saldo'] != "0" OR $lineasaldo['saldo'] != "0.00" )) {
 ?>
         </span>
         </div></div></div>
-
-<!-- Multiple Radios (inline) -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="cantidadclases">Clases a matricular</label>
-  <div class="col-md-4">
-    <label class="radio-inline" for="cantidadclases-0">
-      <input type="radio" name="cantidadclases" id="cantidadclases-0" value="1" checked="checked">
-      1
-    </label>
-    <label class="radio-inline" for="cantidadclases-1">
-      <input type="radio" name="cantidadclases" id="cantidadclases-1" value="2">
-      2
-    </label>
-    <label class="radio-inline" for="cantidadclases-2">
-      <input type="radio" name="cantidadclases" id="cantidadclases-2" value="3">
-      3
-    </label>
-    <label class="radio-inline" for="cantidadclases-3">
-      <input type="radio" name="cantidadclases" id="cantidadclases-3" value="4">
-      4
-    </label>
-    <label class="radio-inline" for="cantidadclases-4">
-      <input type="radio" name="cantidadclases" id="cantidadclases-4" value="5">
-      5
-    </label>
-    <label class="radio-inline" for="cantidadclases-5">
-      <input type="radio" name="cantidadclases" id="cantidadclases-5" value="6">
-      6
-    </label>
-    <label class="radio-inline" for="cantidadclases-6">
-      <input type="radio" name="cantidadclases" id="cantidadclases-6" value="7">
-      7
-    </label>
-  </div>
-</div>
 
 <!-- Prepended text-->
     <!-- Consulta SQL para buscar el tipo de alumno -->
@@ -213,6 +193,7 @@ $qtipo = mysqli_query($conexion, $qtipo);
 
 
 
+
                    </thead>
     <tbody>
 
@@ -228,6 +209,14 @@ if (!empty($_GET['numerocuenta'])){
 
 $qcuentap = "SELECT planes_estudio.nombre_plan, planes_estudio.id_plan_estudio FROM `planes_estudio` INNER JOIN estudiantes INNER JOIN carreras WHERE estudiantes.id_carrera=carreras.id_carrera AND estudiantes.num_cuenta ='" . $_GET['numerocuenta'] . "' AND carreras.id_carrera=planes_estudio.id_carrera";
 $qcuentap = mysqli_query($conexion, $qcuentap);
+    $registroscuenta = mysqli_num_rows($qcuenta);
+    if($registroscuenta==0){
+        echo '           <div align="center">
+                            <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            No hay registros de horarios
+                </div></div>';
+}else{
  while($lineaplan = mysqli_fetch_assoc($qcuentap)){
  echo ' ';
  echo '<center> <h3>';
@@ -236,7 +225,7 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
  echo '</center></h3>';
 
 
-            $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' ORDER BY id_programacion;;";
+            $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND programacion_cursos.estatus_curso='Activo' ORDER BY id_programacion;;";
 
 $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
@@ -254,26 +243,15 @@ $query = mysqli_query($conexion, $sql);
     ";
    }
  }
-     // Si es alumno de primer ingreso, únicamente filtrará la carrera y el periodo "1" de las clases según su plan de estudio
-    $qtipo = "SELECT tipo_estudiante FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
-$qtipo = mysqli_query($conexion, $qtipo);
- while($lineatipo = mysqli_fetch_assoc($qtipo)){
-  $lineatipo['tipo_estudiante'];
-
-  if ($lineatipo['tipo_estudiante']='Primer Ingreso'){
-
-            $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas INNER JOIN estudiantes WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND estudiantes.num_cuenta='" . $_GET['numerocuenta'] . "' AND estudiantes.tipo_estudiante='" . $lineatipo['tipo_estudiante'] . " ORDER BY id_programacion;;";
-
 
 }
-
- }
 }
+
 
 //Si la búsqueda está vacía hace una muestra sin filtro de todos los horarios sin buscar el plan de estudio del estudiante
 
  if (empty($_GET['numerocuenta'])){
-            $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula ORDER BY id_programacion;;";
+            $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.estatus_curso='Activo' ORDER BY id_programacion;;";
 
 $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
@@ -291,6 +269,7 @@ $query = mysqli_query($conexion, $sql);
     ";
             }
 }
+
 ?>
 
 <!-- Fin de la consulta -->
@@ -349,7 +328,7 @@ echo '<div align="center">
 }else {
 
  echo '<div align="center">
-<button id="matricular" name="matricular" class="btn btn-primary"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+<button id="matricular" name="matricular" class="btn btn-primary" data-toggle="modal" data-target="#MatriculaModal"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
 
 <button id="imprimir" name="imprimir" class="btn btn-primary" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
 
@@ -358,10 +337,28 @@ echo '<div align="center">
  }
 }
 
-
-
-
 ?>
+ <!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta si eliges no, regresa a la página -->
+            <!-- Modal -->
+<div class="modal fade" id="MatriculaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sistema de matrícula</h4>
+      </div>
+      <div class="modal-body"><div align="center">
+        ¿Desea guardar la configuración elegida de matrícula para el estudiante?
+          </div></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary">Sí</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
             <br><br>
 
 
@@ -378,3 +375,12 @@ echo '<div align="center">
 
   </body>
 </html>
+
+<script type="text/javascript">
+    $('#MatriculaModal').on('hidden.bs.modal', function (e) {
+  // do something...
+
+})
+
+
+</script>

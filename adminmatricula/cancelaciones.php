@@ -1,7 +1,7 @@
 <?php
 
 require'header.php';
-
+require 'conexion.php';
 require 'noautorizado.php';
 
 ?>
@@ -44,32 +44,39 @@ require 'noautorizado.php';
 
 <!-- Search input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="numerocuenta">Número de cuenta</label>
+  <label class="col-md-4 control-label" for="numerocuenta"> <span class="fa fa-fw fa-search"></span> Número de cuenta</label>
   <div class="col-md-2">
     <input id="numerocuenta" name="numerocuenta" type="search" placeholder="Buscar alumno" class="form-control input-md" required="">
-    <p class="help-block">Introduzca la cuenta</p>
   </div>
 </div>
 
-<!-- Button (Double) -->
+ <!-- Consulta SQL para buscar los nombres y apellidos de los estudiantes tomando el número de cuenta enviado en el buscador -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="consultas">Consultar</label>
-  <div class="col-md-8">
-    <button id="consultas" name="consultas" class="btn btn-primary">Historial</button>
-  </div>
+  <label class="col-md-4 control-label" for="nombrealumno">Nombre</label>
+  <div class="col-md-3">
+    <div class="input-group">
+      <span class="input-group-addon"><span class="fa fa-fw fa-user"></span>
+       <?php
+            if (!empty ($_GET['numerocuenta'])){
+
+
+            $qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
+            $qcuenta = mysqli_query($conexion, $qcuenta);
+            while($lineanombres = mysqli_fetch_assoc($qcuenta)){
+            echo $lineanombres['nombres'];
+            echo ' ';
+            echo $lineanombres['apellidos'];
+            }
+            }
+
+       ?>
+      </span>
+
+      </div>
+    </div>
 </div>
 
 
-
-<!-- Button (Double) -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="matricular"></label>
-  <div class="col-md-8">
-    <button id="imprimir" name="imprimir" class="btn btn-info">Imprimir</button>
-    <button id="matricular" name="matricular" class="btn btn-primary">Cancelar Clases</button>
-    <button id="finalizarmatricula" name="finalizarmatricula" class="btn btn-danger">Finalizar</button>
-  </div>
-</div>
 
 </fieldset>
 </form>
@@ -91,88 +98,53 @@ require 'noautorizado.php';
                    <thead>
 
                    <th><input type="checkbox" id="checkall" /></th>
-                   <th>Código</th>
+                    <th>Código</th>
                     <th>Nombre clase</th>
-                     <th>Días</th>
-                     <th>Sección</th>
-                     <th>Hora inicial</th>
-                     <th>Hora final</th>
-                     <th>Docente</th>
-                      <th>Plan de Estudio</th>
-
+                    <th>Días</th>
+                    <th>Sección</th>
+                    <th>Hora inicial</th>
+                    <th>Hora final</th>
+                    <th>Docente</th>
+                    <th>Plan de Estudio</th>
+                    <th>Salón</th>
 
                    </thead>
     <tbody>
 
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>IIT2000</td>
-    <td>Ingeniería de Software I</td>
-    <td>L-M-V</td>
-    <td>A</td>
-    <td>13:50</td>
-    <td>14:40</td>
-    <td>Marco Antonio</td>
-    <td>Ingeniería en Infotecnología</td>
+   <?php
+if (!empty($_GET['numerocuenta'])){
 
-    </tr>
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>IIT2001</td>
-    <td>Ingeniería de Software II</td>
-    <td>L-M-V</td>
-    <td>B</td>
-    <td>14:50</td>
-    <td>15:40</td>
-    <td>Marco Antonio</td>
-    <td>Ingeniería en Infotecnología</td>
-
-    </tr>
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>DER1001</td>
-    <td>Derecho Constitucional</td>
-    <td>L-M-V</td>
-    <td>B</td>
-    <td>16:50</td>
-    <td>18:40</td>
-    <td>Claudia</td>
-    <td>Derecho</td>
-
-    </tr>
+$qcuentap = "SELECT planes_estudio.nombre_plan, planes_estudio.id_plan_estudio FROM `planes_estudio` INNER JOIN estudiantes INNER JOIN carreras WHERE estudiantes.id_carrera=carreras.id_carrera AND estudiantes.num_cuenta ='" . $_GET['numerocuenta'] . "' AND carreras.id_carrera=planes_estudio.id_carrera";
+$qcuentap = mysqli_query($conexion, $qcuentap);
+ while($lineaplan = mysqli_fetch_assoc($qcuentap)){
+ echo ' ';
+ echo '<center> <h3>';
+ echo $lineaplan['nombre_plan'];
+ $lineaplan['id_plan_estudio'];
+ echo '</center></h3>';
 
 
+            $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND programacion_cursos.estatus_curso='Activo' ORDER BY id_programacion;;";
 
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>ARQ2000</td>
-    <td>Diseño I I</td>
-    <td>L-M-V</td>
-    <td>A</td>
-    <td>15:50</td>
-    <td>18:40</td>
-    <td>Mejía</td>
-    <td>Arquitectura</td>
+$query = mysqli_query($conexion, $sql);
+            while($rows = mysqli_fetch_assoc($query)){
+               echo "    <tr>
+    <td><input type='checkbox' class='checkthis' /></td>
+    <td>$rows[codigo_prog_curso]</td>
+    <td>$rows[nombre_curso]</td>
+    <td>$rows[nombre_plan]</td>
+    <td>$rows[dias]</td>
+    <td>$rows[seccion]</td>
+    <td>$rows[hora_inicio]</td>
+    <td>$rows[hora_termina]</td>
+    <td>$rows[nombres]</td>
+    <td>$rows[codigo_aula]</td>
+    ";
+   }
+ }
 
-    </tr>
-
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>MAT1001</td>
-    <td>Orientación Universitaria</td>
-    <td>L-M-V</td>
-    <td>A</td>
-    <td>6:50</td>
-    <td>8:40</td>
-    <td>Martinez</td>
-    <td>Ingeniería Civil</td>
-
-    </tr>
-
-
+}
+?>
 
 
 
@@ -185,9 +157,6 @@ require 'noautorizado.php';
   <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
   <li class="active"><a href="#">1</a></li>
   <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
   <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
 </ul>
 
