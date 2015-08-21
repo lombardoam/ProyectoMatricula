@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2015 a las 06:40:39
+-- Tiempo de generación: 21-08-2015 a las 08:59:50
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -413,15 +413,14 @@ CREATE TABLE IF NOT EXISTS `historiales_academicos` (
   `id_historial` int(11) NOT NULL AUTO_INCREMENT,
   `codigo_historial` varchar(10) NOT NULL,
   `num_cuenta` int(11) NOT NULL,
-  `id_curso` int(11) DEFAULT NULL,
+  `id_curso` int(11) NOT NULL,
   `id_evaluacion` int(11) DEFAULT NULL,
   `estado` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id_historial`,`codigo_historial`),
-  UNIQUE KEY `id_curso` (`id_curso`),
   KEY `num_cuenta_idx` (`num_cuenta`),
   KEY `id_evaluacion_idx` (`id_evaluacion`),
   KEY `num_cuenta` (`num_cuenta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `historiales_academicos`
@@ -431,7 +430,9 @@ INSERT INTO `historiales_academicos` (`id_historial`, `codigo_historial`, `num_c
 (1, '20011025', 20011025, 1, 1, 'Aprobado'),
 (2, '20131037', 20131037, 8, 2, 'Aprobado'),
 (4, '201500001', 201500001, 4, 3, 'Aprobado'),
-(5, '201500001', 201500001, 5, 6, 'Aprobado');
+(5, '201500001', 201500001, 5, 6, 'Aprobado'),
+(7, '20102036', 20102036, 5, 9, 'Reprobado'),
+(8, '20102036', 20102036, 11, 10, 'Aprobado');
 
 -- --------------------------------------------------------
 
