@@ -237,7 +237,7 @@ $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
             echo "    <tr>
     <td><input type='checkbox' class='checkthis' name='eleccion[]' id='eleccion' value='$i++' /></td>
-    <td><span id='id[]'>$rows[id_programacion]</td>
+    <td><input type='hidden' name='id' readonly id='id' value='[id_programacion]'> <span id='id[]'>$rows[id_programacion]</td>
     <td><span id='codigo[]'>$rows[codigo_prog_curso]</td>
     <td><span id='nombre[]'>$rows[nombre_curso]</td>
     <td><span id='plan[]'>$rows[nombre_plan]</td>
