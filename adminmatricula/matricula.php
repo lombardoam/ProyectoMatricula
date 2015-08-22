@@ -197,7 +197,27 @@ $qtipo = mysqli_query($conexion, $qtipo);
 
                    </thead>
     <tbody>
+     <!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta si eliges no, regresa a la página -->
+            <!-- Modal -->
+<div class="modal fade" id="MatriculaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sistema de matrícula</h4>
+      </div>
+      <div class="modal-body"><div align="center">
+        ¿Desea guardar la configuración elegida de matrícula para el estudiante?
+          </div></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <input type= "submit" class="btn btn-primary" name="submit" id="submit" data-dismiss="modal" aria-hidden="true" value="Sí"/>
+          </form>
+      </div>
+    </div>
 
+  </div>
+</div>
 <!-- Consulta SQL, primero verifica si el campo del buscador está vacío, si no lo está busca, muestra nombre, cuenta, saldo, carrera y
 los horarios automáticamente se filtran al plan de estudio al cual pertenece el estudiante.
 
@@ -246,30 +266,6 @@ $query = mysqli_query($conexion, $sql);
     <td><input class='docente' type='hidden' name='nombres[]' readonly id='nombres' value='$rows[nombres]'> <span id='nombres[]'>$rows[nombres]</td>
     <td><input class='aula' type='hidden' name='aula[]' readonly id='aula' value='$rows[codigo_aula]'> <span id='aula[]'>$rows[codigo_aula]</td>
     ";
-                ?>
-     <!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta si eliges no, regresa a la página -->
-            <!-- Modal -->
-<div class="modal fade" id="MatriculaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header modal-header-primary">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sistema de matrícula</h4>
-      </div>
-      <div class="modal-body"><div align="center">
-        ¿Desea guardar la configuración elegida de matrícula para el estudiante?
-          </div></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <input type= "submit" class="btn btn-primary" name="submit" id="submit" data-dismiss="modal" aria-hidden="true" value="Sí"/>
-          </form>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-    <?php
 
     if(isset($_POST['submit'])){
     $eleccion=$_POST['eleccion'];
