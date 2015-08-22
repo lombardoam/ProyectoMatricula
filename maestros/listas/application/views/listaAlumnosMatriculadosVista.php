@@ -115,7 +115,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </thead>
             <tbody>
                 <tr>
-      <h3></h3>
       <?php
 
 
