@@ -235,17 +235,17 @@ $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
             $data[] = $rows;
                echo "    <tr>
-    <td><input type='checkbox' class='check' name='eleccion[]' value='$i++' /></td>
-    <td><input type='hidden' id='id' name='id[]' class='texto'>$rows[id_programacion]</input></td>
-    <td><input type='hidden' id='codigo' name='codigo[]' class='texto'>$rows[codigo_prog_curso]</input></td>
-    <td><input type='hidden' id='nombre' name='nombre[]' class='texto'>$rows[nombre_curso]</input></td>
-    <td><input type='hidden' id='plan' name='plan[]' class='texto'>$rows[nombre_plan]</input></td>
-    <td><input type='hidden' id='dias' name='dias[]' class='texto'>$rows[dias]</input></td>
-    <td><input type='hidden' id='seccion' name='seccion[]' class='texto'>$rows[seccion]</input></td>
-    <td><input type='hidden' id='inicio' name='inicio[]' class='texto'>$rows[hora_inicio]</input></td>
-    <td><input type='hidden' id='termina' name='termina[]' class='texto'>$rows[hora_termina]</input></td>
-    <td><input type='hidden' id='docente' name='docente[]' class='texto'>$rows[nombres]</input></td>
-    <td><input type='hidden' id='aula' name='aula[]' class='texto'>$rows[codigo_aula]</input></td>
+    <td><input type='checkbox' class='check'  width:20px' name='eleccion[]' value='$i++' /></td>
+    <td><input type='text' style='border:none; width:20px' readonly id='id' id='id' name='id[]' class='texto' value='$rows[id_programacion]'/></td>
+    <td><input type='text' style='border:none; width:40px' readonly id='codigo' id='codigo' name='codigo[]' class='texto' value='$rows[codigo_prog_curso]'/></td>
+    <td><input type='text' style='border:none; width:190px' id='nombre' readonly id='nombre' name='nombre[]' class='texto' value='$rows[nombre_curso]'/></td>
+    <td><input type='text' style='border:none; width:150px' id='plan' readonly id='plan' name='plan[]' class='texto' value='$rows[nombre_plan]'/></td>
+    <td><input type='text' style='border:none; width:90px' id='dias' readonly id='dias' name='dias[]' class='texto' value='$rows[dias]'/></td>
+    <td><input type='text' style='border:none; width:70px' id='seccion' readonly id='seccion' name='seccion[]' class='texto' value='$rows[seccion]'/></td>
+    <td><input type='text' style='border:none; width:40px' id='inicio' readonly id='inicio' name='inicio[]' class='texto' value='$rows[hora_inicio]'/></td>
+    <td><input type='text' style='border:none; width:40px' id='termina' name='termina[]' readonly id='termina' class='texto' value='$rows[hora_termina]'/></td>
+    <td><input type='text' style='border:none; width:100px' id='docente' name='docente[]' readonly id='docente' class='texto' value='$rows[nombres]'/></td>
+    <td><input type='text' style='border:none; width:70px' id='aula' name='aula[]' readonly id='aula' class='texto' value='$rows[codigo_aula]'/></td>
     ";
    }
          if(isset($_POST['submit'])){
@@ -265,7 +265,7 @@ $query = mysqli_query($conexion, $sql);
     foreach($eleccion as $i){
 
          $envio=mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
-       VALUES('" . $_POST["nombre_carrera"]. "',
+       VALUES('" . $_POST['numerocuenta']. "',
             '{$id [$i]}')");
    }
     }
@@ -355,7 +355,7 @@ echo '<div align="center">
 }else {
 
  echo '<div align="center">
-<button id="matricular" name="matricular" class="btn btn-primary" data-toggle="modal" data-loading-text data-target="#MatriculaModal"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+<button id="submit" name="submit" type="submit" class="btn btn-primary"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
 
 <button id="imprimir" name="imprimir" class="btn btn-primary" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
 
