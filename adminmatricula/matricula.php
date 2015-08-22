@@ -235,7 +235,7 @@ $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
             $data[] = $rows;
                echo "    <tr>
-    <td><input type='checkbox' class='checkthis' name='eleccion[]' value='$1' /></td>
+    <td><input type='checkbox' class='check' name='eleccion[]' value='$i++' /></td>
     <td><input type='hidden' id='id' name='id[]' class='texto'>$rows[id_programacion]</input></td>
     <td><input type='hidden' id='codigo' name='codigo[]' class='texto'>$rows[codigo_prog_curso]</input></td>
     <td><input type='hidden' id='nombre' name='nombre[]' class='texto'>$rows[nombre_curso]</input></td>
@@ -248,9 +248,29 @@ $query = mysqli_query($conexion, $sql);
     <td><input type='hidden' id='aula' name='aula[]' class='texto'>$rows[codigo_aula]</input></td>
     ";
    }
+         if(isset($_POST['submit'])){
+    $id=$_POST['id'];
+    $eleccion=$_POST['eleccion'];
+    $codigo=$_POST['codigo'];
+    $asignatura=$_POST['nombre'];
+    $plan=$_POST['plan'];
+    $dias=$_POST['dias'];
+    $seccion=$_POST['seccion'];
+    $inicio=$_POST['inicio'];
+    $termina=$_POST['termina'];
+    $docente=$_POST['docente'];
+    $aula=$_POST['aula'];
+
+
+    foreach($eleccion as $i){
+
+         $envio=mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
+       VALUES('" . $_POST["nombre_carrera"]. "',
+            '{$id [$i]}')");
+   }
+    }
  }
  }
-// }
 }
 
 
@@ -335,7 +355,7 @@ echo '<div align="center">
 }else {
 
  echo '<div align="center">
-<button id="matricular" name="matricular" class="btn btn-primary" data-toggle="modal" data-target="#MatriculaModal"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+<button id="matricular" name="matricular" class="btn btn-primary" data-toggle="modal" data-loading-text data-target="#MatriculaModal"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
 
 <button id="imprimir" name="imprimir" class="btn btn-primary" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
 
@@ -359,37 +379,12 @@ echo '<div align="center">
           </div></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <input type= "submit" class="btn btn-primary" name="submit" id="submit" value="Sí"/>
+        <input type= "submit" class="btn btn-primary" name="submit" id="submit" data-dismiss="modal" value="Sí"/>
       </div>
     </div>
 
   </div>
 </div>
-
-<?php
-    if(isset($_POST['submit'])){
-    $id=$_POST['id'];
-    $eleccion=$_POST['eleccion'];
-    $codigo=$_POST['codigo'];
-    $asignatura=$_POST['nombre'];
-    $plan=$_POST['plan'];
-    $dias=$_POST['dias'];
-    $seccion=$_POST['seccion'];
-    $inicio=$_POST['inicio'];
-    $termina=$_POST['termina'];
-    $docente=$_POST['docente'];
-    $aula=$_POST['aula'];
-
-
-    foreach($eleccion as $i){
-
-         $envio=mysqli_query($conexion, "INSERT INTO matriculas(num_cuenta, id_programacion)
-       VALUES('$_POST[numerocuenta]',
-            '{$id [$i]}')");
-   }
-    }
-
-   ?>
 
  </form>
             <br><br>
@@ -410,6 +405,7 @@ echo '<div align="center">
 </html>
 
 <script type="text/javascript">
+    $().button('loading')
     $('#MatriculaModal').on('hidden.bs.modal', function (e) {
   // do something...
 
