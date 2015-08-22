@@ -103,10 +103,10 @@
                         <a href="config.php"><i class="glyphicon glyphicon-cog"></i> Gestionar Evaluación</a>
                     </li>
                     <li>
-                        <a href="reporte.php"><i class="glyphicon glyphicon-tasks"></i> Asistencias</a>
+                        <a href="asistencias.php"><i class="glyphicon glyphicon-tasks"></i> Asistencias</a>
                     </li>
                     <li>
-                        <a href="asistencias.php"><i class="glyphicon glyphicon-tasks"></i> Reportes</a>
+                        <a href="reporte.php"><i class="glyphicon glyphicon-tasks"></i> Reportes</a>
                     </li>
 
                 </ul>
