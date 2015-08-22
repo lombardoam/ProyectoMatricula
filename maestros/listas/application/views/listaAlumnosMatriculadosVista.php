@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	body {
 		background-color: #fff;
-		margin: 40px;
+		margin: 0px;
 		font: 13px/20px normal Helvetica, Arial, sans-serif;
 		color: #4F5155;
 	}
@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		padding: 14px 15px 10px 15px;
 	}
 
-	cosa {
+	cosad {
 		font-family: Consolas, Monaco, Courier New, Courier, monospace;
 		font-size: 12px;
 		background-color: #f9f9f9;
@@ -90,13 +90,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
+	<h1>Asistencia Reportes</h1>
 
-<h2> <?php echo" "; echo  $_SESSION["NOMBRE_CURSO"];// $_COOKIE["nombre_curso"];?></h2>
+        <h2>Catedratico  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
+    <div id="body">
+        <h4><?php echo $_SESSION["NOMBRE_CURSO"]; ?> -  Periodo 1  -  Año 2015</h4>
 
-	<div id="body">
 
-		<cosa>  <div class="row">
+
+		<cosa>
+            <div class="row">
     <div id="col-sm-4">
+
+        <div class="bs-example">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr bgcolor="E0EEEE" >
+                    <th>Nombre Alumnos</th>
+                    <th>Ausente</th>
+                    <th>Asistio</th>
+                     <th>Justifico</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
       <h3></h3>
       <?php
 
@@ -105,19 +123,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         {
      echo form_open('listaAlumnosMatriculadosController/setLista');
 
-echo"<label> $valor->nombres $valor->apellidos  </label><label class='checkbox-inline'>
-  <input tabindex='1' type='checkbox' name='ausente[]' id='$valor->nombres' value='$valor->nombres' class'form-control'> Ausente
-</label>
+echo"<td><label> $valor->nombres $valor->apellidos  </label><label class='checkbox-inline'></td>
+
+<td><input tabindex='1' type='checkbox' name='ausente[]' id='$valor->nombres' value='$valor->nombres' class'form-control'> Ausente
+</label> </td>
+
 <label class='checkbox-inline'>
-  <input tabindex='1' type='checkbox' name='asistio[]' id='$valor->nombres' value='$valor->nombres' class'form-control'> Asistio
-</label>
+
+<td><input tabindex='1' type='checkbox' name='asistio[]' id='$valor->nombres' value='$valor->nombres' class'form-control'> Asistio
+</label></td>
+
 <label class='checkbox-inline'>
-  <input tabindex='1' type='checkbox' name='justificado[]' id='$valor->nombres' value='$valor->nombres' class'form-control'> Justificado
-</label><br>";
+
+<td><input tabindex='1' type='checkbox' name='justificado[]' id='$valor->nombres' value='$valor->nombres' class'form-control'> Justificado
+</label></td></tr><br>";
 
          }
+echo"</table>";
 
-echo"<p><input type='submit' class='myButton' name='seleccionado' value='Subir resultado'></p>";
+echo"<input type='submit' class='centrar' name='seleccionado' value='Subir resultado'>";
 
 
  echo form_close();
@@ -129,11 +153,9 @@ if (count($resultado->result()) == 0)
 }
 
      ?>
-
-
-
-             </div>
-  </div></cosa>
+</div>
+  </div>
+        </cosa>
 
 
 
@@ -142,11 +164,11 @@ if (count($resultado->result()) == 0)
 
 
 	</div>
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  : '' ?></p>
+                </div>
 </div>
 
 </body>
+
 </html>
 
 
