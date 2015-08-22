@@ -232,16 +232,16 @@ $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
             $data[] = $rows;
                echo "    <tr>
-    <td><input type='checkbox' class='checkthis' /></td>
-    <td>$rows[codigo_prog_curso]</td>
-    <td>$rows[nombre_curso]</td>
-    <td>$rows[nombre_plan]</td>
-    <td>$rows[dias]</td>
-    <td>$rows[seccion]</td>
-    <td>$rows[hora_inicio]</td>
-    <td>$rows[hora_termina]</td>
-    <td>$rows[nombres]</td>
-    <td>$rows[codigo_aula]</td>
+    <td><input type='checkbox' class='checkthis' name='checar' /></td>
+    <td><input type='hidden' id='codigo' name='codigo' class='texto'>$rows[codigo_prog_curso]</input></td>
+    <td><input type='hidden' id='nombre' name='nombre' class='texto'>$rows[nombre_curso]</input></td>
+    <td><input type='hidden' id='plan' name='plan' class='texto'>$rows[nombre_plan]</input></td>
+    <td><input type='hidden' id='dias' name='dias' class='texto'>$rows[dias]</input></td>
+    <td><input type='hidden' id='seccion' name='seccion' class='texto'>$rows[seccion]</input></td>
+    <td><input type='hidden' id='inicio' name='inicio' class='texto'>$rows[hora_inicio]</input></td>
+    <td><input type='hidden' id='termina' name='termina' class='texto'>$rows[hora_termina]</input></td>
+    <td><input type='hidden' id='docente' name='docente' class='texto'>$rows[nombres]</input></td>
+    <td><input type='hidden' id='aula' name='aula' class='texto'>$rows[codigo_aula]</input></td>
     ";
    }
  }
