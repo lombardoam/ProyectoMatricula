@@ -233,21 +233,20 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
 
 $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
-            $data[] = $rows;
-               echo "    <tr>
-    <td><input type='checkbox' class='check'  width:20px' name='eleccion[]' value='$i++' /></td>
-    <td><input type='text' style='border:none; width:20px' readonly id='id' id='id' name='id[]' class='texto' value='$rows[id_programacion]'/></td>
-    <td><input type='text' style='border:none; width:40px' readonly id='codigo' id='codigo' name='codigo[]' class='texto' value='$rows[codigo_prog_curso]'/></td>
-    <td><input type='text' style='border:none; width:190px' id='nombre' readonly id='nombre' name='nombre[]' class='texto' value='$rows[nombre_curso]'/></td>
-    <td><input type='text' style='border:none; width:150px' id='plan' readonly id='plan' name='plan[]' class='texto' value='$rows[nombre_plan]'/></td>
-    <td><input type='text' style='border:none; width:90px' id='dias' readonly id='dias' name='dias[]' class='texto' value='$rows[dias]'/></td>
-    <td><input type='text' style='border:none; width:70px' id='seccion' readonly id='seccion' name='seccion[]' class='texto' value='$rows[seccion]'/></td>
-    <td><input type='text' style='border:none; width:40px' id='inicio' readonly id='inicio' name='inicio[]' class='texto' value='$rows[hora_inicio]'/></td>
-    <td><input type='text' style='border:none; width:40px' id='termina' name='termina[]' readonly id='termina' class='texto' value='$rows[hora_termina]'/></td>
-    <td><input type='text' style='border:none; width:100px' id='docente' name='docente[]' readonly id='docente' class='texto' value='$rows[nombres]'/></td>
-    <td><input type='text' style='border:none; width:70px' id='aula' name='aula[]' readonly id='aula' class='texto' value='$rows[codigo_aula]'/></td>
+            echo "    <tr>
+    <td><input type='checkbox' class='checkthis' id='eleccion' /></td>
+    <td><span id='id'>$rows[id_programacion]</td>
+    <td><span id='codigo'>$rows[codigo_prog_curso]</td>
+    <td><span id='nombre'>$rows[nombre_curso]</td>
+    <td><span id='plan'>$rows[nombre_plan]</td>
+    <td><span id='dias'>$rows[dias]</td>
+    <td><span id='seccion'>$rows[seccion]</td>
+    <td><span id='inicio'>$rows[hora_inicio]</td>
+    <td><span id='termina'>$rows[hora_termina]</td>
+    <td><span id='docentes'>$rows[nombres]</td>
+    <td><span id='aula'>$rows[codigo_aula]</td>
     ";
-   }
+
          if(isset($_POST['submit'])){
     $id=$_POST['id'];
     $eleccion=$_POST['eleccion'];
@@ -266,11 +265,12 @@ $query = mysqli_query($conexion, $sql);
 
          $envio=mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
        VALUES('" . $_POST['numerocuenta']. "',
-            '{$id [$i]}')");
+            '{$rows['id_programacion'] [$i]}')");
    }
     }
  }
  }
+}
 }
 
 
@@ -305,6 +305,7 @@ $query = mysqli_query($conexion, $sql);
 
 </table>
 
+<!-- Paginación
 <div class="clearfix"></div>
 <ul class="pagination pull-right">
   <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
@@ -321,10 +322,12 @@ $query = mysqli_query($conexion, $sql);
         </div>
 	</div>
     </div>
+-->
 <!-- Final de la tabla -->
 
 <!-- Botón que inserta la información a la BD -->
-    <?php
+<br><br>
+<?php
 
 if (empty($_POST['numerocuenta'])) {
 echo '<div align="center">
@@ -355,7 +358,7 @@ echo '<div align="center">
 }else {
 
  echo '<div align="center">
-<button id="submit" name="submit" type="submit" class="btn btn-primary"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+<button id="matricular" name="matricular" data-toggle="modal" data-target="#MatriculaModal" class="btn btn-primary"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
 
 <button id="imprimir" name="imprimir" class="btn btn-primary" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
 
@@ -410,6 +413,16 @@ echo '<div align="center">
   // do something...
 
 })
+$('input[type="text"]').keypress(function(e) {
+    if (e.which !== 0 && e.charCode !== 0) { // only characters
+        var c = String.fromCharCode(e.keyCode|e.charCode);
+        $span = $(this).siblings('span').first();
+        $span.text($(this).val() + c) ; // the hidden span takes
+                                        // the value of the input
+        $inputSize = $span.width() ;
+        $(this).css("width", $inputSize) ; // apply width of the span to the input
+     }
 
+}) ;
 
 </script>
