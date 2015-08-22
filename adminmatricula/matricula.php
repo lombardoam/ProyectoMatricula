@@ -237,16 +237,16 @@ $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
             echo "    <tr>
     <td><input type='checkbox' class='checkthis' name='eleccion[]' id='eleccion' value='$i++' /></td>
-    <td><input type='hidden' name='id' readonly id='id' value='[id_programacion]'> <span id='id[]'>$rows[id_programacion]</td>
-    <td><span id='codigo[]'>$rows[codigo_prog_curso]</td>
-    <td><span id='nombre[]'>$rows[nombre_curso]</td>
-    <td><span id='plan[]'>$rows[nombre_plan]</td>
-    <td><span id='dias[]'>$rows[dias]</td>
-    <td><span id='seccion[]'>$rows[seccion]</td>
-    <td><span id='inicio[]'>$rows[hora_inicio]</td>
-    <td><span id='termina[]'>$rows[hora_termina]</td>
-    <td><span id='docentes[]'>$rows[nombres]</td>
-    <td><span id='aula[]'>$rows[codigo_aula]</td>
+    <td><input type='hidden' name='id' readonly id='id' value='$rows[id_programacion]'> <span id='id[]'>$rows[id_programacion]</td>
+    <td><input type='hidden' name='codigo' readonly id='codigo' value='$rows[codigo_prog_curso]'> <span id='codigo[]'>$rows[codigo_prog_curso]</td>
+    <td><input type='hidden' name='nombre' readonly id='nombre' value='$rows[nombre_curso]'> <span id='nombre[]'>$rows[nombre_curso]</td>
+    <td><input type='hidden' name='plan' readonly id='plan' value='$rows[nombre_plan]'> <span id='plan[]'>$rows[nombre_plan]</td>
+    <td><input type='hidden' name='dias' readonly id='dias' value='$rows[dias]'> <span id='dias[]'>$rows[dias]</td>
+    <td><input type='hidden' name='seccion' readonly id='seccion' value='$rows[seccion]'> <span id='seccion[]'>$rows[seccion]</td>
+    <td><input type='hidden' name='inicio' readonly id='inicio' value='$rows[hora_inicio]'> <span id='inicio[]'>$rows[hora_inicio]</td>
+    <td><input type='hidden' name='termina' readonly id='termina' value='$rows[hora_termina]'> <span id='termina[]'>$rows[hora_termina]</td>
+    <td><input type='hidden' name='nombres' readonly id='nombres' value='$rows[nombres]'> <span id='nombres[]'>$rows[nombres]</td>
+    <td><input type='hidden' name='aula' readonly id='aula' value='$rows[codigo_aula]'> <span id='aula[]'>$rows[codigo_aula]</td>
     ";
 
          if(isset($_POST['submit'])){
