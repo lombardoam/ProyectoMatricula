@@ -5,7 +5,9 @@ require 'conexion.php';
 require 'noautorizado.php';
 
 ?>
-        <div id="page-wrapper">
+   <script src="js/table.js"></script>
+
+  <div id="page-wrapper">
 
             <div class="container-fluid">
 
@@ -35,8 +37,8 @@ require 'noautorizado.php';
 
     <!-- /Inicio de código de formulario -->
 
-<form name="form" class="form-horizontal" action="matricula.php" method="POST">
-    <script src="js/table.js"></script>
+<form name="form" class="form-horizontal" action="matricula.php" method="POST" role="form">
+
 <fieldset>
 
 <!-- Form Name -->
@@ -234,17 +236,17 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
 $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
             echo "    <tr>
-    <td><input type='checkbox' class='checkthis' id='eleccion' /></td>
-    <td><span id='id'>$rows[id_programacion]</td>
-    <td><span id='codigo'>$rows[codigo_prog_curso]</td>
-    <td><span id='nombre'>$rows[nombre_curso]</td>
-    <td><span id='plan'>$rows[nombre_plan]</td>
-    <td><span id='dias'>$rows[dias]</td>
-    <td><span id='seccion'>$rows[seccion]</td>
-    <td><span id='inicio'>$rows[hora_inicio]</td>
-    <td><span id='termina'>$rows[hora_termina]</td>
-    <td><span id='docentes'>$rows[nombres]</td>
-    <td><span id='aula'>$rows[codigo_aula]</td>
+    <td><input type='checkbox' class='checkthis' name='eleccion[]' id='eleccion' value='$i++' /></td>
+    <td><span id='id[]'>$rows[id_programacion]</td>
+    <td><span id='codigo[]'>$rows[codigo_prog_curso]</td>
+    <td><span id='nombre[]'>$rows[nombre_curso]</td>
+    <td><span id='plan[]'>$rows[nombre_plan]</td>
+    <td><span id='dias[]'>$rows[dias]</td>
+    <td><span id='seccion[]'>$rows[seccion]</td>
+    <td><span id='inicio[]'>$rows[hora_inicio]</td>
+    <td><span id='termina[]'>$rows[hora_termina]</td>
+    <td><span id='docentes[]'>$rows[nombres]</td>
+    <td><span id='aula[]'>$rows[codigo_aula]</td>
     ";
 
          if(isset($_POST['submit'])){
@@ -261,7 +263,7 @@ $query = mysqli_query($conexion, $sql);
     $aula=$_POST['aula'];
 
 
-    foreach($eleccion as $i){
+    //foreach($eleccion as $i){
 
          $envio=mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
        VALUES('" . $_POST['numerocuenta']. "',
@@ -271,7 +273,7 @@ $query = mysqli_query($conexion, $sql);
  }
  }
 }
-}
+//}
 
 
 //Si la búsqueda está vacía hace una muestra sin filtro de todos los horarios sin buscar el plan de estudio del estudiante
