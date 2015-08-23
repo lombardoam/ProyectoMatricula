@@ -145,12 +145,10 @@ $query = mysqli_query($conexion, $sql);
 
 }
 ?>
-
-
-
     </tbody>
 
 </table>
+
 
 <div class="clearfix"></div>
 <ul class="pagination pull-right">
@@ -160,23 +158,26 @@ $query = mysqli_query($conexion, $sql);
   <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
 </ul>
 
+
             </div>
 
         </div>
+                        <!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="cancelar"></label>
+  <div class="col-md-8">
+    <button id="cancelarclase" name="cancelar clase" class="btn btn-danger" onclick="window.location='cancelaciones.php';" ><span class="glyphicon glyphicon-erase"></span> Cancelar Clase
+     </button>
+
+  </div>
+</div>
 	</div>
+
     </div>
                 <br><br>
 
 
         </div>
-        <!-- /#page-wrapper -->
-
-            </div>
-        <!-- /#page-wrapper -->
-
-
-
-    <!-- /#wrapper -->
 
 
   </body>
