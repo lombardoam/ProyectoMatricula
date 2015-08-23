@@ -140,7 +140,7 @@ echo"<td><label> $valor->nombres $valor->apellidos  </label><label class='checkb
          }
 echo"</table>";
 
-echo"<input type='submit' class='centrar' name='seleccionado' value='Subir resultado'>";
+echo"<input type='submit' class='centrar' name='seleccionado' value='Subir resultado' >";
 
 
  echo form_close();
