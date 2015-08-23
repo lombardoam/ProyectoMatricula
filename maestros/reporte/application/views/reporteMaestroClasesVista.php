@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      height: auto;
      border: 1px solid #555;
      background: #FAFAFA;
+     margin: 14px 0 14px 0;
      padding: 12px 10px 12px 10px;
      display: block;
      margin-left: auto;
@@ -87,16 +88,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="<?= base_url()?>csss/css/bootstrap.min.css">
+  <script src="<?= base_url()?>csss/css/jquery.min.js"></script>
+  <script src="<?= base_url()?>csss/css/bootstrap.min.js"></script>
+
+  <!-- For Travis CI -->
+  <script src="<?= base_url()?>csss/css/jquery-2.1.4.min.js"></script>
+  <script src="<?= base_url()?>csss/css/qunit-1.18.0.js"></script>
+
+
+     <script src="<?= base_url()?>csss/css/jquery-2.1.3.min.js"></script>
+
+  <!-- This is what you need -->
+  <script src="<?= base_url()?>csss/css/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="<?= base_url()?>csss/css/sweetalert.css">
+
 
 </head>
 <body>
 
 <div id="container">
+    <div id="body">
 <h2>Catedratico  <?php echo $_COOKIE["nombre"];echo" "; echo $_COOKIE["apellido"];?></h2>
-	<div id="body">
+
 
 		<cosa>  <div class="row">
     <div id="col-sm-4">
