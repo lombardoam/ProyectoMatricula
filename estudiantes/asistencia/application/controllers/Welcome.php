@@ -13,7 +13,7 @@ class Welcome extends CI_Controller
         parent::__construct();
                   $this->load->database();
                $this->load->helper('form');
-                          $this->load->helper('url');
+             $this->load->helper('url');
 
 
 
