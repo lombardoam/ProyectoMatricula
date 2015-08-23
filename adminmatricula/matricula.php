@@ -37,7 +37,7 @@ require 'noautorizado.php';
 
     <!-- /Inicio de código de formulario -->
 
-<form name="form" class="form-horizontal" action="matricula.php" method="POST" role="form">
+<form name="form" class="form-horizontal" method="POST" role="form">
 
 <fieldset>
 
@@ -48,7 +48,7 @@ require 'noautorizado.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="numerocuenta"><span class="fa fa-fw fa-search"></span> Número de cuenta</label>
   <div class="col-md-2">
-    <input id="numerocuenta" name="numerocuenta" type="search" placeholder="Buscar alumno" class="form-control input-md" required="">
+    <input id="numerocuenta" name="numerocuenta" type="search" placeholder="Buscar alumno" class="form-control input-md">
      </div>
 </div>
     <!-- Prepended text-->
@@ -211,8 +211,8 @@ $qtipo = mysqli_query($conexion, $qtipo);
           </div></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <input type= "submit" class="btn btn-primary" name="submit" id="submit" data-dismiss="modal" aria-hidden="true" value="Sí"/>
-          </form>
+        <input type= "submit" class="btn btn-primary" name="submit" id="submit"  value="Sí"/>
+
       </div>
     </div>
 
@@ -247,6 +247,8 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
 /* Consulta que muestra las clases no aprobadas aún por el estudiante.
 
 */
+
+
             $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina, empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE NOT EXISTS (SELECT * FROM historiales_academicos WHERE programacion_cursos.id_curso=historiales_academicos.id_curso AND historiales_academicos.num_cuenta='" . $_POST['numerocuenta'] . "' AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND historiales_academicos.estado='Aprobado') AND programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND programacion_cursos.estatus_curso='Activo'";
 
     $i = 0;
@@ -266,6 +268,7 @@ $query = mysqli_query($conexion, $sql);
     <td><input class='docente' type='hidden' name='nombres[]' readonly id='nombres' value='$rows[nombres]'> <span id='nombres[]'>$rows[nombres]</td>
     <td><input class='aula' type='hidden' name='aula[]' readonly id='aula' value='$rows[codigo_aula]'> <span id='aula[]'>$rows[codigo_aula]</td>
     ";
+
 
     if(isset($_POST['submit'])){
     $eleccion=$_POST['eleccion'];
@@ -291,6 +294,7 @@ $query = mysqli_query($conexion, $sql);
  }
 }
 }
+
 
 
 //Si la búsqueda está vacía hace una muestra sin filtro de todos los horarios sin buscar el plan de estudio del estudiante
@@ -376,8 +380,9 @@ echo '<div align="center">
 </div>';
 }else {
 
+    //fa fa-fw fa-check-square-o
  echo '<div align="center">
-<button id="matricular" name="matricular" data-toggle="modal" data-target="#MatriculaModal" class="btn btn-primary"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+<input type="button" id="matricular" name="matricular" data-toggle="modal" data-target="#MatriculaModal" class="btn btn-primary" value="Matrícular"</input>
 
 <button id="imprimir" name="imprimir" class="btn btn-primary" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
 
@@ -387,6 +392,7 @@ echo '<div align="center">
 }
 
 ?>
+</form>
 
 </fieldset>
 
