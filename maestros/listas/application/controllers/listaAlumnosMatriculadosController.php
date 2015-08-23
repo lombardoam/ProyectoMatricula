@@ -10,6 +10,7 @@ class ListaAlumnosMatriculadosController extends CI_Controller
      $this->load->helper('form');
      $this->load->library('session');
      $this->load->model('listaAlumnosMatriculadosModelo');
+     $this->load->helper('url');
 
     }
 
@@ -57,7 +58,17 @@ class ListaAlumnosMatriculadosController extends CI_Controller
 
 
 
-    echo"<script>alert('Subido Satisfactoriamente!!')</script>";
+    echo"<script>
+     function eventoAlerta()
+    {
+sweetAlert('Procesando!', 'La Asistencia a Sido Salvada', 'success');
+
+    }
+
+    window.onload = function() {
+  eventoAlerta();
+};</script>";
+
         $this->load->view('clasesMaatrucladasMaestroVista',$data);
 
 

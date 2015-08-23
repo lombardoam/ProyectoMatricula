@@ -37,7 +37,7 @@ require 'noautorizado.php';
 
     <!-- /Inicio de código de formulario -->
 
-<form name="form" class="form-horizontal" action="matricula.php" method="POST" role="form">
+<form name="form" class="form-horizontal" method="POST" role="form">
 
 <fieldset>
 
@@ -48,7 +48,7 @@ require 'noautorizado.php';
 <div class="form-group">
   <label class="col-md-4 control-label" for="numerocuenta"><span class="fa fa-fw fa-search"></span> Número de cuenta</label>
   <div class="col-md-2">
-    <input id="numerocuenta" name="numerocuenta" type="search" placeholder="Buscar alumno" class="form-control input-md" required="">
+    <input id="numerocuenta" name="numerocuenta" type="search" placeholder="Buscar alumno" class="form-control input-md">
      </div>
 </div>
     <!-- Prepended text-->
@@ -211,8 +211,8 @@ $qtipo = mysqli_query($conexion, $qtipo);
           </div></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <input type= "submit" class="btn btn-primary" name="submit" id="submit" data-dismiss="modal" aria-hidden="true" value="Sí"/>
-          </form>
+        <input type= "submit" class="btn btn-primary" name="submit" id="submit"  value="Sí"/>
+
       </div>
     </div>
 
@@ -246,7 +246,20 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
  echo '</center></h3>';
 /* Consulta que muestra las clases no aprobadas aún por el estudiante.
 
+CONSULTA TEÓRICA PARA SACAR REQUISITOS, LA TÉCNICA A APLICAR
+
+Repetimos filtros para despejar la tabla
+
+$requisitos = "SELECT programacion_cursos.id_curso INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN requisitos_curso WHERE NOT EXISTS (SELECT * FROM historiales_academicos WHERE programacion_cursos.id_curso=historiales_academicos.id_curso AND historiales_academicos.num_cuenta='" . $_POST['numerocuenta'] . "' AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND historiales_academicos.estado='Aprobado') AND programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND programacion_cursos.estatus_curso='Activo' AND programacion_cursos.id_curso =(SELECT id_curso FROM requisitos_curso WHERE id_curso_requisito IS NULL);
+while($conteo = mysqli_fetch_assoc($requisitos)){
+$conteo[id_curso]
+
+
+Los id_curso que aparezcan son cursos disponibles a ser matriculados por el alumno, y simplemente se importaría este resultado a las restricciones del query $sql de la misma forma como importé el id_plan_estudio.
+
 */
+
+
             $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina, empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE NOT EXISTS (SELECT * FROM historiales_academicos WHERE programacion_cursos.id_curso=historiales_academicos.id_curso AND historiales_academicos.num_cuenta='" . $_POST['numerocuenta'] . "' AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND historiales_academicos.estado='Aprobado') AND programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND programacion_cursos.estatus_curso='Activo'";
 
     $i = 0;
@@ -267,6 +280,7 @@ $query = mysqli_query($conexion, $sql);
     <td><input class='aula' type='hidden' name='aula[]' readonly id='aula' value='$rows[codigo_aula]'> <span id='aula[]'>$rows[codigo_aula]</td>
     ";
 
+
     if(isset($_POST['submit'])){
     $eleccion=$_POST['eleccion'];
     $id=$_POST['id'];
@@ -285,12 +299,22 @@ $query = mysqli_query($conexion, $sql);
 
         $query=mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
        VALUES('" . $_POST['numerocuenta']. "', '{$id [$i]}')");
+        mysqli_query($query);
+        while($rows = mysqli_fetch_assoc($query)){
+        echo '           <div align="center">
+                            <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Estudiante matriculado de forma exitosa.
+                </div></div>';
+}
    }
     }
  }
  }
 }
+
 }
+
 
 
 //Si la búsqueda está vacía hace una muestra sin filtro de todos los horarios sin buscar el plan de estudio del estudiante
@@ -376,8 +400,9 @@ echo '<div align="center">
 </div>';
 }else {
 
+    //fa fa-fw fa-check-square-o
  echo '<div align="center">
-<button id="matricular" name="matricular" data-toggle="modal" data-target="#MatriculaModal" class="btn btn-primary"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
+<input type="button" id="matricular" name="matricular" data-toggle="modal" data-target="#MatriculaModal" class="btn btn-primary" value="Matrícular"</input>
 
 <button id="imprimir" name="imprimir" class="btn btn-primary" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
 
@@ -387,6 +412,7 @@ echo '<div align="center">
 }
 
 ?>
+</form>
 
 </fieldset>
 

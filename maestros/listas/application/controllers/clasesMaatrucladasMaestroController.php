@@ -7,6 +7,7 @@ class ClasesMaatrucladasMaestroController extends CI_Controller
     {
         parent::__construct();
                   $this->load->database();
+     $this->load->helper('url');
 
     }
 
