@@ -42,7 +42,7 @@ require 'noautorizado.php';
 <fieldset>
 
 <!-- Form Name -->
-    <div align="center"></div>
+
 
 <!-- Search input-->
 <div class="form-group">
@@ -163,8 +163,6 @@ $qtipo = mysqli_query($conexion, $qtipo);
   </div>
 </div>
 
-</fieldset>
-
 
   <!-- / Fin del código del formulario -->
 
@@ -199,7 +197,27 @@ $qtipo = mysqli_query($conexion, $qtipo);
 
                    </thead>
     <tbody>
+     <!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta si eliges no, regresa a la página -->
+            <!-- Modal -->
+<div class="modal fade" id="MatriculaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sistema de matrícula</h4>
+      </div>
+      <div class="modal-body"><div align="center">
+        ¿Desea guardar la configuración elegida de matrícula para el estudiante?
+          </div></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <input type= "submit" class="btn btn-primary" name="submit" id="submit" data-dismiss="modal" aria-hidden="true" value="Sí"/>
+          </form>
+      </div>
+    </div>
 
+  </div>
+</div>
 <!-- Consulta SQL, primero verifica si el campo del buscador está vacío, si no lo está busca, muestra nombre, cuenta, saldo, carrera y
 los horarios automáticamente se filtran al plan de estudio al cual pertenece el estudiante.
 
@@ -236,22 +254,22 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
 $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
             echo "    <tr>
-    <td><input type='checkbox' class='checkthis' name='eleccion[]' id='eleccion' value='$i++' /></td>
-    <td><input type='hidden' name='id' readonly id='id' value='$rows[id_programacion]'> <span id='id[]'>$rows[id_programacion]</td>
-    <td><input type='hidden' name='codigo' readonly id='codigo' value='$rows[codigo_prog_curso]'> <span id='codigo[]'>$rows[codigo_prog_curso]</td>
-    <td><input type='hidden' name='nombre' readonly id='nombre' value='$rows[nombre_curso]'> <span id='nombre[]'>$rows[nombre_curso]</td>
-    <td><input type='hidden' name='plan' readonly id='plan' value='$rows[nombre_plan]'> <span id='plan[]'>$rows[nombre_plan]</td>
-    <td><input type='hidden' name='dias' readonly id='dias' value='$rows[dias]'> <span id='dias[]'>$rows[dias]</td>
-    <td><input type='hidden' name='seccion' readonly id='seccion' value='$rows[seccion]'> <span id='seccion[]'>$rows[seccion]</td>
-    <td><input type='hidden' name='inicio' readonly id='inicio' value='$rows[hora_inicio]'> <span id='inicio[]'>$rows[hora_inicio]</td>
-    <td><input type='hidden' name='termina' readonly id='termina' value='$rows[hora_termina]'> <span id='termina[]'>$rows[hora_termina]</td>
-    <td><input type='hidden' name='nombres' readonly id='nombres' value='$rows[nombres]'> <span id='nombres[]'>$rows[nombres]</td>
-    <td><input type='hidden' name='aula' readonly id='aula' value='$rows[codigo_aula]'> <span id='aula[]'>$rows[codigo_aula]</td>
+    <td><input class='eleccion' type='checkbox' name='eleccion[]' id='eleccion' value='$i++' /></td>
+    <td><input class='id' type='hidden' name='id[]' readonly id='id' value='$rows[id_programacion]'> <span id='id[]'>$rows[id_programacion]</td>
+    <td><input class='codigo' type='hidden' name='codigo[]' readonly id='codigo' value='$rows[codigo_prog_curso]'> <span id='codigo[]'>$rows[codigo_prog_curso]</td>
+    <td><input class='asignatura' type='hidden' name='nombre[]' readonly id='nombre' value='$rows[nombre_curso]'> <span id='nombre[]'>$rows[nombre_curso]</td>
+    <td><input class='plan' type='hidden' name='plan[]' readonly id='plan' value='$rows[nombre_plan]'> <span id='plan[]'>$rows[nombre_plan]</td>
+    <td><input class='dias' type='hidden' name='dias[]' readonly id='dias' value='$rows[dias]'> <span id='dias[]'>$rows[dias]</td>
+    <td><input class='seccion' type='hidden' name='seccion[]' readonly id='seccion' value='$rows[seccion]'> <span id='seccion[]'>$rows[seccion]</td>
+    <td><input class='inicio'type='hidden' name='inicio[]' readonly id='inicio' value='$rows[hora_inicio]'> <span id='inicio[]'>$rows[hora_inicio]</td>
+    <td><input class='termina' type='hidden' name='termina[]' readonly id='termina' value='$rows[hora_termina]'> <span id='termina[]'>$rows[hora_termina]</td>
+    <td><input class='docente' type='hidden' name='nombres[]' readonly id='nombres' value='$rows[nombres]'> <span id='nombres[]'>$rows[nombres]</td>
+    <td><input class='aula' type='hidden' name='aula[]' readonly id='aula' value='$rows[codigo_aula]'> <span id='aula[]'>$rows[codigo_aula]</td>
     ";
 
-         if(isset($_POST['submit'])){
-    $id=$_POST['id'];
+    if(isset($_POST['submit'])){
     $eleccion=$_POST['eleccion'];
+    $id=$_POST['id'];
     $codigo=$_POST['codigo'];
     $asignatura=$_POST['nombre'];
     $plan=$_POST['plan'];
@@ -263,17 +281,16 @@ $query = mysqli_query($conexion, $sql);
     $aula=$_POST['aula'];
 
 
-    //foreach($eleccion as $i){
+    foreach($eleccion as $i){
 
-         $envio=mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
-       VALUES('" . $_POST['numerocuenta']. "',
-            '{$rows['id_programacion'] [$i]}')");
+        $query=mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
+       VALUES('" . $_POST['numerocuenta']. "', '{$id [$i]}')");
    }
     }
  }
  }
 }
-//}
+}
 
 
 //Si la búsqueda está vacía hace una muestra sin filtro de todos los horarios sin buscar el plan de estudio del estudiante
@@ -370,28 +387,9 @@ echo '<div align="center">
 }
 
 ?>
- <!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta si eliges no, regresa a la página -->
-            <!-- Modal -->
-<div class="modal fade" id="MatriculaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header modal-header-primary">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sistema de matrícula</h4>
-      </div>
-      <div class="modal-body"><div align="center">
-        ¿Desea guardar la configuración elegida de matrícula para el estudiante?
-          </div></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <input type= "submit" class="btn btn-primary" name="submit" id="submit" data-dismiss="modal" value="Sí"/>
-      </div>
-    </div>
 
-  </div>
-</div>
+</fieldset>
 
- </form>
             <br><br>
 
 
@@ -409,22 +407,3 @@ echo '<div align="center">
   </body>
 </html>
 
-<script type="text/javascript">
-    $().button('loading')
-    $('#MatriculaModal').on('hidden.bs.modal', function (e) {
-  // do something...
-
-})
-$('input[type="text"]').keypress(function(e) {
-    if (e.which !== 0 && e.charCode !== 0) { // only characters
-        var c = String.fromCharCode(e.keyCode|e.charCode);
-        $span = $(this).siblings('span').first();
-        $span.text($(this).val() + c) ; // the hidden span takes
-                                        // the value of the input
-        $inputSize = $span.width() ;
-        $(this).css("width", $inputSize) ; // apply width of the span to the input
-     }
-
-}) ;
-
-</script>
