@@ -299,11 +299,20 @@ $query = mysqli_query($conexion, $sql);
 
         $query=mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
        VALUES('" . $_POST['numerocuenta']. "', '{$id [$i]}')");
+        mysqli_query($query);
+        while($rows = mysqli_fetch_assoc($query)){
+        echo '           <div align="center">
+                            <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Estudiante matriculado de forma exitosa.
+                </div></div>';
+}
    }
     }
  }
  }
 }
+
 }
 
 
