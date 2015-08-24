@@ -213,7 +213,6 @@ function pegar($id_requisito,$estu )
 
 $requisitos="SELECT cursos.id_curso FROM historiales_academicos INNER JOIN evaluaciones ON historiales_academicos.id_evaluacion = evaluaciones.id_evaluacion INNER JOIN configuraciones ON configuraciones.id_configuracion = evaluaciones.id_configuracion INNER JOIN programacion_cursos ON programacion_cursos.id_programacion = configuraciones.id_programacion INNER JOIN cursos ON cursos.id_curso = programacion_cursos.id_programacion INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = programacion_cursos.id_plan_estudio INNER JOIN aulas ON aulas.id_aula = programacion_cursos.id_aula WHERE historiales_academicos.num_cuenta =$estu AND historiales_academicos.estado ='aprobado' AND cursos.id_curso =$id_requisito";
 
-    echo count($requisitos);
 return(count($requisitos));
 
 }
@@ -266,8 +265,11 @@ $query = mysqli_query($conexion, $sql);
                 echo $rows['id_curso'];
      $requisitos="SELECT requisitos_curso.id_requisito1,requisitos_curso.id_requisito2,requisitos_curso.id_requisito3 FROM  requisitos_curso WHERE                      requisitos_curso.id_curso = $rows[id_curso]  and requisitos_curso.id_plan_estudio =$pla_estudio";
 
+
                 $consulta = mysqli_query($conexion, $requisitos);
 
+                if($consulta(count)>0)
+                {
                  while($row = mysqli_fetch_array($consulta))
                  {
                      if($row['id_requisito1'])
@@ -313,6 +315,7 @@ $query = mysqli_query($conexion, $sql);
 
 
                  }
+                    }
 
 
             echo "<tr>
