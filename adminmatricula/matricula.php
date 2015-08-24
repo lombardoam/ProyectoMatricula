@@ -6,7 +6,6 @@ require 'noautorizado.php';
 
 ?>
    <script src="js/table.js"></script>
-
   <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -180,9 +179,10 @@ $qtipo = mysqli_query($conexion, $qtipo);
 
                    <thead>
 
-                   <th><input type="checkbox" id="checkall" /></th>
-                   <th>ID</th>
-                   <th>Código</th>
+      <!--             <th><input type="checkbox" id="checkall" /></th> -->
+                    <th></th>
+                    <th>ID</th>
+                    <th>Código</th>
                     <th>Nombre clase</th>
                     <th>Plan de Estudio</th>
                      <th>Días</th>
@@ -236,7 +236,7 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
 $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_array($query)){
             echo "    <tr>
-    <td><input class='check' type='checkbox' name='eleccion[]' id='eleccion' value='$i++' /></td>
+    <td><input class='checkthis' type='checkbox' name='check[]' id='check' value='$i++' /></td>
     <td><input class='id' type='hidden' name='id[]' readonly id='id' value='$rows[id_programacion]'> $rows[id_programacion]</td>
     <td><input class='codigo' type='hidden' name='codigo[]' readonly id='codigo' value='$rows[codigo_prog_curso]'> $rows[codigo_prog_curso]</td>
     <td><input class='asignatura' type='hidden' name='nombre[]' readonly id='nombre' value='$rows[nombre_curso]'>$rows[nombre_curso]</td>
@@ -276,7 +276,7 @@ $query = mysqli_query($conexion, $sql);
 <?php
 
     if(isset($_POST['submit'])){
-    $eleccion=$_POST['eleccion'];
+    $checkthis=$_POST['check'];
     $id=$_POST['id'];
     $codigo=$_POST['codigo'];
     $asignatura=$_POST['nombre'];
@@ -289,7 +289,7 @@ $query = mysqli_query($conexion, $sql);
     $aula=$_POST['aula'];
 
 
-    foreach($eleccion as $i){
+    foreach($checkthis as $i){
 
         $query = mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
        VALUES('" . $_POST['numerocuenta']. "', '{$id [$i]}')");
@@ -418,7 +418,6 @@ $table.find('thead tr').children().each(function(i, v) {
     $(v).width(colWidth[i]);
 });
 </script>
-
             <br><br>
 
 
