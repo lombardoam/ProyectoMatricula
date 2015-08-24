@@ -250,15 +250,21 @@ SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curs
 
             /*$sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina, empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE NOT EXISTS (SELECT * FROM historiales_academicos WHERE programacion_cursos.id_curso=historiales_academicos.id_curso AND historiales_academicos.num_cuenta='" . $_POST['numerocuenta'] . "' AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND historiales_academicos.estado='Aprobado') AND programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND programacion_cursos.estatus_curso='Activo'";*/
 
-
-$sql= "SELECT * FROM cursos INNER JOIN programacion_cursos on programacion_cursos.id_curso = cursos.id_curso INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = cursos.id_plan_estudio INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado INNER JOIN aulas ON aulas.id_aula = programacion_cursos.id_aula WHERE cursos.id_plan_estudio =$pla_estudio
-OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_academicos INNER JOIN evaluaciones ON historiales_academicos.id_evaluacion = evaluaciones.id_evaluacion INNER JOIN configuraciones ON configuraciones.id_configuracion = evaluaciones.id_configuracion INNER JOIN programacion_cursos ON programacion_cursos.id_programacion = configuraciones.id_programacion INNER JOIN cursos ON cursos.id_curso = programacion_cursos.id_programacion INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = programacion_cursos.id_plan_estudio INNER JOIN aulas ON aulas.id_aula = programacion_cursos.id_aula WHERE historiales_academicos.num_cuenta =$id_estu AND historiales_academicos.estado ='Aprobado')";
+$sql= "SELECT * FROM programacion_cursos INNER JOIN cursos ON cursos.id_curso = programacion_cursos.id_curso INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = $pla_estudio INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado INNER JOIN aulas ON aulas.id_aula= programacion_cursos.id_aula WHERE programacion_cursos.id_curso NOT IN (SELECT programacion_cursos.id_curso FROM programacion_cursos INNER JOIN historiales_academicos ON historiales_academicos.id_curso = programacion_cursos.id_curso WHERE historiales_academicos.estado ='Aprobado' AND historiales_academicos.num_cuenta=$id_estu )AND programacion_cursos.id_plan_estudio =$pla_estudio";
 
 
 
     $i = 0;
 
 $query = mysqli_query($conexion, $sql);
+     if(count($query)==0)
+     {
+
+     $sql= "SELECT * FROM cursos INNER JOIN programacion_cursos on programacion_cursos.id_curso = cursos.id_curso INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = cursos.id_plan_estudio INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado INNER JOIN aulas ON aulas.id_aula = programacion_cursos.id_aula WHERE cursos.id_plan_estudio =$pla_estudio
+OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_academicos INNER JOIN evaluaciones ON historiales_academicos.id_evaluacion = evaluaciones.id_evaluacion INNER JOIN configuraciones ON configuraciones.id_configuracion = evaluaciones.id_configuracion INNER JOIN programacion_cursos ON programacion_cursos.id_programacion = configuraciones.id_programacion INNER JOIN cursos ON cursos.id_curso = programacion_cursos.id_programacion INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = programacion_cursos.id_plan_estudio INNER JOIN aulas ON aulas.id_aula = programacion_cursos.id_aula WHERE historiales_academicos.num_cuenta =$id_estu AND historiales_academicos.estado ='Aprobado')";
+
+
+     }
 
             while($rows = mysqli_fetch_array($query))
             {
