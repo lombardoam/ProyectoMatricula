@@ -62,7 +62,7 @@ require 'noautorizado.php';
             if (!empty ($_POST['numerocuenta'])){
             $qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_POST['numerocuenta'] . "'";
             $qcuenta = mysqli_query($conexion, $qcuenta);
-            while($lineanombres = mysqli_fetch_assoc($qcuenta)){
+            while($lineanombres = mysqli_fetch_array($qcuenta)){
             echo $lineanombres['nombres'];
             echo ' ';
             echo $lineanombres['apellidos'];
@@ -112,7 +112,7 @@ if (!empty($_POST['numerocuenta'])){
 
 $qcuenta = "SELECT saldo FROM estudiantes WHERE num_cuenta ='" . $_POST['numerocuenta'] . "'";
 $qcuenta = mysqli_query($conexion, $qcuenta);
- while($lineasaldo = mysqli_fetch_assoc($qcuenta)){
+ while($lineasaldo = mysqli_fetch_array($qcuenta)){
  echo 'L. ';
  echo $lineasaldo['saldo'];
 
@@ -141,7 +141,7 @@ if (!empty($_POST['numerocuenta'])){
 
 $qtipo = "SELECT tipo_estudiante FROM estudiantes WHERE num_cuenta ='" . $_POST['numerocuenta'] . "'";
 $qtipo = mysqli_query($conexion, $qtipo);
- while($lineatipo = mysqli_fetch_assoc($qtipo)){
+ while($lineatipo = mysqli_fetch_array($qtipo)){
  echo $lineatipo['tipo_estudiante'];
 }
  }
@@ -197,27 +197,7 @@ $qtipo = mysqli_query($conexion, $qtipo);
 
                    </thead>
     <tbody>
-     <!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta si eliges no, regresa a la página -->
-            <!-- Modal -->
-<div class="modal fade" id="MatriculaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header modal-header-primary">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sistema de matrícula</h4>
-      </div>
-      <div class="modal-body"><div align="center">
-        ¿Desea guardar la configuración elegida de matrícula para el estudiante?
-          </div></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <input type= "submit" class="btn btn-primary" name="submit" id="submit"  value="Sí"/>
 
-      </div>
-    </div>
-
-  </div>
-</div>
 <!-- Consulta SQL, primero verifica si el campo del buscador está vacío, si no lo está busca, muestra nombre, cuenta, saldo, carrera y
 los horarios automáticamente se filtran al plan de estudio al cual pertenece el estudiante.
 
@@ -238,7 +218,7 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
                             No hay registros de horarios
                 </div></div>';
 }else{
- while($lineaplan = mysqli_fetch_assoc($qcuentap)){
+ while($lineaplan = mysqli_fetch_array($qcuentap)){
  echo ' ';
  echo '<center> <h3>';
  echo $lineaplan['nombre_plan'];
@@ -254,21 +234,46 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
     $i = 0;
 
 $query = mysqli_query($conexion, $sql);
-            while($rows = mysqli_fetch_assoc($query)){
+            while($rows = mysqli_fetch_array($query)){
             echo "    <tr>
-    <td><input class='eleccion' type='checkbox' name='eleccion[]' id='eleccion' value='$i++' /></td>
-    <td><input class='id' type='hidden' name='id[]' readonly id='id' value='$rows[id_programacion]'> <span id='id[]'>$rows[id_programacion]</td>
-    <td><input class='codigo' type='hidden' name='codigo[]' readonly id='codigo' value='$rows[codigo_prog_curso]'> <span id='codigo[]'>$rows[codigo_prog_curso]</td>
-    <td><input class='asignatura' type='hidden' name='nombre[]' readonly id='nombre' value='$rows[nombre_curso]'> <span id='nombre[]'>$rows[nombre_curso]</td>
-    <td><input class='plan' type='hidden' name='plan[]' readonly id='plan' value='$rows[nombre_plan]'> <span id='plan[]'>$rows[nombre_plan]</td>
-    <td><input class='dias' type='hidden' name='dias[]' readonly id='dias' value='$rows[dias]'> <span id='dias[]'>$rows[dias]</td>
-    <td><input class='seccion' type='hidden' name='seccion[]' readonly id='seccion' value='$rows[seccion]'> <span id='seccion[]'>$rows[seccion]</td>
-    <td><input class='inicio'type='hidden' name='inicio[]' readonly id='inicio' value='$rows[hora_inicio]'> <span id='inicio[]'>$rows[hora_inicio]</td>
-    <td><input class='termina' type='hidden' name='termina[]' readonly id='termina' value='$rows[hora_termina]'> <span id='termina[]'>$rows[hora_termina]</td>
-    <td><input class='docente' type='hidden' name='nombres[]' readonly id='nombres' value='$rows[nombres]'> <span id='nombres[]'>$rows[nombres]</td>
-    <td><input class='aula' type='hidden' name='aula[]' readonly id='aula' value='$rows[codigo_aula]'> <span id='aula[]'>$rows[codigo_aula]</td>
+    <td><input class='check' type='checkbox' name='eleccion[]' id='eleccion' value='$i++' /></td>
+    <td><input class='id' type='hidden' name='id[]' readonly id='id' value='$rows[id_programacion]'> $rows[id_programacion]</td>
+    <td><input class='codigo' type='hidden' name='codigo[]' readonly id='codigo' value='$rows[codigo_prog_curso]'> $rows[codigo_prog_curso]</td>
+    <td><input class='asignatura' type='hidden' name='nombre[]' readonly id='nombre' value='$rows[nombre_curso]'>$rows[nombre_curso]</td>
+    <td><input class='plan' type='hidden' name='plan[]' readonly id='plan' value='$rows[nombre_plan]'> $rows[nombre_plan]</td>
+    <td><input class='dias' type='hidden' name='dias[]' readonly id='dias' value='$rows[dias]'> $rows[dias]</td>
+    <td><input class='seccion' type='hidden' name='seccion[]' readonly id='seccion' value='$rows[seccion]'>$rows[seccion]</td>
+    <td><input class='inicio'type='hidden' name='inicio[]' readonly id='inicio' value='$rows[hora_inicio]'>$rows[hora_inicio]</td>
+    <td><input class='termina' type='hidden' name='termina[]' readonly id='termina' value='$rows[hora_termina]'>$rows[hora_termina]</td>
+    <td><input class='docente' type='hidden' name='nombres[]' readonly id='nombres' value='$rows[nombres]'>$rows[nombres]</td>
+    <td><input class='aula' type='hidden' name='aula[]' readonly id='aula' value='$rows[codigo_aula]'>$rows[codigo_aula]</td>
     ";
+?>
+             <!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta si eliges no, regresa a la página -->
+            <!-- Modal -->
+<div class="modal fade" id="MatriculaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sistema de matrícula</h4>
+      </div>
+      <div class="modal-body"><div align="center">
+        ¿Desea guardar la configuración elegida de matrícula para el estudiante?
+          </div></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <input type= "submit" class="btn btn-primary" name="submit" id="submit"  value="Sí"/>
 
+      </div>
+    </div>
+
+  </div>
+</div>
+        </fieldset>
+
+</form>
+<?php
 
     if(isset($_POST['submit'])){
     $eleccion=$_POST['eleccion'];
@@ -286,15 +291,13 @@ $query = mysqli_query($conexion, $sql);
 
     foreach($eleccion as $i){
 
-        $query=mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
+        $query = mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
        VALUES('" . $_POST['numerocuenta']. "', '{$id [$i]}')");
-        mysqli_query($query);
-        while($rows = mysqli_fetch_assoc($query)){
-        echo '           <div align="center">
-                            <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            Estudiante matriculado de forma exitosa.
-                </div></div>';
+
+        if (!mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
+       VALUES('" . $_POST['numerocuenta']. "', '{$id [$i]}')"))
+{
+        echo mysqli_errno($conexion) . ": " . mysqli_error($conexion) . "<br />";
 }
    }
     }
@@ -312,7 +315,7 @@ $query = mysqli_query($conexion, $sql);
             $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.estatus_curso='Activo' ORDER BY id_programacion;;";
 
 $query = mysqli_query($conexion, $sql);
-            while($rows = mysqli_fetch_assoc($query)){
+            while($rows = mysqli_fetch_array($query)){
                echo "    <tr>
     <td><input type='checkbox' class='checkthis' /></td>
     <td>$rows[id_programacion]</td>
@@ -370,7 +373,7 @@ echo '<div align="center">
 </div>';
 $qcuenta = "SELECT saldo FROM estudiantes WHERE num_cuenta =''";
 $qcuenta = mysqli_query($conexion, $qcuenta);
- while($lineasaldo = mysqli_fetch_assoc($qcuenta)){
+ while($lineasaldo = mysqli_fetch_array($qcuenta)){
 $lineasaldo['saldo'];
 }
 
@@ -378,7 +381,7 @@ $lineasaldo['saldo'];
 if (!empty($_POST['numerocuenta'])) {
 $qcuenta = "SELECT saldo FROM estudiantes WHERE num_cuenta ='" . $_POST['numerocuenta'] . "'";
 $qcuenta = mysqli_query($conexion, $qcuenta);
- while($lineasaldo = mysqli_fetch_assoc($qcuenta)){
+ while($lineasaldo = mysqli_fetch_array($qcuenta)){
 $lineasaldo['saldo'];
 if ($lineasaldo['saldo']!='0') {
 echo '<div align="center">
@@ -401,9 +404,7 @@ echo '<div align="center">
 }
 
 ?>
-</form>
 
-</fieldset>
 
             <br><br>
 
