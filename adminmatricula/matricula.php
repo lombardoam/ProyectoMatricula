@@ -268,7 +268,7 @@ $query = mysqli_query($conexion, $sql);
 
                 $consulta = mysqli_query($conexion, $requisitos);
 
-                if($consulta(count)>0)
+                if(count($consulta)>0)
                 {
                  while($row = mysqli_fetch_array($consulta))
                  {
@@ -315,7 +315,8 @@ $query = mysqli_query($conexion, $sql);
 
 
                  }
-                    }
+
+                }
 
 
             echo "<tr>
