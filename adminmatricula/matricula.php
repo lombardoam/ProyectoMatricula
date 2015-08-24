@@ -37,7 +37,7 @@ require 'noautorizado.php';
 
     <!-- /Inicio de código de formulario -->
 
-<form name="form" class="form-horizontal" method="POST" role="form">
+<form name="form" class="form-horizontal" method="POST" role="form" action="matricula.php">
 
 <fieldset>
 
@@ -246,17 +246,6 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
  echo '</center></h3>';
 /* Consulta que muestra las clases no aprobadas aún por el estudiante.
 
-CONSULTA TEÓRICA PARA SACAR REQUISITOS, LA TÉCNICA A APLICAR
-
-Repetimos filtros para despejar la tabla
-
-$requisitos = "SELECT programacion_cursos.id_curso INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN requisitos_curso WHERE NOT EXISTS (SELECT * FROM historiales_academicos WHERE programacion_cursos.id_curso=historiales_academicos.id_curso AND historiales_academicos.num_cuenta='" . $_POST['numerocuenta'] . "' AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND historiales_academicos.estado='Aprobado') AND programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND programacion_cursos.estatus_curso='Activo' AND programacion_cursos.id_curso =(SELECT id_curso FROM requisitos_curso WHERE id_curso_requisito IS NULL);
-while($conteo = mysqli_fetch_assoc($requisitos)){
-$conteo[id_curso]
-
-
-Los id_curso que aparezcan son cursos disponibles a ser matriculados por el alumno, y simplemente se importaría este resultado a las restricciones del query $sql de la misma forma como importé el id_plan_estudio.
-
 */
 
 
@@ -291,7 +280,7 @@ $query = mysqli_query($conexion, $sql);
     $seccion=$_POST['seccion'];
     $inicio=$_POST['inicio'];
     $termina=$_POST['termina'];
-    $docente=$_POST['docente'];
+    $docente=$_POST['nombres'];
     $aula=$_POST['aula'];
 
 
