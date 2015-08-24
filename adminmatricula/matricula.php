@@ -268,13 +268,12 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
 
             while($rows = mysqli_fetch_array($query))
             {
-                echo $rows['id_curso'];
      $requisitos="SELECT requisitos_curso.id_requisito1,requisitos_curso.id_requisito2,requisitos_curso.id_requisito3 FROM  requisitos_curso WHERE                      requisitos_curso.id_curso = $rows[id_curso]  and requisitos_curso.id_plan_estudio =$pla_estudio";
 
 
                 $consulta = mysqli_query($conexion, $requisitos);
 
-                if(count($consulta)>0)
+                if(count($consulta)>1)
                 {
                  while($row = mysqli_fetch_array($consulta))
                  {
