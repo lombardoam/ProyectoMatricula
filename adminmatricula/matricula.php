@@ -5,8 +5,7 @@ require 'conexion.php';
 require 'noautorizado.php';
 
 ?>
-   <script src="js/table.js"></script>
-  <div id="page-wrapper">
+    <div id="page-wrapper">
 
             <div class="container-fluid">
 
