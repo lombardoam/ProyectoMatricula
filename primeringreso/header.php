@@ -59,7 +59,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-               <img src="images/ujcv.png" width="50px" height="55px" align="left" /> <a class="navbar-brand" href="index.html">Primer Ingreso Universitario</a>
+               <img src="images/ujcv.png" width="50px" height="55px" align="left" /> <a class="navbar-brand" href="index.php">Primer Ingreso Universitario</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -223,3 +223,21 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+<style>
+
+    ::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background-color: #eaeaea;
+    border-left: 1px solid #ccc;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+}
+
+</style>

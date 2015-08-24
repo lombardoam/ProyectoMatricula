@@ -70,17 +70,17 @@ while($row=mysqli_fetch_row($result))
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['nombre']; echo' '; echo $_SESSION['apellido']  ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                            <a href="#"><font color="#000000"><i class="fa fa-fw fa-user"></i> Perfil</font></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Configuracion </a>
+                            <a href="#"><font color="#000000"><i class="fa fa-fw fa-gear"></i> Configuracion</font> </a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesion </a>
+                            <a href="logout.php"><font color="#000000"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesion </font></a>
                         </li>
                     </ul>
                 </li>
@@ -178,7 +178,23 @@ while($row=mysqli_fetch_row($result))
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>
+<style>
 
+    ::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background-color: #eaeaea;
+    border-left: 1px solid #ccc;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+}
+
+</style>
 </body>
 
 </html>
