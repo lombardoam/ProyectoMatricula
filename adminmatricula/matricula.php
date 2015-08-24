@@ -366,7 +366,7 @@ if (empty($_POST['numerocuenta'])) {
 echo '<div align="center">
 <button id="matricular" name="matricular" class="btn btn-primary disabled"><span class="fa fa-fw fa-check-square-o"></span> Matrícular</button>
 
-<button id="imprimir" name="imprimir" class="btn btn-primary disabled" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button>
+<button id="imprimir" name="imprimir" class="btn btn-primary disabled" title="Imprimir horario"><span class="fa fa-fw fa-print"></span> Imprimir</button><br><br>
 
 </div>';
 $qcuenta = "SELECT saldo FROM estudiantes WHERE num_cuenta =''";
@@ -402,14 +402,23 @@ echo '<div align="center">
 }
 
 ?>
-<style>
-table {
-  display: block; /*obligado*/
-  height: 300px; /*la que necesites*/
-  overflow: auto; /*obligado*/
-  width: 100%;
-}
 
+
+        <script>
+            var $table = $('table'),
+    $bodyCells = $table.find('tbody tr:first').children(),
+    colWidth;
+
+// Get the tbody columns width array
+colWidth = $bodyCells.map(function() {
+    return $(this).width();
+}).get();
+
+// Set the width of thead columns
+$table.find('thead tr').children().each(function(i, v) {
+    $(v).width(colWidth[i]);
+});
+        </script>
 
 
             <br><br>
