@@ -208,12 +208,19 @@ generales de todas las carreras que están disponibles -->
         <!-- Primero buscando el plan de estudio del estudiante, al detectarlo procede a filtrar los horarios -->
 <?php
 
-function pegar($id_requisito,$estu )
+function pegar($clase,$numcuent,$conexion )
 {
 
-$requisitos="SELECT cursos.id_curso FROM historiales_academicos INNER JOIN evaluaciones ON historiales_academicos.id_evaluacion = evaluaciones.id_evaluacion INNER JOIN configuraciones ON configuraciones.id_configuracion = evaluaciones.id_configuracion INNER JOIN programacion_cursos ON programacion_cursos.id_programacion = configuraciones.id_programacion INNER JOIN cursos ON cursos.id_curso = programacion_cursos.id_programacion INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = programacion_cursos.id_plan_estudio INNER JOIN aulas ON aulas.id_aula = programacion_cursos.id_aula WHERE historiales_academicos.num_cuenta =$estu AND historiales_academicos.estado ='Aprobado' AND cursos.id_curso =$id_requisito";
+   $requisitos=" SELECT * FROM historiales_academicos WHERE historiales_academicos.num_cuenta = $numcuent  AND historiales_academicos.estado = 'Aprobado'AND historiales_academicos.id_curso=$clase ";
 
-return(count($requisitos));
+    $result = mysqli_query($conexion, $requisitos);
+
+    if(count($result)===1)
+    {
+    return NULL;
+    }
+
+return(count($result));
 
 }
 
@@ -267,64 +274,70 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
 
      }
 
+
             while($rows = mysqli_fetch_array($query))
             {
-     $requisitos="SELECT requisitos_curso.id_requisito1,requisitos_curso.id_requisito2,requisitos_curso.id_requisito3 FROM  requisitos_curso WHERE                      requisitos_curso.id_curso = $rows[id_curso]  and requisitos_curso.id_plan_estudio =$pla_estudio";
 
+     $requisitos="SELECT id_requisito,requisitos_curso.id_requisito1,requisitos_curso.id_requisito2,requisitos_curso.id_requisito3 FROM  requisitos_curso WHERE                      requisitos_curso.id_curso = $rows[id_curso]  and requisitos_curso.id_plan_estudio =$pla_estudio";
+
+                $status =1;
 
                 $consulta = mysqli_query($conexion, $requisitos);
-                //if(count($consulta)>1)
                 {
-                    echo count($consulta);
                  while($row = mysqli_fetch_array($consulta))
                  {
+
                      if($row['id_requisito1'])
                      {
-                         if( pegar($row['id_requisito1'],$id_estu))
+                         if( pegar($row['id_requisito1'],$id_estu,$conexion))
                          {
+                             $status =1;
 
                          }
                          else
                          {
-                             echo"No paso";
+                             $status =0;
                            break;
                          }
                      }
 
+
                      if($row['id_requisito2'])
                      {
 
-                         if( pegar($row['id_requisito2'],$id_estu))
-                         {
 
+                         if( pegar($row['id_requisito2'],$id_estu,$conexion))
+                         {
+                             $status =1;
                          }
                          else
                          {
-                             echo"No paso";
+                             $status =0;
                            break;
                          }
                      }
 
                      if($row['id_requisito3'])
                      {
-                         if( pegar($row['id_requisito3'],$id_estu))
-                         {
 
+                         if( pegar($row['id_requisito3'],$id_estu,$conexion))
+                         {
+                             $status =1;
 
                          }
                          else
                          {
-                             echo"No paso";
+                             $status =0;
                            break;
                          }
                      }
-
 
                  }
 
                 }
 
-
+                if($status ===0)
+                {
             echo "<tr>
     <td><input class='checkthis' type='checkbox' name='check[]' id='check' value='$i++' /></td>
     <td><input class='id' type='hidden' name='id[]' readonly id='id' value='$rows[id_programacion]'> $rows[id_programacion]</td>
@@ -338,6 +351,7 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
     <td><input class='docente' type='hidden' name='nombres[]' readonly id='nombres' value='$rows[nombres]'>$rows[nombres]</td>
     <td><input class='aula' type='hidden' name='aula[]' readonly id='aula' value='$rows[codigo_aula]'>$rows[codigo_aula]</td>
     ";
+                }
 ?>
              <!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta si eliges no, regresa a la página -->
             <!-- Modal -->
