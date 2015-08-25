@@ -35,20 +35,23 @@ require 'noautorizado.php';
 
     <!-- /Inicio de código de formulario -->
 
-<form name="form" class="form-horizontal" method="POST" role="form" action="enviar_matricula.php">
+<form name="form" class="form-horizontal" method="POST" role="form" action="matricula.php">
 
 <fieldset>
 
 <!-- Form Name -->
-
-
+<?php
+if (empty($_POST['numerocuenta'])){
+    echo '
 <!-- Search input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="numerocuenta"><span class="fa fa-fw fa-search"></span> Número de cuenta</label>
   <div class="col-md-2">
     <input id="numerocuenta" name="numerocuenta" type="search" placeholder="Buscar alumno" class="form-control input-md">
      </div>
-</div>
+</div>';
+    }
+?>
     <!-- Prepended text-->
     <!-- Consulta SQL para buscar los nombres y apellidos de los estudiantes tomando el número de cuenta enviado en el buscador -->
 <div class="form-group">
