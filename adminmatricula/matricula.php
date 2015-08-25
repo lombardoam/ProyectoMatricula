@@ -135,12 +135,14 @@ if (($lineasaldo['saldo'] != "0" OR $lineasaldo['saldo'] != "0.00" )) {
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-fw fa-thumb-tack"></span>
         <?php
+$id_estu;
 if (!empty($_POST['numerocuenta'])){
 
-$qtipo = "SELECT tipo_estudiante FROM estudiantes WHERE num_cuenta ='" . $_POST['numerocuenta'] . "'";
+$qtipo = "SELECT tipo_estudiante,id_estudiante,num_cuenta FROM estudiantes WHERE num_cuenta ='" . $_POST['numerocuenta'] . "'";
 $qtipo = mysqli_query($conexion, $qtipo);
  while($lineatipo = mysqli_fetch_array($qtipo)){
  echo $lineatipo['tipo_estudiante'];
+   $id_estu = $lineatipo['num_cuenta'];
 }
  }
 
@@ -205,6 +207,27 @@ generales de todas las carreras que están disponibles -->
 
         <!-- Primero buscando el plan de estudio del estudiante, al detectarlo procede a filtrar los horarios -->
 <?php
+
+function pegar($clase,$numcuent,$conexion )
+{
+
+   $requisitos=" SELECT * FROM historiales_academicos WHERE historiales_academicos.num_cuenta = $numcuent  AND historiales_academicos.estado = 'Aprobado'AND historiales_academicos.id_curso=$clase ";
+
+    $result = mysqli_query($conexion, $requisitos);
+
+    if(count($result)===1)
+    {
+    return NULL;
+    }
+
+return(count($result));
+
+}
+
+
+
+
+$pla_estudio;
 if (!empty($_POST['numerocuenta'])){
 
 $qcuentap = "SELECT planes_estudio.nombre_plan, planes_estudio.id_plan_estudio FROM `planes_estudio` INNER JOIN estudiantes INNER JOIN carreras WHERE estudiantes.id_carrera=carreras.id_carrera AND estudiantes.num_cuenta ='" . $_POST['numerocuenta'] . "' AND carreras.id_carrera=planes_estudio.id_carrera";
@@ -221,7 +244,8 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
  echo ' ';
  echo '<center> <h3>';
  echo $lineaplan['nombre_plan'];
- $lineaplan['id_plan_estudio'];
+$pla_estudio= $lineaplan['id_plan_estudio'];
+
  echo '</center></h3>';
 /* Consulta que muestra las clases no aprobadas aún por el estudiante.
 
@@ -231,13 +255,91 @@ SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curs
 */
 
 
-            $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina, empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE NOT EXISTS (SELECT * FROM historiales_academicos WHERE programacion_cursos.id_curso=historiales_academicos.id_curso AND historiales_academicos.num_cuenta='" . $_POST['numerocuenta'] . "' AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND historiales_academicos.estado='Aprobado') AND programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND programacion_cursos.estatus_curso='Activo'";
+            /*$sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina, empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE NOT EXISTS (SELECT * FROM historiales_academicos WHERE programacion_cursos.id_curso=historiales_academicos.id_curso AND historiales_academicos.num_cuenta='" . $_POST['numerocuenta'] . "' AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND historiales_academicos.estado='Aprobado') AND programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND programacion_cursos.estatus_curso='Activo'";*/
+
+$sql= "SELECT * FROM programacion_cursos INNER JOIN cursos ON cursos.id_curso = programacion_cursos.id_curso INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = $pla_estudio INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado INNER JOIN aulas ON aulas.id_aula= programacion_cursos.id_aula WHERE programacion_cursos.id_curso NOT IN (SELECT programacion_cursos.id_curso FROM programacion_cursos INNER JOIN historiales_academicos ON historiales_academicos.id_curso = programacion_cursos.id_curso WHERE historiales_academicos.estado ='Aprobado' AND historiales_academicos.num_cuenta=$id_estu )AND programacion_cursos.id_plan_estudio =$pla_estudio";
+
+
 
     $i = 0;
 
 $query = mysqli_query($conexion, $sql);
-            while($rows = mysqli_fetch_array($query)){
-            echo "    <tr>
+
+     if(count($query)==0)
+     {
+
+     $sql= "SELECT * FROM cursos INNER JOIN programacion_cursos on programacion_cursos.id_curso = cursos.id_curso INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = cursos.id_plan_estudio INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado INNER JOIN aulas ON aulas.id_aula = programacion_cursos.id_aula WHERE cursos.id_plan_estudio =$pla_estudio
+OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_academicos INNER JOIN evaluaciones ON historiales_academicos.id_evaluacion = evaluaciones.id_evaluacion INNER JOIN configuraciones ON configuraciones.id_configuracion = evaluaciones.id_configuracion INNER JOIN programacion_cursos ON programacion_cursos.id_programacion = configuraciones.id_programacion INNER JOIN cursos ON cursos.id_curso = programacion_cursos.id_programacion INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = programacion_cursos.id_plan_estudio INNER JOIN aulas ON aulas.id_aula = programacion_cursos.id_aula WHERE historiales_academicos.num_cuenta =$id_estu AND historiales_academicos.estado ='Aprobado')";
+
+
+     }
+
+
+            while($rows = mysqli_fetch_array($query))
+            {
+
+     $requisitos="SELECT id_requisito,requisitos_curso.id_requisito1,requisitos_curso.id_requisito2,requisitos_curso.id_requisito3 FROM  requisitos_curso WHERE                      requisitos_curso.id_curso = $rows[id_curso]  and requisitos_curso.id_plan_estudio =$pla_estudio";
+
+                $status =1;
+
+                $consulta = mysqli_query($conexion, $requisitos);
+                {
+
+                 while($row = mysqli_fetch_array($consulta))
+                 {
+
+                     if($row['id_requisito1'])
+                     {
+                         if( pegar($row['id_requisito1'],$id_estu,$conexion))
+                         {
+                             $status =1;
+
+                         }
+                         else
+                         {
+                             $status =0;
+                           break;
+                         }
+                     }
+
+
+                     if($row['id_requisito2'])
+                     {
+
+
+                         if( pegar($row['id_requisito2'],$id_estu,$conexion))
+                         {
+                             $status =1;
+                         }
+                         else
+                         {
+                             $status =0;
+                           break;
+                         }
+                     }
+
+                     if($row['id_requisito3'])
+                     {
+
+                         if( pegar($row['id_requisito3'],$id_estu,$conexion))
+                         {
+                             $status =1;
+
+                         }
+                         else
+                         {
+                             $status =0;
+                           break;
+                         }
+                     }
+
+                 }
+
+                }
+
+                if($status ===1)
+                {
+            echo "<tr>
     <td><input class='checkthis' type='checkbox' name='check[]' id='check' value='$i++' /></td>
     <td><input class='id' type='hidden' name='id[]' readonly id='id' value='$rows[id_programacion]'> $rows[id_programacion]</td>
     <td><input class='codigo' type='hidden' name='codigo[]' readonly id='codigo' value='$rows[codigo_prog_curso]'> $rows[codigo_prog_curso]</td>
@@ -250,6 +352,7 @@ $query = mysqli_query($conexion, $sql);
     <td><input class='docente' type='hidden' name='nombres[]' readonly id='nombres' value='$rows[nombres]'>$rows[nombres]</td>
     <td><input class='aula' type='hidden' name='aula[]' readonly id='aula' value='$rows[codigo_aula]'>$rows[codigo_aula]</td>
     ";
+                }
 ?>
              <!-- Inicio de programación de botón de guardado, únicamente pregunta con un mensaje de alerta si eliges no, regresa a la página -->
             <!-- Modal -->
