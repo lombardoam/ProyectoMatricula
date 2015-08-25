@@ -337,7 +337,7 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
 
                 }
 
-                if($status ===1)
+                if($status =1)
                 {
             echo "<tr>
     <td><input class='checkthis' type='checkbox' name='check[]' id='check' value='$i++' /></td>
