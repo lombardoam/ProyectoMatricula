@@ -257,6 +257,7 @@ $sql= "SELECT * FROM programacion_cursos INNER JOIN cursos ON cursos.id_curso = 
     $i = 0;
 
 $query = mysqli_query($conexion, $sql);
+
      if(count($query)==0)
      {
 
@@ -272,9 +273,9 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
 
 
                 $consulta = mysqli_query($conexion, $requisitos);
-
-                if(count($consulta)>1)
+                //if(count($consulta)>1)
                 {
+                    echo count($consulta);
                  while($row = mysqli_fetch_array($consulta))
                  {
                      if($row['id_requisito1'])
