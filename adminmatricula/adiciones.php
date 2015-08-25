@@ -91,14 +91,15 @@ require 'noautorizado.php';
                    <thead>
 
                    <th><input type="checkbox" id="checkall" /></th>
-                   <th>Código</th>
+                    <th>Código</th>
                     <th>Nombre clase</th>
-                     <th>Días</th>
-                     <th>Sección</th>
-                     <th>Hora inicial</th>
-                     <th>Hora final</th>
-                     <th>Docente</th>
-                      <th>Plan de Estudio</th>
+                    <th>Días</th>
+                    <th>Sección</th>
+                    <th>Hora inicial</th>
+                    <th>Hora final</th>
+                    <th>Docente</th>
+                    <th>Plan de Estudio</th>
+                    <th>Salón</th>
 
 
                    </thead>

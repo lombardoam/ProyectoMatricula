@@ -130,19 +130,19 @@ $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
                echo "    <tr>
     <td><input type='checkbox' class='checkthis' /></td>
-    <td>$rows[codigo_prog_curso]</td>
-    <td>$rows[nombre_curso]</td>
-    <td>$rows[nombre_plan]</td>
-    <td>$rows[dias]</td>
-    <td>$rows[seccion]</td>
-    <td>$rows[hora_inicio]</td>
-    <td>$rows[hora_termina]</td>
-    <td>$rows[nombres]</td>
-    <td>$rows[codigo_aula]</td>
+        <td>$rows[codigo_prog_curso]</td>
+        <td>$rows[nombre_curso]</td>
+        <td>$rows[nombre_plan]</td>
+        <td>$rows[dias]</td>
+        <td>$rows[seccion]</td>
+        <td>$rows[hora_inicio]</td>
+        <td>$rows[hora_termina]</td>
+        <td>$rows[nombres]</td>
+        <td>$rows[codigo_aula]</td>
+        <td><a href=''>Cancelar</a></td>
     ";
    }
  }
-
 }
 ?>
     </tbody>
