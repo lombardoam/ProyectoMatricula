@@ -35,7 +35,7 @@ require 'noautorizado.php';
 
     <!-- /Inicio de código de formulario -->
 
-<form name="form" class="form-horizontal" method="POST" role="form" action="matricula.php">
+<form name="form" class="form-horizontal" method="POST" role="form" action="enviar_matricula.php">
 
 <fieldset>
 
