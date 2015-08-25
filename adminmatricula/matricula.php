@@ -385,15 +385,7 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
     if(isset($_POST['submit'])){
     $checkthis=$_POST['check'];
     $id=$_POST['id_programacion'];
-    $codigo=$_POST['codigo'];
-    $asignatura=$_POST['nombre'];
-    $plan=$_POST['plan'];
-    $dias=$_POST['dias'];
-    $seccion=$_POST['seccion'];
-    $inicio=$_POST['inicio'];
-    $termina=$_POST['termina'];
-    $docente=$_POST['nombres'];
-    $aula=$_POST['aula'];
+;
 
 
     foreach($checkthis as $i){
