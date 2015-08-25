@@ -284,6 +284,7 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
 
                 $consulta = mysqli_query($conexion, $requisitos);
                 {
+
                  while($row = mysqli_fetch_array($consulta))
                  {
 
@@ -336,7 +337,7 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
 
                 }
 
-                if($status ===0)
+                if($status ===1)
                 {
             echo "<tr>
     <td><input class='checkthis' type='checkbox' name='check[]' id='check' value='$i++' /></td>
