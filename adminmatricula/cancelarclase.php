@@ -6,12 +6,12 @@ if(!empty($_POST['check_list'])) {
     foreach($_POST['check_list'] as $borrar)
     {
 
-        //$sql ="DELETE FROM matriculas WHERE id_matricula=$borrar";
+        $sql ="DELETE FROM matriculas WHERE id_matricula=$borrar";
 
-       // mysqli_query($conexion, $sql);
+        mysqli_query($conexion, $sql);
 
     }
 }
-header('Location: cancelaciones.php?numerocuenta=$_POST['under']');
+header('Location: cancelaciones.php');
 
 ?>
