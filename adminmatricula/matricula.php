@@ -355,6 +355,7 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
     <td><input class='termina' type='hidden' name='termina[]' readonly id='termina' value='$rows[hora_termina]'>$rows[hora_termina]</td>
     <td><input class='docente' type='hidden' name='nombres[]' readonly id='nombres' value='$rows[nombres]'>$rows[nombres]</td>
     <td><input class='aula' type='hidden' name='aula[]' readonly id='aula' value='$rows[codigo_aula]'>$rows[codigo_aula]</td>
+    <input class='cuenta' type='hidden' name='cuenta[]' readonly id='cuenta' value='" . $_POST['numerocuenta'] . "'>
     ";
                 }
 ?>
@@ -387,13 +388,14 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
     if(isset($_POST['submit'])){
     $checkthis=$_POST['check'];
     $id=$_POST['id_programacion'];
+    $cuenta=$_POST['cuenta'];
 ;
 
 
     for($i = 0; $i<count($checkthis); $i++) {
 
         $query = mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
-       VALUES('" . $_POST['numerocuenta']. "', '{$id [$i]}')");
+       VALUES('{$cuenta}', '{$id [$i]}')");
 
    }
     }
