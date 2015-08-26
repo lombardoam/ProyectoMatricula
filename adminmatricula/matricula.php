@@ -152,7 +152,9 @@ $qtipo = mysqli_query($conexion, $qtipo);
 ?>
         </span>
 
-      </div></div></div>
+      </div>
+    </div>
+</div>
 
 
 
@@ -189,12 +191,12 @@ $qtipo = mysqli_query($conexion, $qtipo);
                     <th>Código</th>
                     <th>Nombre clase</th>
                     <th>Plan de Estudio</th>
-                     <th>Días</th>
-                     <th>Sección</th>
-                     <th>Inicio</th>
-                     <th>Final</th>
-                     <th>Docente</th>
-                     <th>Salón</th>
+                    <th>Días</th>
+                    <th>Sección</th>
+                    <th>Inicio</th>
+                    <th>Final</th>
+                    <th>Docente</th>
+                    <th>Salón</th>
 
 
 
