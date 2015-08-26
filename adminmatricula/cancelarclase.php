@@ -1,17 +1,17 @@
  <?php
 require 'conexion.php';
 
-
-if(!empty($_POST['check_list'])) {
-    foreach($_POST['check_list'] as $borrar)
+$ss=$_POST['under'];
+if(!empty($_POST['check'])) {
+    foreach($_POST['check'] as $borrar)
     {
 
-        $sql ="DELETE FROM matriculas WHERE id_matricula=$borrar";
+       $sql ="DELETE FROM matriculas WHERE id_matricula=$borrar";
 
         mysqli_query($conexion, $sql);
 
     }
 }
-header('Location: cancelaciones.php');
+header('Location: cancelaciones.php?numerocuenta='.$ss);
 
 ?>

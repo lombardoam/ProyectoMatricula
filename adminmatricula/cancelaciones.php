@@ -61,13 +61,13 @@ $userr;
             if (!empty ($_GET['numerocuenta'])){
 
 
-            $qcuenta = "SELECT nombres,apellidos,id_estudiante FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
+            $qcuenta = "SELECT nombres,apellidos,id_estudiante,num_cuenta FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
             $qcuenta = mysqli_query($conexion, $qcuenta);
             while($lineanombres = mysqli_fetch_assoc($qcuenta)){
             echo $lineanombres['nombres'];
             echo ' ';
             echo $lineanombres['apellidos'];
-
+      $userr = $lineanombres['num_cuenta'];
 
             }
             }
@@ -138,7 +138,7 @@ $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
                echo "    <tr>
     <td><form action='cancelarclase.php' method='post'></td>
-   <td> <input type='checkbox' name='check_list[]' value=$rows[id_matricula]></td>
+   <td> <input type='checkbox' name='check[]' value=$rows[id_matricula]></td>
         <td>$rows[codigo_prog_curso]</td>
         <td>$rows[nombre_curso]</td>
         <td>$rows[nombre_plan]</td>
