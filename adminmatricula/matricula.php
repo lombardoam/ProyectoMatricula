@@ -265,7 +265,7 @@ SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curs
 $sql= "SELECT * FROM programacion_cursos INNER JOIN cursos ON cursos.id_curso = programacion_cursos.id_curso INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = $pla_estudio INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado INNER JOIN aulas ON aulas.id_aula= programacion_cursos.id_aula WHERE programacion_cursos.id_curso NOT IN (SELECT programacion_cursos.id_curso FROM programacion_cursos INNER JOIN historiales_academicos ON historiales_academicos.id_curso = programacion_cursos.id_curso WHERE historiales_academicos.estado ='Aprobado' AND historiales_academicos.num_cuenta=$id_estu )AND programacion_cursos.id_plan_estudio =$pla_estudio";
 
 
-
+     $i = 0;
 
 
 $query = mysqli_query($conexion, $sql);
@@ -342,7 +342,7 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
                 if($status ===1)
                 {
             echo "<tr>
-    <td><input class='checkthis' type='checkbox' name='check[]' id='check' value='$rows[id_programacion]' /></td>
+    <td><input class='checkthis' type='checkbox' name='check[]' id='check' value='$i++' /></td>
     <td><input class='id' type='hidden' name='id_programacion[]' readonly id='id_programacion' value='$rows[id_programacion]'> $rows[id_programacion]</td>
     <td><input class='codigo' type='hidden' name='codigo[]' readonly id='codigo' value='$rows[codigo_prog_curso]'> $rows[codigo_prog_curso]</td>
     <td><input class='asignatura' type='hidden' name='nombre[]' readonly id='nombre' value='$rows[nombre_curso]'>$rows[nombre_curso]</td>
@@ -393,11 +393,6 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
         $query = mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
        VALUES('" . $_POST['numerocuenta']. "', '{$id [$i]}')");
 
-        if (!mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
-       VALUES('" . $_POST['numerocuenta']. "', '{$id [$i]}')"))
-{
-        echo mysqli_errno($conexion) . ": " . mysqli_error($conexion) . "<br />";
-}
    }
     }
  }
