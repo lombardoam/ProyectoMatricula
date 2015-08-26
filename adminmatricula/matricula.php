@@ -152,7 +152,9 @@ $qtipo = mysqli_query($conexion, $qtipo);
 ?>
         </span>
 
-      </div></div></div>
+      </div>
+    </div>
+</div>
 
 
 
@@ -189,12 +191,12 @@ $qtipo = mysqli_query($conexion, $qtipo);
                     <th>Código</th>
                     <th>Nombre clase</th>
                     <th>Plan de Estudio</th>
-                     <th>Días</th>
-                     <th>Sección</th>
-                     <th>Inicio</th>
-                     <th>Final</th>
-                     <th>Docente</th>
-                     <th>Salón</th>
+                    <th>Días</th>
+                    <th>Sección</th>
+                    <th>Inicio</th>
+                    <th>Final</th>
+                    <th>Docente</th>
+                    <th>Salón</th>
 
 
 
@@ -342,7 +344,7 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
                 if($status ===1)
                 {
             echo "<tr>
-    <td><input class='checkthis' type='checkbox' name='check[]' id='check' value='$i++' /></td>
+    <td><input class='checkthis' type='checkbox' name='check[]' id='check' value='$i++;' /></td>
     <td><input class='id' type='hidden' name='id_programacion[]' readonly id='id_programacion' value='$rows[id_programacion]'> $rows[id_programacion]</td>
     <td><input class='codigo' type='hidden' name='codigo[]' readonly id='codigo' value='$rows[codigo_prog_curso]'> $rows[codigo_prog_curso]</td>
     <td><input class='asignatura' type='hidden' name='nombre[]' readonly id='nombre' value='$rows[nombre_curso]'>$rows[nombre_curso]</td>
@@ -353,6 +355,7 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
     <td><input class='termina' type='hidden' name='termina[]' readonly id='termina' value='$rows[hora_termina]'>$rows[hora_termina]</td>
     <td><input class='docente' type='hidden' name='nombres[]' readonly id='nombres' value='$rows[nombres]'>$rows[nombres]</td>
     <td><input class='aula' type='hidden' name='aula[]' readonly id='aula' value='$rows[codigo_aula]'>$rows[codigo_aula]</td>
+    <input class='cuenta' type='hidden' name='cuenta[]' readonly id='cuenta' value='" . $_POST['numerocuenta'] . "'>
     ";
                 }
 ?>
@@ -385,13 +388,14 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
     if(isset($_POST['submit'])){
     $checkthis=$_POST['check'];
     $id=$_POST['id_programacion'];
+    $cuenta=$_POST['cuenta'];
 ;
 
 
-    foreach($checkthis as $i){
+    for($i = 0; $i<count($checkthis); $i++) {
 
         $query = mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
-       VALUES('" . $_POST['numerocuenta']. "', '{$id [$i]}')");
+       VALUES('{$cuenta}', '{$id [$i]}')");
 
    }
     }

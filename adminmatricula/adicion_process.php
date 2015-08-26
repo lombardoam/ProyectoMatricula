@@ -3,7 +3,7 @@
 
 require 'conexion.php';
 
-require 'matricula.php';
+require 'adiciones.php';
 
 
 
@@ -13,8 +13,7 @@ require 'matricula.php';
     $cuenta=$_POST['cuenta'];
 ;
 
-
-    for($i = 0; $i<count($checkthis); $i++) {
+    for($i = 0; $i<count($checkthis); $i++){
 
         $query = mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
        VALUES('{$cuenta [$i]}', '{$id [$i]}')");

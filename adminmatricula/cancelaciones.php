@@ -79,6 +79,14 @@ $userr;
     </div>
 </div>
 
+<div class="form-group">
+  <label class="col-md-4 control-label" for="adicionar"></label>
+  <div class="col-md-8">
+    <button id="finalizaradicion" name="finalizaradicion" class="btn btn-danger" onclick="window.location='cancelaciones.php';" ><span class="glyphicon glyphicon-remove"></span> Borrar
+     </button>
+
+  </div>
+</div>
 
 
 </fieldset>
@@ -101,6 +109,7 @@ $userr;
                    <thead>
 
                    <th><input type="checkbox" id="checkall" /></th>
+                    <th>ID</th>
                     <th>Código</th>
                     <th>Nombre clase</th>
                     <th>Días</th>
@@ -128,7 +137,7 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
 
 
 
-   $sql =  "SELECT * FROM matriculas INNER JOIN programacion_cursos ON programacion_cursos.id_programacion = matriculas.id_programacion INNER JOIN cursos ON cursos.id_curso = programacion_cursos.id_curso INNER JOIN aulas ON programacion_cursos.id_aula = aulas.id_aula INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = programacion_cursos.id_plan_estudio INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado";
+   $sql =  "SELECT * FROM matriculas INNER JOIN programacion_cursos ON programacion_cursos.id_programacion = matriculas.id_programacion INNER JOIN cursos ON cursos.id_curso = programacion_cursos.id_curso INNER JOIN aulas ON programacion_cursos.id_aula = aulas.id_aula INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = programacion_cursos.id_plan_estudio INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado WHERE matriculas.num_cuenta='" . $_GET['numerocuenta'] . "'";
 
 
 
@@ -136,18 +145,18 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
 
 $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
-               echo "    <tr>
+               echo " <tr>
     <td><form action='cancelarclase.php' method='post'></td>
-   <td> <input type='checkbox' name='check[]' value=$rows[id_matricula]></td>
-        <td>$rows[codigo_prog_curso]</td>
-        <td>$rows[nombre_curso]</td>
-        <td>$rows[nombre_plan]</td>
-        <td>$rows[dias]</td>
-        <td>$rows[seccion]</td>
-        <td>$rows[hora_inicio]</td>
-        <td>$rows[hora_termina]</td>
-        <td>$rows[nombres]</td>
-        <td>$rows[codigo_aula]</td>
+   <td><input type='checkbox' name='check[]' value=$rows[id_matricula]></td>
+   <td>$rows[codigo_prog_curso]</td>
+   <td>$rows[nombre_curso]</td>
+   <td>$rows[dias]</td>
+   <td>$rows[seccion]</td>
+   <td>$rows[hora_inicio]</td>
+   <td>$rows[hora_termina]</td>
+   <td>$rows[nombres]</td>
+   <td>$rows[nombre_plan]</td>
+   <td>$rows[codigo_aula]</td>
     ";
    }
 
@@ -161,9 +170,8 @@ $query = mysqli_query($conexion, $sql);
 
 <div class="clearfix"></div>
 <ul class="pagination pull-right">
-  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+  <li><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
   <li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
   <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
 </ul>
 
@@ -171,11 +179,13 @@ $query = mysqli_query($conexion, $sql);
             </div>
 
         </div>
+                <!--
                  <input type="hidden" value="<?php echo $userr ?>" name="under" />
+                 -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="cancelar"></label>
   <div class="col-md-8">
-    <td><input type='submit'  value="Cancelar clase" name="cancelar clase" class="btn btn-danger"/></form></td>
+    <td><input type='submit' class="btn btn-danger"  value="Cancelar clase" name="cancelar clase"/></form></td>
      </button>
 
   </div>
