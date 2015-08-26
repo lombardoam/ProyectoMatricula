@@ -11,7 +11,7 @@ require 'matricula.php';
     $checkthis=$_POST['check'];
     $id=$_POST['id_programacion'];
 
-    foreach($checkthis as $i){
+    for($i = 0; $i<count($checkthis); $i++) {
 
         $query = mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
        VALUES('{$id_estu}', '{$id [$i]}')");

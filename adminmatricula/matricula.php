@@ -342,7 +342,7 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
                 if($status ===1)
                 {
             echo "<tr>
-    <td><input class='checkthis' type='checkbox' name='check[]' id='check' value='$i++' /></td>
+    <td><input class='checkthis' type='checkbox' name='check[]' id='check' value='$i++;' /></td>
     <td><input class='id' type='hidden' name='id_programacion[]' readonly id='id_programacion' value='$rows[id_programacion]'> $rows[id_programacion]</td>
     <td><input class='codigo' type='hidden' name='codigo[]' readonly id='codigo' value='$rows[codigo_prog_curso]'> $rows[codigo_prog_curso]</td>
     <td><input class='asignatura' type='hidden' name='nombre[]' readonly id='nombre' value='$rows[nombre_curso]'>$rows[nombre_curso]</td>
@@ -388,7 +388,7 @@ OR programacion_cursos.id_curso != (SELECT cursos.id_curso FROM historiales_acad
 ;
 
 
-    foreach($checkthis as $i){
+    for($i = 0; $i<count($checkthis); $i++) {
 
         $query = mysqli_query($conexion, "INSERT INTO matriculas (num_cuenta, id_programacion)
        VALUES('" . $_POST['numerocuenta']. "', '{$id [$i]}')");
