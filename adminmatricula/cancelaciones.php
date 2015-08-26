@@ -162,9 +162,8 @@ $query = mysqli_query($conexion, $sql);
 
 <div class="clearfix"></div>
 <ul class="pagination pull-right">
-  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+  <li><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
   <li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
   <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
 </ul>
 
@@ -176,7 +175,7 @@ $query = mysqli_query($conexion, $sql);
 <div class="form-group">
   <label class="col-md-4 control-label" for="cancelar"></label>
   <div class="col-md-8">
-    <td><input type='submit'  value="Cancelar clase" name="cancelar clase" class="btn btn-danger"/></form></td>
+    <td><input type='submit' class="btn btn-danger"  value="Cancelar clase" name="cancelar clase"/></form></td>
      </button>
 
   </div>
