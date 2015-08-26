@@ -79,6 +79,14 @@ $userr;
     </div>
 </div>
 
+<div class="form-group">
+  <label class="col-md-4 control-label" for="adicionar"></label>
+  <div class="col-md-8">
+    <button id="finalizaradicion" name="finalizaradicion" class="btn btn-danger" onclick="window.location='cancelaciones.php';" ><span class="glyphicon glyphicon-remove"></span> Borrar
+     </button>
+
+  </div>
+</div>
 
 
 </fieldset>
