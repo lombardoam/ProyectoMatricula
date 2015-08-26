@@ -39,7 +39,7 @@
                             <li><a href="opciones/carreras.php">CARRERAS</a></li>
                             <li><a href="opciones/asignaturas.php">ASIGNATURAS</a></li>
                             <li><a href="opciones/periodos.php">PERÍODOS</a></li>
-                            <li><a href="parciales.php">PARCIALES</a></li>
+                            <li><a href="opciones/parciales.php">PARCIALES</a></li>
                         </ul>
                     </li>
                     <li><a href="opciones/aulas.php"><span><i class="fa fa-building fa-2x"></i></span>AULAS</a>
