@@ -101,6 +101,7 @@ $userr;
                    <thead>
 
                    <th><input type="checkbox" id="checkall" /></th>
+                    <th>ID</th>
                     <th>Código</th>
                     <th>Nombre clase</th>
                     <th>Días</th>
@@ -136,18 +137,18 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
 
 $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
-               echo "    <tr>
+               echo " <tr>
     <td><form action='cancelarclase.php' method='post'></td>
-   <td> <input type='checkbox' name='check[]' value=$rows[id_matricula]></td>
-        <td>$rows[codigo_prog_curso]</td>
-        <td>$rows[nombre_curso]</td>
-        <td>$rows[nombre_plan]</td>
-        <td>$rows[dias]</td>
-        <td>$rows[seccion]</td>
-        <td>$rows[hora_inicio]</td>
-        <td>$rows[hora_termina]</td>
-        <td>$rows[nombres]</td>
-        <td>$rows[codigo_aula]</td>
+   <td><input type='checkbox' name='check[]' value=$rows[id_matricula]></td>
+   <td>$rows[codigo_prog_curso]</td>
+   <td>$rows[nombre_curso]</td>
+   <td>$rows[nombre_plan]</td>
+   <td>$rows[dias]</td>
+   <td>$rows[seccion]</td>
+   <td>$rows[hora_inicio]</td>
+   <td>$rows[hora_termina]</td>
+   <td>$rows[nombres]</td>
+   <td>$rows[codigo_aula]</td>
     ";
    }
 
