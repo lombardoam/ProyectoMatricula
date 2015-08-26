@@ -142,12 +142,12 @@ $query = mysqli_query($conexion, $sql);
    <td><input type='checkbox' name='check[]' value=$rows[id_matricula]></td>
    <td>$rows[codigo_prog_curso]</td>
    <td>$rows[nombre_curso]</td>
-   <td>$rows[nombre_plan]</td>
    <td>$rows[dias]</td>
    <td>$rows[seccion]</td>
    <td>$rows[hora_inicio]</td>
    <td>$rows[hora_termina]</td>
    <td>$rows[nombres]</td>
+   <td>$rows[nombre_plan]</td>
    <td>$rows[codigo_aula]</td>
     ";
    }
