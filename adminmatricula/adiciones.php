@@ -82,7 +82,7 @@ require 'noautorizado.php';
 	<div class="row">
 
         <div class="col-md-12">
-        <h4>Clases a Cancelar</h4>
+        <h4>Clases a Adicionar</h4>
          <div class="panel panel-primary filterable">
 
 
@@ -105,74 +105,6 @@ require 'noautorizado.php';
                    </thead>
     <tbody>
 
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>IIT2000</td>
-    <td>Ingeniería de Software I</td>
-    <td>L-M-V</td>
-    <td>A</td>
-    <td>13:50</td>
-    <td>14:40</td>
-    <td>Marco Antonio</td>
-    <td>Ingeniería en Infotecnología</td>
-
-    </tr>
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>IIT2001</td>
-    <td>Ingeniería de Software II</td>
-    <td>L-M-V</td>
-    <td>B</td>
-    <td>14:50</td>
-    <td>15:40</td>
-    <td>Marco Antonio</td>
-    <td>Ingeniería en Infotecnología</td>
-
-    </tr>
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>DER1001</td>
-    <td>Derecho Constitucional</td>
-    <td>L-M-V</td>
-    <td>B</td>
-    <td>16:50</td>
-    <td>18:40</td>
-    <td>Claudia</td>
-    <td>Derecho</td>
-
-    </tr>
-
-
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>ARQ2000</td>
-    <td>Diseño I I</td>
-    <td>L-M-V</td>
-    <td>A</td>
-    <td>15:50</td>
-    <td>18:40</td>
-    <td>Mejía</td>
-    <td>Arquitectura</td>
-
-    </tr>
-
-
-    <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>MAT1001</td>
-    <td>Orientación Universitaria</td>
-    <td>L-M-V</td>
-    <td>A</td>
-    <td>6:50</td>
-    <td>8:40</td>
-    <td>Martinez</td>
-    <td>Ingeniería Civil</td>
-
-    </tr>
-
 
 
 
@@ -183,12 +115,8 @@ require 'noautorizado.php';
 
 <div class="clearfix"></div>
 <ul class="pagination pull-right">
-  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+  <li><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
   <li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
   <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
 </ul>
 
