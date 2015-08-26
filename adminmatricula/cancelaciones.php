@@ -57,15 +57,18 @@ require 'noautorizado.php';
     <div class="input-group">
       <span class="input-group-addon"><span class="fa fa-fw fa-user"></span>
        <?php
+$userr;
             if (!empty ($_GET['numerocuenta'])){
 
 
-            $qcuenta = "SELECT nombres,apellidos FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
+            $qcuenta = "SELECT nombres,apellidos,id_estudiante,num_cuenta FROM estudiantes WHERE num_cuenta ='" . $_GET['numerocuenta'] . "'";
             $qcuenta = mysqli_query($conexion, $qcuenta);
             while($lineanombres = mysqli_fetch_assoc($qcuenta)){
             echo $lineanombres['nombres'];
             echo ' ';
             echo $lineanombres['apellidos'];
+      $userr = $lineanombres['num_cuenta'];
+
             }
             }
 
@@ -124,12 +127,18 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
  echo '</center></h3>';
 
 
-            $sql = "SELECT programacion_cursos.id_programacion, programacion_cursos.codigo_prog_curso, cursos.nombre_curso, planes_estudio.nombre_plan, programacion_cursos.dias, programacion_cursos.seccion, programacion_cursos.hora_inicio, programacion_cursos.hora_termina,  empleados.nombres, aulas.codigo_aula FROM programacion_cursos INNER JOIN cursos INNER JOIN planes_estudio INNER JOIN empleados INNER JOIN aulas WHERE programacion_cursos.id_curso = cursos.id_curso AND programacion_cursos.id_plan_estudio = planes_estudio.id_plan_estudio AND programacion_cursos.id_empleado = empleados.id_empleado AND programacion_cursos.id_aula = aulas.id_aula AND programacion_cursos.id_plan_estudio='" . $lineaplan['id_plan_estudio'] . "' AND programacion_cursos.estatus_curso='Activo' ORDER BY id_programacion;;";
+
+   $sql =  "SELECT * FROM matriculas INNER JOIN programacion_cursos ON programacion_cursos.id_programacion = matriculas.id_programacion INNER JOIN cursos ON cursos.id_curso = programacion_cursos.id_curso INNER JOIN aulas ON programacion_cursos.id_aula = aulas.id_aula INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = programacion_cursos.id_plan_estudio INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado";
+
+
+
+
 
 $query = mysqli_query($conexion, $sql);
             while($rows = mysqli_fetch_assoc($query)){
                echo "    <tr>
-    <td><input type='checkbox' class='checkthis' /></td>
+    <td><form action='cancelarclase.php' method='post'></td>
+   <td> <input type='checkbox' name='check[]' value=$rows[id_matricula]></td>
         <td>$rows[codigo_prog_curso]</td>
         <td>$rows[nombre_curso]</td>
         <td>$rows[nombre_plan]</td>
@@ -139,9 +148,9 @@ $query = mysqli_query($conexion, $sql);
         <td>$rows[hora_termina]</td>
         <td>$rows[nombres]</td>
         <td>$rows[codigo_aula]</td>
-        <td><a href=''>Cancelar</a></td>
     ";
    }
+
  }
 }
 ?>
@@ -162,11 +171,11 @@ $query = mysqli_query($conexion, $sql);
             </div>
 
         </div>
-                        <!-- Button (Double) -->
+                 <input type="hidden" value="<?php echo $userr ?>" name="under" />
 <div class="form-group">
   <label class="col-md-4 control-label" for="cancelar"></label>
   <div class="col-md-8">
-    <button id="cancelarclase" name="cancelar clase" class="btn btn-danger" onclick="window.location='cancelaciones.php';" ><span class="glyphicon glyphicon-erase"></span> Cancelar Clase
+    <td><input type='submit'  value="Cancelar clase" name="cancelar clase" class="btn btn-danger"/></form></td>
      </button>
 
   </div>
