@@ -137,7 +137,7 @@ $qcuentap = mysqli_query($conexion, $qcuentap);
 
 
 
-   $sql =  "SELECT * FROM matriculas INNER JOIN programacion_cursos ON programacion_cursos.id_programacion = matriculas.id_programacion INNER JOIN cursos ON cursos.id_curso = programacion_cursos.id_curso INNER JOIN aulas ON programacion_cursos.id_aula = aulas.id_aula INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = programacion_cursos.id_plan_estudio INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado";
+   $sql =  "SELECT * FROM matriculas INNER JOIN programacion_cursos ON programacion_cursos.id_programacion = matriculas.id_programacion INNER JOIN cursos ON cursos.id_curso = programacion_cursos.id_curso INNER JOIN aulas ON programacion_cursos.id_aula = aulas.id_aula INNER JOIN planes_estudio ON planes_estudio.id_plan_estudio = programacion_cursos.id_plan_estudio INNER JOIN empleados ON empleados.id_empleado = programacion_cursos.id_empleado WHERE matriculas.num_cuenta='" . $_GET['numerocuenta'] . "'";
 
 
 
@@ -179,7 +179,9 @@ $query = mysqli_query($conexion, $sql);
             </div>
 
         </div>
+                <!--
                  <input type="hidden" value="<?php echo $userr ?>" name="under" />
+                 -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="cancelar"></label>
   <div class="col-md-8">
